@@ -1,16 +1,20 @@
--- Remap leader and local leader to <Space>
-vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+local api = vim.api
+local g = vim.g
+local opt = vim.opt
 
-vim.o.termguicolors = true -- Enable colors in terminal
-vim.o.hlsearch = false --Set highlight on search
-vim.wo.number = true --Make line numbers default
-vim.wo.relativenumber = true --Make relative number default
-vim.o.mouse = "a" --Enable mouse mode
-vim.o.breakindent = true --Enable break indent
-vim.opt.undofile = true --Save undo history
-vim.o.ignorecase = true --Case insensitive searching unless /C or capital in search
-vim.o.smartcase = true
-vim.o.updatetime = 250 --Decrease update time
-vim.wo.signcolumn = "yes"
+-- Remap leader and local leader to <Space>
+api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
+g.mapleader = " "
+g.maplocalleader = " "
+
+opt.termguicolors = true -- Enable colors in terminal
+opt.hlsearch = false --Set highlight on search
+opt.number = true --Make line numbers default
+opt.relativenumber = true --Make relative number default
+opt.mouse = "a" --Enable mouse mode
+opt.breakindent = true --Enable break indent
+opt.undofile = true --Save undo history
+opt.ignorecase = true --Case insensitive searching unless /C or capital in search
+opt.smartcase = true
+opt.updatetime = 250 --Decrease update time
+opt.signcolumn = "yes"
