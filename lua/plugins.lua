@@ -1,29 +1,11 @@
 local M = {}
 
-local packer_bootstrap = false
-
-local function packer_init()
-  local fn = vim.fn
-  local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
-  if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap = fn.system {
-      "git",
-      "clone",
-      "--depth",
-      "1",
-      "https://github.com/wbthomason/packer.nvim",
-      install_path,
-    }
-    vim.cmd [[packadd packer.nvim]]
-  end
-  vim.cmd "autocmd BufWritePost plugins.lua source <afile> | PackerCompile"
-end
-
-packer_init()
-
 function M.setup()
+  -- Indicate first time installation
+  local packer_bootstrap = false
+
+  -- packer.nvim configuration
   local conf = {
-    compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua",
     display = {
       open_fn = function()
         return require("packer.util").float { border = "rounded" }
@@ -31,18 +13,56 @@ function M.setup()
     },
   }
 
+  -- Check if packer.nvim is installed
+  -- Run PackerCompile if there are changes in this file
+  local function packer_init()
+    local fn = vim.fn
+    local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+    if fn.empty(fn.glob(install_path)) > 0 then
+      packer_bootstrap = fn.system {
+        "git",
+        "clone",
+        "--depth",
+        "1",
+        "https://github.com/wbthomason/packer.nvim",
+        install_path,
+      }
+      vim.cmd [[packadd packer.nvim]]
+    end
+    vim.cmd "autocmd BufWritePost plugins.lua source <afile> | PackerCompile"
+  end
+
+  -- Plugins
   local function plugins(use)
     use { "wbthomason/packer.nvim" }
-    use { "lewis6991/impatient.nvim" }
+
+    -- Colorscheme
+    use {
+      "sainnhe/everforest",
+      config = function()
+        vim.cmd "colorscheme everforest"
+      end,
+    }
+
+    -- Startup screen
+    use {
+      "goolord/alpha-nvim",
+      config = function()
+        require("config.alpha").setup()
+      end,
+    }
 
     if packer_bootstrap then
-      print "Setting up Neovim. Restart required after installation!"
+      print "Restart Neovim required after installation!"
       require("packer").sync()
     end
   end
 
-  require("packer").init(conf)
-  require("packer").startup(plugins)
+  packer_init()
+
+  local packer = require "packer"
+  packer.init(conf)
+  packer.startup(plugins)
 end
 
 return M
