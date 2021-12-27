@@ -41,7 +41,7 @@ function M.setup()
     -- Number of plugins
     local total_plugins = #vim.tbl_keys(packer_plugins)
     local datetime = os.date "%d-%m-%Y  %H:%M:%S"
-    local plugins_text = total_plugins .. " plugins  " .. datetime
+    local plugins_text = "\t" .. total_plugins .. " plugins  " .. datetime
 
     -- Quote
     local fortune = require "alpha.fortune"
