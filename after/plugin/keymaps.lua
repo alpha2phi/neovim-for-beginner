@@ -18,7 +18,7 @@ keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", expr_opts)
 keymap("v", "<", "<gv", default_opts)
 keymap("v", ">", ">gv", default_opts)
 
--- paste over currently selected text without yanking it
+-- Paste over currently selected text without yanking it
 keymap("v", "p", '"_dP', default_opts)
 
 -- Switch buffer
