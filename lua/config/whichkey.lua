@@ -11,19 +11,23 @@ function M.setup()
   }
 
   local opts = {
-		mode = "n", -- Normal mode
+    mode = "n", -- Normal mode
     prefix = "<leader>",
     buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
-    nowait = false , -- use `nowait` when creating keymaps
+    nowait = false, -- use `nowait` when creating keymaps
   }
 
   local mappings = {
     ["w"] = { "<cmd>update!<CR>", "Save" },
     ["q"] = { "<cmd>q!<CR>", "Quit" },
 
-    ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+    b = {
+      name = "Buffer",
+      c = { "<Cmd>bd!<Cr>", "Close current buffer" },
+      D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete all buffers" },
+    },
 
     z = {
       name = "Packer",
@@ -36,7 +40,7 @@ function M.setup()
 
     g = {
       name = "Git",
-      g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
+      s = { "<cmd>Neogit<CR>", "Status" },
     },
   }
 
