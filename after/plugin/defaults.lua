@@ -18,3 +18,11 @@ opt.ignorecase = true --Case insensitive searching unless /C or capital in searc
 opt.smartcase = true
 opt.updatetime = 250 --Decrease update time
 opt.signcolumn = "yes"
+
+-- Highlight on yank
+vim.cmd [[
+  augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+  augroup end
+]]
