@@ -15,9 +15,10 @@ opt.mouse = "a" --Enable mouse mode
 opt.breakindent = true --Enable break indent
 opt.undofile = true --Save undo history
 opt.ignorecase = true --Case insensitive searching unless /C or capital in search
-opt.smartcase = true
+opt.smartcase = true -- Smart case
 opt.updatetime = 250 --Decrease update time
-opt.signcolumn = "yes"
+opt.signcolumn = "yes" -- Always show sign column
+opt.clipboard = "unnamedplus" -- Access system clipboard
 
 -- Highlight on yank
 vim.cmd [[
