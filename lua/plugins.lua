@@ -61,6 +61,15 @@ function M.setup()
       end,
     }
 
+    -- WhichKey
+    use {
+      "folke/which-key.nvim",
+      config = function()
+        require("config.whichkey").setup()
+      end,
+    }
+
+    -- Bootstrap Neovim
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
       require("packer").sync()

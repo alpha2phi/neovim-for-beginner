@@ -45,7 +45,6 @@ function M.setup()
 
     -- Quote
     local fortune = require "alpha.fortune"
-    local quote = fortune()
     local quote = table.concat(fortune(), "\n")
 
     return plugins_text .. "\n" .. quote

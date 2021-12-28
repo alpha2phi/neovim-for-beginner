@@ -15,6 +15,16 @@ opt.mouse = "a" --Enable mouse mode
 opt.breakindent = true --Enable break indent
 opt.undofile = true --Save undo history
 opt.ignorecase = true --Case insensitive searching unless /C or capital in search
-opt.smartcase = true
+opt.smartcase = true -- Smart case
 opt.updatetime = 250 --Decrease update time
-opt.signcolumn = "yes"
+opt.signcolumn = "yes" -- Always show sign column
+opt.clipboard = "unnamedplus" -- Access system clipboard
+opt.timeoutlen = 300	--	Time in milliseconds to wait for a mapped sequence to complete.
+
+-- Highlight on yank
+vim.cmd [[
+  augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+  augroup end
+]]
