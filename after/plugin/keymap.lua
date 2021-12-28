@@ -10,7 +10,7 @@ keymap("n", "N", "Nzz", default_options)
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", expr_options)
 keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", expr_options)
 
--- Be
+-- Better indent
 keymap("v", "<", "<gv", default_options)
 keymap("v", ">", ">gv", default_options)
 
