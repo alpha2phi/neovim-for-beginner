@@ -69,6 +69,14 @@ function M.setup()
       end,
     }
 
+    -- IndentLine
+    use {
+      "lukas-reineke/indent-blankline.nvim",
+      config = function()
+        require("config.indentblankline").setup()
+      end,
+    }
+
     -- Bootstrap Neovim
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
