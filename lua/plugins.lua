@@ -60,6 +60,7 @@ function M.setup()
     -- Git
     use {
       "TimUntersberger/neogit",
+      cmd = "Neogit",
       requires = "nvim-lua/plenary.nvim",
       config = function()
         require("config.neogit").setup()
@@ -69,6 +70,7 @@ function M.setup()
     -- WhichKey
     use {
       "folke/which-key.nvim",
+      event = "VimEnter",
       config = function()
         require("config.whichkey").setup()
       end,
@@ -81,6 +83,51 @@ function M.setup()
       config = function()
         require("config.indentblankline").setup()
       end,
+    }
+
+    -- Theme: icons
+    use {
+      "kyazdani42/nvim-web-devicons",
+      module = "nvim-web-devicons",
+      config = function()
+        require("nvim-web-devicons").setup { default = true }
+      end,
+    }
+
+    -- Comment
+    use {
+      "numToStr/Comment.nvim",
+      opt = true,
+      keys = { "gc", "gcc", "gbc" },
+      config = function()
+        require("Comment").setup {}
+      end,
+    }
+    -- Easy hopping
+    use {
+      "phaazon/hop.nvim",
+      cmd = { "HopWord", "HopChar1" },
+      config = function()
+        require("hop").setup {}
+      end,
+    }
+
+    -- Easy motion
+    use {
+      "ggandor/lightspeed.nvim",
+      keys = { "s", "S", "f", "F", "t", "T" },
+      config = function()
+        require("lightspeed").setup {}
+      end,
+    }
+    -- Markdown
+    use {
+      "iamcco/markdown-preview.nvim",
+      run = function()
+        vim.fn["mkdp#util#install"]()
+      end,
+      ft = "markdown",
+      cmd = { "MarkdownPreview" },
     }
 
     -- Bootstrap Neovim
