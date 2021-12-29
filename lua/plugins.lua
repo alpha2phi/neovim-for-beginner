@@ -41,6 +41,9 @@ function M.setup()
   local function plugins(use)
     use { "wbthomason/packer.nvim" }
 
+    -- Load only when require
+    use { "nvim-lua/plenary.nvim", module = "plenary" }
+
     -- Colorscheme
     use {
       "sainnhe/everforest",
@@ -61,7 +64,6 @@ function M.setup()
     use {
       "TimUntersberger/neogit",
       cmd = "Neogit",
-      requires = "nvim-lua/plenary.nvim",
       config = function()
         require("config.neogit").setup()
       end,
@@ -85,7 +87,7 @@ function M.setup()
       end,
     }
 
-    -- Theme: icons
+    -- Better icons
     use {
       "kyazdani42/nvim-web-devicons",
       module = "nvim-web-devicons",
@@ -94,7 +96,7 @@ function M.setup()
       end,
     }
 
-    -- Comment
+    -- Better Comment
     use {
       "numToStr/Comment.nvim",
       opt = true,
@@ -103,6 +105,7 @@ function M.setup()
         require("Comment").setup {}
       end,
     }
+
     -- Easy hopping
     use {
       "phaazon/hop.nvim",
@@ -120,6 +123,7 @@ function M.setup()
         require("lightspeed").setup {}
       end,
     }
+
     -- Markdown
     use {
       "iamcco/markdown-preview.nvim",
