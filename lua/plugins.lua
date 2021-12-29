@@ -12,7 +12,7 @@ function M.setup()
   local conf = {
     profile = {
       enable = true,
-      threshold = 0, -- the amount in ms that a plugins load time must be over for it to be included in the profile
+      threshold = 1, -- the amount in ms that a plugins load time must be over for it to be included in the profile
     },
 
     display = {
@@ -138,7 +138,15 @@ function M.setup()
     }
 
     -- Status line
-
+    use {
+      "nvim-lualine/lualine.nvim",
+      event = "VimEnter",
+      config = function()
+        require("config.lualine").setup()
+      end,
+      wants = "nvim-web-devicons",
+      disable = true,
+    }
     -- Bootstrap Neovim
     if packer_bootstrap then
       print "Restart Neovim required after installation!"

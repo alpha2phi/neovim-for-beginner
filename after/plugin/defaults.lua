@@ -28,3 +28,10 @@ vim.cmd [[
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
 ]]
+
+-- Status line
+vim.cmd [[
+	set statusline=%f
+]]
+
+
