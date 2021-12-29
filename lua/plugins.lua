@@ -1,5 +1,9 @@
 local M = {}
 
+_G.dump = function(...)
+  print(vim.inspect(...))
+end
+
 function M.setup()
   -- Indicate first time installation
   local packer_bootstrap = false
