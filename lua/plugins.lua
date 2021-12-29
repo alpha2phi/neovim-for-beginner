@@ -99,7 +99,6 @@ function M.setup()
     -- Better Comment
     use {
       "numToStr/Comment.nvim",
-      opt = true,
       keys = { "gc", "gcc", "gbc" },
       config = function()
         require("Comment").setup {}
@@ -133,6 +132,8 @@ function M.setup()
       ft = "markdown",
       cmd = { "MarkdownPreview" },
     }
+
+    -- Status line
 
     -- Bootstrap Neovim
     if packer_bootstrap then
