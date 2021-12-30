@@ -116,6 +116,7 @@ function M.setup()
       config = function()
         require("hop").setup {}
       end,
+      disable = true,
     }
 
     -- Easy motion
