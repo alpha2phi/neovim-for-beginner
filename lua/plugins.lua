@@ -141,7 +141,7 @@ function M.setup()
     -- Status line
     use {
       "nvim-lualine/lualine.nvim",
-      event = "VimEnter",
+      after = "nvim-treesitter",
       config = function()
         require("config.lualine").setup()
       end,
@@ -151,6 +151,9 @@ function M.setup()
     -- Treesitter
     use {
       "nvim-treesitter/nvim-treesitter",
+      as = "nvim-treesitter",
+      opt = true,
+      event = "BufRead",
       run = ":TSUpdate",
       config = function()
         require("config.treesitter").setup()
