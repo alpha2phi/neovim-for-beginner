@@ -145,9 +145,17 @@ function M.setup()
       config = function()
         require("config.lualine").setup()
       end,
-      wants = "nvim-web-devicons",
-      disable = true,
+      requires = { "nvim-web-devicons" },
     }
+    use {
+      "SmiteshP/nvim-gps",
+      requires = "nvim-treesitter/nvim-treesitter",
+      after = "lualine.nvim",
+      config = function()
+        require("nvim-gps").setup()
+      end,
+    }
+
     -- Bootstrap Neovim
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
