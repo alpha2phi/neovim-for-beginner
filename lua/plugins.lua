@@ -147,10 +147,19 @@ function M.setup()
       end,
       requires = { "nvim-web-devicons" },
     }
+
+    -- Treesitter
+    use {
+      "nvim-treesitter/nvim-treesitter",
+      run = ":TSUpdate",
+      config = function()
+        require("config.treesitter").setup()
+      end,
+    }
     use {
       "SmiteshP/nvim-gps",
       requires = "nvim-treesitter/nvim-treesitter",
-      after = "lualine.nvim",
+      module = "nvim-gps",
       config = function()
         require("nvim-gps").setup()
       end,
