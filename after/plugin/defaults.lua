@@ -19,7 +19,8 @@ opt.smartcase = true -- Smart case
 opt.updatetime = 250 --Decrease update time
 opt.signcolumn = "yes" -- Always show sign column
 opt.clipboard = "unnamedplus" -- Access system clipboard
-opt.timeoutlen = 300	--	Time in milliseconds to wait for a mapped sequence to complete.
+opt.timeoutlen = 300 --	Time in milliseconds to wait for a mapped sequence to complete.
+opt.showmode = false -- Do not need to show the mode. We use the statusline instead.
 
 -- Highlight on yank
 vim.cmd [[
@@ -29,23 +30,11 @@ vim.cmd [[
   augroup end
 ]]
 
-function _G.statusline()
-    local filepath = '%f'
-    local align_section = '%='
-    local percentage_through_file = '%p%%'
-    return string.format(
-        '%s%s%s',
-        filepath,
-        align_section,
-        percentage_through_file
-    )
-end
--- Status line
--- vim.cmd [[
---set statusline=%!v:lua.statusline()
--- set statusline=%f         " Path to the file
--- set statusline+=%=        " Switch to the right side
--- set statusline+=%l        " Current line
--- set statusline+=/         " Separator
--- set statusline+=%L        " Total lines
--- ]]
+-- Better search
+opt.path:remove "/usr/include"
+opt.path:append "**"
+-- vim.cmd [[set path=.,,,$PWD/**]] -- Set the path directly
+
+opt.wildignorecase = true
+opt.wildignore:append "**/node_modules/*"
+opt.wildignore:append "**/.git/*"
