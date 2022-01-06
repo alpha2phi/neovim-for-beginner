@@ -168,7 +168,7 @@ function M.setup()
     }
 
     -- FZF
-    use { "junegunn/fzf", run = "./install --all", event = "VimEnter" } -- You don't need to run this if you already have fzf installed
+    use { "junegunn/fzf", run = "./install --all", event = "VimEnter" } -- You don't need to install this if you already have fzf installed
     use { "junegunn/fzf.vim", event = "BufEnter" }
 
     -- FZF Lua
