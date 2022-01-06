@@ -147,18 +147,6 @@ function M.setup()
       end,
       requires = { "nvim-web-devicons" },
     }
-
-    -- Treesitter
-    use {
-      "nvim-treesitter/nvim-treesitter",
-      as = "nvim-treesitter",
-      opt = true,
-      event = "BufRead",
-      run = ":TSUpdate",
-      config = function()
-        require("config.treesitter").setup()
-      end,
-    }
     use {
       "SmiteshP/nvim-gps",
       requires = "nvim-treesitter/nvim-treesitter",
@@ -166,6 +154,28 @@ function M.setup()
       config = function()
         require("nvim-gps").setup()
       end,
+    }
+
+    -- Treesitter
+    use {
+      "nvim-treesitter/nvim-treesitter",
+      opt = true,
+      event = "BufRead",
+      run = ":TSUpdate",
+      config = function()
+        require("config.treesitter").setup()
+      end,
+    }
+
+    -- FZF
+    use { "junegunn/fzf", run = "./install --all", event = "VimEnter" } -- You don't need to run this if you already have fzf installed
+    use { "junegunn/fzf.vim", event = "BufEnter" }
+
+    -- FZF Lua
+    use {
+      "ibhagwan/fzf-lua",
+      event = "BufEnter",
+      requires = { "kyazdani42/nvim-web-devicons" },
     }
 
     -- Bootstrap Neovim
