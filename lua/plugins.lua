@@ -64,6 +64,9 @@ function M.setup()
       end,
     }
 
+    -- Better Netrw
+    use { "tpope/vim-vinegar" }
+
     -- Git
     use {
       "TimUntersberger/neogit",
@@ -168,14 +171,26 @@ function M.setup()
     }
 
     -- FZF
-    use { "junegunn/fzf", run = "./install --all", event = "VimEnter" } -- You don't need to install this if you already have fzf installed
-    use { "junegunn/fzf.vim", event = "BufEnter" }
+    -- use { "junegunn/fzf", run = "./install --all", event = "VimEnter" } -- You don't need to install this if you already have fzf installed
+    -- use { "junegunn/fzf.vim", event = "BufEnter" }
 
     -- FZF Lua
     use {
       "ibhagwan/fzf-lua",
       event = "BufEnter",
       requires = { "kyazdani42/nvim-web-devicons" },
+    }
+
+    -- nvim-tree
+    use {
+      "kyazdani42/nvim-tree.lua",
+      requires = {
+        "kyazdani42/nvim-web-devicons",
+      },
+      cmd = { "NvimTreeToggle", "NvimTreeClose" },
+      config = function()
+        require("config.nvimtree").setup()
+      end,
     }
 
     -- Bootstrap Neovim
