@@ -2,11 +2,14 @@ local M = {}
 
 function M.setup()
   require("nvim-tree").setup {
-    update_focused_file = {
-      enable = true,
+    disable_netrw = true,
+    hijack_netrw = true,
+    view = {
+      number = true,
+      relativenumber = true,
     },
     filters = {
-      custom = { ".git", "node_modules", ".cargo" },
+      custom = { ".git" },
     },
   }
 end
