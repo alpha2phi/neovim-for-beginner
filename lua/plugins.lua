@@ -78,7 +78,9 @@ function M.setup()
 
     -- WhichKey
     use {
-      "folke/which-key.nvim",
+      -- "folke/which-key.nvim", -- TODO: fix
+      "zeertzjq/which-key.nvim",
+      branch = "patch-1",
       event = "VimEnter",
       config = function()
         require("config.whichkey").setup()
@@ -190,6 +192,16 @@ function M.setup()
       cmd = { "NvimTreeToggle", "NvimTreeClose" },
       config = function()
         require("config.nvimtree").setup()
+      end,
+    }
+
+    -- Tabs
+    use {
+      "akinsho/nvim-bufferline.lua",
+      event = "BufReadPre",
+      wants = "nvim-web-devicons",
+      config = function()
+        require("config.bufferline").setup()
       end,
     }
 
