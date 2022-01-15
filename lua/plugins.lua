@@ -78,9 +78,7 @@ function M.setup()
 
     -- WhichKey
     use {
-      -- "folke/which-key.nvim", -- TODO: fix
-      "zeertzjq/which-key.nvim",
-      branch = "patch-1",
+      "folke/which-key.nvim",
       event = "VimEnter",
       config = function()
         require("config.whichkey").setup()
@@ -195,7 +193,7 @@ function M.setup()
       end,
     }
 
-    -- Tabs
+    -- Buffer line
     use {
       "akinsho/nvim-bufferline.lua",
       event = "BufReadPre",
@@ -204,6 +202,20 @@ function M.setup()
         require("config.bufferline").setup()
       end,
     }
+
+    -- User interface
+    use {
+      "stevearc/dressing.nvim",
+      event = "BufEnter",
+      config = function()
+        require("dressing").setup {
+          select = {
+            backend = { "telescope", "fzf", "builtin" },
+          },
+        }
+      end,
+    }
+    use { "nvim-telescope/telescope.nvim", module = "telescope", as = "telescope" }
 
     -- Bootstrap Neovim
     if packer_bootstrap then
