@@ -114,6 +114,7 @@ function M.setup()
 
     -- Motions
     use { "andymass/vim-matchup", event = "CursorMoved" }
+    use { "wellle/targets.vim", event = "CursorMoved" }
     use { "chaoren/vim-wordmotion", opt = true, fn = { "<Plug>WordMotion_w" } }
 
     use {
@@ -122,7 +123,7 @@ function M.setup()
       config = function()
         require("hop").setup {}
       end,
-      disable = true,
+      disable = false,
     }
     use {
       "ggandor/lightspeed.nvim",
