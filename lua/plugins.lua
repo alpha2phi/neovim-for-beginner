@@ -112,7 +112,12 @@ function M.setup()
       end,
     }
 
-    -- Easy hopping
+    -- Motions
+    use { "andymass/vim-matchup", event = "CursorMoved" }
+    use { "wellle/targets.vim", event = "CursorMoved" }
+    use { "unblevable/quick-scope", event = "CursorMoved", disable = false }
+    use { "chaoren/vim-wordmotion", opt = true, fn = { "<Plug>WordMotion_w" } }
+
     use {
       "phaazon/hop.nvim",
       cmd = { "HopWord", "HopChar1" },
@@ -121,8 +126,6 @@ function M.setup()
       end,
       disable = true,
     }
-
-    -- Easy motion
     use {
       "ggandor/lightspeed.nvim",
       keys = { "s", "S", "f", "F", "t", "T" },
@@ -168,6 +171,9 @@ function M.setup()
       config = function()
         require("config.treesitter").setup()
       end,
+      requires = {
+        { "nvim-treesitter/nvim-treesitter-textobjects" },
+      },
     }
 
     -- FZF
@@ -214,6 +220,7 @@ function M.setup()
           },
         }
       end,
+      disable = true,
     }
     use { "nvim-telescope/telescope.nvim", module = "telescope", as = "telescope" }
 
