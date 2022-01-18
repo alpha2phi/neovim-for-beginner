@@ -231,15 +231,15 @@ function M.setup()
     -- Completion
     use {
       "ms-jpq/coq_nvim",
-      -- event = "InsertEnter",
-      -- opt = true,
       branch = "coq",
+      event = "InsertEnter",
+      opt = true,
       config = function()
         require("config.coq").setup()
       end,
       requires = {
-        { "ms-jpq/coq.artifacts", branch = "artifacts" },
-        { "ms-jpq/coq.thirdparty", branch = "3p" },
+        { "ms-jpq/coq.artifacts", branch = "artifacts", after="coq_nvim" },
+        { "ms-jpq/coq.thirdparty", branch = "3p", after = "coq_nvim"},
       },
       disable = false,
     }
