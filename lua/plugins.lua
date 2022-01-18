@@ -157,6 +157,7 @@ function M.setup()
       "SmiteshP/nvim-gps",
       requires = "nvim-treesitter/nvim-treesitter",
       module = "nvim-gps",
+      wants = "nvim-treesitter",
       config = function()
         require("nvim-gps").setup()
       end,
