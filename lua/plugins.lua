@@ -112,6 +112,9 @@ function M.setup()
       end,
     }
 
+    -- Better surround
+    use { "tpope/vim-surround", event = "InsertEnter" }
+
     -- Motions
     use { "andymass/vim-matchup", event = "CursorMoved" }
     use { "wellle/targets.vim", event = "CursorMoved" }
@@ -225,6 +228,22 @@ function M.setup()
     }
     use { "nvim-telescope/telescope.nvim", module = "telescope", as = "telescope" }
 
+    -- Completion
+    use {
+      "ms-jpq/coq_nvim",
+      -- event = "InsertEnter",
+      -- opt = true,
+      branch = "coq",
+      config = function()
+        require("config.coq").setup()
+      end,
+      requires = {
+        { "ms-jpq/coq.artifacts", branch = "artifacts" },
+        { "ms-jpq/coq.thirdparty", branch = "3p" },
+      },
+      disable = false,
+    }
+
     -- Bootstrap Neovim
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
@@ -232,8 +251,8 @@ function M.setup()
     end
   end
 
+  -- Init and start packer
   packer_init()
-
   local packer = require "packer"
   packer.init(conf)
   packer.startup(plugins)
