@@ -234,6 +234,7 @@ function M.setup()
       branch = "coq",
       event = "InsertEnter",
       opt = true,
+      run = ":COQdeps",
       config = function()
         require("config.coq").setup()
       end,
