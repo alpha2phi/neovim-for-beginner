@@ -238,8 +238,8 @@ function M.setup()
         require("config.coq").setup()
       end,
       requires = {
-        { "ms-jpq/coq.artifacts", branch = "artifacts", after="coq_nvim" },
-        { "ms-jpq/coq.thirdparty", branch = "3p", after = "coq_nvim"},
+        { "ms-jpq/coq.artifacts", branch = "artifacts" },
+        { "ms-jpq/coq.thirdparty", branch = "3p", module = "coq_3p" },
       },
       disable = false,
     }
