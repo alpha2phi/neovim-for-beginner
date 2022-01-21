@@ -1,9 +1,5 @@
 local M = {}
 
-_G.dump = function(...)
-  print(vim.inspect(...))
-end
-
 function M.setup()
   -- Indicate first time installation
   local packer_bootstrap = false
@@ -112,6 +108,9 @@ function M.setup()
       end,
     }
 
+    -- Better surround
+    use { "tpope/vim-surround", event = "InsertEnter" }
+
     -- Motions
     use { "andymass/vim-matchup", event = "CursorMoved" }
     use { "wellle/targets.vim", event = "CursorMoved" }
@@ -157,6 +156,7 @@ function M.setup()
       "SmiteshP/nvim-gps",
       requires = "nvim-treesitter/nvim-treesitter",
       module = "nvim-gps",
+      wants = "nvim-treesitter",
       config = function()
         require("nvim-gps").setup()
       end,
@@ -224,6 +224,53 @@ function M.setup()
     }
     use { "nvim-telescope/telescope.nvim", module = "telescope", as = "telescope" }
 
+    -- Completion
+    use {
+      "ms-jpq/coq_nvim",
+      branch = "coq",
+      event = "InsertEnter",
+      opt = true,
+      run = ":COQdeps",
+      config = function()
+        require("config.coq").setup()
+      end,
+      requires = {
+        { "ms-jpq/coq.artifacts", branch = "artifacts" },
+        { "ms-jpq/coq.thirdparty", branch = "3p", module = "coq_3p" },
+      },
+      disable = true,
+    }
+
+    use {
+      "hrsh7th/nvim-cmp",
+      event = "InsertEnter",
+      opt = true,
+      config = function()
+        require("config.cmp").setup()
+      end,
+      wants = { "LuaSnip" },
+      requires = {
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-nvim-lua",
+        "ray-x/cmp-treesitter",
+        "hrsh7th/cmp-cmdline",
+        "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/cmp-calc",
+        "f3fora/cmp-spell",
+        "hrsh7th/cmp-emoji",
+        {
+          "L3MON4D3/LuaSnip",
+          wants = "friendly-snippets",
+          config = function()
+            require("config.luasnip").setup()
+          end,
+        },
+        "rafamadriz/friendly-snippets",
+        disable = false,
+      },
+    }
+
     -- Bootstrap Neovim
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
@@ -231,8 +278,8 @@ function M.setup()
     end
   end
 
+  -- Init and start packer
   packer_init()
-
   local packer = require "packer"
   packer.init(conf)
   packer.startup(plugins)
