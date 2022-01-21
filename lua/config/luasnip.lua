@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup()
-  local luasnip = prequire "luasnip"
+  local luasnip = require "luasnip"
 
   luasnip.config.set_config {
     history = false,
