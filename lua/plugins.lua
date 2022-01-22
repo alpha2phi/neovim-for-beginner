@@ -150,7 +150,7 @@ function M.setup()
       config = function()
         require("config.lualine").setup()
       end,
-      requires = { "nvim-web-devicons" },
+      wants = "nvim-web-devicons",
     }
     use {
       "SmiteshP/nvim-gps",
@@ -184,15 +184,13 @@ function M.setup()
     use {
       "ibhagwan/fzf-lua",
       event = "BufEnter",
-      requires = { "kyazdani42/nvim-web-devicons" },
+      wants = "nvim-web-devicons",
     }
 
     -- nvim-tree
     use {
       "kyazdani42/nvim-tree.lua",
-      requires = {
-        "kyazdani42/nvim-web-devicons",
-      },
+      wants = "nvim-web-devicons",
       cmd = { "NvimTreeToggle", "NvimTreeClose" },
       config = function()
         require("config.nvimtree").setup()
@@ -269,6 +267,34 @@ function M.setup()
         "rafamadriz/friendly-snippets",
         disable = false,
       },
+    }
+
+    -- Auto pairs
+    use {
+      "windwp/nvim-autopairs",
+      wants = "nvim-treesitter",
+      module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" },
+      config = function()
+        require("config.autopairs").setup()
+      end,
+    }
+
+    -- Auto tag
+    use {
+      "windwp/nvim-ts-autotag",
+      wants = "nvim-treesitter",
+      event = "InsertEnter",
+      config = function()
+        require("nvim-ts-autotag").setup { enable = true }
+      end,
+    }
+
+    -- End wise
+    use {
+      "RRethy/nvim-treesitter-endwise",
+      wants = "nvim-treesitter",
+      event = "InsertEnter",
+      disable = false,
     }
 
     -- Bootstrap Neovim

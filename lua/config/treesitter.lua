@@ -87,6 +87,11 @@ function M.setup()
         },
       },
     },
+
+    -- endwise
+    endwise = {
+      enable = true,
+    },
   }
 end
 
