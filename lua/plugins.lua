@@ -154,7 +154,7 @@ function M.setup()
     }
     use {
       "SmiteshP/nvim-gps",
-      requires = "nvim-treesitter/nvim-treesitter",
+      requires = "nvim-treesitter",
       module = "nvim-gps",
       wants = "nvim-treesitter",
       config = function()
@@ -269,6 +269,26 @@ function M.setup()
         "rafamadriz/friendly-snippets",
         disable = false,
       },
+    }
+
+    -- Auto pairs
+    use {
+      "windwp/nvim-autopairs",
+      requires = "nvim-treesitter",
+      module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" },
+      config = function()
+        require("config.autopairs").setup()
+      end,
+    }
+
+    -- Auto tag
+    use {
+      "windwp/nvim-ts-autotag",
+      requires = "nvim-treesitter",
+      event = "InsertEnter",
+      config = function()
+        require("nvim-ts-autotag").setup { enable = true }
+      end,
     }
 
     -- Bootstrap Neovim
