@@ -86,11 +86,11 @@ function M.setup()
           ["<leader>dF"] = "@class.outer",
         },
       },
+    },
 
-      -- endwise
-      endwise = {
-        enable = true,
-      },
+    -- endwise
+    endwise = {
+      enable = true,
     },
   }
 end

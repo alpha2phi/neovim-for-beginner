@@ -294,7 +294,7 @@ function M.setup()
       "RRethy/nvim-treesitter-endwise",
       wants = "nvim-treesitter",
       event = "InsertEnter",
-      disable = true,
+      disable = false,
     }
 
     -- Bootstrap Neovim
