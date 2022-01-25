@@ -44,6 +44,15 @@ function M.setup()
     -- Load only when require
     use { "nvim-lua/plenary.nvim", module = "plenary" }
 
+    -- Notification
+    use {
+      "rcarriga/nvim-notify",
+      event = "VimEnter",
+      config = function()
+        vim.notify = require "notify"
+      end,
+    }
+
     -- Colorscheme
     use {
       "sainnhe/everforest",
@@ -295,6 +304,20 @@ function M.setup()
       wants = "nvim-treesitter",
       event = "InsertEnter",
       disable = false,
+    }
+
+    -- LSP
+    use {
+      "neovim/nvim-lspconfig",
+      opt = true,
+      event = "BufReadPre",
+      wants = { "nvim-lsp-installer" },
+      config = function()
+        require("config.lsp").setup()
+      end,
+      requires = {
+        "williamboman/nvim-lsp-installer",
+      },
     }
 
     -- Bootstrap Neovim
