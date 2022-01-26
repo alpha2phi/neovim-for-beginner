@@ -274,8 +274,8 @@ function M.setup()
           end,
         },
         "rafamadriz/friendly-snippets",
-        disable = false,
       },
+      disable = true,
     }
 
     -- Auto pairs

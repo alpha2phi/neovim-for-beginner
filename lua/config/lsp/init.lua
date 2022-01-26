@@ -1,12 +1,22 @@
 local M = {}
 
 local servers = {
-  sumneko_lua = {},
+  gopls = {},
+  html = {},
+  jsonls = {},
   pyright = {},
+  rust_analyzer = {},
+  sumneko_lua = {},
+  tsserver = {},
+  vimls = {},
 }
 
 local function on_attach(client, bufnr)
-  require("config.lsp.keymaps").setup()
+  -- Enable completion triggered by <C-X><C-O>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Configure key mappings
+  require("config.lsp.keymaps").setup(client, bufnr)
 end
 
 local opts = {
