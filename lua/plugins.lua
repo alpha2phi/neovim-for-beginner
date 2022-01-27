@@ -263,9 +263,10 @@ function M.setup()
         "ray-x/cmp-treesitter",
         "hrsh7th/cmp-cmdline",
         "saadparwaiz1/cmp_luasnip",
-        "hrsh7th/cmp-calc",
-        "f3fora/cmp-spell",
-        "hrsh7th/cmp-emoji",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
+        -- "hrsh7th/cmp-calc",
+        -- "f3fora/cmp-spell",
+        -- "hrsh7th/cmp-emoji",
         {
           "L3MON4D3/LuaSnip",
           wants = "friendly-snippets",

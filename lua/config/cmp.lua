@@ -24,6 +24,8 @@ function M.setup()
           luasnip = "[Snip]",
           nvim_lua = "[Lua]",
           treesitter = "[Treesitter]",
+          path = "[Path]",
+          signature_help = "[Signature]",
         })[entry.source.name]
         return vim_item
       end,
@@ -79,10 +81,11 @@ function M.setup()
       { name = "buffer" },
       { name = "luasnip" },
       { name = "nvim_lua" },
+      { name = "signature_help" },
       { name = "path" },
-      { name = "spell" },
-      { name = "emoji" },
-      { name = "calc" },
+      -- { name = "spell" },
+      -- { name = "emoji" },
+      -- { name = "calc" },
     },
     documentation = {
       border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
