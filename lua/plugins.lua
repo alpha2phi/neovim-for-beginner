@@ -44,6 +44,15 @@ function M.setup()
     -- Load only when require
     use { "nvim-lua/plenary.nvim", module = "plenary" }
 
+    -- Notification
+    use {
+      "rcarriga/nvim-notify",
+      event = "VimEnter",
+      config = function()
+        vim.notify = require "notify"
+      end,
+    }
+
     -- Colorscheme
     use {
       "sainnhe/everforest",
@@ -236,7 +245,7 @@ function M.setup()
         { "ms-jpq/coq.artifacts", branch = "artifacts" },
         { "ms-jpq/coq.thirdparty", branch = "3p", module = "coq_3p" },
       },
-      disable = true,
+      disable = false,
     }
 
     use {
@@ -254,9 +263,11 @@ function M.setup()
         "ray-x/cmp-treesitter",
         "hrsh7th/cmp-cmdline",
         "saadparwaiz1/cmp_luasnip",
-        "hrsh7th/cmp-calc",
-        "f3fora/cmp-spell",
-        "hrsh7th/cmp-emoji",
+        "hrsh7th/cmp-nvim-lsp",
+        -- "hrsh7th/cmp-nvim-lsp-signature-help",
+        -- "hrsh7th/cmp-calc",
+        -- "f3fora/cmp-spell",
+        -- "hrsh7th/cmp-emoji",
         {
           "L3MON4D3/LuaSnip",
           wants = "friendly-snippets",
@@ -265,8 +276,8 @@ function M.setup()
           end,
         },
         "rafamadriz/friendly-snippets",
-        disable = false,
       },
+      disable = true,
     }
 
     -- Auto pairs
@@ -295,6 +306,22 @@ function M.setup()
       wants = "nvim-treesitter",
       event = "InsertEnter",
       disable = false,
+    }
+
+    -- LSP
+    use {
+      "neovim/nvim-lspconfig",
+      opt = true,
+      event = "BufReadPre",
+      -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },  -- for nvim-cmp
+      wants = { "nvim-lsp-installer", "lsp_signature.nvim", "coq_nvim" },  -- for coq.nvim
+      config = function()
+        require("config.lsp").setup()
+      end,
+      requires = {
+        "williamboman/nvim-lsp-installer",
+        "ray-x/lsp_signature.nvim",
+      },
     }
 
     -- Bootstrap Neovim

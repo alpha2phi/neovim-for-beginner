@@ -1,2 +1,2 @@
-require("utils")
+require "utils"
 require("plugins").setup()
