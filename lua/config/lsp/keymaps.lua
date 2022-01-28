@@ -1,6 +1,5 @@
 local M = {}
 
-local utils = require "utils"
 local whichkey = require "which-key"
 
 local keymap = vim.api.nvim_set_keymap

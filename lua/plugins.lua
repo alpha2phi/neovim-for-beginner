@@ -263,7 +263,8 @@ function M.setup()
         "ray-x/cmp-treesitter",
         "hrsh7th/cmp-cmdline",
         "saadparwaiz1/cmp_luasnip",
-        "hrsh7th/cmp-nvim-lsp-signature-help",
+        "hrsh7th/cmp-nvim-lsp",
+        -- "hrsh7th/cmp-nvim-lsp-signature-help",
         -- "hrsh7th/cmp-calc",
         -- "f3fora/cmp-spell",
         -- "hrsh7th/cmp-emoji",
@@ -276,7 +277,7 @@ function M.setup()
         },
         "rafamadriz/friendly-snippets",
       },
-      disable = true,
+      disable = false,
     }
 
     -- Auto pairs
@@ -312,12 +313,13 @@ function M.setup()
       "neovim/nvim-lspconfig",
       opt = true,
       event = "BufReadPre",
-      wants = { "nvim-lsp-installer" },
+      wants = { "cmp-nvim-lsp", "nvim-lsp-installer", "lsp_signature" },
       config = function()
         require("config.lsp").setup()
       end,
       requires = {
         "williamboman/nvim-lsp-installer",
+        "ray-x/lsp_signature.nvim",
       },
     }
 
