@@ -245,7 +245,7 @@ function M.setup()
         { "ms-jpq/coq.artifacts", branch = "artifacts" },
         { "ms-jpq/coq.thirdparty", branch = "3p", module = "coq_3p" },
       },
-      disable = true,
+      disable = false,
     }
 
     use {
@@ -277,7 +277,7 @@ function M.setup()
         },
         "rafamadriz/friendly-snippets",
       },
-      disable = false,
+      disable = true,
     }
 
     -- Auto pairs
@@ -313,7 +313,8 @@ function M.setup()
       "neovim/nvim-lspconfig",
       opt = true,
       event = "BufReadPre",
-      wants = { "cmp-nvim-lsp", "nvim-lsp-installer", "lsp_signature.nvim" },
+      -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },  -- for nvim-cmp
+      wants = { "nvim-lsp-installer", "lsp_signature.nvim", "coq_nvim" },  -- for coq.nvim
       config = function()
         require("config.lsp").setup()
       end,
