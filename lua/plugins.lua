@@ -245,7 +245,7 @@ function M.setup()
         { "ms-jpq/coq.artifacts", branch = "artifacts" },
         { "ms-jpq/coq.thirdparty", branch = "3p", module = "coq_3p" },
       },
-      disable = false,
+      disable = not PLUGINS.coq.enabled,
     }
 
     use {
@@ -277,7 +277,7 @@ function M.setup()
         },
         "rafamadriz/friendly-snippets",
       },
-      disable = true,
+      disable = not PLUGINS.nvim_cmp.enabled,
     }
 
     -- Auto pairs
@@ -309,20 +309,37 @@ function M.setup()
     }
 
     -- LSP
-    use {
-      "neovim/nvim-lspconfig",
-      opt = true,
-      event = "BufReadPre",
-      -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },  -- for nvim-cmp
-      wants = { "nvim-lsp-installer", "lsp_signature.nvim", "coq_nvim" },  -- for coq.nvim
-      config = function()
-        require("config.lsp").setup()
-      end,
-      requires = {
-        "williamboman/nvim-lsp-installer",
-        "ray-x/lsp_signature.nvim",
-      },
-    }
+    if PLUGINS.nvim_cmp.enabled then
+      use {
+        "neovim/nvim-lspconfig",
+        opt = true,
+        event = "BufReadPre",
+        wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" }, -- for nvim-cmp
+        config = function()
+          require("config.lsp").setup()
+        end,
+        requires = {
+          "williamboman/nvim-lsp-installer",
+          "ray-x/lsp_signature.nvim",
+        },
+      }
+    end
+
+    if PLUGINS.coq.enabled then
+      use {
+        "neovim/nvim-lspconfig",
+        opt = true,
+        event = "BufReadPre",
+        wants = { "nvim-lsp-installer", "lsp_signature.nvim", "coq_nvim" }, -- for coq.nvim
+        config = function()
+          require("config.lsp").setup()
+        end,
+        requires = {
+          "williamboman/nvim-lsp-installer",
+          "ray-x/lsp_signature.nvim",
+        },
+      }
+    end
 
     -- Bootstrap Neovim
     if packer_bootstrap then
