@@ -10,6 +10,32 @@ function M.setup()
     },
   }
 
+  local keymaps_f = { -- File search
+    name = "Find",
+    f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
+    b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+    o = { "<cmd>Telescope oldfiles<cr>", "Old files" },
+    g = { "<cmd>Telescope live_grep<cr>", "Live grep" },
+    c = { "<cmd>Telescope commands<cr>", "Commands" },
+    e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+  }
+
+  local keymaps_p = { -- Project
+
+  }
+
+  if PLUGINS.fzf_lua.enabled then
+    keymaps_f = {
+      name = "Find",
+      f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
+      b = { "<cmd>FzfLua buffers<cr>", "Buffers" },
+      o = { "<cmd>FzfLua oldfiles<cr>", "Old files" },
+      g = { "<cmd>FzfLua live_grep<cr>", "Live grep" },
+      c = { "<cmd>FzfLua commands<cr>", "Commands" },
+      e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+    }
+  end
+
   local opts = {
     mode = "n", -- Normal mode
     prefix = "<leader>",
@@ -29,15 +55,7 @@ function M.setup()
       D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete all buffers" },
     },
 
-    f = {
-      name = "Find",
-      f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
-      b = { "<cmd>FzfLua buffers<cr>", "Buffers" },
-      o = { "<cmd>FzfLua oldfiles<cr>", "Old files" },
-      g = { "<cmd>FzfLua live_grep<cr>", "Live grep" },
-      c = { "<cmd>FzfLua commands<cr>", "Commands" },
-      e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-    },
+    f = keymaps_f,
 
     z = {
       name = "Packer",

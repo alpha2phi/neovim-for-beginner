@@ -2,8 +2,9 @@ local M = {}
 
 function M.setup()
   local actions = require "telescope.actions"
+  local telescope = require("telescope")
 
-  require("telescope").setup {
+  telescope.setup {
     extensions = {
       fzf = {
         fuzzy = true,
@@ -24,9 +25,9 @@ function M.setup()
     },
   }
 
-  require("telescope").load_extension "fzf"
-  require("telescope").load_extension "project"
-  require("telescope").load_extension "repo"
+  telescope.load_extension "fzf"
+  telescope.load_extension "project"
+  telescope.load_extension "repo"
 end
 
 return M
