@@ -185,16 +185,23 @@ function M.setup()
       },
     }
 
-    -- FZF
-    -- use { "junegunn/fzf", run = "./install --all", event = "VimEnter" } -- You don't need to install this if you already have fzf installed
-    -- use { "junegunn/fzf.vim", event = "BufEnter" }
+    if PLUGINS.fzf_lua.enabled then
+      -- FZF
+      -- use { "junegunn/fzf", run = "./install --all", event = "VimEnter" } -- You don't need to install this if you already have fzf installed
+      -- use { "junegunn/fzf.vim", event = "BufEnter" }
 
-    -- FZF Lua
-    use {
-      "ibhagwan/fzf-lua",
-      event = "BufEnter",
-      wants = "nvim-web-devicons",
-    }
+      -- FZF Lua
+      use {
+        "ibhagwan/fzf-lua",
+        event = "BufEnter",
+        wants = "nvim-web-devicons",
+        requires = { "junegunn/fzf", run = "./install --all" },
+      }
+    end
+
+    if PLUGINS.telescope.enabled then
+      use { "nvim-telescope/telescope.nvim", module = "telescope", as = "telescope" }
+    end
 
     -- nvim-tree
     use {
@@ -229,7 +236,6 @@ function M.setup()
       end,
       disable = true,
     }
-    use { "nvim-telescope/telescope.nvim", module = "telescope", as = "telescope" }
 
     -- Completion
     use {
