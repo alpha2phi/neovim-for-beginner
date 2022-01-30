@@ -6,9 +6,9 @@ PLUGINS = {
     enabled = true,
   },
   fzf_lua = {
-    enabled = true,
+    enabled = false,
   },
   telescope = {
-    enabled = false,
+    enabled = true,
   },
 }

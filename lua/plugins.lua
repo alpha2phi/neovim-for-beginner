@@ -200,7 +200,30 @@ function M.setup()
     end
 
     if PLUGINS.telescope.enabled then
-      use { "nvim-telescope/telescope.nvim", module = "telescope", as = "telescope" }
+      use {
+        "nvim-telescope/telescope.nvim",
+        opt = true,
+        config = function()
+          require("config.telescope").setup()
+        end,
+        cmd = { "Telescope" },
+        module = "telescope",
+        keys = { "<leader>f", "<leader>p" },
+        wants = {
+          "plenary.nvim",
+          "popup.nvim",
+          "telescope-fzf-native.nvim",
+          "telescope-project.nvim",
+          "telescope-repo.nvim",
+        },
+        requires = {
+          "nvim-lua/popup.nvim",
+          "nvim-lua/plenary.nvim",
+          { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+          "nvim-telescope/telescope-project.nvim",
+          "cljoly/telescope-repo.nvim",
+        },
+      }
     end
 
     -- nvim-tree
