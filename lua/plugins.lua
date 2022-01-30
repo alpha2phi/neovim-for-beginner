@@ -264,7 +264,7 @@ function M.setup()
         "hrsh7th/cmp-cmdline",
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lsp",
-        -- "hrsh7th/cmp-nvim-lsp-signature-help",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
         -- "hrsh7th/cmp-calc",
         -- "f3fora/cmp-spell",
         -- "hrsh7th/cmp-emoji",
@@ -314,13 +314,14 @@ function M.setup()
         "neovim/nvim-lspconfig",
         opt = true,
         event = "BufReadPre",
-        wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" }, -- for nvim-cmp
+        -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
+        wants = { "nvim-lsp-installer", "cmp-nvim-lsp" },
         config = function()
           require("config.lsp").setup()
         end,
         requires = {
           "williamboman/nvim-lsp-installer",
-          "ray-x/lsp_signature.nvim",
+          -- "ray-x/lsp_signature.nvim",
         },
       }
     end
