@@ -21,6 +21,7 @@ function M.setup()
       o = { "<cmd>Telescope oldfiles<cr>", "Old files" },
       g = { "<cmd>Telescope live_grep<cr>", "Live grep" },
       c = { "<cmd>Telescope commands<cr>", "Commands" },
+      r = { "<cmd>Telescope file_browser<cr>", "Browser" },
       e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     }
 

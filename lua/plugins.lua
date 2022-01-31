@@ -215,6 +215,8 @@ function M.setup()
           "telescope-fzf-native.nvim",
           "telescope-project.nvim",
           "telescope-repo.nvim",
+          "telescope-file-browser.nvim",
+          "project.nvim",
         },
         requires = {
           "nvim-lua/popup.nvim",
@@ -222,6 +224,13 @@ function M.setup()
           { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
           "nvim-telescope/telescope-project.nvim",
           "cljoly/telescope-repo.nvim",
+          "nvim-telescope/telescope-file-browser.nvim",
+          {
+            "ahmedkhalf/project.nvim",
+            config = function()
+              require("project_nvim").setup {}
+            end,
+          },
         },
       }
     end
@@ -231,6 +240,7 @@ function M.setup()
       "kyazdani42/nvim-tree.lua",
       wants = "nvim-web-devicons",
       cmd = { "NvimTreeToggle", "NvimTreeClose" },
+      module = "nvim-tree",
       config = function()
         require("config.nvimtree").setup()
       end,
