@@ -17,6 +17,7 @@ function M.setup()
     keymaps_f = {
       name = "Find",
       f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
+      d = { "<cmd>lua require('utils.finder').find_dotfiles()<cr>", "Dotfiles" },
       b = { "<cmd>Telescope buffers<cr>", "Buffers" },
       o = { "<cmd>Telescope oldfiles<cr>", "Old files" },
       g = { "<cmd>Telescope live_grep<cr>", "Live grep" },
