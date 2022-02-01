@@ -1,59 +1,54 @@
 local M = {}
 
--- Dropdown list theme using a builtin theme definitions :
-local center_list = require("telescope.themes").get_dropdown {
-  winblend = 10,
-  width = 0.5,
-  prompt = " ",
-  results_height = 15,
+-- Themes to use
+local dropdown_theme = require("telescope.themes").get_dropdown {}
+local ivy_theme = require("telescope.themes").get_ivy {}
+local cursor_theme = require("telescope.themes").get_cursor {}
+local custom_theme = require("telescope.themes").get_dropdown {
+  results_height = 20,
+  winblend = 20,
+  width = 0.8,
+  prompt_title = "",
+  prompt_prefix = "   ",
   previewer = false,
-}
-
--- Settings for with preview option
-local with_preview = {
-  winblend = 10,
-  show_line = false,
-  results_title = false,
-  preview_title = false,
-  layout_config = {
-    preview_width = 0.5,
+  color_devicons = true,
+  border = {},
+  borderchars = {
+    prompt = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
+    results = { " ", "▐", "▄", "▌", "▌", "▐", "▟", "▙" },
+    preview = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
   },
 }
 
-local telescopes = {
-  fd_nvim = {
-    prompt_prefix = "Nvim>",
+-- Custom pickers
+local custom_pickers = {
+  dotfiles = {
+    prompt_prefix = "Dotfiles>",
+    theme = custom_theme,
+    cwd = "$HOME/workspace/alpha2phi/neovim-for-beginner/",
     fun = "fd",
-    theme = center_list,
-    cwd = vim.fn.stdpath("config")
-    -- .. other options
-  }
-  fd = {
-    prompt_prefix = "Files>",
-    fun = "fd",
-    theme = with_preview,
-    -- .. other options
-  }
+  },
 }
 
-function M.run(str, theme)
-  local base, fun, opts
-  if not telescopes[str] then
-    fun = str
-    opts = theme or {}
-    --return print("Sorry not found")
+-- Display the picker
+function M.run(fun, opts)
+  opts = opts or {}
+  local options
+  local picker = custom_pickers[fun]
+  if not picker then
+    options = dropdown_theme
+    options = vim.tbl_extend("force", options, opts)
   else
-    base = telescopes[str]
-    fun = base.fun; theme = base.theme
-    base.theme = nil; base.fun = nil
-    opts = vim.tbl_extend("force", theme, base)
+    local theme
+    options = vim.deepcopy(picker)
+    fun = options.fun
+    theme = options.theme
+    options.theme = nil
+    options.fun = nil
+    options = vim.tbl_extend("force", theme, options)
   end
-  if str then
-    return require"telescope.builtin"[fun](opts)
-  else
-    return print("You need to a set a default function")
-    -- return require"telescope.builtin".find_files(opts)
-  end
+  print(vim.inspect(options))
+  return require("telescope.builtin")[fun](options)
 end
 
 return M
