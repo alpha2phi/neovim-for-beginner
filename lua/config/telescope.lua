@@ -22,7 +22,7 @@ function M.setup()
               if not stat then
                 return
               end
-              if stat.size > 100000 then
+              if stat.size > 500000 then
                 return
               else
                 previewers.buffer_previewer_maker(filepath, bufnr, opts)
@@ -41,8 +41,6 @@ function M.setup()
   telescope.setup {
     defaults = {
       buffer_previewer_maker = preview_maker,
-      theme = "ivy",
-
       mappings = {
         i = {
           ["<C-j>"] = actions.move_selection_next,
@@ -51,6 +49,9 @@ function M.setup()
           ["<C-p>"] = actions.cycle_history_prev,
         },
       },
+    },
+    pickers = {
+      theme = "ivy",
     },
   }
 

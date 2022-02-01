@@ -19,10 +19,11 @@ function M.setup()
       f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
       d = { "<cmd>lua require('utils.finder').find_dotfiles()<cr>", "Dotfiles" },
       b = { "<cmd>Telescope buffers<cr>", "Buffers" },
-      o = { "<cmd>Telescope oldfiles<cr>", "Old files" },
-      g = { "<cmd>Telescope live_grep<cr>", "Live grep" },
+      o = { "<cmd>Telescope oldfiles<cr>", "Old Files" },
+      g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
       c = { "<cmd>Telescope commands<cr>", "Commands" },
       r = { "<cmd>Telescope file_browser<cr>", "Browser" },
+      w = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Current Buffer" },
       e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     }
 
@@ -38,8 +39,8 @@ function M.setup()
       name = "Find",
       f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
       b = { "<cmd>FzfLua buffers<cr>", "Buffers" },
-      o = { "<cmd>FzfLua oldfiles<cr>", "Old files" },
-      g = { "<cmd>FzfLua live_grep<cr>", "Live grep" },
+      o = { "<cmd>FzfLua oldfiles<cr>", "Old Files" },
+      g = { "<cmd>FzfLua live_grep<cr>", "Live Grep" },
       c = { "<cmd>FzfLua commands<cr>", "Commands" },
       e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     }
@@ -60,8 +61,8 @@ function M.setup()
 
     b = {
       name = "Buffer",
-      c = { "<Cmd>bd!<Cr>", "Close current buffer" },
-      D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete all buffers" },
+      c = { "<Cmd>bd!<Cr>", "Close Buffer" },
+      D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete All Buffers" },
     },
 
     f = keymaps_f,

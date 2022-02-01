@@ -41,7 +41,7 @@ end
 
 -- Find dotfiles
 function M.find_dotfiles()
-  require("telescope.builtin").git_files {
+  require("telescope.builtin").find_files {
     prompt_title = "<Dotfiles>",
     cwd = "$HOME/workspace/alpha2phi/dotfiles/",
   }
