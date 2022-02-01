@@ -23,7 +23,6 @@ local custom_theme = require("telescope.themes").get_dropdown {
 -- Custom pickers
 local custom_pickers = {
   dotfiles = {
-    prompt_prefix = "Dotfiles>",
     theme = custom_theme,
     cwd = "$HOME/workspace/alpha2phi/neovim-for-beginner/",
     fun = "fd",
@@ -47,7 +46,6 @@ function M.run(fun, opts)
     options.fun = nil
     options = vim.tbl_extend("force", theme, options)
   end
-  print(vim.inspect(options))
   return require("telescope.builtin")[fun](options)
 end
 
