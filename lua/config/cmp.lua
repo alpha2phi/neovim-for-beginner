@@ -1,5 +1,7 @@
 local M = {}
 
+vim.o.completeopt = "menu,menuone,noselect"
+
 function M.setup()
   local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -26,6 +28,7 @@ function M.setup()
           nvim_lua = "[Lua]",
           treesitter = "[Treesitter]",
           path = "[Path]",
+          nvim_lsp_signature_help = "[Signature]",
         })[entry.source.name]
         return vim_item
       end,
@@ -83,6 +86,7 @@ function M.setup()
       { name = "luasnip" },
       { name = "nvim_lua" },
       { name = "path" },
+      { name = "nvim_lsp_signature_help" },
       -- { name = "spell" },
       -- { name = "emoji" },
       -- { name = "calc" },

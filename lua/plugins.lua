@@ -185,22 +185,62 @@ function M.setup()
       },
     }
 
-    -- FZF
-    -- use { "junegunn/fzf", run = "./install --all", event = "VimEnter" } -- You don't need to install this if you already have fzf installed
-    -- use { "junegunn/fzf.vim", event = "BufEnter" }
+    if PLUGINS.fzf_lua.enabled then
+      -- FZF
+      -- use { "junegunn/fzf", run = "./install --all", event = "VimEnter" } -- You don't need to install this if you already have fzf installed
+      -- use { "junegunn/fzf.vim", event = "BufEnter" }
 
-    -- FZF Lua
-    use {
-      "ibhagwan/fzf-lua",
-      event = "BufEnter",
-      wants = "nvim-web-devicons",
-    }
+      -- FZF Lua
+      use {
+        "ibhagwan/fzf-lua",
+        event = "BufEnter",
+        wants = "nvim-web-devicons",
+        requires = { "junegunn/fzf", run = "./install --all" },
+      }
+    end
+
+    if PLUGINS.telescope.enabled then
+      use {
+        "nvim-telescope/telescope.nvim",
+        opt = true,
+        config = function()
+          require("config.telescope").setup()
+        end,
+        cmd = { "Telescope" },
+        module = "telescope",
+        keys = { "<leader>f", "<leader>p" },
+        wants = {
+          "plenary.nvim",
+          "popup.nvim",
+          "telescope-fzf-native.nvim",
+          "telescope-project.nvim",
+          "telescope-repo.nvim",
+          "telescope-file-browser.nvim",
+          "project.nvim",
+        },
+        requires = {
+          "nvim-lua/popup.nvim",
+          "nvim-lua/plenary.nvim",
+          { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+          "nvim-telescope/telescope-project.nvim",
+          "cljoly/telescope-repo.nvim",
+          "nvim-telescope/telescope-file-browser.nvim",
+          {
+            "ahmedkhalf/project.nvim",
+            config = function()
+              require("project_nvim").setup {}
+            end,
+          },
+        },
+      }
+    end
 
     -- nvim-tree
     use {
       "kyazdani42/nvim-tree.lua",
       wants = "nvim-web-devicons",
       cmd = { "NvimTreeToggle", "NvimTreeClose" },
+      module = "nvim-tree",
       config = function()
         require("config.nvimtree").setup()
       end,
@@ -229,7 +269,6 @@ function M.setup()
       end,
       disable = true,
     }
-    use { "nvim-telescope/telescope.nvim", module = "telescope", as = "telescope" }
 
     -- Completion
     use {
@@ -245,7 +284,7 @@ function M.setup()
         { "ms-jpq/coq.artifacts", branch = "artifacts" },
         { "ms-jpq/coq.thirdparty", branch = "3p", module = "coq_3p" },
       },
-      disable = false,
+      disable = not PLUGINS.coq.enabled,
     }
 
     use {
@@ -264,7 +303,7 @@ function M.setup()
         "hrsh7th/cmp-cmdline",
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lsp",
-        -- "hrsh7th/cmp-nvim-lsp-signature-help",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
         -- "hrsh7th/cmp-calc",
         -- "f3fora/cmp-spell",
         -- "hrsh7th/cmp-emoji",
@@ -277,7 +316,7 @@ function M.setup()
         },
         "rafamadriz/friendly-snippets",
       },
-      disable = true,
+      disable = not PLUGINS.nvim_cmp.enabled,
     }
 
     -- Auto pairs
@@ -309,20 +348,38 @@ function M.setup()
     }
 
     -- LSP
-    use {
-      "neovim/nvim-lspconfig",
-      opt = true,
-      event = "BufReadPre",
-      -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },  -- for nvim-cmp
-      wants = { "nvim-lsp-installer", "lsp_signature.nvim", "coq_nvim" },  -- for coq.nvim
-      config = function()
-        require("config.lsp").setup()
-      end,
-      requires = {
-        "williamboman/nvim-lsp-installer",
-        "ray-x/lsp_signature.nvim",
-      },
-    }
+    if PLUGINS.nvim_cmp.enabled then
+      use {
+        "neovim/nvim-lspconfig",
+        opt = true,
+        event = "BufReadPre",
+        -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
+        wants = { "nvim-lsp-installer", "cmp-nvim-lsp" },
+        config = function()
+          require("config.lsp").setup()
+        end,
+        requires = {
+          "williamboman/nvim-lsp-installer",
+          -- "ray-x/lsp_signature.nvim",
+        },
+      }
+    end
+
+    if PLUGINS.coq.enabled then
+      use {
+        "neovim/nvim-lspconfig",
+        opt = true,
+        event = "BufReadPre",
+        wants = { "nvim-lsp-installer", "lsp_signature.nvim", "coq_nvim" }, -- for coq.nvim
+        config = function()
+          require("config.lsp").setup()
+        end,
+        requires = {
+          "williamboman/nvim-lsp-installer",
+          "ray-x/lsp_signature.nvim",
+        },
+      }
+    end
 
     -- Bootstrap Neovim
     if packer_bootstrap then
