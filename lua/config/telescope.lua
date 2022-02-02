@@ -1,5 +1,22 @@
 local M = {}
 
+-- Custom actions
+local transform_mod = require("telescope.actions.mt").transform_mod
+local nvb_actions = transform_mod {
+  file_path = function(prompt_bufnr)
+    -- Get selected entry and the file full path
+    local content = require("telescope.actions.state").get_selected_entry()
+    local full_path = content.cwd .. require("plenary.path").path.sep .. content.value
+
+    -- Yank the path to unnamed register
+    vim.fn.setreg('"', full_path)
+
+    -- Close the popup
+    require("utils").info "File path is yanked "
+    require("telescope.actions").close(prompt_bufnr)
+  end,
+}
+
 function M.setup()
   local actions = require "telescope.actions"
   local telescope = require "telescope"
@@ -51,7 +68,28 @@ function M.setup()
       },
     },
     pickers = {
-      theme = "ivy",
+      find_files = {
+        theme = "ivy",
+        mappings = {
+          n = {
+            ["y"] = nvb_actions.file_path,
+          },
+          i = {
+            ["<C-y>"] = nvb_actions.file_path,
+          },
+        },
+      },
+      git_files = {
+        theme = "dropdown",
+        mappings = {
+          n = {
+            ["y"] = nvb_actions.file_path,
+          },
+          i = {
+            ["<C-y>"] = nvb_actions.file_path,
+          },
+        },
+      },
     },
   }
 
