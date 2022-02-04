@@ -67,6 +67,9 @@ local opts = {
   },
 }
 
+-- Setup LSP handlers
+require("config.lsp.handlers").setup()
+
 function M.setup()
   require("config.lsp.installer").setup(servers, opts)
 end
