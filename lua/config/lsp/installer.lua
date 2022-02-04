@@ -15,6 +15,7 @@ function M.setup(servers, options)
           local coq = require "coq"
           server:setup(coq.lsp_ensure_capabilities(opts))
         else
+          -- local luadev = require("lua-dev").setup{}
           server:setup(opts)
         end
       end)

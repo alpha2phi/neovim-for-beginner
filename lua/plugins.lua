@@ -354,12 +354,13 @@ function M.setup()
         opt = true,
         event = "BufReadPre",
         -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
-        wants = { "nvim-lsp-installer", "cmp-nvim-lsp" },
+        wants = { "nvim-lsp-installer", "cmp-nvim-lsp", "lua-dev.nvim" },
         config = function()
           require("config.lsp").setup()
         end,
         requires = {
           "williamboman/nvim-lsp-installer",
+          "folke/lua-dev.nvim",
           -- "ray-x/lsp_signature.nvim",
         },
       }
