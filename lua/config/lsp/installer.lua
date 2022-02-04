@@ -11,11 +11,14 @@ function M.setup(servers, options)
       server:on_ready(function()
         local opts = vim.tbl_deep_extend("force", options, servers[server.name] or {})
 
+        if server.name == "sumneko_lua" then
+          opts = require("lua-dev").setup { lspconfig = opts }
+        end
+
         if PLUGINS.coq.enabled then
           local coq = require "coq"
           server:setup(coq.lsp_ensure_capabilities(opts))
         else
-          -- local luadev = require("lua-dev").setup{}
           server:setup(opts)
         end
       end)
