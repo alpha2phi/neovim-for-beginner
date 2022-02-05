@@ -86,7 +86,7 @@ function M.setup()
       { name = "luasnip" },
       { name = "nvim_lua" },
       { name = "path" },
-      { name = "nvim_lsp_signature_help" },
+      -- { name = "nvim_lsp_signature_help" },
       -- { name = "spell" },
       -- { name = "emoji" },
       -- { name = "calc" },
