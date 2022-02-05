@@ -274,7 +274,7 @@ function M.setup()
     use {
       "ms-jpq/coq_nvim",
       branch = "coq",
-      event = "InsertEnter",
+      event = "VimEnter",
       opt = true,
       run = ":COQdeps",
       config = function()
