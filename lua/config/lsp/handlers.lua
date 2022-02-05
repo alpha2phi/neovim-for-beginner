@@ -33,7 +33,6 @@ function M.setup()
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
   end
 
-
   -- Diagnostic configuration
   vim.diagnostic.config(lsp.diagnostic)
 
