@@ -217,6 +217,7 @@ function M.setup()
           "telescope-repo.nvim",
           "telescope-file-browser.nvim",
           "project.nvim",
+          "trouble.nvim",
         },
         requires = {
           "nvim-lua/popup.nvim",
@@ -385,6 +386,29 @@ function M.setup()
         },
       }
     end
+
+    -- trouble.nvim
+    use {
+      "folke/trouble.nvim",
+      event = "BufReadPre",
+      wants = "nvim-web-devicons",
+      cmd = { "TroubleToggle", "Trouble" },
+      config = function()
+        require("trouble").setup {
+          use_diagnostic_signs = true,
+        }
+      end,
+    }
+
+    -- lspsaga.nvim
+    use {
+      "tami5/lspsaga.nvim",
+      event = "VimEnter",
+      cmd = { "Lspsaga" },
+      config = function()
+        require("lspsaga").setup {}
+      end,
+    }
 
     -- Bootstrap Neovim
     if packer_bootstrap then

@@ -21,10 +21,14 @@ local function keymappings(client, bufnr)
   local keymap_l = {
     l = {
       name = "Code",
-      r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
-      a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
-      d = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line Diagnostics" },
+      R = { "<cmd>Trouble lsp_references<cr>", "Trouble References" },
+      a = { "<cmd>Telescope lsp_code_actions<CR>", "Code Action" },
+      d = { "<cmd>Telescope diagnostics<CR>", "Diagnostics" },
+      f = { "<cmd>Lspsaga lsp_finder<CR>", "Finder" },
       i = { "<cmd>LspInfo<CR>", "Lsp Info" },
+      n = { "<cmd>Lspsaga rename<CR>", "Rename" },
+      r = { "<cmd>Telescope lsp_references<CR>", "Diagnostics" },
+      t = { "<cmd>TroubleToggle<CR>", "Trouble" },
     },
   }
   if client.resolved_capabilities.document_formatting then
@@ -36,7 +40,7 @@ local function keymappings(client, bufnr)
     d = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
     D = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
     s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
-    I = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto Implementation" },
+    I = { "<cmd>Telescope lsp_implementations<CR>", "Goto Implementation" },
     t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition" },
   }
   whichkey.register(keymap_l, { buffer = bufnr, prefix = "<leader>" })
