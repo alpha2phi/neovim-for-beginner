@@ -355,13 +355,14 @@ function M.setup()
         opt = true,
         event = "BufReadPre",
         -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
-        wants = { "nvim-lsp-installer", "cmp-nvim-lsp", "lua-dev.nvim" },
+        wants = { "nvim-lsp-installer", "cmp-nvim-lsp", "lua-dev.nvim", "vim-illuminate" },
         config = function()
           require("config.lsp").setup()
         end,
         requires = {
           "williamboman/nvim-lsp-installer",
           "folke/lua-dev.nvim",
+          "RRethy/vim-illuminate",
           -- "ray-x/lsp_signature.nvim",
         },
       }
@@ -372,13 +373,15 @@ function M.setup()
         "neovim/nvim-lspconfig",
         opt = true,
         event = "BufReadPre",
-        wants = { "nvim-lsp-installer", "lsp_signature.nvim", "coq_nvim" }, -- for coq.nvim
+        wants = { "nvim-lsp-installer", "lsp_signature.nvim", "coq_nvim", "vim-illuminate" }, -- for coq.nvim
         config = function()
           require("config.lsp").setup()
         end,
         requires = {
           "williamboman/nvim-lsp-installer",
           "ray-x/lsp_signature.nvim",
+          "folke/lua-dev.nvim",
+          "RRethy/vim-illuminate",
         },
       }
     end

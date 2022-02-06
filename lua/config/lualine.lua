@@ -15,7 +15,7 @@ local colors = {
   red = "#ec5f67",
 }
 
-local function padding()
+local function separator()
   return "%="
 end
 
@@ -76,7 +76,7 @@ function M.setup()
           cond = gps.is_available,
           color = { fg = colors.green },
         },
-        { padding },
+        { separator },
         { lsp_client, icon = " ", color = { fg = colors.violet, gui = "bold" } },
         { lsp_progress },
       },

@@ -52,6 +52,9 @@ local function on_attach(client, bufnr)
 
   -- Configure key mappings
   require("config.lsp.keymaps").setup(client, bufnr)
+
+  -- Configure highlighting
+  require("config.lsp.highlighting").setup(client)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
