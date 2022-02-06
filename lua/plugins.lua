@@ -294,7 +294,7 @@ function M.setup()
       config = function()
         require("config.cmp").setup()
       end,
-      wants = { "LuaSnip", "lspkind-nvim" },
+      wants = { "LuaSnip" },
       requires = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
@@ -304,7 +304,7 @@ function M.setup()
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-nvim-lsp-signature-help",
-        "onsails/lspkind-nvim",
+        -- "onsails/lspkind-nvim",
         -- "hrsh7th/cmp-calc",
         -- "f3fora/cmp-spell",
         -- "hrsh7th/cmp-emoji",
