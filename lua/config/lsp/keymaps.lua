@@ -62,7 +62,7 @@ end
 
 function M.setup(client, bufnr)
   keymappings(client, bufnr)
-  signature_help(client, bufnr)
+  -- signature_help(client, bufnr) -- use cmp-nvim-lsp-signature-help
 end
 
 return M
