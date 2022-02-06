@@ -8,8 +8,9 @@ local nvb_actions = transform_mod {
     local content = require("telescope.actions.state").get_selected_entry()
     local full_path = content.cwd .. require("plenary.path").path.sep .. content.value
 
-    -- Yank the path to unnamed register
+    -- Yank the path to unnamed and clipboard registers
     vim.fn.setreg('"', full_path)
+    vim.fn.setreg("+", full_path)
 
     -- Close the popup
     require("utils").info "File path is yanked "

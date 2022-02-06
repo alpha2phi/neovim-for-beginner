@@ -217,6 +217,7 @@ function M.setup()
           "telescope-repo.nvim",
           "telescope-file-browser.nvim",
           "project.nvim",
+          "trouble.nvim",
         },
         requires = {
           "nvim-lua/popup.nvim",
@@ -274,7 +275,7 @@ function M.setup()
     use {
       "ms-jpq/coq_nvim",
       branch = "coq",
-      event = "InsertEnter",
+      event = "VimEnter",
       opt = true,
       run = ":COQdeps",
       config = function()
@@ -304,6 +305,7 @@ function M.setup()
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-nvim-lsp-signature-help",
+        -- "onsails/lspkind-nvim",
         -- "hrsh7th/cmp-calc",
         -- "f3fora/cmp-spell",
         -- "hrsh7th/cmp-emoji",
@@ -354,12 +356,14 @@ function M.setup()
         opt = true,
         event = "BufReadPre",
         -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
-        wants = { "nvim-lsp-installer", "cmp-nvim-lsp" },
+        wants = { "nvim-lsp-installer", "cmp-nvim-lsp", "lua-dev.nvim", "vim-illuminate" },
         config = function()
           require("config.lsp").setup()
         end,
         requires = {
           "williamboman/nvim-lsp-installer",
+          "folke/lua-dev.nvim",
+          "RRethy/vim-illuminate",
           -- "ray-x/lsp_signature.nvim",
         },
       }
@@ -370,16 +374,41 @@ function M.setup()
         "neovim/nvim-lspconfig",
         opt = true,
         event = "BufReadPre",
-        wants = { "nvim-lsp-installer", "lsp_signature.nvim", "coq_nvim" }, -- for coq.nvim
+        wants = { "nvim-lsp-installer", "lsp_signature.nvim", "coq_nvim", "vim-illuminate" }, -- for coq.nvim
         config = function()
           require("config.lsp").setup()
         end,
         requires = {
           "williamboman/nvim-lsp-installer",
           "ray-x/lsp_signature.nvim",
+          "folke/lua-dev.nvim",
+          "RRethy/vim-illuminate",
         },
       }
     end
+
+    -- trouble.nvim
+    use {
+      "folke/trouble.nvim",
+      event = "BufReadPre",
+      wants = "nvim-web-devicons",
+      cmd = { "TroubleToggle", "Trouble" },
+      config = function()
+        require("trouble").setup {
+          use_diagnostic_signs = true,
+        }
+      end,
+    }
+
+    -- lspsaga.nvim
+    use {
+      "tami5/lspsaga.nvim",
+      event = "VimEnter",
+      cmd = { "Lspsaga" },
+      config = function()
+        require("lspsaga").setup {}
+      end,
+    }
 
     -- Bootstrap Neovim
     if packer_bootstrap then
