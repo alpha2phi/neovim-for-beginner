@@ -23,6 +23,9 @@ local function lsp_client(msg)
   msg = msg or ""
   local buf_clients = vim.lsp.buf_get_clients()
   if next(buf_clients) == nil then
+    if type(msg) == "boolean" or #msg == 0 then
+      return ""
+    end
     return msg
   end
   local buf_client_names = {}
@@ -68,16 +71,25 @@ function M.setup()
     },
     sections = {
       lualine_a = { "mode" },
-      lualine_b = { "branch", "diff", "diagnostics" },
+      lualine_b = {
+        "branch",
+        "diff",
+        {
+          "diagnostics",
+          sources = { "nvim_diagnostic" },
+          symbols = { error = " ", warn = " ", info = " ", hint = " " },
+          colored = false,
+        },
+      },
       lualine_c = {
+        { separator },
+        { lsp_client, icon = " ", color = { fg = colors.violet, gui = "bold" } },
+        { lsp_progress },
         {
           gps.get_location,
           cond = gps.is_available,
           color = { fg = colors.green },
         },
-        { separator },
-        { lsp_client, icon = " ", color = { fg = colors.violet, gui = "bold" } },
-        { lsp_progress },
       },
       lualine_x = { "filename", "encoding", "fileformat", "filetype" },
       lualine_y = { "progress" },
