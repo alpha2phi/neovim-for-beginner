@@ -80,6 +80,15 @@ function M.setup()
         require("config.neogit").setup()
       end,
     }
+    use {
+      "lewis6991/gitsigns.nvim",
+      event = "BufReadPre",
+      wants = "plenary.nvim",
+      requires = { "nvim-lua/plenary.nvim" },
+      config = function()
+        require("config.gitsigns").setup()
+      end,
+    }
 
     -- WhichKey
     use {
@@ -356,7 +365,7 @@ function M.setup()
         opt = true,
         event = "BufReadPre",
         -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
-        wants = { "nvim-lsp-installer", "cmp-nvim-lsp", "lua-dev.nvim", "vim-illuminate" },
+        wants = { "nvim-lsp-installer", "cmp-nvim-lsp", "lua-dev.nvim", "vim-illuminate", "null-ls.nvim" },
         config = function()
           require("config.lsp").setup()
         end,
@@ -364,6 +373,7 @@ function M.setup()
           "williamboman/nvim-lsp-installer",
           "folke/lua-dev.nvim",
           "RRethy/vim-illuminate",
+          "jose-elias-alvarez/null-ls.nvim",
           -- "ray-x/lsp_signature.nvim",
         },
       }
