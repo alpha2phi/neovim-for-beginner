@@ -1,6 +1,7 @@
 local M = {}
 
 local nls = require "null-ls"
+local nls_utils = require "null-ls.utils"
 local b = nls.builtins
 
 local with_diagnostics_code = function(builtin)
@@ -19,18 +20,16 @@ end
 
 local sources = {
   -- formatting
-  b.formatting.prettier,
-  b.formatting.fish_indent,
+  b.formatting.prettierd,
   b.formatting.shfmt,
-  b.formatting.trim_whitespace.with { filetypes = { "tmux", "teal" } },
+  b.formatting.fixjson,
   with_root_file(b.formatting.stylua, "stylua.toml"),
 
   -- diagnostics
-  with_root_file(b.diagnostics.selene, "selene.toml"),
   b.diagnostics.write_good,
   b.diagnostics.markdownlint,
-  b.diagnostics.teal,
   b.diagnostics.tsc,
+  with_root_file(b.diagnostics.selene, "selene.toml"),
   with_diagnostics_code(b.diagnostics.shellcheck),
 
   -- code actions
@@ -41,12 +40,20 @@ local sources = {
   b.hover.dictionary,
 }
 
-function M.setup(on_attach)
+function M.setup(opts)
   nls.setup {
-    -- debug = true,
+    debounce = 150,
+    save_after_format = false,
     sources = sources,
-    on_attach = on_attach,
+    on_attach = opts.on_attach,
+    root_dir = nls_utils.root_pattern ".git",
   }
+end
+
+function M.has_formatter(ft)
+  local conf_sources = require "null-ls.sources"
+  local available = conf_sources.get_available(ft, "NULL_LS_FORMATTING")
+  return #available > 0
 end
 
 return M

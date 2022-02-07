@@ -1,15 +1,15 @@
 local M = {}
 
-local util = require "util"
+local utils = require "utils"
 
 M.autoformat = true
 
 function M.toggle()
   M.autoformat = not M.autoformat
   if M.autoformat then
-    util.info("Enabled format on save", "Formatting")
+    utils.info("Enabled format on save", "Formatting")
   else
-    util.warn("Disabled format on save", "Formatting")
+    utils.warn("Disabled format on save", "Formatting")
   end
 end
 
@@ -32,10 +32,11 @@ function M.setup(client, buf)
 
   client.resolved_capabilities.document_formatting = enable
   if client.resolved_capabilities.document_formatting then
+    utils.info("defining")
     vim.cmd [[
       augroup LspFormat
-        autocmd! * <buffer>
-        autocmd BufWritePre <buffer> lua require("config.lsp.formatting").format()
+        autocmd! * <Buffer>
+        autocmd BufWritePre <Buffer> lua require("config.lsp.formatting").format()
       augroup END
     ]]
   end
