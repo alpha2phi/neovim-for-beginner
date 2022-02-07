@@ -19,10 +19,11 @@ local function separator()
   return "%="
 end
 
-local function lsp_client()
+local function lsp_client(msg)
+  msg = msg or ""
   local buf_clients = vim.lsp.buf_get_clients()
   if next(buf_clients) == nil then
-    return ""
+    return msg
   end
   local buf_client_names = {}
   for _, client in pairs(buf_clients) do

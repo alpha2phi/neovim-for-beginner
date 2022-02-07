@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup()
+function M.setup(opts)
   print "null-ls: noop"
 end
 

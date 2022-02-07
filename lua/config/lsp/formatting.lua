@@ -7,9 +7,9 @@ M.autoformat = true
 function M.toggle()
   M.autoformat = not M.autoformat
   if M.autoformat then
-    util.info("enabled format on save", "Formatting")
+    util.info("Enabled format on save", "Formatting")
   else
-    util.warn("disabled format on save", "Formatting")
+    util.warn("Disabled format on save", "Formatting")
   end
 end
 
