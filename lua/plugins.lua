@@ -390,7 +390,6 @@ function M.setup()
     -- trouble.nvim
     use {
       "folke/trouble.nvim",
-      event = "BufReadPre",
       wants = "nvim-web-devicons",
       cmd = { "TroubleToggle", "Trouble" },
       config = function()
@@ -403,7 +402,6 @@ function M.setup()
     -- lspsaga.nvim
     use {
       "tami5/lspsaga.nvim",
-      event = "VimEnter",
       cmd = { "Lspsaga" },
       config = function()
         require("lspsaga").setup {}

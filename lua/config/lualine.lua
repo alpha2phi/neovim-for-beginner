@@ -26,9 +26,7 @@ local function lsp_client()
   end
   local buf_client_names = {}
   for _, client in pairs(buf_clients) do
-    if client.name ~= "null-ls" then
-      table.insert(buf_client_names, client.name)
-    end
+    table.insert(buf_client_names, client.name)
   end
   return "[" .. table.concat(buf_client_names, ", ") .. "]"
 end
