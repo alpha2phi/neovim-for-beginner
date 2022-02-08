@@ -19,6 +19,7 @@ function M.setup()
       f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
       d = { "<cmd>lua require('utils.finder').find_dotfiles()<cr>", "Dotfiles" },
       b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+      h = { "<cmd>Telescope help_tags<cr>", "Help" },
       o = { "<cmd>Telescope oldfiles<cr>", "Old Files" },
       g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
       c = { "<cmd>Telescope commands<cr>", "Commands" },
