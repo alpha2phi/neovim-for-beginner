@@ -57,7 +57,7 @@ local function on_attach(client, bufnr)
   require("config.lsp.highlighting").setup(client)
 
   -- Configure formatting
-  require("config.lsp.formatting").setup(client, bufnr)
+  require("config.lsp.null-ls.formatters").setup(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
