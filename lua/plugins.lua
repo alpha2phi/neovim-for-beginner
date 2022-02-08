@@ -90,18 +90,24 @@ function M.setup()
       end,
     }
     use {
-      "pwntester/octo.nvim",
-      cmd = "Octo",
-      wants = { "telescope.nvim", "plenary.nvim", "nvim-web-devicons" },
-      requires = {
-        "nvim-lua/plenary.nvim",
-        "nvim-telescope/telescope.nvim",
-        "kyazdani42/nvim-web-devicons",
-      },
-      config = function()
-        require("octo").setup()
-      end,
+      "tpope/vim-fugitive",
+      cmd = { "Git", "GBrowse", "Gdiffsplit", "Gvdiffsplit" },
+      requires = { "tpope/vim-rhubarb" },
+      -- wants = { "vim-rhubarb" },
     }
+    -- use {
+    --   "pwntester/octo.nvim",
+    --   cmd = "Octo",
+    --   wants = { "telescope.nvim", "plenary.nvim", "nvim-web-devicons" },
+    --   requires = {
+    --     "nvim-lua/plenary.nvim",
+    --     "nvim-telescope/telescope.nvim",
+    --     "kyazdani42/nvim-web-devicons",
+    --   },
+    --   config = function()
+    --     require("octo").setup()
+    --   end,
+    -- }
 
     -- WhichKey
     use {
