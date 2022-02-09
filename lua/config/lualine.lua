@@ -49,6 +49,11 @@ local function lsp_client(msg)
   local supported_linters = linters.list_registered(buf_ft)
   vim.list_extend(buf_client_names, supported_linters)
 
+  -- add hover
+  local hovers = require "config.lsp.null-ls.hovers"
+  local supported_hovers = hovers.list_registered(buf_ft)
+  vim.list_extend(buf_client_names, supported_hovers)
+
   return "[" .. table.concat(buf_client_names, ", ") .. "]"
 end
 
