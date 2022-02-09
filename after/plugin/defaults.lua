@@ -1,6 +1,7 @@
 local api = vim.api
 local g = vim.g
 local opt = vim.opt
+local cmd = vim.cmd
 
 -- Remap leader and local leader to <Space>
 api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
@@ -21,9 +22,10 @@ opt.signcolumn = "yes" -- Always show sign column
 opt.clipboard = "unnamedplus" -- Access system clipboard
 opt.timeoutlen = 300 --	Time in milliseconds to wait for a mapped sequence to complete.
 opt.showmode = false -- Do not need to show the mode. We use the statusline instead.
+opt.scrolloff = 8 -- Lines of context
 
 -- Highlight on yank
-vim.cmd [[
+cmd [[
   augroup YankHighlight
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
@@ -47,8 +49,26 @@ opt.wildignore:append "**/.git/*"
 -- g.netrw_list_hide = (vim.fn["netrw_gitignore#Hide"]()) .. [[,\(^\|\s\s\)\zs\.\S\+]] -- use .gitignore
 
 -- Treesitter based folding
-vim.cmd [[
+cmd [[
   set foldlevel=20
   set foldmethod=expr
   set foldexpr=nvim_treesitter#foldexpr()
 ]]
+
+-- show cursor line only in active window
+cmd [[
+  autocmd InsertLeave,WinEnter * set cursorline
+  autocmd InsertEnter,WinLeave * set nocursorline
+]]
+
+-- go to last loc when opening a buffer
+cmd [[
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
+]]
+
+-- Check if we need to reload the file when it changed
+cmd "au FocusGained * :checktime"
+
+-- windows to close with "q"
+cmd [[autocmd FileType help,startuptime,qf,lspinfo nnoremap <buffer><silent> q :close<CR>]]
+cmd [[autocmd FileType man nnoremap <buffer><silent> q :quit<CR>]]
