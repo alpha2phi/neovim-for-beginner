@@ -34,6 +34,7 @@ function M.setup(client, buf)
   end
 
   client.resolved_capabilities.document_formatting = enable
+  client.resolved_capabilities.document_range_formatting = enable
   if client.resolved_capabilities.document_formatting then
     vim.cmd [[
       augroup LspFormat
