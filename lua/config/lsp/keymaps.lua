@@ -28,6 +28,7 @@ local function keymappings(client, bufnr)
       i = { "<cmd>LspInfo<CR>", "Lsp Info" },
       n = { "<cmd>Lspsaga rename<CR>", "Rename" },
       r = { "<cmd>Telescope lsp_references<CR>", "Diagnostics" },
+      s = { "<cmd>Telescope lsp_document_symbols<CR>", "Diagnostics" },
       t = { "<cmd>TroubleToggle<CR>", "Trouble" },
     },
   }
