@@ -236,7 +236,7 @@ function M.setup()
         end,
         cmd = { "Telescope" },
         module = "telescope",
-        keys = { "<leader>f", "<leader>p" },
+        keys = { "<leader>f", "<leader>p", "<leader>z" },
         wants = {
           "plenary.nvim",
           "popup.nvim",
@@ -341,7 +341,7 @@ function M.setup()
           "L3MON4D3/LuaSnip",
           wants = "friendly-snippets",
           config = function()
-            require("config.luasnip").setup()
+            require("config.snip").setup()
           end,
         },
         "rafamadriz/friendly-snippets",
