@@ -26,7 +26,8 @@ local function create_snippets()
       s("ttt", t "Testing Luasnip"),
     },
     lua = {
-      s("lm", { t { "local M = {}", "", "function M.setup()", "" }, i(1, ""), t { "", "end", "", "return M" } }),
+      ls.parser.parse_snippet("lm", "local M = {}\n\nfunction M.setup()\n  $1 \nend\n\nreturn M"),
+      -- s("lm", { t { "local M = {}", "", "function M.setup()", "" }, i(1, ""), t { "", "end", "", "return M" } }),
     },
   }
 end
