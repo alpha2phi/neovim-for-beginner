@@ -393,6 +393,12 @@ function M.setup()
           "folke/lua-dev.nvim",
           "RRethy/vim-illuminate",
           "jose-elias-alvarez/null-ls.nvim",
+          {
+            "j-hui/fidget.nvim",
+            config = function()
+              require("fidget").setup {}
+            end,
+          },
           -- "ray-x/lsp_signature.nvim",
         },
       }
