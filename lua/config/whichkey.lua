@@ -10,11 +10,11 @@ function M.setup()
     },
   }
 
-  local keymaps_f = nil -- File search
-  local keymaps_p = nil -- Project search
+  local keymap_f = nil -- File search
+  local keymap_p = nil -- Project search
 
   if PLUGINS.telescope.enabled then
-    keymaps_f = {
+    keymap_f = {
       name = "Find",
       f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
       d = { "<cmd>lua require('utils.finder').find_dotfiles()<cr>", "Dotfiles" },
@@ -28,7 +28,7 @@ function M.setup()
       e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     }
 
-    keymaps_p = {
+    keymap_p = {
       name = "Project",
       p = { "<cmd>lua require'telescope'.extensions.project.project{}<cr>", "List" },
       s = { "<cmd>Telescope repo list<cr>", "Search" },
@@ -36,7 +36,7 @@ function M.setup()
   end
 
   if PLUGINS.fzf_lua.enabled then
-    keymaps_f = {
+    keymap_f = {
       name = "Find",
       f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
       b = { "<cmd>FzfLua buffers<cr>", "Buffers" },
@@ -56,7 +56,16 @@ function M.setup()
     nowait = false, -- use `nowait` when creating keymaps
   }
 
-  local mappings = {
+  local v_opts = {
+    mode = "v", -- Visual mode
+    prefix = "<leader>",
+    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true, -- use `silent` when creating keymaps
+    noremap = true, -- use `noremap` when creating keymaps
+    nowait = false, -- use `nowait` when creating keymaps
+  }
+
+  local keymap_normal = {
     ["w"] = { "<cmd>update!<CR>", "Save" },
     ["q"] = { "<cmd>q!<CR>", "Quit" },
 
@@ -66,8 +75,8 @@ function M.setup()
       D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete All Buffers" },
     },
 
-    f = keymaps_f,
-    p = keymaps_p,
+    f = keymap_f,
+    p = keymap_p,
 
     z = {
       name = "System",
@@ -83,11 +92,26 @@ function M.setup()
     g = {
       name = "Git",
       s = { "<cmd>Neogit<CR>", "Status" },
+      y = {
+        "<cmd>lua require'gitlinker'.get_buf_range_url('n', {action_callback = require'gitlinker.actions'.open_in_browser})<cr>",
+        "Link",
+      },
+    },
+  }
+
+  local keymap_visual = {
+    g = {
+      name = "Git",
+      y = {
+        "<cmd>lua require'gitlinker'.get_buf_range_url('v', {action_callback = require'gitlinker.actions'.open_in_browser})<cr>",
+        "Link",
+      },
     },
   }
 
   whichkey.setup(conf)
-  whichkey.register(mappings, opts)
+  whichkey.register(keymap_normal, opts)
+  whichkey.register(keymap_visual, v_opts)
 end
 
 return M

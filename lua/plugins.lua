@@ -95,6 +95,14 @@ function M.setup()
       requires = { "tpope/vim-rhubarb" },
       -- wants = { "vim-rhubarb" },
     }
+    use {
+      "ruifm/gitlinker.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      module = "gitlinker",
+      config = function()
+        require("gitlinker").setup { mappings = nil }
+      end,
+    }
     -- use {
     --   "pwntester/octo.nvim",
     --   cmd = "Octo",
