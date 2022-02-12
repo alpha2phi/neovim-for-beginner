@@ -3,7 +3,13 @@ local M = {}
 local servers = {
   gopls = {},
   html = {},
-  jsonls = {},
+  jsonls = {
+    settings = {
+      json = {
+        schemas = require("schemastore").json.schemas(),
+      },
+    },
+  },
   pyright = {},
   rust_analyzer = {},
   sumneko_lua = {

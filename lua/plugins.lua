@@ -384,7 +384,14 @@ function M.setup()
         opt = true,
         event = "BufReadPre",
         -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
-        wants = { "nvim-lsp-installer", "cmp-nvim-lsp", "lua-dev.nvim", "vim-illuminate", "null-ls.nvim" },
+        wants = {
+          "nvim-lsp-installer",
+          "cmp-nvim-lsp",
+          "lua-dev.nvim",
+          "vim-illuminate",
+          "null-ls.nvim",
+          "schemastore.nvim",
+        },
         config = function()
           require("config.lsp").setup()
         end,
@@ -399,6 +406,7 @@ function M.setup()
               require("fidget").setup {}
             end,
           },
+          "b0o/schemastore.nvim",
           -- "ray-x/lsp_signature.nvim",
         },
       }
@@ -409,7 +417,15 @@ function M.setup()
         "neovim/nvim-lspconfig",
         opt = true,
         event = "BufReadPre",
-        wants = { "nvim-lsp-installer", "lsp_signature.nvim", "coq_nvim", "vim-illuminate" }, -- for coq.nvim
+        wants = {
+          "nvim-lsp-installer",
+          "lsp_signature.nvim",
+          "coq_nvim",
+          "lua-dev.nvim",
+          "vim-illuminate",
+          "null-ls.nvim",
+          "schemastore.nvim",
+        }, -- for coq.nvim
         config = function()
           require("config.lsp").setup()
         end,
@@ -418,6 +434,14 @@ function M.setup()
           "ray-x/lsp_signature.nvim",
           "folke/lua-dev.nvim",
           "RRethy/vim-illuminate",
+          "jose-elias-alvarez/null-ls.nvim",
+          {
+            "j-hui/fidget.nvim",
+            config = function()
+              require("fidget").setup {}
+            end,
+          },
+          "b0o/schemastore.nvim",
         },
       }
     end

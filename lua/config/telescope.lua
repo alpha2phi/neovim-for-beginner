@@ -18,6 +18,9 @@ local nvb_actions = transform_mod {
   end,
 }
 
+-- trouble.nvim
+local trouble = require "trouble.providers.telescope"
+
 function M.setup()
   local actions = require "telescope.actions"
   local telescope = require "telescope"
@@ -65,6 +68,7 @@ function M.setup()
           ["<C-k>"] = actions.move_selection_previous,
           ["<C-n>"] = actions.cycle_history_next,
           ["<C-p>"] = actions.cycle_history_prev,
+          ["<c-t>"] = trouble.open_with_trouble,
         },
       },
     },
