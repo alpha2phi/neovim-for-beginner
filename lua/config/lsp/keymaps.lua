@@ -28,11 +28,12 @@ local function keymappings(client, bufnr)
       i = { "<cmd>LspInfo<CR>", "Lsp Info" },
       n = { "<cmd>Lspsaga rename<CR>", "Rename" },
       r = { "<cmd>Telescope lsp_references<CR>", "Diagnostics" },
+      s = { "<cmd>Telescope lsp_document_symbols<CR>", "Diagnostics" },
       t = { "<cmd>TroubleToggle<CR>", "Trouble" },
     },
   }
   if client.resolved_capabilities.document_formatting then
-    keymap_l.l.f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Document" }
+    keymap_l.l.F = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Document" }
   end
 
   local keymap_g = {

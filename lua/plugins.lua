@@ -80,6 +80,34 @@ function M.setup()
         require("config.neogit").setup()
       end,
     }
+    use {
+      "lewis6991/gitsigns.nvim",
+      event = "BufReadPre",
+      wants = "plenary.nvim",
+      requires = { "nvim-lua/plenary.nvim" },
+      config = function()
+        require("config.gitsigns").setup()
+      end,
+    }
+    use {
+      "tpope/vim-fugitive",
+      cmd = { "Git", "GBrowse", "Gdiffsplit", "Gvdiffsplit" },
+      requires = { "tpope/vim-rhubarb" },
+      -- wants = { "vim-rhubarb" },
+    }
+    -- use {
+    --   "pwntester/octo.nvim",
+    --   cmd = "Octo",
+    --   wants = { "telescope.nvim", "plenary.nvim", "nvim-web-devicons" },
+    --   requires = {
+    --     "nvim-lua/plenary.nvim",
+    --     "nvim-telescope/telescope.nvim",
+    --     "kyazdani42/nvim-web-devicons",
+    --   },
+    --   config = function()
+    --     require("octo").setup()
+    --   end,
+    -- }
 
     -- WhichKey
     use {
@@ -208,7 +236,7 @@ function M.setup()
         end,
         cmd = { "Telescope" },
         module = "telescope",
-        keys = { "<leader>f", "<leader>p" },
+        keys = { "<leader>f", "<leader>p", "<leader>z" },
         wants = {
           "plenary.nvim",
           "popup.nvim",
@@ -313,7 +341,7 @@ function M.setup()
           "L3MON4D3/LuaSnip",
           wants = "friendly-snippets",
           config = function()
-            require("config.luasnip").setup()
+            require("config.snip").setup()
           end,
         },
         "rafamadriz/friendly-snippets",
@@ -356,7 +384,7 @@ function M.setup()
         opt = true,
         event = "BufReadPre",
         -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
-        wants = { "nvim-lsp-installer", "cmp-nvim-lsp", "lua-dev.nvim", "vim-illuminate" },
+        wants = { "nvim-lsp-installer", "cmp-nvim-lsp", "lua-dev.nvim", "vim-illuminate", "null-ls.nvim" },
         config = function()
           require("config.lsp").setup()
         end,
@@ -364,6 +392,13 @@ function M.setup()
           "williamboman/nvim-lsp-installer",
           "folke/lua-dev.nvim",
           "RRethy/vim-illuminate",
+          "jose-elias-alvarez/null-ls.nvim",
+          {
+            "j-hui/fidget.nvim",
+            config = function()
+              require("fidget").setup {}
+            end,
+          },
           -- "ray-x/lsp_signature.nvim",
         },
       }
@@ -390,7 +425,6 @@ function M.setup()
     -- trouble.nvim
     use {
       "folke/trouble.nvim",
-      event = "BufReadPre",
       wants = "nvim-web-devicons",
       cmd = { "TroubleToggle", "Trouble" },
       config = function()
@@ -403,7 +437,6 @@ function M.setup()
     -- lspsaga.nvim
     use {
       "tami5/lspsaga.nvim",
-      event = "VimEnter",
       cmd = { "Lspsaga" },
       config = function()
         require("lspsaga").setup {}

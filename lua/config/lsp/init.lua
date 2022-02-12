@@ -54,7 +54,10 @@ local function on_attach(client, bufnr)
   require("config.lsp.keymaps").setup(client, bufnr)
 
   -- Configure highlighting
-  require("config.lsp.highlighting").setup(client)
+  require("config.lsp.highlighter").setup(client)
+
+  -- Configure formatting
+  require("config.lsp.null-ls.formatters").setup(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -74,6 +77,10 @@ local opts = {
 require("config.lsp.handlers").setup()
 
 function M.setup()
+  -- null-ls
+  require("config.lsp.null-ls").setup(opts)
+
+  -- Installer
   require("config.lsp.installer").setup(servers, opts)
 end
 
