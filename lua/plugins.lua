@@ -243,7 +243,7 @@ function M.setup()
           require("config.telescope").setup()
         end,
         cmd = { "Telescope" },
-        module = "telescope",
+        module = {  "telescope", "telescope.builtin" },
         keys = { "<leader>f", "<leader>p", "<leader>z" },
         wants = {
           "plenary.nvim",
@@ -472,6 +472,17 @@ function M.setup()
       cmd = { "Lspsaga" },
       config = function()
         require("lspsaga").setup {}
+      end,
+    }
+
+    -- Rust
+    use {
+      "simrat39/rust-tools.nvim",
+      requires = { "nvim-lua/plenary.nvim", "rust-lang/rust.vim" },
+      module = "rust-tools",
+      ft = { "rust" },
+      config = function()
+        require("rust-tools").setup {}
       end,
     }
 
