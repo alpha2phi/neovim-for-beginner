@@ -10,9 +10,6 @@ local conf = {
 }
 whichkey.setup(conf)
 
-local keymap_f = nil -- File search
-local keymap_p = nil -- Project search
-
 local opts = {
   mode = "n", -- Normal mode
   prefix = "<leader>",
@@ -32,6 +29,9 @@ local v_opts = {
 }
 
 local function normal_keymap()
+  local keymap_f = nil -- File search
+  local keymap_p = nil -- Project search
+
   if PLUGINS.telescope.enabled then
     keymap_f = {
       name = "Find",
@@ -75,6 +75,14 @@ local function normal_keymap()
       name = "Buffer",
       c = { "<Cmd>bd!<Cr>", "Close Buffer" },
       D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete All Buffers" },
+    },
+
+    s = {
+      name = "Treesitter",
+      x = "Swap Next Parameter",
+      X = "Swap Prev Parameter",
+      f = "Outer Function",
+      F = "Outer Class",
     },
 
     f = keymap_f,
