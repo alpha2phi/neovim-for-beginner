@@ -499,6 +499,14 @@ function M.setup()
     }
 
     -- Terminal
+    use {
+      "akinsho/toggleterm.nvim",
+      keys = { [[<C-`>]] },
+      cmd = { "ToggleTerm", "TermExec" },
+      config = function()
+        require("config.toggleterm").setup()
+      end,
+    }
 
     -- Bootstrap Neovim
     if packer_bootstrap then

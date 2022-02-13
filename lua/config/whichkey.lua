@@ -68,6 +68,7 @@ function M.setup()
   local keymap_normal = {
     ["w"] = { "<cmd>update!<CR>", "Save" },
     ["q"] = { "<cmd>q!<CR>", "Quit" },
+    ["t"] = { "<cmd>ToggleTerm<CR>", "Terminal" },
 
     b = {
       name = "Buffer",
