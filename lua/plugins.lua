@@ -520,9 +520,16 @@ function M.setup()
     }
 
     -- Debugging
-    use { "mfussenegger/nvim-dap", event = "BufReadPre", requires = {
-      "Pocco81/DAPInstall.nvim",
-    } }
+    use {
+      "mfussenegger/nvim-dap",
+      event = "BufReadPre",
+      requires = {
+        "Pocco81/DAPInstall.nvim",
+      },
+      config = function()
+        require("config.dap").setup()
+      end,
+    }
 
     -- Bootstrap Neovim
     if packer_bootstrap then

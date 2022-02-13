@@ -77,6 +77,10 @@ local function normal_keymap()
       D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete All Buffers" },
     },
 
+    d = {
+      name = "Debug",
+    },
+
     s = {
       name = "Treesitter",
       x = "Swap Next Parameter",
