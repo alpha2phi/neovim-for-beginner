@@ -29,6 +29,7 @@ function M.setup(servers, options)
         else
           server:setup(opts)
         end
+        utils.info(server.name, " is ready.")
       end)
 
       if not server:is_installed() then

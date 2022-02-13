@@ -157,7 +157,7 @@ function M.setup()
       "numToStr/Comment.nvim",
       keys = { "gc", "gcc", "gbc" },
       config = function()
-        require("Comment").setup {}
+        require("config.comment").setup()
       end,
     }
 
@@ -226,6 +226,8 @@ function M.setup()
       end,
       requires = {
         { "nvim-treesitter/nvim-treesitter-textobjects" },
+        "windwp/nvim-ts-autotag",
+        "JoosepAlviste/nvim-ts-context-commentstring",
       },
     }
 
@@ -501,7 +503,7 @@ function M.setup()
     -- Terminal
     use {
       "akinsho/toggleterm.nvim",
-      keys = { [[<C-`>]] },
+      keys = { [[<C-\>]] },
       cmd = { "ToggleTerm", "TermExec" },
       config = function()
         require("config.toggleterm").setup()
