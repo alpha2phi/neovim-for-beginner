@@ -60,6 +60,13 @@ function M.setup()
         vim.cmd "colorscheme everforest"
       end,
     }
+    use {
+      "sainnhe/gruvbox-material",
+      config = function()
+        vim.cmd "colorscheme gruvbox-material"
+      end,
+      disable = true,
+    }
 
     -- Startup screen
     use {
@@ -103,19 +110,20 @@ function M.setup()
         require("gitlinker").setup { mappings = nil }
       end,
     }
-    -- use {
-    --   "pwntester/octo.nvim",
-    --   cmd = "Octo",
-    --   wants = { "telescope.nvim", "plenary.nvim", "nvim-web-devicons" },
-    --   requires = {
-    --     "nvim-lua/plenary.nvim",
-    --     "nvim-telescope/telescope.nvim",
-    --     "kyazdani42/nvim-web-devicons",
-    --   },
-    --   config = function()
-    --     require("octo").setup()
-    --   end,
-    -- }
+    use {
+      "pwntester/octo.nvim",
+      cmd = "Octo",
+      wants = { "telescope.nvim", "plenary.nvim", "nvim-web-devicons" },
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim",
+        "kyazdani42/nvim-web-devicons",
+      },
+      config = function()
+        require("octo").setup()
+      end,
+      disable = true,
+    }
 
     -- WhichKey
     use {
@@ -223,8 +231,8 @@ function M.setup()
 
     if PLUGINS.fzf_lua.enabled then
       -- FZF
-      -- use { "junegunn/fzf", run = "./install --all", event = "VimEnter" } -- You don't need to install this if you already have fzf installed
-      -- use { "junegunn/fzf.vim", event = "BufEnter" }
+      use { "junegunn/fzf", run = "./install --all", event = "VimEnter", disable = true } -- You don't need to install this if you already have fzf installed
+      use { "junegunn/fzf.vim", event = "BufEnter", disable = true }
 
       -- FZF Lua
       use {
@@ -489,6 +497,8 @@ function M.setup()
         require("rust-tools").setup {}
       end,
     }
+
+    -- Terminal
 
     -- Bootstrap Neovim
     if packer_bootstrap then

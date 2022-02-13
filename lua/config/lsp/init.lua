@@ -11,7 +11,17 @@ local servers = {
     },
   },
   pyright = {},
-  rust_analyzer = {},
+  rust_analyzer = {
+    settings = {
+      ["rust-analyzer"] = {
+        cargo = { allFeatures = true },
+        checkOnSave = {
+          command = "clippy",
+          extraArgs = { "--no-deps" },
+        },
+      },
+    },
+  },
   sumneko_lua = {
     settings = {
       Lua = {
@@ -66,7 +76,9 @@ local function on_attach(client, bufnr)
   require("config.lsp.null-ls.formatters").setup(client, bufnr)
 
   -- Configure for Typescript
-  require("config.lsp.ts-utils").setup(client)
+  if client.name == "tsserver" then
+    require("config.lsp.ts-utils").setup(client)
+  end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

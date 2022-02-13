@@ -17,7 +17,15 @@ function M.setup(servers, options)
 
         if PLUGINS.coq.enabled then
           local coq = require "coq"
-          server:setup(coq.lsp_ensure_capabilities(opts))
+          opts = coq.lsp_ensure_capabilities(opts)
+        end
+
+        -- https://github.com/williamboman/nvim-lsp-installer/wiki/Rust
+        if server.name == "rust_analyzer" then
+          require("rust-tools").setup {
+            server = vim.tbl_deep_extend("force", server:get_default_options(), opts),
+          }
+          server:attach_buffers()
         else
           server:setup(opts)
         end
