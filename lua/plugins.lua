@@ -500,6 +500,15 @@ function M.setup()
       end,
     }
 
+    -- Go
+    use {
+      "ray-x/go.nvim",
+      ft = { "go" },
+      config = function()
+        require("go").setup()
+      end,
+    }
+
     -- Terminal
     use {
       "akinsho/toggleterm.nvim",

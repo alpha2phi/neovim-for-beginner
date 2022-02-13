@@ -1,18 +1,37 @@
 local M = {}
 
-function M.setup()
-  local whichkey = require "which-key"
+local whichkey = require "which-key"
 
-  local conf = {
-    window = {
-      border = "single", -- none, single, double, shadow
-      position = "bottom", -- bottom, top
-    },
-  }
+local conf = {
+  window = {
+    border = "single", -- none, single, double, shadow
+    position = "bottom", -- bottom, top
+  },
+}
+whichkey.setup(conf)
 
-  local keymap_f = nil -- File search
-  local keymap_p = nil -- Project search
+local keymap_f = nil -- File search
+local keymap_p = nil -- Project search
 
+local opts = {
+  mode = "n", -- Normal mode
+  prefix = "<leader>",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = false, -- use `nowait` when creating keymaps
+}
+
+local v_opts = {
+  mode = "v", -- Visual mode
+  prefix = "<leader>",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = false, -- use `nowait` when creating keymaps
+}
+
+local function normal_keymaps()
   if PLUGINS.telescope.enabled then
     keymap_f = {
       name = "Find",
@@ -46,24 +65,6 @@ function M.setup()
       e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     }
   end
-
-  local opts = {
-    mode = "n", -- Normal mode
-    prefix = "<leader>",
-    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = false, -- use `nowait` when creating keymaps
-  }
-
-  local v_opts = {
-    mode = "v", -- Visual mode
-    prefix = "<leader>",
-    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = false, -- use `nowait` when creating keymaps
-  }
 
   local keymap_normal = {
     ["w"] = { "<cmd>update!<CR>", "Save" },
@@ -99,7 +100,10 @@ function M.setup()
       },
     },
   }
+  whichkey.register(keymap_normal, opts)
+end
 
+local function visual_keymaps()
   local keymap_visual = {
     g = {
       name = "Git",
@@ -110,9 +114,13 @@ function M.setup()
     },
   }
 
-  whichkey.setup(conf)
-  whichkey.register(keymap_normal, opts)
   whichkey.register(keymap_visual, v_opts)
+end
+
+function M.setup()
+  normal_keymaps()
+  visual_keymaps()
+  -- local ft = vim.api.nvim_buf_get_option(vim.api.nvim_get_current_buf(), "filetype")
 end
 
 return M
