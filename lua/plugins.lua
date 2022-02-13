@@ -243,7 +243,7 @@ function M.setup()
           require("config.telescope").setup()
         end,
         cmd = { "Telescope" },
-        module = {  "telescope", "telescope.builtin" },
+        module = { "telescope", "telescope.builtin" },
         keys = { "<leader>f", "<leader>p", "<leader>z" },
         wants = {
           "plenary.nvim",
@@ -399,6 +399,7 @@ function M.setup()
           "vim-illuminate",
           "null-ls.nvim",
           "schemastore.nvim",
+          "nvim-lsp-ts-utils",
         },
         config = function()
           require("config.lsp").setup()
@@ -415,6 +416,7 @@ function M.setup()
             end,
           },
           "b0o/schemastore.nvim",
+          "jose-elias-alvarez/nvim-lsp-ts-utils",
           -- "ray-x/lsp_signature.nvim",
         },
       }
@@ -433,6 +435,7 @@ function M.setup()
           "vim-illuminate",
           "null-ls.nvim",
           "schemastore.nvim",
+          "nvim-lsp-ts-utils",
         }, -- for coq.nvim
         config = function()
           require("config.lsp").setup()
@@ -450,6 +453,7 @@ function M.setup()
             end,
           },
           "b0o/schemastore.nvim",
+          "jose-elias-alvarez/nvim-lsp-ts-utils",
         },
       }
     end
