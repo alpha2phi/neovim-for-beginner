@@ -31,7 +31,7 @@ local v_opts = {
   nowait = false, -- use `nowait` when creating keymaps
 }
 
-local function normal_keymaps()
+local function normal_keymap()
   if PLUGINS.telescope.enabled then
     keymap_f = {
       name = "Find",
@@ -66,7 +66,7 @@ local function normal_keymaps()
     }
   end
 
-  local keymap_normal = {
+  local keymap = {
     ["w"] = { "<cmd>update!<CR>", "Save" },
     ["q"] = { "<cmd>q!<CR>", "Quit" },
     ["t"] = { "<cmd>ToggleTerm<CR>", "Terminal" },
@@ -100,11 +100,11 @@ local function normal_keymaps()
       },
     },
   }
-  whichkey.register(keymap_normal, opts)
+  whichkey.register(keymap, opts)
 end
 
-local function visual_keymaps()
-  local keymap_visual = {
+local function visual_keymap()
+  local keymap = {
     g = {
       name = "Git",
       y = {
@@ -114,13 +114,59 @@ local function visual_keymaps()
     },
   }
 
-  whichkey.register(keymap_visual, v_opts)
+  whichkey.register(keymap, v_opts)
+end
+
+local function code_keymap()
+  vim.cmd "autocmd FileType * lua CodeRunner()"
+
+  function CodeRunner()
+    local bufnr = vim.api.nvim_get_current_buf()
+    local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
+    local keymap = nil
+    if ft == "python" then
+      keymap = {
+        name = "Code",
+        r = { "<cmd>update<CR><cmd>exec '!python3' shellescape(@%, 1)<cr>", "Run" },
+        m = { "<cmd>TermExec cmd='nodemon -e py %'<cr>", "Monitor" },
+      }
+    elseif ft == "lua" then
+      keymap = {
+        name = "Code",
+        r = { "<cmd>luafile %<cr>", "Run" },
+      }
+    elseif ft == "rust" then
+      keymap = {
+        name = "Code",
+        r = { "<cmd>Cargo run<cr>", "Run" },
+      }
+    elseif ft == "go" then
+      keymap = {
+        name = "Code",
+        r = { "<cmd>GoRun<cr>", "Run" },
+      }
+    elseif ft == "typescript" or ft == "typescriptreact" then
+      keymap = {
+        name = "Code",
+        o = { "<cmd>TSLspOrganize<cr>", "Organize" },
+        r = { "<cmd>TSLspRenameFile<cr>", "Rename File" },
+        i = { "<cmd>TSLspImportAll<cr>", "Import All" },
+      }
+    end
+
+    if keymap ~= nil then
+      whichkey.register(
+        { c = keymap },
+        { mode = "n", silent = true, noremap = true, buffer = bufnr, prefix = "<leader>" }
+      )
+    end
+  end
 end
 
 function M.setup()
-  normal_keymaps()
-  visual_keymaps()
-  -- local ft = vim.api.nvim_buf_get_option(vim.api.nvim_get_current_buf(), "filetype")
+  normal_keymap()
+  visual_keymap()
+  code_keymap()
 end
 
 return M
