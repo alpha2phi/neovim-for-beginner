@@ -25,19 +25,22 @@ local sources = {
   b.formatting.fixjson,
   b.formatting.black.with { extra_args = { "--fast" } },
   b.formatting.isort,
-  with_root_file(b.formatting.stylua, "stylua.toml"),
+  b.formatting.stylua,
+  -- with_root_file(b.formatting.stylua, "stylua.toml"),
 
   -- diagnostics
   b.diagnostics.write_good,
   -- b.diagnostics.markdownlint,
-  -- b.diagnostics.eslint_d,
+  b.diagnostics.eslint_d,
   b.diagnostics.flake8,
   b.diagnostics.tsc,
-  with_root_file(b.diagnostics.selene, "selene.toml"),
+  b.diagnostics.selene,
+  -- with_root_file(b.diagnostics.selene, "selene.toml"),
   with_diagnostics_code(b.diagnostics.shellcheck),
 
   -- code actions
   b.code_actions.gitsigns,
+  b.code_actions.eslint_d,
   b.code_actions.gitrebase,
 
   -- hover

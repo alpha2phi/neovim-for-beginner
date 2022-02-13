@@ -3,9 +3,25 @@ local M = {}
 local servers = {
   gopls = {},
   html = {},
-  jsonls = {},
+  jsonls = {
+    settings = {
+      json = {
+        schemas = require("schemastore").json.schemas(),
+      },
+    },
+  },
   pyright = {},
-  rust_analyzer = {},
+  rust_analyzer = {
+    settings = {
+      ["rust-analyzer"] = {
+        cargo = { allFeatures = true },
+        checkOnSave = {
+          command = "clippy",
+          extraArgs = { "--no-deps" },
+        },
+      },
+    },
+  },
   sumneko_lua = {
     settings = {
       Lua = {
@@ -58,9 +74,16 @@ local function on_attach(client, bufnr)
 
   -- Configure formatting
   require("config.lsp.null-ls.formatters").setup(client, bufnr)
+
+  -- Configure for Typescript
+  if client.name == "tsserver" then
+    require("config.lsp.ts-utils").setup(client)
+  end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 if PLUGINS.nvim_cmp.enabled then
   capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities) -- for nvim-cmp
 end

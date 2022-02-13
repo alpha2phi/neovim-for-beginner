@@ -50,10 +50,10 @@ function M.setup()
       swap = {
         enable = true,
         swap_next = {
-          ["<leader>rx"] = "@parameter.inner",
+          ["<leader>sx"] = "@parameter.inner",
         },
         swap_previous = {
-          ["<leader>rX"] = "@parameter.inner",
+          ["<leader>sX"] = "@parameter.inner",
         },
       },
 
@@ -82,8 +82,8 @@ function M.setup()
         enable = true,
         border = "none",
         peek_definition_code = {
-          ["<leader>df"] = "@function.outer",
-          ["<leader>dF"] = "@class.outer",
+          ["<leader>sf"] = "@function.outer",
+          ["<leader>sF"] = "@class.outer",
         },
       },
     },
@@ -91,6 +91,17 @@ function M.setup()
     -- endwise
     endwise = {
       enable = true,
+    },
+
+    -- autotag
+    autotag = {
+      enable = true,
+    },
+
+    -- context_commentstring
+    context_commentstring = {
+      enable = true,
+      enable_autocmd = false,
     },
   }
 end

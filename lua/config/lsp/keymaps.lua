@@ -20,7 +20,7 @@ local function keymappings(client, bufnr)
   -- Whichkey
   local keymap_l = {
     l = {
-      name = "Code",
+      name = "LSP",
       R = { "<cmd>Trouble lsp_references<cr>", "Trouble References" },
       a = { "<cmd>Telescope lsp_code_actions<CR>", "Code Action" },
       d = { "<cmd>Telescope diagnostics<CR>", "Diagnostics" },

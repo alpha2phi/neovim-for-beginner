@@ -1,20 +1,39 @@
 local M = {}
 
-function M.setup()
-  local whichkey = require "which-key"
+local whichkey = require "which-key"
 
-  local conf = {
-    window = {
-      border = "single", -- none, single, double, shadow
-      position = "bottom", -- bottom, top
-    },
-  }
+local conf = {
+  window = {
+    border = "single", -- none, single, double, shadow
+    position = "bottom", -- bottom, top
+  },
+}
+whichkey.setup(conf)
 
-  local keymaps_f = nil -- File search
-  local keymaps_p = nil -- Project search
+local opts = {
+  mode = "n", -- Normal mode
+  prefix = "<leader>",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = false, -- use `nowait` when creating keymaps
+}
+
+local v_opts = {
+  mode = "v", -- Visual mode
+  prefix = "<leader>",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = false, -- use `nowait` when creating keymaps
+}
+
+local function normal_keymap()
+  local keymap_f = nil -- File search
+  local keymap_p = nil -- Project search
 
   if PLUGINS.telescope.enabled then
-    keymaps_f = {
+    keymap_f = {
       name = "Find",
       f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
       d = { "<cmd>lua require('utils.finder').find_dotfiles()<cr>", "Dotfiles" },
@@ -28,7 +47,7 @@ function M.setup()
       e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     }
 
-    keymaps_p = {
+    keymap_p = {
       name = "Project",
       p = { "<cmd>lua require'telescope'.extensions.project.project{}<cr>", "List" },
       s = { "<cmd>Telescope repo list<cr>", "Search" },
@@ -36,7 +55,7 @@ function M.setup()
   end
 
   if PLUGINS.fzf_lua.enabled then
-    keymaps_f = {
+    keymap_f = {
       name = "Find",
       f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
       b = { "<cmd>FzfLua buffers<cr>", "Buffers" },
@@ -47,18 +66,10 @@ function M.setup()
     }
   end
 
-  local opts = {
-    mode = "n", -- Normal mode
-    prefix = "<leader>",
-    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = false, -- use `nowait` when creating keymaps
-  }
-
-  local mappings = {
+  local keymap = {
     ["w"] = { "<cmd>update!<CR>", "Save" },
     ["q"] = { "<cmd>q!<CR>", "Quit" },
+    ["t"] = { "<cmd>ToggleTerm<CR>", "Terminal" },
 
     b = {
       name = "Buffer",
@@ -66,8 +77,16 @@ function M.setup()
       D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete All Buffers" },
     },
 
-    f = keymaps_f,
-    p = keymaps_p,
+    s = {
+      name = "Treesitter",
+      x = "Swap Next Parameter",
+      X = "Swap Prev Parameter",
+      f = "Outer Function",
+      F = "Outer Class",
+    },
+
+    f = keymap_f,
+    p = keymap_p,
 
     z = {
       name = "System",
@@ -83,11 +102,79 @@ function M.setup()
     g = {
       name = "Git",
       s = { "<cmd>Neogit<CR>", "Status" },
+      y = {
+        "<cmd>lua require'gitlinker'.get_buf_range_url('n', {action_callback = require'gitlinker.actions'.open_in_browser})<cr>",
+        "Link",
+      },
+    },
+  }
+  whichkey.register(keymap, opts)
+end
+
+local function visual_keymap()
+  local keymap = {
+    g = {
+      name = "Git",
+      y = {
+        "<cmd>lua require'gitlinker'.get_buf_range_url('v', {action_callback = require'gitlinker.actions'.open_in_browser})<cr>",
+        "Link",
+      },
     },
   }
 
-  whichkey.setup(conf)
-  whichkey.register(mappings, opts)
+  whichkey.register(keymap, v_opts)
+end
+
+local function code_keymap()
+  vim.cmd "autocmd FileType * lua CodeRunner()"
+
+  function CodeRunner()
+    local bufnr = vim.api.nvim_get_current_buf()
+    local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
+    local keymap = nil
+    if ft == "python" then
+      keymap = {
+        name = "Code",
+        r = { "<cmd>update<CR><cmd>exec '!python3' shellescape(@%, 1)<cr>", "Run" },
+        m = { "<cmd>TermExec cmd='nodemon -e py %'<cr>", "Monitor" },
+      }
+    elseif ft == "lua" then
+      keymap = {
+        name = "Code",
+        r = { "<cmd>luafile %<cr>", "Run" },
+      }
+    elseif ft == "rust" then
+      keymap = {
+        name = "Code",
+        r = { "<cmd>Cargo run<cr>", "Run" },
+      }
+    elseif ft == "go" then
+      keymap = {
+        name = "Code",
+        r = { "<cmd>GoRun<cr>", "Run" },
+      }
+    elseif ft == "typescript" or ft == "typescriptreact" then
+      keymap = {
+        name = "Code",
+        o = { "<cmd>TSLspOrganize<cr>", "Organize" },
+        r = { "<cmd>TSLspRenameFile<cr>", "Rename File" },
+        i = { "<cmd>TSLspImportAll<cr>", "Import All" },
+      }
+    end
+
+    if keymap ~= nil then
+      whichkey.register(
+        { c = keymap },
+        { mode = "n", silent = true, noremap = true, buffer = bufnr, prefix = "<leader>" }
+      )
+    end
+  end
+end
+
+function M.setup()
+  normal_keymap()
+  visual_keymap()
+  code_keymap()
 end
 
 return M

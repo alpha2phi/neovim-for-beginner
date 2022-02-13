@@ -60,6 +60,13 @@ function M.setup()
         vim.cmd "colorscheme everforest"
       end,
     }
+    use {
+      "sainnhe/gruvbox-material",
+      config = function()
+        vim.cmd "colorscheme gruvbox-material"
+      end,
+      disable = true,
+    }
 
     -- Startup screen
     use {
@@ -95,19 +102,28 @@ function M.setup()
       requires = { "tpope/vim-rhubarb" },
       -- wants = { "vim-rhubarb" },
     }
-    -- use {
-    --   "pwntester/octo.nvim",
-    --   cmd = "Octo",
-    --   wants = { "telescope.nvim", "plenary.nvim", "nvim-web-devicons" },
-    --   requires = {
-    --     "nvim-lua/plenary.nvim",
-    --     "nvim-telescope/telescope.nvim",
-    --     "kyazdani42/nvim-web-devicons",
-    --   },
-    --   config = function()
-    --     require("octo").setup()
-    --   end,
-    -- }
+    use {
+      "ruifm/gitlinker.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      module = "gitlinker",
+      config = function()
+        require("gitlinker").setup { mappings = nil }
+      end,
+    }
+    use {
+      "pwntester/octo.nvim",
+      cmd = "Octo",
+      wants = { "telescope.nvim", "plenary.nvim", "nvim-web-devicons" },
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim",
+        "kyazdani42/nvim-web-devicons",
+      },
+      config = function()
+        require("octo").setup()
+      end,
+      disable = true,
+    }
 
     -- WhichKey
     use {
@@ -141,7 +157,7 @@ function M.setup()
       "numToStr/Comment.nvim",
       keys = { "gc", "gcc", "gbc" },
       config = function()
-        require("Comment").setup {}
+        require("config.comment").setup()
       end,
     }
 
@@ -210,13 +226,15 @@ function M.setup()
       end,
       requires = {
         { "nvim-treesitter/nvim-treesitter-textobjects" },
+        "windwp/nvim-ts-autotag",
+        "JoosepAlviste/nvim-ts-context-commentstring",
       },
     }
 
     if PLUGINS.fzf_lua.enabled then
       -- FZF
-      -- use { "junegunn/fzf", run = "./install --all", event = "VimEnter" } -- You don't need to install this if you already have fzf installed
-      -- use { "junegunn/fzf.vim", event = "BufEnter" }
+      use { "junegunn/fzf", run = "./install --all", event = "VimEnter", disable = true } -- You don't need to install this if you already have fzf installed
+      use { "junegunn/fzf.vim", event = "BufEnter", disable = true }
 
       -- FZF Lua
       use {
@@ -235,7 +253,7 @@ function M.setup()
           require("config.telescope").setup()
         end,
         cmd = { "Telescope" },
-        module = "telescope",
+        module = { "telescope", "telescope.builtin" },
         keys = { "<leader>f", "<leader>p", "<leader>z" },
         wants = {
           "plenary.nvim",
@@ -384,7 +402,15 @@ function M.setup()
         opt = true,
         event = "BufReadPre",
         -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
-        wants = { "nvim-lsp-installer", "cmp-nvim-lsp", "lua-dev.nvim", "vim-illuminate", "null-ls.nvim" },
+        wants = {
+          "nvim-lsp-installer",
+          "cmp-nvim-lsp",
+          "lua-dev.nvim",
+          "vim-illuminate",
+          "null-ls.nvim",
+          "schemastore.nvim",
+          "nvim-lsp-ts-utils",
+        },
         config = function()
           require("config.lsp").setup()
         end,
@@ -399,6 +425,8 @@ function M.setup()
               require("fidget").setup {}
             end,
           },
+          "b0o/schemastore.nvim",
+          "jose-elias-alvarez/nvim-lsp-ts-utils",
           -- "ray-x/lsp_signature.nvim",
         },
       }
@@ -409,7 +437,16 @@ function M.setup()
         "neovim/nvim-lspconfig",
         opt = true,
         event = "BufReadPre",
-        wants = { "nvim-lsp-installer", "lsp_signature.nvim", "coq_nvim", "vim-illuminate" }, -- for coq.nvim
+        wants = {
+          "nvim-lsp-installer",
+          "lsp_signature.nvim",
+          "coq_nvim",
+          "lua-dev.nvim",
+          "vim-illuminate",
+          "null-ls.nvim",
+          "schemastore.nvim",
+          "nvim-lsp-ts-utils",
+        }, -- for coq.nvim
         config = function()
           require("config.lsp").setup()
         end,
@@ -418,6 +455,15 @@ function M.setup()
           "ray-x/lsp_signature.nvim",
           "folke/lua-dev.nvim",
           "RRethy/vim-illuminate",
+          "jose-elias-alvarez/null-ls.nvim",
+          {
+            "j-hui/fidget.nvim",
+            config = function()
+              require("fidget").setup {}
+            end,
+          },
+          "b0o/schemastore.nvim",
+          "jose-elias-alvarez/nvim-lsp-ts-utils",
         },
       }
     end
@@ -440,6 +486,36 @@ function M.setup()
       cmd = { "Lspsaga" },
       config = function()
         require("lspsaga").setup {}
+      end,
+    }
+
+    -- Rust
+    use {
+      "simrat39/rust-tools.nvim",
+      requires = { "nvim-lua/plenary.nvim", "rust-lang/rust.vim" },
+      module = "rust-tools",
+      ft = { "rust" },
+      config = function()
+        require("rust-tools").setup {}
+      end,
+    }
+
+    -- Go
+    use {
+      "ray-x/go.nvim",
+      ft = { "go" },
+      config = function()
+        require("go").setup()
+      end,
+    }
+
+    -- Terminal
+    use {
+      "akinsho/toggleterm.nvim",
+      keys = { [[<C-\>]] },
+      cmd = { "ToggleTerm", "TermExec" },
+      config = function()
+        require("config.toggleterm").setup()
       end,
     }
 
