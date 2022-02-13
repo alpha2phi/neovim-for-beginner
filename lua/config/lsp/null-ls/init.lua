@@ -31,7 +31,7 @@ local sources = {
   -- diagnostics
   b.diagnostics.write_good,
   -- b.diagnostics.markdownlint,
-  -- b.diagnostics.eslint_d,
+  b.diagnostics.eslint_d,
   b.diagnostics.flake8,
   b.diagnostics.tsc,
   b.diagnostics.selene,
@@ -40,6 +40,7 @@ local sources = {
 
   -- code actions
   b.code_actions.gitsigns,
+  b.code_actions.eslint_d,
   b.code_actions.gitrebase,
 
   -- hover
