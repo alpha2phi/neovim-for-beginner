@@ -29,11 +29,11 @@ function M.setup(servers, options)
         else
           server:setup(opts)
         end
-        utils.info(server.name, " is ready.")
+        utils.info(server.name .. " is ready.", "LSP")
       end)
 
       if not server:is_installed() then
-        utils.info("Installing " .. server.name)
+        utils.info("Installing " .. server.name, "LSP")
         server:install()
       end
     else
