@@ -199,6 +199,7 @@ function M.setup()
     -- Status line
     use {
       "nvim-lualine/lualine.nvim",
+      event = "VimEnter",
       after = "nvim-treesitter",
       config = function()
         require("config.lualine").setup()
@@ -264,6 +265,7 @@ function M.setup()
           "telescope-file-browser.nvim",
           "project.nvim",
           "trouble.nvim",
+          "telescope-dap.nvim",
         },
         requires = {
           "nvim-lua/popup.nvim",
@@ -493,6 +495,7 @@ function M.setup()
     use {
       "simrat39/rust-tools.nvim",
       requires = { "nvim-lua/plenary.nvim", "rust-lang/rust.vim" },
+      opt = true,
       module = "rust-tools",
       ft = { "rust" },
       config = function()
@@ -522,10 +525,16 @@ function M.setup()
     -- Debugging
     use {
       "mfussenegger/nvim-dap",
+      opt = true,
       event = "BufReadPre",
+      module = { "dap" },
+      wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python" },
       requires = {
         "Pocco81/DAPInstall.nvim",
+        "theHamsta/nvim-dap-virtual-text",
+        "rcarriga/nvim-dap-ui",
         "mfussenegger/nvim-dap-python",
+        "nvim-telescope/telescope-dap.nvim",
       },
       config = function()
         require("config.dap").setup()
