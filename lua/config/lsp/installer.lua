@@ -33,7 +33,7 @@ function M.setup(servers, options)
       end)
 
       if not server:is_installed() then
-        utils.info("Installing " .. server.name)
+        utils.info("Installing " .. server.name, "LSP")
         server:install()
       end
     else
