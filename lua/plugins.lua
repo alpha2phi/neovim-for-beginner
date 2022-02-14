@@ -525,6 +525,7 @@ function M.setup()
       event = "BufReadPre",
       requires = {
         "Pocco81/DAPInstall.nvim",
+        "mfussenegger/nvim-dap-python",
       },
       config = function()
         require("config.dap").setup()
