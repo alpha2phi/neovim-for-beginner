@@ -1,7 +1,8 @@
 local M = {}
 
 function M.setup(dap_install)
-  print "Setting up Python debugger"
+  -- use nvim-dap-python
+  require("dap-python").setup()
 end
 
 return M

@@ -8,8 +8,6 @@ local function configure_exts()
   require("dapui").setup()
 end
 
-
-
 local function configure_debuggers()
   local dap_install = require "dap-install"
 
@@ -54,10 +52,11 @@ function M.setup()
 
   -- Configure debuggers
   configure_debuggers()
+
+  -- Configure keymaps
+  require("config.dap.keymaps").setup()
 end
 
-
 configure_debuggers()
-
 
 return M
