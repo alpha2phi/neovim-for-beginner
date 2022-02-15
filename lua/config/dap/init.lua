@@ -19,6 +19,7 @@ local function configure_debuggers()
   for _, debugger_name in pairs(installed_debuggers) do
     local avail_config, dap_config = pcall(require, "config.dap." .. debugger_name)
     if avail_config then
+      print("Configure " .. debugger_name)
       dap_config.setup(dap_install)
     end
   end
