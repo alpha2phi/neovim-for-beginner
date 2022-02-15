@@ -73,8 +73,14 @@ local function normal_keymap()
 
     b = {
       name = "Buffer",
-      c = { "<Cmd>bd!<Cr>", "Close Buffer" },
-      D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete All Buffers" },
+      c = { "<Cmd>BDelete this<Cr>", "Close Buffer" },
+      D = { "<Cmd>BWipeout other<Cr>", "Delete All Buffers" },
+    },
+
+    c = {
+      name = "Code",
+      f = { "<cmd>Neogen func<Cr>", "Generate Func Doc" },
+      c = { "<cmd>Neogen class<Cr>", "Generate Class Doc" },
     },
 
     d = {

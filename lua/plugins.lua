@@ -170,6 +170,18 @@ function M.setup()
     use { "unblevable/quick-scope", event = "CursorMoved", disable = false }
     use { "chaoren/vim-wordmotion", opt = true, fn = { "<Plug>WordMotion_w" } }
 
+    -- Buffer
+    use { "kazhala/close-buffers.nvim", cmd = { "BDelete", "BWipeout" } }
+
+    -- Code documentation
+    use {
+      "danymat/neogen",
+      config = function()
+        require("neogen").setup {}
+      end,
+      cmd = { "Neogen" },
+    }
+
     use {
       "phaazon/hop.nvim",
       cmd = { "HopWord", "HopChar1" },
@@ -532,7 +544,7 @@ function M.setup()
       opt = true,
       event = "BufReadPre",
       module = { "dap" },
-      wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python" },
+      wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
       requires = {
         "Pocco81/DAPInstall.nvim",
         "theHamsta/nvim-dap-virtual-text",
