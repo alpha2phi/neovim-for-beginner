@@ -21,7 +21,7 @@ function M.setup(debuggers)
       local dbg_installed = installed_debuggers[debugger_name]
       if dbg_installed == nil then
         utils.info("Installing " .. debugger_name, "Debugger")
-        require("dap-install.main").main(0, debugger_name)
+        -- require("dap-install.main").main(0, debugger_name)
       end
 
       -- Configure the debugger

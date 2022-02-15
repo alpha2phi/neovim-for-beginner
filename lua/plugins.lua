@@ -280,6 +280,7 @@ function M.setup()
               require("project_nvim").setup {}
             end,
           },
+          "nvim-telescope/telescope-dap.nvim",
         },
       }
     end
@@ -287,6 +288,7 @@ function M.setup()
     -- nvim-tree
     use {
       "kyazdani42/nvim-tree.lua",
+      opt = true,
       wants = "nvim-web-devicons",
       cmd = { "NvimTreeToggle", "NvimTreeClose" },
       module = "nvim-tree",
@@ -403,6 +405,7 @@ function M.setup()
         "neovim/nvim-lspconfig",
         opt = true,
         event = "BufReadPre",
+        keys = { "<leader>f", "<leader>p" },
         -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
         wants = {
           "nvim-lsp-installer",
@@ -527,7 +530,7 @@ function M.setup()
       "mfussenegger/nvim-dap",
       opt = true,
       event = "BufReadPre",
-      -- module = { "dap" },
+      module = { "dap" },
       wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python" },
       requires = {
         "Pocco81/DAPInstall.nvim",
