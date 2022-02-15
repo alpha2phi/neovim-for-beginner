@@ -1,9 +1,7 @@
 local M = {}
 
-function M.setup(dap_install)
-  -- use nvim-dap-python
-  print "Setting python debugger"
-  require("dap-python").setup()
+function M.setup(_)
+  require("dap-python").setup "~/miniconda3/bin/python"
 end
 
 return M
