@@ -23,10 +23,27 @@ function M.setup()
       r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
       s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
       q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
+      x = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
+      e = { "<cmd>lua require'dapui'.eval()<cr>", "Evaluate" },
+      E = { "<cmd>lua require'dapui'.eval(vim.fn.input '[DAP] > ')<cr>", "Evaluate Input" },
     },
   }
+
   whichkey.register(keymap, {
     mode = "n",
+    prefix = "<leader>",
+    buffer = nil,
+    silent = true,
+    noremap = true,
+    nowait = false,
+  })
+
+  local keymap_v = {
+    name = "Debug",
+    e = { "<cmd>lua require'dapui'.eval()<cr>", "Evaluate" },
+  }
+  whichkey.register(keymap_v, {
+    mode = "v",
     prefix = "<leader>",
     buffer = nil,
     silent = true,

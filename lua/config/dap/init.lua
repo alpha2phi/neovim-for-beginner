@@ -33,38 +33,43 @@ local function configure()
 end
 
 local function configure_exts()
-  require("nvim-dap-virtual-text").setup()
-  require("dapui").setup()
+  require("nvim-dap-virtual-text").setup() -- use default
+
+  local dap, dapui = require "dap", require "dapui"
+  dapui.setup {
+    -- sidebar = {
+    --   elements = {
+    --     -- Provide as ID strings or tables with "id" and "size" keys
+    --     {
+    --       id = "scopes",
+    --       size = 0.75, -- Can be float or integer > 1
+    --     },
+    --     { id = "watches", size = 00.25 },
+    --   },
+    --   size = 50,
+    --   position = "left", -- Can be "left" or "right"
+    -- },
+    --
+    -- tray = {
+    --   elements = { "repl" },
+    --   size = 15,
+    --   position = "bottom", -- Can be "bottom" or "top"
+    -- },
+  }
+  dap.listeners.after.event_initialized["dapui_config"] = function()
+    dapui.open()
+  end
+  dap.listeners.before.event_terminated["dapui_config"] = function()
+    dapui.close()
+  end
+  dap.listeners.before.event_exited["dapui_config"] = function()
+    dapui.close()
+  end
 end
 
 local function configure_debuggers()
   require("config.dap.python").setup()
   require("config.dap.lua").setup()
-
-  -- local installed_debuggers = require("dap-install.api.debuggers").get_installed_debuggers()
-  -- for debugger_name, _ in pairs(debuggers) do
-  --   local use_installer = debuggers[debugger_name]
-  --   if use_installer then
-  --     local is_installed = utils.exists(installed_debuggers, debugger_name)
-  --     if is_installed then
-  --       local avail_config, dap_config = pcall(require, "config.dap." .. debugger_name)
-  --       if avail_config then
-  --         dap_config.setup(dap_install)
-  --       else
-  --         dap_install.config(debugger_name, {}) -- Use default configuration
-  --       end
-  --     else
-  --       utils.info("Debugger [" .. debugger_name .. "] is not installed", "DAP")
-  --     end
-  --   else
-  --     local avail_config, dap_config = pcall(require, "config.dap." .. debugger_name)
-  --     if avail_config then
-  --       dap_config.setup()
-  --     else
-  --       utils.info("Custom debugger [" .. debugger_name .. "] is not configured", "DAP")
-  --     end
-  --   end
-  -- end
 end
 
 function M.setup()

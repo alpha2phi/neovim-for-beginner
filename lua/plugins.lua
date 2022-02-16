@@ -416,8 +416,8 @@ function M.setup()
       use {
         "neovim/nvim-lspconfig",
         opt = true,
-        event = "VimEnter",
-        -- event = "BufReadPre",
+        -- event = "VimEnter",
+        event = "BufReadPre",
         -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
         wants = {
           "nvim-lsp-installer",
@@ -453,8 +453,8 @@ function M.setup()
       use {
         "neovim/nvim-lspconfig",
         opt = true,
-        event = "VimEnter",
-        -- event = "BufReadPre",
+        -- event = "VimEnter",
+        event = "BufReadPre",
         wants = {
           "nvim-lsp-installer",
           "lsp_signature.nvim",
