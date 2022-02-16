@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup()
-  print "Setting up lua debugger"
+  require("utils").info "Setting up lua"
 end
 
 return M

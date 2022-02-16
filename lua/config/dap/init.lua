@@ -36,26 +36,7 @@ local function configure_exts()
   require("nvim-dap-virtual-text").setup() -- use default
 
   local dap, dapui = require "dap", require "dapui"
-  dapui.setup {
-    -- sidebar = {
-    --   elements = {
-    --     -- Provide as ID strings or tables with "id" and "size" keys
-    --     {
-    --       id = "scopes",
-    --       size = 0.75, -- Can be float or integer > 1
-    --     },
-    --     { id = "watches", size = 00.25 },
-    --   },
-    --   size = 50,
-    --   position = "left", -- Can be "left" or "right"
-    -- },
-    --
-    -- tray = {
-    --   elements = { "repl" },
-    --   size = 15,
-    --   position = "bottom", -- Can be "bottom" or "top"
-    -- },
-  }
+  dapui.setup {} -- use default
   dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()
   end
