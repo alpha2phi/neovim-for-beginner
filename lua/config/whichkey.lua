@@ -106,7 +106,7 @@ local function normal_keymap()
       s = { "<cmd>PackerSync<cr>", "Sync" },
       S = { "<cmd>PackerStatus<cr>", "Status" },
       u = { "<cmd>PackerUpdate<cr>", "Update" },
-      r = { "<cmd>Telescope reloader<cr>", "Reload Module" },
+      x = { "<cmd>cd %:p:h<cr>", "Change Directory" },
     },
 
     g = {
@@ -157,6 +157,9 @@ local function code_keymap()
       keymap = {
         name = "Code",
         r = { "<cmd>Cargo run<cr>", "Run" },
+        d = { "<cmd>RustDebuggables<cr>", "Debuggables" },
+        h = { "<cmd>RustHoverActions<cr>", "Hover Actions" },
+        R = { "<cmd>RustRunnables<cr>", "Runnables" },
       }
     elseif ft == "go" then
       keymap = {

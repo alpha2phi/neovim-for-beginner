@@ -322,7 +322,7 @@ function M.setup()
     -- User interface
     use {
       "stevearc/dressing.nvim",
-      event = "BufEnter",
+      event = "BufReadPre",
       config = function()
         require("dressing").setup {
           select = {
@@ -330,7 +330,7 @@ function M.setup()
           },
         }
       end,
-      disable = true,
+      disable = false,
     }
 
     -- Completion
@@ -515,7 +515,7 @@ function M.setup()
       module = "rust-tools",
       ft = { "rust" },
       config = function()
-        require("rust-tools").setup {}
+        require("config.rust").setup()
       end,
     }
 

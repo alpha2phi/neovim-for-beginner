@@ -1,7 +1,8 @@
 local M = {}
 
 function M.setup()
-  print "Setting up Rust debugger"
+  local dap_install = require "dap-install"
+  dap_install.config("codelldb", {})
 end
 
 return M

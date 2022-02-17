@@ -50,7 +50,7 @@ end
 
 local function configure_debuggers()
   require("config.dap.python").setup()
-  require("config.dap.lua").setup()
+  require("config.dap.rust").setup()
 end
 
 function M.setup()
