@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup()
-  print "Setting up Go debugger"
+  require("dap-go").setup()
 end
 
 return M

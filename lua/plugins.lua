@@ -552,6 +552,7 @@ function M.setup()
         "mfussenegger/nvim-dap-python",
         "nvim-telescope/telescope-dap.nvim",
         "jbyuki/one-small-step-for-vimkind",
+        "leoluz/nvim-dap-go",
       },
       config = function()
         require("config.dap").setup()
