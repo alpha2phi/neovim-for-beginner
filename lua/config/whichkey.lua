@@ -79,20 +79,16 @@ local function normal_keymap()
 
     c = {
       name = "Code",
-      f = { "<cmd>Neogen func<Cr>", "Generate Func Doc" },
-      c = { "<cmd>Neogen class<Cr>", "Generate Class Doc" },
+      g = { "<cmd>Neogen func<Cr>", "Generate Func Doc" },
+      G = { "<cmd>Neogen class<Cr>", "Generate Class Doc" },
+      x = "Swap Next Parameter",
+      X = "Swap Prev Parameter",
+      f = "Select Outer Function",
+      F = "Select Outer Class",
     },
 
     d = {
       name = "Debug",
-    },
-
-    s = {
-      name = "Treesitter",
-      x = "Swap Next Parameter",
-      X = "Swap Prev Parameter",
-      f = "Outer Function",
-      F = "Outer Class",
     },
 
     f = keymap_f,
@@ -157,7 +153,7 @@ local function code_keymap()
       keymap = {
         name = "Code",
         r = { "<cmd>Cargo run<cr>", "Run" },
-        d = { "<cmd>RustDebuggables<cr>", "Debuggables" },
+        D = { "<cmd>RustDebuggables<cr>", "Debuggables" },
         h = { "<cmd>RustHoverActions<cr>", "Hover Actions" },
         R = { "<cmd>RustRunnables<cr>", "Runnables" },
       }

@@ -30,6 +30,8 @@ local function keymappings(client, bufnr)
       r = { "<cmd>Telescope lsp_references<CR>", "Diagnostics" },
       s = { "<cmd>Telescope lsp_document_symbols<CR>", "Diagnostics" },
       t = { "<cmd>TroubleToggle<CR>", "Trouble" },
+      L = { "<cmd>lua vim.lsp.codelens.refresh()<CR>", "Refresh CodeLens" },
+      l = { "<cmd>lua vim.lsp.codelens.run()<CR>", "Run CodeLens" },
     },
   }
   if client.resolved_capabilities.document_formatting then

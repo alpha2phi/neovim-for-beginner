@@ -11,6 +11,7 @@ function M.setup()
     d = {
       name = "Debug",
       t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
+      T = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", "Conditional Breakpoint" },
       b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
       c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
       C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },
@@ -25,7 +26,7 @@ function M.setup()
       q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
       U = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
       e = { "<cmd>lua require'dapui'.eval()<cr>", "Evaluate" },
-      E = { "<cmd>lua require'dapui'.eval(vim.fn.input '[DAP] > ')<cr>", "Evaluate Input" },
+      E = { "<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<cr>", "Evaluate Input" },
     },
   }
 
