@@ -557,7 +557,10 @@ function M.setup()
       config = function()
         require("config.dap").setup()
       end,
+      disable = not PLUGINS.nvim_dap,
     }
+
+    -- vimspector
 
     -- Bootstrap Neovim
     if packer_bootstrap then
