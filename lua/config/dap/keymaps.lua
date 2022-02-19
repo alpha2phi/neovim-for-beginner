@@ -2,17 +2,17 @@ local M = {}
 
 local whichkey = require "which-key"
 
--- local function keymap(lhs, rhs)
---   vim.keymap.set("n", lhs, rhs, { silent = true })
+-- local function keymap(lhs, rhs, desc)
+--   vim.keymap.set("n", lhs, rhs, { silent = true, desc = desc })
 -- end
 
 function M.setup()
   local keymap = {
     d = {
       name = "Debug",
-      C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },
+      R = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },
       E = { "<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<cr>", "Evaluate Input" },
-      T = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", "Conditional Breakpoint" },
+      C = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", "Conditional Breakpoint" },
       U = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
       b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
       c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
@@ -28,6 +28,7 @@ function M.setup()
       r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
       s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
       t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
+      x = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
       u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
     },
   }
