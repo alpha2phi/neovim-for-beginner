@@ -373,12 +373,13 @@ function M.setup()
         -- "hrsh7th/cmp-emoji",
         {
           "L3MON4D3/LuaSnip",
-          wants = "friendly-snippets",
+          wants = { "friendly-snippets", "vim-snippets" },
           config = function()
             require("config.snip").setup()
           end,
         },
         "rafamadriz/friendly-snippets",
+        "honza/vim-snippets",
       },
       disable = not PLUGINS.nvim_cmp.enabled,
     }
