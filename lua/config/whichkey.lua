@@ -69,7 +69,7 @@ local function normal_keymap()
   local keymap = {
     ["w"] = { "<cmd>update!<CR>", "Save" },
     ["q"] = { "<cmd>q!<CR>", "Quit" },
-    ["t"] = { "<cmd>ToggleTerm<CR>", "Terminal" },
+    -- ["t"] = { "<cmd>ToggleTerm<CR>", "Terminal" },
 
     b = {
       name = "Buffer",
@@ -94,6 +94,15 @@ local function normal_keymap()
 
     f = keymap_f,
     p = keymap_p,
+
+    t = {
+      name = "Test",
+      l = { "<cmd>UltestLast<cr>", "Last" },
+      n = { "<cmd>UltestNearest<cr>", "Nearest" },
+      f = { "<cmd>TestFile<cr>", "File" },
+      s = { "<cmd>TestSuite<cr>", "Suite" },
+      S = { "<cmd>TestSummary<cr>", "Summary" },
+    },
 
     z = {
       name = "System",

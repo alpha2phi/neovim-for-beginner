@@ -560,7 +560,25 @@ function M.setup()
       disable = not PLUGINS.nvim_dap,
     }
 
+    -- TODO
     -- vimspector
+
+    -- Test
+    use {
+      "vim-test/vim-test",
+      opt = true,
+      cmd = { "TestNearest", "TestFile", "TestSuite", "TestLast", "TestVisit" },
+      wants = { "vim-ultest" },
+      config = function()
+        require("config.test").setup()
+      end,
+      requires = {
+        { "rcarriga/vim-ultest", run = ":UpdateRemotePlugins", module = "ultest" },
+      },
+    }
+
+    -- AI completion
+    use { "github/copilot.vim", event = "InsertEnter" }
 
     -- Bootstrap Neovim
     if packer_bootstrap then
