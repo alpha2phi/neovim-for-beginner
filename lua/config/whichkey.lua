@@ -74,6 +74,7 @@ local function normal_keymap()
     b = {
       name = "Buffer",
       c = { "<Cmd>BDelete this<Cr>", "Close Buffer" },
+      f = { "<Cmd>BDelete! this<Cr>", "Force Close Buffer" },
       D = { "<Cmd>BWipeout other<Cr>", "Delete All Buffers" },
     },
 
