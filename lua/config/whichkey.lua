@@ -73,16 +73,23 @@ local function normal_keymap()
 
     b = {
       name = "Buffer",
-      c = { "<Cmd>bd!<Cr>", "Close Buffer" },
-      D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete All Buffers" },
+      c = { "<Cmd>BDelete this<Cr>", "Close Buffer" },
+      f = { "<Cmd>BDelete! this<Cr>", "Force Close Buffer" },
+      D = { "<Cmd>BWipeout other<Cr>", "Delete All Buffers" },
     },
 
-    s = {
-      name = "Treesitter",
+    c = {
+      name = "Code",
+      g = { "<cmd>Neogen func<Cr>", "Generate Func Doc" },
+      G = { "<cmd>Neogen class<Cr>", "Generate Class Doc" },
       x = "Swap Next Parameter",
       X = "Swap Prev Parameter",
-      f = "Outer Function",
-      F = "Outer Class",
+      f = "Select Outer Function",
+      F = "Select Outer Class",
+    },
+
+    d = {
+      name = "Debug",
     },
 
     f = keymap_f,
@@ -96,7 +103,7 @@ local function normal_keymap()
       s = { "<cmd>PackerSync<cr>", "Sync" },
       S = { "<cmd>PackerStatus<cr>", "Status" },
       u = { "<cmd>PackerUpdate<cr>", "Update" },
-      r = { "<cmd>Telescope reloader<cr>", "Reload Module" },
+      x = { "<cmd>cd %:p:h<cr>", "Change Directory" },
     },
 
     g = {
@@ -147,6 +154,9 @@ local function code_keymap()
       keymap = {
         name = "Code",
         r = { "<cmd>Cargo run<cr>", "Run" },
+        D = { "<cmd>RustDebuggables<cr>", "Debuggables" },
+        h = { "<cmd>RustHoverActions<cr>", "Hover Actions" },
+        R = { "<cmd>RustRunnables<cr>", "Runnables" },
       }
     elseif ft == "go" then
       keymap = {

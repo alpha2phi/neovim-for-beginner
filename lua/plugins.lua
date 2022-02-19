@@ -170,6 +170,18 @@ function M.setup()
     use { "unblevable/quick-scope", event = "CursorMoved", disable = false }
     use { "chaoren/vim-wordmotion", opt = true, fn = { "<Plug>WordMotion_w" } }
 
+    -- Buffer
+    use { "kazhala/close-buffers.nvim", cmd = { "BDelete", "BWipeout" } }
+
+    -- Code documentation
+    use {
+      "danymat/neogen",
+      config = function()
+        require("neogen").setup {}
+      end,
+      cmd = { "Neogen" },
+    }
+
     use {
       "phaazon/hop.nvim",
       cmd = { "HopWord", "HopChar1" },
@@ -199,6 +211,7 @@ function M.setup()
     -- Status line
     use {
       "nvim-lualine/lualine.nvim",
+      event = "VimEnter",
       after = "nvim-treesitter",
       config = function()
         require("config.lualine").setup()
@@ -264,6 +277,7 @@ function M.setup()
           "telescope-file-browser.nvim",
           "project.nvim",
           "trouble.nvim",
+          "telescope-dap.nvim",
         },
         requires = {
           "nvim-lua/popup.nvim",
@@ -278,6 +292,7 @@ function M.setup()
               require("project_nvim").setup {}
             end,
           },
+          "nvim-telescope/telescope-dap.nvim",
         },
       }
     end
@@ -285,6 +300,7 @@ function M.setup()
     -- nvim-tree
     use {
       "kyazdani42/nvim-tree.lua",
+      opt = true,
       wants = "nvim-web-devicons",
       cmd = { "NvimTreeToggle", "NvimTreeClose" },
       module = "nvim-tree",
@@ -306,7 +322,7 @@ function M.setup()
     -- User interface
     use {
       "stevearc/dressing.nvim",
-      event = "BufEnter",
+      event = "BufReadPre",
       config = function()
         require("dressing").setup {
           select = {
@@ -314,7 +330,7 @@ function M.setup()
           },
         }
       end,
-      disable = true,
+      disable = false,
     }
 
     -- Completion
@@ -400,7 +416,8 @@ function M.setup()
       use {
         "neovim/nvim-lspconfig",
         opt = true,
-        event = "BufReadPre",
+        -- event = "VimEnter",
+        event = { "BufReadPre" },
         -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
         wants = {
           "nvim-lsp-installer",
@@ -436,7 +453,8 @@ function M.setup()
       use {
         "neovim/nvim-lspconfig",
         opt = true,
-        event = "BufReadPre",
+        -- event = "VimEnter",
+        event = { "BufReadPre" },
         wants = {
           "nvim-lsp-installer",
           "lsp_signature.nvim",
@@ -493,10 +511,11 @@ function M.setup()
     use {
       "simrat39/rust-tools.nvim",
       requires = { "nvim-lua/plenary.nvim", "rust-lang/rust.vim" },
+      opt = true,
       module = "rust-tools",
       ft = { "rust" },
       config = function()
-        require("rust-tools").setup {}
+        require("config.rust").setup()
       end,
     }
 
@@ -516,6 +535,27 @@ function M.setup()
       cmd = { "ToggleTerm", "TermExec" },
       config = function()
         require("config.toggleterm").setup()
+      end,
+    }
+
+    -- Debugging
+    use {
+      "mfussenegger/nvim-dap",
+      opt = true,
+      event = "BufReadPre",
+      module = { "dap" },
+      wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
+      requires = {
+        "Pocco81/DAPInstall.nvim",
+        "theHamsta/nvim-dap-virtual-text",
+        "rcarriga/nvim-dap-ui",
+        "mfussenegger/nvim-dap-python",
+        "nvim-telescope/telescope-dap.nvim",
+        { "leoluz/nvim-dap-go", module = "dap-go" },
+        { "jbyuki/one-small-step-for-vimkind", module = "osv" },
+      },
+      config = function()
+        require("config.dap").setup()
       end,
     }
 

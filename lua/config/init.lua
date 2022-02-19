@@ -11,4 +11,10 @@ PLUGINS = {
   telescope = {
     enabled = true,
   },
+  nvim_dap = {
+    enabled = true,
+  },
+  vimspector = {
+    enabled = false,
+  },
 }

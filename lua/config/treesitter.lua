@@ -82,8 +82,8 @@ function M.setup()
         enable = true,
         border = "none",
         peek_definition_code = {
-          ["<leader>sf"] = "@function.outer",
-          ["<leader>sF"] = "@class.outer",
+          ["<leader>cf"] = "@function.outer",
+          ["<leader>cF"] = "@class.outer",
         },
       },
     },
