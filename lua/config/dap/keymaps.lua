@@ -43,8 +43,10 @@ function M.setup()
   })
 
   local keymap_v = {
-    name = "Debug",
-    e = { "<cmd>lua require'dapui'.eval()<cr>", "Evaluate" },
+    d = {
+      name = "Debug",
+      e = { "<cmd>lua require'dapui'.eval()<cr>", "Evaluate" },
+    },
   }
   whichkey.register(keymap_v, {
     mode = "v",
