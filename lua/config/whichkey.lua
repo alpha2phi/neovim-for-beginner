@@ -97,6 +97,8 @@ local function normal_keymap()
 
     t = {
       name = "Test",
+      a = { "<cmd>Ultest<cr>", "All" },
+      d = { "<cmd>UltestDebug<cr>", "Debug" },
       l = { "<cmd>UltestLast<cr>", "Last" },
       n = { "<cmd>UltestNearest<cr>", "Nearest" },
       f = { "<cmd>TestFile<cr>", "File" },

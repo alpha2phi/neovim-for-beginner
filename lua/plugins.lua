@@ -419,6 +419,7 @@ function M.setup()
         opt = true,
         -- event = "VimEnter",
         event = { "BufReadPre" },
+        -- keys = { "<leader>l", "<leader>f" },
         -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
         wants = {
           "nvim-lsp-installer",
@@ -561,21 +562,48 @@ function M.setup()
       disable = not PLUGINS.nvim_dap,
     }
 
-    -- TODO
     -- vimspector
+    use {
+      "puremourning/vimspector",
+      opt = true,
+      keys = { "<leader>v" },
+      cmd = { "VimspectorInstall", "VimspectorUpdate" },
+      config = function()
+        require("config.vimspector").setup()
+      end,
+    }
 
     -- Test
     use {
       "vim-test/vim-test",
       opt = true,
-      cmd = { "TestNearest", "TestFile", "TestSuite", "TestLast", "TestVisit" },
+      keys = { "<leader>t" },
+      cmd = {
+        "TestNearest",
+        "TestFile",
+        "TestSuite",
+        "TestLast",
+        "TestVisit",
+      },
       wants = { "vim-ultest" },
       config = function()
         require("config.test").setup()
       end,
-      requires = {
-        { "rcarriga/vim-ultest", run = ":UpdateRemotePlugins", module = "ultest" },
+    }
+    use {
+      "rcarriga/vim-ultest",
+      requires = { "vim-test/vim-test" },
+      opt = true,
+      keys = { "<leader>t" },
+      cmd = {
+        "Ultest",
+        "UltestNearest",
+        "UltestDebug",
+        "UltestLast",
+        "UltestSummary",
       },
+      module = "ultest",
+      run = ":UpdateRemotePlugins",
     }
 
     -- AI completion
