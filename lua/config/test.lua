@@ -7,6 +7,8 @@ function M.setup()
         let test#neovim#term_position = "belowright"
         let g:test#preserve_screen = 1
         let test#python#runner = 'pyunit'
+        let g:ultest_use_pty = 1
+        " let test#javascript#reactscripts#options = "--watchAll=false"
     ]],
     false
   )

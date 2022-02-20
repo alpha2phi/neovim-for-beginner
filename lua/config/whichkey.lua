@@ -103,7 +103,8 @@ local function normal_keymap()
       n = { "<cmd>UltestNearest<cr>", "Nearest" },
       f = { "<cmd>TestFile<cr>", "File" },
       s = { "<cmd>TestSuite<cr>", "Suite" },
-      S = { "<cmd>TestSummary<cr>", "Summary" },
+      S = { "<cmd>UltestSummary<cr>", "Summary" },
+      v = { "<cmd>TestVisit<cr>", "Visit" },
     },
 
     z = {

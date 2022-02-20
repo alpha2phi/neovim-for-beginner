@@ -575,7 +575,8 @@ function M.setup()
 
     -- Test
     use {
-      "vim-test/vim-test",
+      "rcarriga/vim-ultest",
+      requires = { "vim-test/vim-test" },
       opt = true,
       keys = { "<leader>t" },
       cmd = {
@@ -584,18 +585,6 @@ function M.setup()
         "TestSuite",
         "TestLast",
         "TestVisit",
-      },
-      wants = { "vim-ultest" },
-      config = function()
-        require("config.test").setup()
-      end,
-    }
-    use {
-      "rcarriga/vim-ultest",
-      requires = { "vim-test/vim-test" },
-      opt = true,
-      keys = { "<leader>t" },
-      cmd = {
         "Ultest",
         "UltestNearest",
         "UltestDebug",
@@ -604,6 +593,9 @@ function M.setup()
       },
       module = "ultest",
       run = ":UpdateRemotePlugins",
+      config = function()
+        require("config.test").setup()
+      end,
     }
 
     -- AI completion
