@@ -19,6 +19,7 @@ local function config_test()
 
         " Python
         let test#python#runner = 'pyunit'
+        " let test#python#runner = 'pytest'
 
         " Javascript
         let test#javascript#reactscripts#options = "--watchAll=false"

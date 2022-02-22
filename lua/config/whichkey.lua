@@ -97,13 +97,14 @@ local function normal_keymap()
 
     t = {
       name = "Test",
+      S = { "<cmd>UltestSummary<cr>", "Summary" },
       a = { "<cmd>Ultest<cr>", "All" },
       d = { "<cmd>UltestDebug<cr>", "Debug" },
-      l = { "<cmd>UltestLast<cr>", "Last" },
-      n = { "<cmd>UltestNearest<cr>", "Nearest" },
       f = { "<cmd>TestFile<cr>", "File" },
+      l = { "<cmd>TestLast<cr>", "Last" },
+      n = { "<cmd>TestNearest<cr>", "Nearest" },
+      o = { "<cmd>UltestOutput<cr>", "Output" },
       s = { "<cmd>TestSuite<cr>", "Suite" },
-      S = { "<cmd>UltestSummary<cr>", "Summary" },
       v = { "<cmd>TestVisit<cr>", "Visit" },
     },
 
@@ -115,7 +116,8 @@ local function normal_keymap()
       s = { "<cmd>PackerSync<cr>", "Sync" },
       S = { "<cmd>PackerStatus<cr>", "Status" },
       u = { "<cmd>PackerUpdate<cr>", "Update" },
-      x = { "<cmd>cd %:p:h<cr>", "Change Directory" },
+      -- x = { "<cmd>cd %:p:h<cr>", "Change Directory" },
+      x = { "<cmd>set autochdir<cr>", "Auto ChDir" },
     },
 
     g = {

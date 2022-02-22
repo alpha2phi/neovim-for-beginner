@@ -5,7 +5,7 @@ local function keymaps()
 end
 
 function M.setup()
-  print "Setting up vimspector"
+  keymaps()
 end
 
 return M

@@ -601,6 +601,17 @@ function M.setup()
     -- AI completion
     use { "github/copilot.vim", event = "InsertEnter" }
 
+    -- Legendary
+    use {
+      "mrjones2014/legendary.nvim",
+      keys = { [[<C-p>]] },
+      wants = { "dressing.nvim" },
+      config = function()
+        require("config.legendary").setup()
+      end,
+      requires = { "stevearc/dressing.nvim" },
+    }
+
     -- Bootstrap Neovim
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
