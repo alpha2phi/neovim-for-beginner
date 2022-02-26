@@ -69,7 +69,7 @@ local function normal_keymap()
   local keymap = {
     ["w"] = { "<cmd>update!<CR>", "Save" },
     ["q"] = { "<cmd>q!<CR>", "Quit" },
-    ["t"] = { "<cmd>ToggleTerm<CR>", "Terminal" },
+    -- ["t"] = { "<cmd>ToggleTerm<CR>", "Terminal" },
 
     b = {
       name = "Buffer",
@@ -95,6 +95,20 @@ local function normal_keymap()
     f = keymap_f,
     p = keymap_p,
 
+    t = {
+      name = "Test",
+      S = { "<cmd>UltestSummary<cr>", "Summary" },
+      a = { "<cmd>Ultest<cr>", "All" },
+      c = { "<cmd>UltestClear<cr>", "Clear" },
+      d = { "<cmd>UltestDebug<cr>", "Debug" },
+      f = { "<cmd>TestFile<cr>", "File" },
+      l = { "<cmd>TestLast<cr>", "Last" },
+      n = { "<cmd>TestNearest<cr>", "Nearest" },
+      o = { "<cmd>UltestOutput<cr>", "Output" },
+      s = { "<cmd>TestSuite<cr>", "Suite" },
+      v = { "<cmd>TestVisit<cr>", "Visit" },
+    },
+
     z = {
       name = "System",
       c = { "<cmd>PackerCompile<cr>", "Compile" },
@@ -103,7 +117,8 @@ local function normal_keymap()
       s = { "<cmd>PackerSync<cr>", "Sync" },
       S = { "<cmd>PackerStatus<cr>", "Status" },
       u = { "<cmd>PackerUpdate<cr>", "Update" },
-      x = { "<cmd>cd %:p:h<cr>", "Change Directory" },
+      -- x = { "<cmd>cd %:p:h<cr>", "Change Directory" },
+      x = { "<cmd>set autochdir<cr>", "Auto ChDir" },
     },
 
     g = {
@@ -169,6 +184,7 @@ local function code_keymap()
         o = { "<cmd>TSLspOrganize<cr>", "Organize" },
         r = { "<cmd>TSLspRenameFile<cr>", "Rename File" },
         i = { "<cmd>TSLspImportAll<cr>", "Import All" },
+        t = { "<cmd>lua require('utils.test').javascript_runner()<cr>", "Choose Test Runner" },
       }
     end
 

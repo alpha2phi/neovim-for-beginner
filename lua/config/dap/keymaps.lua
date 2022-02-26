@@ -9,7 +9,7 @@ local whichkey = require "which-key"
 function M.setup()
   local keymap = {
     d = {
-      name = "Debug",
+      name = "DAP",
       R = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },
       E = { "<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<cr>", "Evaluate Input" },
       C = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", "Conditional Breakpoint" },

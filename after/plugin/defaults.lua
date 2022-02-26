@@ -73,3 +73,9 @@ cmd "au FocusGained * :checktime"
 -- windows to close with "q"
 cmd [[autocmd FileType help,startuptime,qf,lspinfo nnoremap <buffer><silent> q :close<CR>]]
 cmd [[autocmd FileType man nnoremap <buffer><silent> q :quit<CR>]]
+
+-- Copilot
+cmd [[
+    imap <silent><script><expr> <C-s> copilot#Accept("\<CR>")
+    let g:copilot_no_tab_map = v:true
+]]
