@@ -373,12 +373,13 @@ function M.setup()
         -- "hrsh7th/cmp-emoji",
         {
           "L3MON4D3/LuaSnip",
-          wants = "friendly-snippets",
+          wants = { "friendly-snippets", "vim-snippets" },
           config = function()
             require("config.snip").setup()
           end,
         },
         "rafamadriz/friendly-snippets",
+        "honza/vim-snippets",
       },
       disable = not PLUGINS.nvim_cmp.enabled,
     }
@@ -418,6 +419,7 @@ function M.setup()
         opt = true,
         -- event = "VimEnter",
         event = { "BufReadPre" },
+        -- keys = { "<leader>l", "<leader>f" },
         -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
         wants = {
           "nvim-lsp-installer",
@@ -561,6 +563,54 @@ function M.setup()
     }
 
     -- vimspector
+    use {
+      "puremourning/vimspector",
+      opt = true,
+      keys = { "<leader>v" },
+      cmd = { "VimspectorInstall", "VimspectorUpdate" },
+      config = function()
+        require("config.vimspector").setup()
+      end,
+    }
+
+    -- Test
+    use {
+      "rcarriga/vim-ultest",
+      requires = { "vim-test/vim-test" },
+      opt = true,
+      keys = { "<leader>t" },
+      cmd = {
+        "TestNearest",
+        "TestFile",
+        "TestSuite",
+        "TestLast",
+        "TestVisit",
+        "Ultest",
+        "UltestNearest",
+        "UltestDebug",
+        "UltestLast",
+        "UltestSummary",
+      },
+      module = "ultest",
+      run = ":UpdateRemotePlugins",
+      config = function()
+        require("config.test").setup()
+      end,
+    }
+
+    -- AI completion
+    use { "github/copilot.vim", event = "InsertEnter" }
+
+    -- Legendary
+    use {
+      "mrjones2014/legendary.nvim",
+      keys = { [[<C-p>]] },
+      wants = { "dressing.nvim" },
+      config = function()
+        require("config.legendary").setup()
+      end,
+      requires = { "stevearc/dressing.nvim" },
+    }
 
     -- Bootstrap Neovim
     if packer_bootstrap then

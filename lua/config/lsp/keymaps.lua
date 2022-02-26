@@ -27,11 +27,12 @@ local function keymappings(client, bufnr)
       f = { "<cmd>Lspsaga lsp_finder<CR>", "Finder" },
       i = { "<cmd>LspInfo<CR>", "Lsp Info" },
       n = { "<cmd>Lspsaga rename<CR>", "Rename" },
-      r = { "<cmd>Telescope lsp_references<CR>", "Diagnostics" },
-      s = { "<cmd>Telescope lsp_document_symbols<CR>", "Diagnostics" },
+      r = { "<cmd>Telescope lsp_references<CR>", "References" },
+      s = { "<cmd>Telescope lsp_document_symbols<CR>", "Document Symbols" },
       t = { "<cmd>TroubleToggle<CR>", "Trouble" },
       L = { "<cmd>lua vim.lsp.codelens.refresh()<CR>", "Refresh CodeLens" },
       l = { "<cmd>lua vim.lsp.codelens.run()<CR>", "Run CodeLens" },
+      h = { "<cmd>lua vim.diagnostic.hide()<CR>", "Hide Diagnostics" },
     },
   }
   if client.resolved_capabilities.document_formatting then
