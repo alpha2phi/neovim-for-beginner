@@ -99,6 +99,7 @@ local function normal_keymap()
       name = "Test",
       S = { "<cmd>UltestSummary<cr>", "Summary" },
       a = { "<cmd>Ultest<cr>", "All" },
+      c = { "<cmd>UltestClear<cr>", "Clear" },
       d = { "<cmd>UltestDebug<cr>", "Debug" },
       f = { "<cmd>TestFile<cr>", "File" },
       l = { "<cmd>TestLast<cr>", "Last" },
@@ -183,6 +184,7 @@ local function code_keymap()
         o = { "<cmd>TSLspOrganize<cr>", "Organize" },
         r = { "<cmd>TSLspRenameFile<cr>", "Rename File" },
         i = { "<cmd>TSLspImportAll<cr>", "Import All" },
+        t = { "<cmd>lua require('utils.test').javascript_runner()<cr>", "Choose Test Runner" },
       }
     end
 

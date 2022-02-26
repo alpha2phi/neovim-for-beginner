@@ -24,6 +24,7 @@ local function config_test()
         " Javascript
         let test#javascript#reactscripts#options = "--watchAll=false"
         let g:test#javascript#runner = 'jest'
+        let g:test#javascript#cypress#executable = 'npx cypress run-ct'
     ]],
     false
   )
