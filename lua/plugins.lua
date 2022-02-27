@@ -565,9 +565,8 @@ function M.setup()
     -- vimspector
     use {
       "puremourning/vimspector",
-      opt = true,
-      keys = { "<leader>v" },
       cmd = { "VimspectorInstall", "VimspectorUpdate" },
+      fn = { "vimspector#Launch()", "vimspector#ToggleBreakpoint", "vimspector#Continue" },
       config = function()
         require("config.vimspector").setup()
       end,

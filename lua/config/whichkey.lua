@@ -109,6 +109,24 @@ local function normal_keymap()
       v = { "<cmd>TestVisit<cr>", "Visit" },
     },
 
+    v = {
+      name = "Vimspector",
+      G = { "<cmd>lua require('config.vimspector').generate_debug_profile()<cr>", "Generate Debug Profile" },
+      I = { "<cmd>VimspectorInstall<cr>", "Install" },
+      U = { "<cmd>VimspectorUpdate<cr>", "Update" },
+      R = { "<cmd>call vimspector#RunToCursor()<cr>", "Run to Cursor" },
+      c = { "<cmd>call vimspector#Continue()<cr>", "Continue" },
+      i = { "<cmd>call vimspector#StepInto()<cr>", "Step Into" },
+      o = { "<cmd>call vimspector#StepOver()<cr>", "Step Over" },
+      s = { "<cmd>call vimspector#Launch()<cr>", "Start" },
+      t = { "<cmd>call vimspector#ToggleBreakpoint()<cr>", "Toggle Breakpoint" },
+      u = { "<cmd>call vimspector#StepOut()<cr>", "Step Out" },
+      S = { "<cmd>call vimspector#Stop()<cr>", "Stop" },
+      r = { "<cmd>call vimspector#Restart()<cr>", "Restart" },
+      x = { "<cmd>VimspectorReset<cr>", "Reset" },
+      H = { "<cmd>lua require('config.vimspector').toggle_human_mode()<cr>", "Toggle HUMAN mode" },
+    },
+
     z = {
       name = "System",
       c = { "<cmd>PackerCompile<cr>", "Compile" },
@@ -178,13 +196,13 @@ local function code_keymap()
         name = "Code",
         r = { "<cmd>GoRun<cr>", "Run" },
       }
-    elseif ft == "typescript" or ft == "typescriptreact" then
+    elseif ft == "typescript" or ft == "typescriptreact" or ft == "javascript" or ft == "javascriptreact" then
       keymap = {
         name = "Code",
         o = { "<cmd>TSLspOrganize<cr>", "Organize" },
         r = { "<cmd>TSLspRenameFile<cr>", "Rename File" },
         i = { "<cmd>TSLspImportAll<cr>", "Import All" },
-        t = { "<cmd>lua require('utils.test').javascript_runner()<cr>", "Choose Test Runner" },
+        t = { "<cmd>lua require('config.test').javascript_runner()<cr>", "Choose Test Runner" },
       }
     end
 
