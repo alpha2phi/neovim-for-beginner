@@ -83,6 +83,16 @@ local function config_ultest()
   require("ultest").setup { builders = builders }
 end
 
+function M.javascript_runner()
+  local runners = { "cypress", "jest" }
+  vim.ui.select(runners, { prompt = "Choose Javascript Runner" }, function(selected)
+    if selected then
+      vim.g["test#javascript#runner"] = selected
+      require("utils").info("Test runner changed to " .. selected, "Test Runner")
+    end
+  end)
+end
+
 function M.setup()
   config_test()
   config_ultest()
