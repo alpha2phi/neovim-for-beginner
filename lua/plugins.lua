@@ -8,7 +8,7 @@ function M.setup()
   local conf = {
     profile = {
       enable = true,
-      threshold = 1, -- the amount in ms that a plugins load time must be over for it to be included in the profile
+      threshold = 0, -- the amount in ms that a plugins load time must be over for it to be included in the profile
     },
 
     display = {
@@ -603,12 +603,28 @@ function M.setup()
     -- Legendary
     use {
       "mrjones2014/legendary.nvim",
+      opt = true,
       keys = { [[<C-p>]] },
       wants = { "dressing.nvim" },
       config = function()
         require("config.legendary").setup()
       end,
       requires = { "stevearc/dressing.nvim" },
+    }
+
+    -- Performance
+    use { "dstein64/vim-startuptime", cmd = "StartupTime" }
+
+    -- Web
+    use {
+      "vuki656/package-info.nvim",
+      opt = true,
+      requires = "MunifTanjim/nui.nvim",
+      module = { "package-info" },
+      ft = { "json" },
+      config = function()
+        require("config.package").setup()
+      end,
     }
 
     -- Bootstrap Neovim
