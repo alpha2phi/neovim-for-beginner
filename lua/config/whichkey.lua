@@ -196,7 +196,7 @@ local function code_keymap()
         name = "Code",
         r = { "<cmd>GoRun<cr>", "Run" },
       }
-    elseif ft == "typescript" or ft == "typescriptreact" then
+    elseif ft == "typescript" or ft == "typescriptreact" or ft == "javascript" or ft == "javascriptreact" then
       keymap = {
         name = "Code",
         o = { "<cmd>TSLspOrganize<cr>", "Organize" },
