@@ -612,6 +612,14 @@ function M.setup()
       requires = { "stevearc/dressing.nvim" },
     }
 
+    -- Harpoon
+    use {
+      "ThePrimeagen/harpoon",
+      module = { "harpoon", "harpoon.cmd-ui", "harpoon.mark", "harpoon.ui", "harpoon.term" },
+    }
+
+    -- Refactoring - TODO
+
     -- Performance
     use { "dstein64/vim-startuptime", cmd = "StartupTime" }
 
@@ -619,7 +627,10 @@ function M.setup()
     use {
       "vuki656/package-info.nvim",
       opt = true,
-      requires = "MunifTanjim/nui.nvim",
+      requires = {
+        "MunifTanjim/nui.nvim",
+      },
+      wants = { "nui.nvim" },
       module = { "package-info" },
       ft = { "json" },
       config = function()
