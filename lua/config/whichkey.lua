@@ -85,8 +85,8 @@ local function normal_keymap()
       G = { "<cmd>Neogen class<Cr>", "Generate Class Doc" },
       x = "Swap Next Parameter",
       X = "Swap Prev Parameter",
-      f = "Select Outer Function",
-      F = "Select Outer Class",
+      -- f = "Select Outer Function",
+      -- F = "Select Outer Class",
     },
 
     d = {

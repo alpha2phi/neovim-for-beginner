@@ -78,14 +78,15 @@ function M.setup()
         },
       },
 
-      lsp_interop = {
-        enable = true,
-        border = "none",
-        peek_definition_code = {
-          ["<leader>cf"] = "@function.outer",
-          ["<leader>cF"] = "@class.outer",
-        },
-      },
+      -- lsp_interop = {
+      --   enable = true,
+      --   border = "none",
+      --   peek_definition_code = {
+      --     ["<leader>cf"] = "@function.outer",
+      --     ["<leader>cF"] = "@class.outer",
+      --   },
+      -- },
+      --
     },
 
     -- endwise
