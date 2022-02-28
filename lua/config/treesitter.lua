@@ -50,10 +50,10 @@ function M.setup()
       swap = {
         enable = true,
         swap_next = {
-          ["<leader>sx"] = "@parameter.inner",
+          ["<leader>cx"] = "@parameter.inner",
         },
         swap_previous = {
-          ["<leader>sX"] = "@parameter.inner",
+          ["<leader>cX"] = "@parameter.inner",
         },
       },
 
