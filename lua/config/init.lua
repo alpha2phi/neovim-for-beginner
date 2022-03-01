@@ -22,22 +22,22 @@ PLUGINS = {
   },
 }
 
--- disable some builtin vim plugins
+-- Disable some builtin vim plugins
 local disabled_built_ins = {
   "2html_plugin",
   "getscript",
   "getscriptPlugin",
   "gzip",
   "logipat",
-  "netrw",
-  "netrwPlugin",
-  "netrwSettings",
-  "netrwFileHandlers",
+  -- "netrw",
+  -- "netrwPlugin",
+  -- "netrwSettings",
+  -- "netrwFileHandlers",
   "matchit",
+  "matchparen",
   "tar",
   "tarPlugin",
   "rrhelper",
-  "spellfile_plugin",
   "vimball",
   "vimballPlugin",
   "zip",
