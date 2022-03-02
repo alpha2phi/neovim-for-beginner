@@ -41,6 +41,9 @@ function M.setup()
   local function plugins(use)
     use { "wbthomason/packer.nvim" }
 
+    -- Performance
+    use { "lewis6991/impatient.nvim" }
+
     -- Load only when require
     use { "nvim-lua/plenary.nvim", module = "plenary" }
 
@@ -622,6 +625,7 @@ function M.setup()
 
     -- Performance
     use { "dstein64/vim-startuptime", cmd = "StartupTime" }
+    use { "nathom/filetype.nvim" }
 
     -- Web
     use {
@@ -648,6 +652,11 @@ function M.setup()
   -- Init and start packer
   packer_init()
   local packer = require "packer"
+
+  -- Performance
+  pcall(require, "impatient")
+  -- pcall(require, "packer_compiled")
+
   packer.init(conf)
   packer.startup(plugins)
 end
