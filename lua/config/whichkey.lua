@@ -1,6 +1,7 @@
 local M = {}
 
 local whichkey = require "which-key"
+local next = next
 
 local conf = {
   window = {
@@ -80,12 +81,12 @@ local function normal_keymap()
 
     c = {
       name = "Code",
-      g = { "<cmd>Neogen func<Cr>", "Generate Func Doc" },
-      G = { "<cmd>Neogen class<Cr>", "Generate Class Doc" },
-      x = "Swap Next Parameter",
-      X = "Swap Prev Parameter",
-      f = "Select Outer Function",
-      F = "Select Outer Class",
+      g = { "<cmd>Neogen func<Cr>", "Func Doc" },
+      G = { "<cmd>Neogen class<Cr>", "Class Doc" },
+      x = "Swap Next Param",
+      X = "Swap Prev Param",
+      -- f = "Select Outer Function",
+      -- F = "Select Outer Class",
     },
 
     d = {
@@ -171,20 +172,22 @@ local function code_keymap()
   function CodeRunner()
     local bufnr = vim.api.nvim_get_current_buf()
     local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
-    local keymap = nil
+    local fname = vim.fn.expand "%:p:t"
+    local keymap_c = {}
+
     if ft == "python" then
-      keymap = {
+      keymap_c = {
         name = "Code",
         r = { "<cmd>update<CR><cmd>exec '!python3' shellescape(@%, 1)<cr>", "Run" },
         m = { "<cmd>TermExec cmd='nodemon -e py %'<cr>", "Monitor" },
       }
     elseif ft == "lua" then
-      keymap = {
+      keymap_c = {
         name = "Code",
         r = { "<cmd>luafile %<cr>", "Run" },
       }
     elseif ft == "rust" then
-      keymap = {
+      keymap_c = {
         name = "Code",
         r = { "<cmd>Cargo run<cr>", "Run" },
         D = { "<cmd>RustDebuggables<cr>", "Debuggables" },
@@ -192,12 +195,12 @@ local function code_keymap()
         R = { "<cmd>RustRunnables<cr>", "Runnables" },
       }
     elseif ft == "go" then
-      keymap = {
+      keymap_c = {
         name = "Code",
         r = { "<cmd>GoRun<cr>", "Run" },
       }
     elseif ft == "typescript" or ft == "typescriptreact" or ft == "javascript" or ft == "javascriptreact" then
-      keymap = {
+      keymap_c = {
         name = "Code",
         o = { "<cmd>TSLspOrganize<cr>", "Organize" },
         r = { "<cmd>TSLspRenameFile<cr>", "Rename File" },
@@ -206,9 +209,14 @@ local function code_keymap()
       }
     end
 
-    if keymap ~= nil then
+    if fname == "package.json" then
+      keymap_c.v = { "<cmd>lua require('package-info').show()<cr>", "Show Version" }
+      keymap_c.c = { "<cmd>lua require('package-info').change_version()<cr>", "Change Version" }
+    end
+
+    if next(keymap_c) ~= nil then
       whichkey.register(
-        { c = keymap },
+        { c = keymap_c },
         { mode = "n", silent = true, noremap = true, buffer = bufnr, prefix = "<leader>" }
       )
     end

@@ -50,10 +50,10 @@ function M.setup()
       swap = {
         enable = true,
         swap_next = {
-          ["<leader>sx"] = "@parameter.inner",
+          ["<leader>cx"] = "@parameter.inner",
         },
         swap_previous = {
-          ["<leader>sX"] = "@parameter.inner",
+          ["<leader>cX"] = "@parameter.inner",
         },
       },
 
@@ -78,14 +78,15 @@ function M.setup()
         },
       },
 
-      lsp_interop = {
-        enable = true,
-        border = "none",
-        peek_definition_code = {
-          ["<leader>cf"] = "@function.outer",
-          ["<leader>cF"] = "@class.outer",
-        },
-      },
+      -- lsp_interop = {
+      --   enable = true,
+      --   border = "none",
+      --   peek_definition_code = {
+      --     ["<leader>cf"] = "@function.outer",
+      --     ["<leader>cF"] = "@class.outer",
+      --   },
+      -- },
+      --
     },
 
     -- endwise

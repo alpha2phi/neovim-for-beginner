@@ -25,6 +25,13 @@ opt.showmode = false -- Do not need to show the mode. We use the statusline inst
 opt.scrolloff = 999 -- Lines of context
 opt.joinspaces = false -- No double spaces with join after a dot
 
+-- go to previous/next line with h,l,left arrow and right arrow
+-- when cursor reaches end/beginning of line
+opt.whichwrap:append "<>[]hl"
+
+-- disable nvim intro
+opt.shortmess:append "sI"
+
 -- Highlight on yank
 cmd [[
   augroup YankHighlight
@@ -73,6 +80,9 @@ cmd "au FocusGained * :checktime"
 -- windows to close with "q"
 cmd [[autocmd FileType help,startuptime,qf,lspinfo nnoremap <buffer><silent> q :close<CR>]]
 cmd [[autocmd FileType man nnoremap <buffer><silent> q :quit<CR>]]
+
+-- don't auto comment new line
+cmd [[autocmd BufEnter * set formatoptions-=cro]]
 
 -- Copilot
 cmd [[
