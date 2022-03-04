@@ -420,8 +420,8 @@ function M.setup()
       use {
         "neovim/nvim-lspconfig",
         opt = true,
-        -- event = "VimEnter",
-        event = { "BufReadPre" },
+        event = "VimEnter",
+        -- event = { "BufReadPre" },
         -- keys = { "<leader>l", "<leader>f" },
         -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
         wants = {
