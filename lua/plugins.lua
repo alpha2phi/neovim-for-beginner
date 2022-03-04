@@ -619,6 +619,9 @@ function M.setup()
     use {
       "ThePrimeagen/harpoon",
       module = { "harpoon", "harpoon.cmd-ui", "harpoon.mark", "harpoon.ui", "harpoon.term" },
+      config = function()
+        require("config.harpoon").setup()
+      end,
     }
 
     -- Refactoring - TODO
