@@ -618,7 +618,9 @@ function M.setup()
     -- Harpoon
     use {
       "ThePrimeagen/harpoon",
+      keys = { [[<leader>j]] },
       module = { "harpoon", "harpoon.cmd-ui", "harpoon.mark", "harpoon.ui", "harpoon.term" },
+      wants = { "telescope.nvim" },
       config = function()
         require("config.harpoon").setup()
       end,
