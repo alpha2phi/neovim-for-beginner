@@ -4,9 +4,15 @@ local ls = require "luasnip"
 
 local s = ls.snippet
 local t = ls.text_node
+local types = require "luasnip.util.types"
 -- local i = ls.insert_node
--- local f = ls.function_node
 -- local c = ls.choice_node
+-- local sn = ls.snippet_node
+-- local isn = ls.indent_snippet_node
+-- local fmt = require("luasnip.extras.fmt").fmt
+-- local events = require "luasnip.util.events"
+-- local types = require "luasnip.util.types"
+-- local f = ls.function_node
 -- local d = ls.dynamic_node
 -- local r = ls.restore_node
 -- local l = require("luasnip.extras").lambda
@@ -17,7 +23,6 @@ local t = ls.text_node
 -- local dl = require("luasnip.extras").dynamic_lambda
 -- local fmt = require("luasnip.extras.fmt").fmt
 -- local fmta = require("luasnip.extras.fmt").fmta
-local types = require "luasnip.util.types"
 -- local conds = require "luasnip.extras.expand_conditions"
 
 local function create_snippets()
@@ -25,11 +30,8 @@ local function create_snippets()
     all = {
       s("ttt", t "Testing Luasnip"),
     },
-    lua = {
-      ls.parser.parse_snippet("lm", "local M = {}\n\nfunction M.setup()\n  $1 \nend\n\nreturn M"),
-      -- s("lm", { t { "local M = {}", "", "function M.setup()", "" }, i(1, ""), t { "", "end", "", "return M" } }),
-    },
-    python = {},
+    lua = require("config.snip.lua").setup(),
+    python = require("config.snip.python").setup(),
   }
 end
 
