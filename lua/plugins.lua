@@ -630,7 +630,7 @@ function M.setup()
     -- Refactoring
     use {
       "ThePrimeagen/refactoring.nvim",
-      module = "refactoring",
+      module = { "refactoring", "telescope" },
       keys = { [[<leader>r]] },
       wants = { "telescope.nvim" },
       config = function()

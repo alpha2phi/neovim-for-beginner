@@ -123,6 +123,13 @@ local function normal_keymap()
       v = { "<cmd>TestVisit<cr>", "Visit" },
     },
 
+    r = {
+      name = "Refactor",
+      i = { [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], "Inline Variable" },
+      p = { [[ <Esc><Cmd>lua require('refactoring').debug.printf({below = false})<CR>]], "Debug Print" },
+      c = { [[ <Esc><Cmd>lua require('refactoring').debug.cleanup({below = false})<CR>]], "Debug Cleanup" },
+    },
+
     v = {
       name = "Vimspector",
       G = { "<cmd>lua require('config.vimspector').generate_debug_profile()<cr>", "Generate Debug Profile" },
@@ -173,6 +180,19 @@ local function visual_keymap()
         "<cmd>lua require'gitlinker'.get_buf_range_url('v', {action_callback = require'gitlinker.actions'.open_in_browser})<cr>",
         "Link",
       },
+    },
+
+    r = {
+      name = "Refactor",
+      e = { [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], "Extract Function" },
+      f = {
+        [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function to File')<CR>]],
+        "Extract Function to File",
+      },
+      v = { [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], "Extract Variable" },
+      i = { [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], "Inline Variable" },
+      r = { [[ <Esc><Cmd>lua require('telescope').extensions.refactoring.refactors()<CR>]], "Refactor" },
+      V = { [[ <Esc><Cmd>lua require('refactoring').debug.print_var({})<CR>]], "Debug Print Var" },
     },
   }
 
