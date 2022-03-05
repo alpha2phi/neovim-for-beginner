@@ -39,10 +39,22 @@ function M.setup()
     updateevents = "TextChanged,TextChangedI",
     enable_autosnippets = true,
 
+    -- ext_opts = {
+    --   [types.choiceNode] = {
+    --     active = {
+    --       virt_text = { { "<-", "Error" } },
+    --     },
+    --   },
+    -- },
     ext_opts = {
       [types.choiceNode] = {
         active = {
-          virt_text = { { "<-", "Error" } },
+          virt_text = { { "●", "GruvboxOrange" } },
+        },
+      },
+      [types.insertNode] = {
+        active = {
+          virt_text = { { "●", "GruvboxBlue" } },
         },
       },
     },
@@ -53,7 +65,7 @@ function M.setup()
   require("luasnip.loaders.from_snipmate").lazy_load()
 
   -- Load custom javascript
-  require("luasnip.loaders.from_vscode").load { paths = { "./snippets/javascript" } }
+  require("luasnip.loaders.from_vscode").lazy_load { paths = { "./snippets/javascript" } }
 
   ls.filetype_extend("all", { "_" })
 

@@ -627,7 +627,16 @@ function M.setup()
       end,
     }
 
-    -- Refactoring - TODO
+    -- Refactoring
+    use {
+      "ThePrimeagen/refactoring.nvim",
+      module = "refactoring",
+      keys = { [[<leader>r]] },
+      wants = { "telescope.nvim" },
+      config = function()
+        require("config.refactoring").setup()
+      end,
+    }
 
     -- Performance
     use { "dstein64/vim-startuptime", cmd = "StartupTime" }
