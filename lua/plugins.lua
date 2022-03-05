@@ -420,8 +420,8 @@ function M.setup()
       use {
         "neovim/nvim-lspconfig",
         opt = true,
-        -- event = "VimEnter",
-        event = { "BufReadPre" },
+        event = "VimEnter",
+        -- event = { "BufReadPre" },
         -- keys = { "<leader>l", "<leader>f" },
         -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
         wants = {
@@ -547,7 +547,8 @@ function M.setup()
     use {
       "mfussenegger/nvim-dap",
       opt = true,
-      event = "BufReadPre",
+      -- event = "BufReadPre",
+      keys = { [[<leader>d]] },
       module = { "dap" },
       wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
       requires = {
@@ -618,7 +619,12 @@ function M.setup()
     -- Harpoon
     use {
       "ThePrimeagen/harpoon",
+      keys = { [[<leader>j]] },
       module = { "harpoon", "harpoon.cmd-ui", "harpoon.mark", "harpoon.ui", "harpoon.term" },
+      wants = { "telescope.nvim" },
+      config = function()
+        require("config.harpoon").setup()
+      end,
     }
 
     -- Refactoring - TODO
