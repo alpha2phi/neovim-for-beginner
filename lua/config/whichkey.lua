@@ -238,7 +238,9 @@ local function code_keymap()
         o = { "<cmd>TSLspOrganize<cr>", "Organize" },
         r = { "<cmd>TSLspRenameFile<cr>", "Rename File" },
         i = { "<cmd>TSLspImportAll<cr>", "Import All" },
-        t = { "<cmd>lua require('config.test').javascript_runner()<cr>", "Choose Test Runner" },
+        R = { "<cmd>lua require('config.test').javascript_runner()<cr>", "Choose Test Runner" },
+        s = { "<cmd>2TermExec cmd='yarn start'<cr>", "Yarn Start" },
+        t = { "<cmd>2TermExec cmd='yarn test'<cr>", "Yarn Test" },
       }
     end
 
