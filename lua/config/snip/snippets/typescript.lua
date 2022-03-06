@@ -23,7 +23,8 @@ local t = ls.text_node
 -- local conds = require "luasnip.extras.expand_conditions"
 
 local snippets = {
-  s("tt", t "Testing Typescript"),
+  s("todo", t "console.log('TODO')"),
+  s("stack", t "serverless stack"),
 }
 
 return snippets

@@ -176,6 +176,34 @@ function M.setup()
     -- Buffer
     use { "kazhala/close-buffers.nvim", cmd = { "BDelete", "BWipeout" } }
 
+    -- IDE
+    use {
+      "antoinemadec/FixCursorHold.nvim",
+      event = "BufReadPre",
+      config = function()
+        vim.g.cursorhold_updatetime = 100
+      end,
+    }
+    use {
+      "max397574/better-escape.nvim",
+      event = { "InsertEnter" },
+      config = function()
+        require("better_escape").setup {
+          mapping = { "jk" },
+          timeout = vim.o.timeoutlen,
+          keys = "<ESC>",
+        }
+      end,
+    }
+    use {
+      "karb94/neoscroll.nvim",
+      event = "BufReadPre",
+      config = function()
+        require("config.neoscroll").setup()
+      end,
+      disable = true,
+    }
+
     -- Code documentation
     use {
       "danymat/neogen",
