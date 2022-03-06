@@ -158,6 +158,7 @@ local function normal_keymap()
       u = { "<cmd>PackerUpdate<cr>", "Update" },
       -- x = { "<cmd>cd %:p:h<cr>", "Change Directory" },
       x = { "<cmd>set autochdir<cr>", "Auto ChDir" },
+      e = { "!!$SHELL<CR>", "Execute line" },
     },
 
     g = {

@@ -1,0 +1,46 @@
+{
+  "name": "python-snippets",
+  "displayName": "python-snippets",
+  "description": "Python Snippets",
+  "version": "0.1.2",
+  "publisher": "cstrap",
+  "icon": "images/python.png",
+  "engines": {
+    "vscode": "^1.12.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "keywords": [
+    "snippets",
+    "python"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cstrap/python-snippets.git"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "python",
+        "path": "./base.json"
+      },
+      {
+        "language": "python",
+        "path": "./unittest.json"
+      },
+      {
+        "language": "python",
+        "path": "./comprehension.json"
+      },
+      {
+        "language": "python",
+        "path": "./debug.json"
+      },
+      {
+        "language": "python",
+        "path": "./tkinter.json"
+      }
+    ]
+  }
+}
