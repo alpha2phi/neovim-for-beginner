@@ -248,6 +248,8 @@ local function code_keymap()
     if fname == "package.json" then
       keymap_c.v = { "<cmd>lua require('package-info').show()<cr>", "Show Version" }
       keymap_c.c = { "<cmd>lua require('package-info').change_version()<cr>", "Change Version" }
+      keymap_c.s = { "<cmd>2TermExec cmd='yarn start'<cr>", "Yarn Start" }
+      keymap_c.t = { "<cmd>2TermExec cmd='yarn test'<cr>", "Yarn Test" }
     end
 
     if next(keymap_c) ~= nil then
