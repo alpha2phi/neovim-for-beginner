@@ -88,6 +88,7 @@ function M.setup()
   -- Load custom typescript snippets
   require("luasnip.loaders.from_vscode").lazy_load { paths = { "./snippets/typescript" } }
   require("luasnip.loaders.from_vscode").lazy_load { paths = { "./snippets/python" } }
+  require("luasnip.loaders.from_vscode").lazy_load { paths = { "./snippets/rust" } }
 
   ls.filetype_extend("all", { "_" })
 end

@@ -1,0 +1,14 @@
+{
+  "helloworld": {
+    "prefix": "rusthello",
+    "body": "$BLOCK_COMMENT_START Hello World $BLOCK_COMMENT_END",
+    "description": "Rust Hello World"
+  },
+  "println": {
+    "prefix": "prn",
+    "body": [
+      "println!(\"${1:value}\");"
+    ],
+    "description": "println"
+  }
+}
