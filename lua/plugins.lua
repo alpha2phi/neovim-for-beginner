@@ -58,17 +58,25 @@ function M.setup()
 
     -- Colorscheme
     use {
+      "folke/tokyonight.nvim",
+      config = function()
+        vim.cmd "colorscheme tokyonight"
+      end,
+      disable = true,
+    }
+    use {
       "sainnhe/everforest",
       config = function()
         vim.cmd "colorscheme everforest"
       end,
+      disable = true,
     }
     use {
       "sainnhe/gruvbox-material",
       config = function()
         vim.cmd "colorscheme gruvbox-material"
       end,
-      disable = true,
+      disable = false,
     }
 
     -- Startup screen
