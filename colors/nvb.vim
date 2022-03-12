@@ -6,4 +6,4 @@
 " lua package.loaded['nvb.util'] = nil
 lua package.loaded['nvb.config'] = nil
 
-lua require("colorscheme").setup()
+lua require("config.colorscheme").setup()
