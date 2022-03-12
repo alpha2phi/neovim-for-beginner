@@ -176,6 +176,34 @@ function M.setup()
     -- Buffer
     use { "kazhala/close-buffers.nvim", cmd = { "BDelete", "BWipeout" } }
 
+    -- IDE
+    use {
+      "antoinemadec/FixCursorHold.nvim",
+      event = "BufReadPre",
+      config = function()
+        vim.g.cursorhold_updatetime = 100
+      end,
+    }
+    use {
+      "max397574/better-escape.nvim",
+      event = { "InsertEnter" },
+      config = function()
+        require("better_escape").setup {
+          mapping = { "jk" },
+          timeout = vim.o.timeoutlen,
+          keys = "<ESC>",
+        }
+      end,
+    }
+    use {
+      "karb94/neoscroll.nvim",
+      event = "BufReadPre",
+      config = function()
+        require("config.neoscroll").setup()
+      end,
+      disable = true,
+    }
+
     -- Code documentation
     use {
       "danymat/neogen",
@@ -420,8 +448,8 @@ function M.setup()
       use {
         "neovim/nvim-lspconfig",
         opt = true,
-        -- event = "VimEnter",
-        event = { "BufReadPre" },
+        event = "VimEnter",
+        -- event = { "BufReadPre" },
         -- keys = { "<leader>l", "<leader>f" },
         -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
         wants = {
@@ -547,7 +575,8 @@ function M.setup()
     use {
       "mfussenegger/nvim-dap",
       opt = true,
-      event = "BufReadPre",
+      -- event = "BufReadPre",
+      keys = { [[<leader>d]] },
       module = { "dap" },
       wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
       requires = {
@@ -618,10 +647,24 @@ function M.setup()
     -- Harpoon
     use {
       "ThePrimeagen/harpoon",
+      keys = { [[<leader>j]] },
       module = { "harpoon", "harpoon.cmd-ui", "harpoon.mark", "harpoon.ui", "harpoon.term" },
+      wants = { "telescope.nvim" },
+      config = function()
+        require("config.harpoon").setup()
+      end,
     }
 
-    -- Refactoring - TODO
+    -- Refactoring
+    use {
+      "ThePrimeagen/refactoring.nvim",
+      module = { "refactoring", "telescope" },
+      keys = { [[<leader>r]] },
+      wants = { "telescope.nvim" },
+      config = function()
+        require("config.refactoring").setup()
+      end,
+    }
 
     -- Performance
     use { "dstein64/vim-startuptime", cmd = "StartupTime" }

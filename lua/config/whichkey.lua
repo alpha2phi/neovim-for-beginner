@@ -96,6 +96,19 @@ local function normal_keymap()
     f = keymap_f,
     p = keymap_p,
 
+    j = {
+      name = "Jump",
+      a = { "<Cmd>lua require('harpoon.mark').add_file()<Cr>", "Add File" },
+      m = { "<Cmd>lua require('harpoon.ui').toggle_quick_menu()<Cr>", "UI Menu" },
+      c = { "<Cmd>lua require('harpoon.cmd-ui').toggle_quick_menu()<Cr>", "Command Menu" },
+    },
+    ["1"] = { "<Cmd>lua require('harpoon.ui').nav_file(1) <Cr>", "File 1" },
+    ["2"] = { "<Cmd>lua require('harpoon.ui').nav_file(2) <Cr>", "File 2" },
+    ["3"] = { "<Cmd>lua require('harpoon.term').gotoTerminal(1)<Cr>", "Terminal 1" },
+    ["4"] = { "<Cmd>lua require('harpoon.term').gotoTerminal(2)<Cr>", "Terminal 2" },
+    ["5"] = { "<Cmd>lua require('harpoon.term').sendCommand(1,1)<Cr>", "Command 1" },
+    ["6"] = { "<Cmd>lua require('harpoon.term').sendCommand(1,2)<Cr>", "Command 2" },
+
     t = {
       name = "Test",
       S = { "<cmd>UltestSummary<cr>", "Summary" },
@@ -108,6 +121,13 @@ local function normal_keymap()
       o = { "<cmd>UltestOutput<cr>", "Output" },
       s = { "<cmd>TestSuite<cr>", "Suite" },
       v = { "<cmd>TestVisit<cr>", "Visit" },
+    },
+
+    r = {
+      name = "Refactor",
+      i = { [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], "Inline Variable" },
+      p = { [[ <Esc><Cmd>lua require('refactoring').debug.printf({below = false})<CR>]], "Debug Print" },
+      c = { [[ <Esc><Cmd>lua require('refactoring').debug.cleanup({below = false})<CR>]], "Debug Cleanup" },
     },
 
     v = {
@@ -136,8 +156,9 @@ local function normal_keymap()
       s = { "<cmd>PackerSync<cr>", "Sync" },
       S = { "<cmd>PackerStatus<cr>", "Status" },
       u = { "<cmd>PackerUpdate<cr>", "Update" },
-      -- x = { "<cmd>cd %:p:h<cr>", "Change Directory" },
-      x = { "<cmd>set autochdir<cr>", "Auto ChDir" },
+      x = { "<cmd>cd %:p:h<cr>", "Change Directory" },
+      -- x = { "<cmd>set autochdir<cr>", "Auto ChDir" },
+      e = { "!!$SHELL<CR>", "Execute line" },
     },
 
     g = {
@@ -160,6 +181,19 @@ local function visual_keymap()
         "<cmd>lua require'gitlinker'.get_buf_range_url('v', {action_callback = require'gitlinker.actions'.open_in_browser})<cr>",
         "Link",
       },
+    },
+
+    r = {
+      name = "Refactor",
+      e = { [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], "Extract Function" },
+      f = {
+        [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function to File')<CR>]],
+        "Extract Function to File",
+      },
+      v = { [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], "Extract Variable" },
+      i = { [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], "Inline Variable" },
+      r = { [[ <Esc><Cmd>lua require('telescope').extensions.refactoring.refactors()<CR>]], "Refactor" },
+      V = { [[ <Esc><Cmd>lua require('refactoring').debug.print_var({})<CR>]], "Debug Print Var" },
     },
   }
 
@@ -205,13 +239,17 @@ local function code_keymap()
         o = { "<cmd>TSLspOrganize<cr>", "Organize" },
         r = { "<cmd>TSLspRenameFile<cr>", "Rename File" },
         i = { "<cmd>TSLspImportAll<cr>", "Import All" },
-        t = { "<cmd>lua require('config.test').javascript_runner()<cr>", "Choose Test Runner" },
+        R = { "<cmd>lua require('config.test').javascript_runner()<cr>", "Choose Test Runner" },
+        s = { "<cmd>2TermExec cmd='yarn start'<cr>", "Yarn Start" },
+        t = { "<cmd>2TermExec cmd='yarn test'<cr>", "Yarn Test" },
       }
     end
 
     if fname == "package.json" then
       keymap_c.v = { "<cmd>lua require('package-info').show()<cr>", "Show Version" }
       keymap_c.c = { "<cmd>lua require('package-info').change_version()<cr>", "Change Version" }
+      keymap_c.s = { "<cmd>2TermExec cmd='yarn start'<cr>", "Yarn Start" }
+      keymap_c.t = { "<cmd>2TermExec cmd='yarn test'<cr>", "Yarn Test" }
     end
 
     if next(keymap_c) ~= nil then

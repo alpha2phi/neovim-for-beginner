@@ -5,6 +5,10 @@ local expr_opts = { noremap = true, expr = true, silent = true }
 -- Better escape using jk in insert and terminal mode
 keymap("i", "jk", "<ESC>", default_opts)
 keymap("t", "jk", "<C-\\><C-n>", default_opts)
+keymap("t", "<C-h>", "<C-\\><C-n><C-w>h", default_opts)
+keymap("t", "<C-j>", "<C-\\><C-n><C-w>j", default_opts)
+keymap("t", "<C-k>", "<C-\\><C-n><C-w>k", default_opts)
+keymap("t", "<C-l>", "<C-\\><C-n><C-w>l", default_opts)
 
 -- Center search results
 keymap("n", "n", "nzz", default_opts)

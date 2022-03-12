@@ -54,8 +54,8 @@ function M.setup()
         -- Source
         vim_item.menu = ({
           nvim_lsp = "[LSP]",
-          buffer = "[Buffer]",
           luasnip = "[Snip]",
+          buffer = "[Buffer]",
           nvim_lua = "[Lua]",
           treesitter = "[Treesitter]",
           path = "[Path]",
@@ -112,9 +112,9 @@ function M.setup()
     },
     sources = {
       { name = "nvim_lsp" },
+      { name = "luasnip" },
       { name = "treesitter" },
       { name = "buffer" },
-      { name = "luasnip" },
       { name = "nvim_lua" },
       { name = "path" },
       { name = "nvim_lsp_signature_help" },
