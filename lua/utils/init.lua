@@ -42,4 +42,18 @@ function M.info(msg, name)
   vim.notify(msg, vim.log.levels.INFO, { title = name })
 end
 
+function M.nvim_version(val)
+  local version = (vim.version().major .. "." .. vim.version().minor) + 0.0
+  val = val or 0.7
+  if version >= val then
+    return true
+  else
+    return false
+  end
+end
+
+function M.nvim_nightly()
+  return M.nvim_version(0.7)
+end
+
 return M
