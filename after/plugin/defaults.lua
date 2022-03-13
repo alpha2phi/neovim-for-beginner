@@ -32,13 +32,6 @@ opt.whichwrap:append "<>[]hl"
 -- disable nvim intro
 opt.shortmess:append "sI"
 
--- Highlight on yank
-cmd [[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
-]]
 
 -- Better search
 opt.path:remove "/usr/include"
