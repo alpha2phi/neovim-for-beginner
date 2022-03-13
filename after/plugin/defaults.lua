@@ -63,27 +63,6 @@ cmd [[
   set foldexpr=nvim_treesitter#foldexpr()
 ]]
 
--- show cursor line only in active window
-cmd [[
-  autocmd InsertLeave,WinEnter * set cursorline
-  autocmd InsertEnter,WinLeave * set nocursorline
-]]
-
--- go to last loc when opening a buffer
-cmd [[
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
-]]
-
--- Check if we need to reload the file when it changed
-cmd "au FocusGained * :checktime"
-
--- windows to close with "q"
-cmd [[autocmd FileType help,startuptime,qf,lspinfo nnoremap <buffer><silent> q :close<CR>]]
-cmd [[autocmd FileType man nnoremap <buffer><silent> q :quit<CR>]]
-
--- don't auto comment new line
-cmd [[autocmd BufEnter * set formatoptions-=cro]]
-
 -- Copilot
 cmd [[
     imap <silent><script><expr> <C-s> copilot#Accept("\<CR>")
