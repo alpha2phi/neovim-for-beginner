@@ -69,14 +69,14 @@ function M.setup()
       config = function()
         vim.cmd "colorscheme everforest"
       end,
-      disable = true,
+      disable = false,
     }
     use {
       "sainnhe/gruvbox-material",
       config = function()
         vim.cmd "colorscheme gruvbox-material"
       end,
-      disable = false,
+      disable = true,
     }
 
     -- Startup screen

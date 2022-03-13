@@ -1,14 +1,12 @@
 if vim.fn.has "nvim-0.7" then
   -- Use the autocmd APIs
-  local cmd = vim.cmd
+  local api = vim.api
 
   -- Highlight on yank
-  cmd [[
-    augroup YankHighlight
-      autocmd!
-      autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-    augroup end
-  ]]
+  local group = api.nvim_create_augroup("YankHighlight", { clear = true })
+  api.nvim_create_autocmd("TextYankPost", { command = "silent! lua vim.highlight.on_yank()", group = group })
+
+  local cmd = vim.cmd
 
   -- show cursor line only in active window
   cmd [[
