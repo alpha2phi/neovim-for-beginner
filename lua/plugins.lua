@@ -589,7 +589,7 @@ function M.setup()
       module = { "dap" },
       wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
       requires = {
-        "Pocco81/DAPInstall.nvim",
+        "alpha2phi/DAPInstall.nvim",
         "theHamsta/nvim-dap-virtual-text",
         "rcarriga/nvim-dap-ui",
         "mfussenegger/nvim-dap-python",
