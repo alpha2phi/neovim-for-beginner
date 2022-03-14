@@ -1,33 +1,42 @@
 if vim.fn.has "nvim-0.7" then
-  -- Use the autocmd APIs
   local api = vim.api
 
   -- Highlight on yank
-  local group = api.nvim_create_augroup("YankHighlight", { clear = true })
-  api.nvim_create_autocmd("TextYankPost", { command = "silent! lua vim.highlight.on_yank()", group = group })
-
-  local cmd = vim.cmd
+  local yankGrp = api.nvim_create_augroup("YankHighlight", { clear = true })
+  api.nvim_create_autocmd("TextYankPost", {
+    command = "silent! lua vim.highlight.on_yank()",
+    group = yankGrp,
+  })
 
   -- show cursor line only in active window
-  cmd [[
-    autocmd InsertLeave,WinEnter * set cursorline
-    autocmd InsertEnter,WinLeave * set nocursorline
-  ]]
+  local cursorGrp = api.nvim_create_augroup("CursorLine", { clear = true })
+  api.nvim_create_autocmd(
+    { "InsertLeave", "WinEnter" },
+    { pattern = "*", command = "set cursorline", group = cursorGrp }
+  )
+  api.nvim_create_autocmd(
+    { "InsertEnter", "WinLeave" },
+    { pattern = "*", command = "set nocursorline", group = cursorGrp }
+  )
 
   -- go to last loc when opening a buffer
-  cmd [[
-    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
-  ]]
+  api.nvim_create_autocmd(
+    "BufReadPost",
+    { command = [[if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif]] }
+  )
 
   -- Check if we need to reload the file when it changed
-  cmd "au FocusGained * :checktime"
+  api.nvim_create_autocmd("FocusGained", { command = [[:checktime]] })
 
   -- windows to close with "q"
-  cmd [[autocmd FileType help,startuptime,qf,lspinfo nnoremap <buffer><silent> q :close<CR>]]
-  cmd [[autocmd FileType man nnoremap <buffer><silent> q :quit<CR>]]
+  api.nvim_create_autocmd(
+    "FileType",
+    { pattern = { "help", "startuptime", "qf", "lspinfo" }, command = [[nnoremap <buffer><silent> q :close<CR>]] }
+  )
+  api.nvim_create_autocmd("FileType", { pattern = "man", command = [[nnoremap <buffer><silent> q :quit<CR>]] })
 
   -- don't auto comment new line
-  cmd [[autocmd BufEnter * set formatoptions-=cro]]
+  api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
 else
   local cmd = vim.cmd
 
