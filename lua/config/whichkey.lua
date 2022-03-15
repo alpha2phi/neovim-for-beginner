@@ -46,6 +46,7 @@ local function normal_keymap()
       r = { "<cmd>Telescope file_browser<cr>", "Browser" },
       w = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Current Buffer" },
       e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+      l = { "<cmd>NvimTreeFocus<cr>", "Focus" },
     }
 
     keymap_p = {
