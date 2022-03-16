@@ -69,14 +69,14 @@ function M.setup()
       config = function()
         vim.cmd "colorscheme everforest"
       end,
-      disable = true,
+      disable = false,
     }
     use {
       "sainnhe/gruvbox-material",
       config = function()
         vim.cmd "colorscheme gruvbox-material"
       end,
-      disable = false,
+      disable = true,
     }
 
     -- Startup screen
@@ -211,6 +211,7 @@ function M.setup()
       end,
       disable = true,
     }
+    use { "google/vim-searchindex", event = "BufReadPre" }
 
     -- Code documentation
     use {
@@ -588,7 +589,7 @@ function M.setup()
       module = { "dap" },
       wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
       requires = {
-        "Pocco81/DAPInstall.nvim",
+        "alpha2phi/DAPInstall.nvim",
         "theHamsta/nvim-dap-virtual-text",
         "rcarriga/nvim-dap-ui",
         "mfussenegger/nvim-dap-python",
