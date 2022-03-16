@@ -676,9 +676,17 @@ function M.setup()
       end,
     }
 
-    -- database
+    -- Database
     use { "tpope/vim-dadbod" }
-
+    use { "kristijanhusak/vim-dadbod-ui" }
+    use {
+      "hoschi/yode-nvim",
+      module = { "yode-nvim" },
+      cmd = { "YodeCreateSeditorFloating" },
+      config = function()
+        require("yode-nivm").setup {}
+      end,
+    }
     -- Rest client
     use {
       "NTBBloodbath/rest.nvim",

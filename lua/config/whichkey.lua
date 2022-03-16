@@ -149,6 +149,14 @@ local function normal_keymap()
       H = { "<cmd>lua require('config.vimspector').toggle_human_mode()<cr>", "Toggle HUMAN mode" },
     },
 
+    x = {
+      name = "Database",
+      u = { "<Cmd>DBUIToggle<Cr>", "Toggle UI" },
+      f = { "<Cmd>DBUIFindBuffer<Cr>", "Find buffer" },
+      r = { "<Cmd>DBUIRenameBuffer<Cr>", "Rename buffer" },
+      q = { "<Cmd>DBUILastQueryInfo<Cr>", "Last query info" },
+    },
+
     z = {
       name = "System",
       c = { "<cmd>PackerCompile<cr>", "Compile" },
