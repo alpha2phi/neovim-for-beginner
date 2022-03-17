@@ -78,6 +78,22 @@ function M.setup()
       config = function()
         vim.cmd "colorscheme tokyonight"
       end,
+      disable = true,
+    }
+    use {
+      "JoosepAlviste/palenightfall.nvim",
+      config = function()
+        vim.cmd "colorscheme gruvbox-material"
+      end,
+      disable = true,
+    }
+    use {
+      "navarasu/onedark.nvim",
+      config = function()
+        vim.cmd "colorscheme onedark"
+        require "config.themes.onedark"
+      end,
+      disable = false,
     }
 
     -- Startup screen

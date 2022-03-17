@@ -5,8 +5,8 @@ function M.setup()
     disable_netrw = false,
     hijack_netrw = true,
     view = {
-      number = true,
-      relativenumber = true,
+      number = false,
+      relativenumber = false,
     },
     filters = {
       custom = { ".git" },
