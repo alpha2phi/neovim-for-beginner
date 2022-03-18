@@ -81,13 +81,6 @@ function M.setup()
     }
 
     use {
-      "folke/tokyonight.nvim",
-      config = function()
-        vim.cmd "colorscheme tokyonight"
-      end,
-      disable = true,
-    }
-    use {
       "JoosepAlviste/palenightfall.nvim",
       config = function()
         vim.cmd "colorscheme gruvbox-material"
