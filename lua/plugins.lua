@@ -79,6 +79,13 @@ function M.setup()
       disable = true,
     }
     use {
+      "arcticicestudio/nord-vim",
+      config = function()
+        vim.cmd "colorscheme nord"
+      end,
+      disable = true,
+    }
+    use {
       "norcalli/nvim-colorizer.lua",
       cmd = "ColorizerToggle",
       config = function()
