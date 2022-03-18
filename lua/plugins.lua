@@ -78,6 +78,13 @@ function M.setup()
       end,
       disable = true,
     }
+    use {
+      "norcalli/nvim-colorizer.lua",
+      cmd = "ColorizerToggle",
+      config = function()
+        require("colorizer").setup()
+      end,
+    }
 
     -- Startup screen
     use {
