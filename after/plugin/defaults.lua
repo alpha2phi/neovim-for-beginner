@@ -24,6 +24,7 @@ opt.timeoutlen = 300 --	Time in milliseconds to wait for a mapped sequence to co
 opt.showmode = false -- Do not need to show the mode. We use the statusline instead.
 opt.scrolloff = 999 -- Lines of context
 opt.joinspaces = false -- No double spaces with join after a dot
+opt.laststatus = 3 -- Global statusline
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
@@ -31,7 +32,6 @@ opt.whichwrap:append "<>[]hl"
 
 -- disable nvim intro
 opt.shortmess:append "sI"
-
 
 -- Better search
 opt.path:remove "/usr/include"
