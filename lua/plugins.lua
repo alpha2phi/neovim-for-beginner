@@ -67,6 +67,7 @@ function M.setup()
     use {
       "sainnhe/everforest",
       config = function()
+        vim.g.everforest_better_performance = 1
         vim.cmd "colorscheme everforest"
       end,
       disable = false,
@@ -77,6 +78,20 @@ function M.setup()
         vim.cmd "colorscheme gruvbox-material"
       end,
       disable = true,
+    }
+    use {
+      "arcticicestudio/nord-vim",
+      config = function()
+        vim.cmd "colorscheme nord"
+      end,
+      disable = true,
+    }
+    use {
+      "norcalli/nvim-colorizer.lua",
+      cmd = "ColorizerToggle",
+      config = function()
+        require("colorizer").setup()
+      end,
     }
 
     -- Startup screen
@@ -691,6 +706,16 @@ function M.setup()
       ft = { "json" },
       config = function()
         require("config.package").setup()
+      end,
+    }
+
+    use {
+      "rmagatti/auto-session",
+      opt = true,
+      cmd = { "SaveSession", "RestoreSession" },
+      requires = { "rmagatti/session-lens" },
+      config = function()
+        require("config.autosession").setup()
       end,
     }
 
