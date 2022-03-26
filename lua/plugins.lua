@@ -709,6 +709,16 @@ function M.setup()
       end,
     }
 
+    use {
+      "rmagatti/auto-session",
+      opt = true,
+      cmd = { "SaveSession", "RestoreSession" },
+      requires = { "rmagatti/session-lens" },
+      config = function()
+        require("config.autosession").setup()
+      end,
+    }
+
     -- Bootstrap Neovim
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
