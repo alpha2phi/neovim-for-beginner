@@ -714,6 +714,7 @@ function M.setup()
       opt = true,
       cmd = { "SaveSession", "RestoreSession" },
       requires = { "rmagatti/session-lens" },
+      wants = { "telescope.nvim", "session-lens" },
       config = function()
         require("config.autosession").setup()
       end,
