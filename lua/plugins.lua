@@ -689,6 +689,7 @@ function M.setup()
         require("config.refactoring").setup()
       end,
     }
+    use { "python-rope/ropevim", keys = { [[<C-x>]], [[C-c]] }, run = "pip install ropevim" }
 
     -- Performance
     use { "dstein64/vim-startuptime", cmd = "StartupTime" }

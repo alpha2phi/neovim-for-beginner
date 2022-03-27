@@ -25,6 +25,7 @@ opt.showmode = false -- Do not need to show the mode. We use the statusline inst
 opt.scrolloff = 999 -- Lines of context
 opt.joinspaces = false -- No double spaces with join after a dot
 opt.laststatus = 3 -- Global statusline
+opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
