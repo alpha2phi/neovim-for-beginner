@@ -689,7 +689,7 @@ function M.setup()
         require("config.refactoring").setup()
       end,
     }
-    use { "python-rope/ropevim", keys = { [[<C-x>]], [[C-c]] }, run = "pip install ropevim" }
+    use { "python-rope/ropevim", keys = { [[<C-x>]], [[C-c]] }, run = "pip install ropevim", disable = true }
 
     -- Performance
     use { "dstein64/vim-startuptime", cmd = "StartupTime" }
@@ -708,6 +708,11 @@ function M.setup()
       config = function()
         require("config.package").setup()
       end,
+    }
+    use {
+      "meain/vim-package-info",
+      ft = { "json" },
+      run = "npm install",
     }
 
     use {
