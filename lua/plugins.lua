@@ -708,11 +708,13 @@ function M.setup()
       config = function()
         require("config.package").setup()
       end,
+      disable = true,
     }
     use {
       "meain/vim-package-info",
       ft = { "json" },
       run = "npm install",
+      disable = true,
     }
 
     use {
