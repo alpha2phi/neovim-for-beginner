@@ -717,6 +717,7 @@ function M.setup()
       disable = true,
     }
 
+    -- Session
     use {
       "rmagatti/auto-session",
       opt = true,
