@@ -159,6 +159,8 @@ local function normal_keymap()
       x = { "<cmd>cd %:p:h<cr>", "Change Directory" },
       -- x = { "<cmd>set autochdir<cr>", "Auto ChDir" },
       e = { "!!$SHELL<CR>", "Execute line" },
+      W = { "<cmd>SaveSession<cr>", "Save Workspace" },
+      w = { "<cmd>Telescope session-lens search_session<cr>", "Restore Workspace" },
     },
 
     g = {
