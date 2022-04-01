@@ -708,7 +708,7 @@ function M.setup()
       config = function()
         require("config.package").setup()
       end,
-      disable = true,
+      disable = false,
     }
     use {
       "meain/vim-package-info",
@@ -727,6 +727,7 @@ function M.setup()
         require("config.autosession").setup()
       end,
     }
+    use { "tpope/vim-obsession", cmd = { "Obsess" } }
 
     -- Bootstrap Neovim
     if packer_bootstrap then
