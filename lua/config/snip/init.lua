@@ -17,6 +17,9 @@ function _G.edit_ft()
 end
 
 function _G.snippets_clear()
+  if ls.snippets == nil then
+    return
+  end
   for m, _ in pairs(ls.snippets) do
     package.loaded["config.snip.snippets." .. m] = nil
   end
