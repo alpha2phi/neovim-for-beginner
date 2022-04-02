@@ -3,8 +3,9 @@ describe("Text to Speech", function()
     print "before each"
   end)
 
-  it("normal mode", function()
-    vim.api.nvim_exec([[ Text2Speech]], true)
-    assert.equals("hello", "hello")
+  it("Test Command", function()
+    local result = vim.fn.text2speech()
+    print(result)
+    assert.equals("1hello", "hello")
   end)
 end)

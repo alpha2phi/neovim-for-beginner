@@ -3,9 +3,16 @@ describe("Testing", function()
     print "before each"
   end)
 
-  it("test case 1", function()
-    -- vim.api.nvim_exec([[ lua print("Testing")]], true)
-    -- vim.notify "testing"
-    assert.equals("helloj", "helloj")
+  after_each(function()
+    print "after each"
+  end)
+
+  it("Scenario 1", function()
+    assert.equals([[hello alpha2phi]], "hello alpha2phi")
+  end)
+
+  it("Scenario 2", function()
+    print("Scenario 2")
+    assert.equals([[hello world]], "hello world")
   end)
 end)

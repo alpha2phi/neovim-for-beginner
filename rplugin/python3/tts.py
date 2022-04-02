@@ -11,21 +11,11 @@ class Text2SpeechPlugin(object):
         self.nvim = nvim
 
     @pynvim.command("Text2Speech")
-    def text2Speech(self):
-        self.nvim.current.line = "Hello World"
-        # buffer = self.nvim.current.buffer
-        # self.nvim.out_write("testing")
+    def text2SpeechCmd(self):
+        engine.say("hello")
+        engine.runAndWait()
 
-    # self.nvim.current.line = "Command with args: {}, range: {}".format(args, range)
-
-    # @pynvim.function("TestFunction", sync=True)
-    # def testfunction(self, args):
-    #     return 3
-    #
-    # @pynvim.command("TestCommand", nargs="*", range="")
-    # def testcommand(self, args, range):
-    #     self.nvim.current.line = "Command with args: {}, range: {}".format(args, range)
-    #
-    # @pynvim.autocmd("BufEnter", pattern="*.py", eval='expand("<afile>")', sync=True)
-    # def on_bufenter(self, filename):
-    #     self.nvim.out_write("testplugin is in " + filename + "\n")
+    @pynvim.function("text2speech")
+    def text2SpeechFunc(self, args):
+        self.nvim.out_write("text2speech function")
+        return "hello alpha2phi"
