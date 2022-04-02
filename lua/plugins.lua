@@ -102,6 +102,10 @@ function M.setup()
       end,
     }
 
+    -- Doc
+    use { "nanotee/luv-vimdocs", event = "BufReadPre" }
+    use { "milisims/nvim-luaref", event = "BufReadPre" }
+
     -- Better Netrw
     use { "tpope/vim-vinegar" }
 
