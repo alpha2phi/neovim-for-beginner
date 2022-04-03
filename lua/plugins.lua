@@ -102,6 +102,10 @@ function M.setup()
       end,
     }
 
+    -- Doc
+    use { "nanotee/luv-vimdocs", event = "BufReadPre" }
+    use { "milisims/nvim-luaref", event = "BufReadPre" }
+
     -- Better Netrw
     use { "tpope/vim-vinegar" }
 
@@ -708,7 +712,7 @@ function M.setup()
       config = function()
         require("config.package").setup()
       end,
-      disable = true,
+      disable = false,
     }
     use {
       "meain/vim-package-info",
@@ -717,6 +721,7 @@ function M.setup()
       disable = true,
     }
 
+    -- Session
     use {
       "rmagatti/auto-session",
       opt = true,
@@ -727,6 +732,7 @@ function M.setup()
         require("config.autosession").setup()
       end,
     }
+    use { "tpope/vim-obsession", cmd = { "Obsess" } }
 
     -- Bootstrap Neovim
     if packer_bootstrap then

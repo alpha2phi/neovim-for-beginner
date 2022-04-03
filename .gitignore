@@ -41,5 +41,9 @@ luac.out
 
 .git/
 
+__pycache__/
+
+/Session.vim
+
 plugin/packer_compiled.lua
 lua/packer_compiled.lua
