@@ -1,11 +1,7 @@
 describe("Text to Speech", function()
-  before_each(function()
-    print "before each"
-  end)
-
-  it("Test Command", function()
-    local result = vim.fn.text2speech()
-    print(result)
-    assert.equals("1hello", "hello")
+  it("Test Translate", function()
+    local translated = vim.fn.Translate("zh", "hello world")
+    translated = vim.fn.Translate("zh", "hello world")
+    assert.equals("你好世界", translated)
   end)
 end)

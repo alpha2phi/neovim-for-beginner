@@ -18,6 +18,11 @@ keymap("n", "N", "Nzz", default_opts)
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", expr_opts)
 keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", expr_opts)
 
+-- -- Always center
+-- keymap("n", "k", "kzz", default_opts)
+-- keymap("n", "j", "jzz", default_opts)
+-- keymap("n", "G", "Gzz", default_opts)
+
 -- Better indent
 keymap("v", "<", "<gv", default_opts)
 keymap("v", ">", ">gv", default_opts)
