@@ -712,7 +712,7 @@ function M.setup()
       config = function()
         require("config.package").setup()
       end,
-      disable = false,
+      disable = true,
     }
     use {
       "meain/vim-package-info",
@@ -738,8 +738,16 @@ function M.setup()
         require("config.possession").setup()
       end,
       cmd = { "PossessionSave", "PosessionLoad", "PosessionShow", "PossessionList" },
+      disable = true,
     }
-    use { "tpope/vim-obsession", cmd = { "Obsess" } }
+    use {
+      "tpope/vim-obsession",
+      cmd = { "Obsess" },
+      config = function()
+        require("config.obsession").setup()
+      end,
+      disable = true,
+    }
 
     -- Bootstrap Neovim
     if packer_bootstrap then
