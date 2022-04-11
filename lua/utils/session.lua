@@ -104,9 +104,4 @@ function M.toggle_session()
   end
 end
 
--- M.list_session()
--- M.save_session()
--- M.delete_session()
--- M.toggle_session()
-
 return M
