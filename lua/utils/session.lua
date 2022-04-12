@@ -58,6 +58,7 @@ function M.save_session()
     if session_name then
       session_name = vim.g.session_dir .. "/" .. session_name
       make_session(session_name)
+      utils.info(session_name, "Session saved")
     end
   end)
 end
