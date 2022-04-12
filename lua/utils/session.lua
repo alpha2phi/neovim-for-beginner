@@ -89,6 +89,8 @@ function M.toggle_session()
     vim.ui.input({ prompt = "Input session name: ", default = default_session_name }, function(session_name)
       if session_name then
         session_name = vim.g.session_dir .. "/" .. session_name
+        make_session(session_name) -- Save the session on toggle
+        -- Create autocmd
         local grp = vim.api.nvim_create_augroup("SessionTracking", { clear = true })
         vim.api.nvim_create_autocmd("VimLeave", { -- nvim 0.7 and above only
           pattern = "*",
