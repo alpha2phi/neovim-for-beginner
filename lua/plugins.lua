@@ -384,6 +384,7 @@ function M.setup()
       event = "BufReadPre",
       config = function()
         require("dressing").setup {
+          input = { relative = "editor" },
           select = {
             backend = { "telescope", "fzf", "builtin" },
           },
@@ -712,7 +713,7 @@ function M.setup()
       config = function()
         require("config.package").setup()
       end,
-      disable = false,
+      disable = true,
     }
     use {
       "meain/vim-package-info",
@@ -722,17 +723,32 @@ function M.setup()
     }
 
     -- Session
+    -- use {
+    --   "rmagatti/auto-session",
+    --   opt = true,
+    --   cmd = { "SaveSession", "RestoreSession" },
+    --   requires = { "rmagatti/session-lens" },
+    --   wants = { "telescope.nvim", "session-lens" },
+    --   config = function()
+    --     require("config.autosession").setup()
+    --   end,
+    -- }
     use {
-      "rmagatti/auto-session",
-      opt = true,
-      cmd = { "SaveSession", "RestoreSession" },
-      requires = { "rmagatti/session-lens" },
-      wants = { "telescope.nvim", "session-lens" },
+      "jedrzejboczar/possession.nvim",
       config = function()
-        require("config.autosession").setup()
+        require("config.possession").setup()
       end,
+      cmd = { "PossessionSave", "PosessionLoad", "PosessionShow", "PossessionList" },
+      disable = true,
     }
-    use { "tpope/vim-obsession", cmd = { "Obsess" } }
+    use {
+      "tpope/vim-obsession",
+      cmd = { "Obsess" },
+      config = function()
+        require("config.obsession").setup()
+      end,
+      disable = true,
+    }
 
     -- Bootstrap Neovim
     if packer_bootstrap then
