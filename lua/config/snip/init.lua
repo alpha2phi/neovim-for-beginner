@@ -2,6 +2,7 @@ local M = {}
 
 local snippets_folder = vim.fn.stdpath "config" .. "/lua/config/snip/snippets/"
 local ls = require "luasnip"
+local f = ls.function_node
 
 -- function _G.edit_ft()
 --   -- returns table like {"lua", "all"}
@@ -98,6 +99,12 @@ function M.setup()
   -- require("luasnip.loaders.from_vscode").lazy_load { paths = { "./snippets/rust" } }
 
   ls.filetype_extend("all", { "_" })
+end
+
+function M.same(index)
+  return f(function(args)
+    return args[1]
+  end, { index })
 end
 
 -- local function create_snippets()

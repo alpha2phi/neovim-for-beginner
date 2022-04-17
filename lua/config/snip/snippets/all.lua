@@ -41,10 +41,8 @@ local snippets = {
   s({ trig = "todo" }, { c(1, { t "TODO", t "FIXME", t "Fix Later" }) }),
 }
 
--- ls.autosnippets = {
---   all = {
---     ls.parser.parse_snippet("$file$", "$TM_FILENAME"),
---   },
--- }
+local autosnippets = {
+  ls.parser.parse_snippet("$file$", "$TM_FILENAME"),
+}
 
-return snippets
+return snippets, autosnippets
