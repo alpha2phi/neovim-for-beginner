@@ -11,7 +11,7 @@ local rep = require("luasnip.extras").rep
 local snippets = {
   ls.parser.parse_snippet("lm", "local M = {}\n\nfunction M.setup()\n  $1 \nend\n\nreturn M"),
   -- s("lm", { t { "local M = {}", "", "function M.setup()", "" }, i(1, ""), t { "", "end", "", "return M" } }),
-  s("todo", t "print('TODO')"),
+  s("todo", t 'print("TODO")'),
   s("req", fmt("local {} = require('{}')", { i(1, "default"), rep(1) })),
 }
 
