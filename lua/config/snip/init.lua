@@ -40,7 +40,7 @@ local ls = require "luasnip"
 --   })
 -- end
 --
--- local types = require "luasnip.util.types"
+local types = require "luasnip.util.types"
 
 function M.setup()
   ls.config.set_config {
@@ -56,18 +56,18 @@ function M.setup()
     --   },
     -- },
 
-    -- ext_opts = {
-    --   [types.choiceNode] = {
-    --     active = {
-    --       virt_text = { { "●", "GruvboxOrange" } },
-    --     },
-    --   },
-    --   [types.insertNode] = {
-    --     active = {
-    --       virt_text = { { "●", "GruvboxBlue" } },
-    --     },
-    --   },
-    -- },
+    ext_opts = {
+      [types.choiceNode] = {
+        active = {
+          virt_text = { { "●", "GruvboxOrange" } },
+        },
+      },
+      [types.insertNode] = {
+        active = {
+          virt_text = { { "●", "GruvboxBlue" } },
+        },
+      },
+    },
   }
 
   -- _G.snippets_clear()

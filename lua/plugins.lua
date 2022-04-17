@@ -752,6 +752,16 @@ function M.setup()
       disable = true,
     }
 
+    -- Practice
+    use {
+      "antonk52/bad-practices.nvim",
+      event = "BufReadPre",
+      config = function()
+        require("bad_practices").setup()
+      end,
+      disable = true,
+    }
+
     -- Bootstrap Neovim
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
