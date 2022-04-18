@@ -75,6 +75,15 @@ function M.setup()
           end
         end,
       },
+      ["<C-u>"] = cmp.mapping {
+        i = function(fallback)
+          if luasnip.choice_active() then
+            require "luasnip.extras.select_choice"()
+          else
+            fallback()
+          end
+        end,
+      },
       -- ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
       ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
       ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),

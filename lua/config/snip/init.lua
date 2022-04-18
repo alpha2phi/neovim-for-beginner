@@ -101,12 +101,12 @@ function M.setup()
   ls.filetype_extend("all", { "_" })
 end
 
-function M.same(index)
-  return f(function(args)
-    return args[1]
-  end, { index })
-end
-
+-- function M.same(index)
+--   return f(function(args)
+--     return args[1]
+--   end, { index })
+-- end
+--
 -- local function create_snippets()
 --   ls.snippets = {
 --     all = {
