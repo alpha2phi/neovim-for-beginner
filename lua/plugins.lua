@@ -334,7 +334,8 @@ function M.setup()
           "telescope-project.nvim",
           "telescope-repo.nvim",
           "telescope-file-browser.nvim",
-          "project.nvim",
+          -- "project.nvim",
+          "vim-rooter",
           "trouble.nvim",
           "telescope-dap.nvim",
         },
@@ -345,12 +346,13 @@ function M.setup()
           "nvim-telescope/telescope-project.nvim",
           "cljoly/telescope-repo.nvim",
           "nvim-telescope/telescope-file-browser.nvim",
-          {
-            "ahmedkhalf/project.nvim",
-            config = function()
-              require("project_nvim").setup {}
-            end,
-          },
+          "airblade/vim-rooter",
+          -- {
+          --   "ahmedkhalf/project.nvim",
+          --   config = function()
+          --     require("project_nvim").setup {}
+          --   end,
+          -- },
           "nvim-telescope/telescope-dap.nvim",
         },
       }
@@ -713,7 +715,7 @@ function M.setup()
       config = function()
         require("config.package").setup()
       end,
-      disable = true,
+      disable = false,
     }
     use {
       "meain/vim-package-info",
@@ -746,6 +748,16 @@ function M.setup()
       cmd = { "Obsess" },
       config = function()
         require("config.obsession").setup()
+      end,
+      disable = true,
+    }
+
+    -- Practice
+    use {
+      "antonk52/bad-practices.nvim",
+      event = "BufReadPre",
+      config = function()
+        require("bad_practices").setup()
       end,
       disable = true,
     }
