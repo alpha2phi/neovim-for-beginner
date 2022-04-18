@@ -121,6 +121,7 @@ local function normal_keymap()
       o = { "<cmd>UltestOutput<cr>", "Output" },
       s = { "<cmd>TestSuite<cr>", "Suite" },
       v = { "<cmd>TestVisit<cr>", "Visit" },
+      p = { "<Plug>PlenaryTestFile", "PlenaryTestFile" },
     },
 
     r = {
@@ -159,6 +160,8 @@ local function normal_keymap()
       x = { "<cmd>cd %:p:h<cr>", "Change Directory" },
       -- x = { "<cmd>set autochdir<cr>", "Auto ChDir" },
       e = { "!!$SHELL<CR>", "Execute line" },
+      W = { "<cmd>lua require('utils.session').toggle_session()<cr>", "Toggle Workspace Saving" },
+      w = { "<cmd>lua require('utils.session').list_session()<cr>", "Restore Workspace" },
     },
 
     g = {
