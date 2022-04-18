@@ -2,7 +2,7 @@ local M = {}
 
 local snippets_folder = vim.fn.stdpath "config" .. "/lua/config/snip/snippets/"
 local ls = require "luasnip"
-local f = ls.function_node
+-- local f = ls.function_node
 
 -- function _G.edit_ft()
 --   -- returns table like {"lua", "all"}
@@ -56,7 +56,7 @@ function M.setup()
     --     },
     --   },
     -- },
-
+    store_selection_keys = "<C-Tab>",
     ext_opts = {
       [types.choiceNode] = {
         active = {
