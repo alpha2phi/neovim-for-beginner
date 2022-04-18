@@ -210,6 +210,16 @@ local snippets = {
       c(1, { t "choice 1", t "choice 2", t "choice 3" }),
     })
   ),
+  s("mlink", {
+    t "[",
+    i(1),
+    t "](",
+    f(function(_, snip)
+      return snip.env.TM_SELECTED_TEXT[1] or {}
+    end, {}),
+    t ")",
+    i(0),
+  }),
 }
 
 -- local autosnippets = {

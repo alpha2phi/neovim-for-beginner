@@ -56,7 +56,7 @@ function M.setup()
     --     },
     --   },
     -- },
-    store_selection_keys = "<C-Tab>",
+    store_selection_keys = "<C-q>",
     ext_opts = {
       [types.choiceNode] = {
         active = {
