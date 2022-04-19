@@ -697,6 +697,16 @@ function M.setup()
       end,
     }
     use { "python-rope/ropevim", keys = { [[<C-x>]], [[C-c]] }, run = "pip install ropevim", disable = true }
+    use {
+      "kevinhwang91/nvim-bqf",
+      ft = "qf",
+      disable = false,
+      config = function()
+        require("bqf").setup()
+      end,
+    }
+    use { "kevinhwang91/nvim-hlslens", event = "BufReadPre" }
+    -- use { "nvim-pack/nvim-spectre" } -- TODO
 
     -- Performance
     use { "dstein64/vim-startuptime", cmd = "StartupTime" }
