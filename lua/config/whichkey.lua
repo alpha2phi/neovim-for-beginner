@@ -131,6 +131,11 @@ local function normal_keymap()
       c = { [[ <Esc><Cmd>lua require('refactoring').debug.cleanup({below = false})<CR>]], "Debug Cleanup" },
     },
 
+    s = {
+      name = "Search",
+      o = { [[ <Esc><Cmd>lua require('spectre').open()<CR>]], "Open" },
+    },
+
     v = {
       name = "Vimspector",
       G = { "<cmd>lua require('config.vimspector').generate_debug_profile()<cr>", "Generate Debug Profile" },
