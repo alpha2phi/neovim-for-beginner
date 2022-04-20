@@ -706,7 +706,7 @@ function M.setup()
       end,
     }
     use { "kevinhwang91/nvim-hlslens", event = "BufReadPre" }
-    -- use { "nvim-pack/nvim-spectre" } -- TODO
+    use { "nvim-pack/nvim-spectre", module = "spectre" }
 
     -- Performance
     use { "dstein64/vim-startuptime", cmd = "StartupTime" }
