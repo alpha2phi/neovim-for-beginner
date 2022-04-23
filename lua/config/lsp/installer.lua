@@ -26,6 +26,8 @@ function M.setup(servers, options)
             server = vim.tbl_deep_extend("force", server:get_default_options(), opts),
           }
           server:attach_buffers()
+        elseif server.name == "tsserver" then
+          require("typescript").setup { server = opts }
         else
           server:setup(opts)
         end
