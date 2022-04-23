@@ -2,6 +2,8 @@ local M = {}
 
 vim.o.completeopt = "menu,menuone,noselect"
 
+local types = require "cmp.types"
+
 local kind_icons = {
   Text = "",
   Method = "",
@@ -41,7 +43,10 @@ function M.setup()
 
   cmp.setup {
     completion = { completeopt = "menu,menuone,noinsert", keyword_length = 1 },
-    experimental = { native_menu = false, ghost_text = false },
+    -- experimental = { native_menu = false, ghost_text = false },
+    -- view = {
+    --   entries = "native",
+    -- },
     snippet = {
       expand = function(args)
         require("luasnip").lsp_expand(args.body)
@@ -155,6 +160,15 @@ function M.setup()
         "s",
         "c",
       }),
+      ["<C-y>"] = {
+        i = cmp.mapping.confirm { select = false },
+      },
+      ["<C-n>"] = {
+        i = cmp.mapping.select_next_item { behavior = types.cmp.SelectBehavior.Insert },
+      },
+      ["<C-p>"] = {
+        i = cmp.mapping.select_prev_item { behavior = types.cmp.SelectBehavior.Insert },
+      },
     },
     sources = {
       { name = "nvim_lsp" },

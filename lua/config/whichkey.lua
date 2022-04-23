@@ -131,6 +131,11 @@ local function normal_keymap()
       c = { [[ <Esc><Cmd>lua require('refactoring').debug.cleanup({below = false})<CR>]], "Debug Cleanup" },
     },
 
+    s = {
+      name = "Search",
+      o = { [[ <Esc><Cmd>lua require('spectre').open()<CR>]], "Open" },
+    },
+
     v = {
       name = "Vimspector",
       G = { "<cmd>lua require('config.vimspector').generate_debug_profile()<cr>", "Generate Debug Profile" },
@@ -248,9 +253,11 @@ local function code_keymap()
     elseif ft == "typescript" or ft == "typescriptreact" or ft == "javascript" or ft == "javascriptreact" then
       keymap_c = {
         name = "Code",
-        o = { "<cmd>TSLspOrganize<cr>", "Organize" },
-        r = { "<cmd>TSLspRenameFile<cr>", "Rename File" },
-        i = { "<cmd>TSLspImportAll<cr>", "Import All" },
+        o = { "<cmd>TypescriptOrganizeImports<cr>", "Organize" },
+        r = { "<cmd>TypescriptRenameFile<cr>", "Rename File" },
+        i = { "<cmd>TypescriptAddMissingImports<cr>", "Import Missing" },
+        F = { "<cmd>TypescriptFixAll<cr>", "Fix All" },
+        u = { "<cmd>TypescriptRemoveUnused<cr>", "Remove Unused" },
         R = { "<cmd>lua require('config.test').javascript_runner()<cr>", "Choose Test Runner" },
         s = { "<cmd>2TermExec cmd='yarn start'<cr>", "Yarn Start" },
         t = { "<cmd>2TermExec cmd='yarn test'<cr>", "Yarn Test" },

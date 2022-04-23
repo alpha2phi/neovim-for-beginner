@@ -490,7 +490,8 @@ function M.setup()
           "vim-illuminate",
           "null-ls.nvim",
           "schemastore.nvim",
-          "nvim-lsp-ts-utils",
+          -- "nvim-lsp-ts-utils",
+          "typescript.nvim",
         },
         config = function()
           require("config.lsp").setup()
@@ -507,7 +508,8 @@ function M.setup()
             end,
           },
           "b0o/schemastore.nvim",
-          "jose-elias-alvarez/nvim-lsp-ts-utils",
+          -- "jose-elias-alvarez/nvim-lsp-ts-utils",
+          "jose-elias-alvarez/typescript.nvim",
           -- "ray-x/lsp_signature.nvim",
         },
       }
@@ -527,7 +529,8 @@ function M.setup()
           "vim-illuminate",
           "null-ls.nvim",
           "schemastore.nvim",
-          "nvim-lsp-ts-utils",
+          -- "nvim-lsp-ts-utils",
+          "typescript.nvim",
         }, -- for coq.nvim
         config = function()
           require("config.lsp").setup()
@@ -545,7 +548,8 @@ function M.setup()
             end,
           },
           "b0o/schemastore.nvim",
-          "jose-elias-alvarez/nvim-lsp-ts-utils",
+          -- "jose-elias-alvarez/nvim-lsp-ts-utils",
+          "jose-elias-alvarez/typescript.nvim",
         },
       }
     end
@@ -696,7 +700,17 @@ function M.setup()
         require("config.refactoring").setup()
       end,
     }
-    use { "python-rope/ropevim", keys = { [[<C-x>]], [[C-c]] }, run = "pip install ropevim", disable = true }
+    use { "python-rope/ropevim", run = "pip install ropevim", disable = false }
+    use {
+      "kevinhwang91/nvim-bqf",
+      ft = "qf",
+      disable = true,
+      config = function()
+        require("bqf").setup()
+      end,
+    }
+    use { "kevinhwang91/nvim-hlslens", event = "BufReadPre", disable = true }
+    use { "nvim-pack/nvim-spectre", module = "spectre", keys = { "<leader>s" } }
 
     -- Performance
     use { "dstein64/vim-startuptime", cmd = "StartupTime" }
