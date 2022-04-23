@@ -700,7 +700,7 @@ function M.setup()
         require("config.refactoring").setup()
       end,
     }
-    use { "python-rope/ropevim", run = "pip install ropevim", disable = false }
+    use { "python-rope/ropevim", run = "pip install ropevim", disable = true }
     use {
       "kevinhwang91/nvim-bqf",
       ft = "qf",
