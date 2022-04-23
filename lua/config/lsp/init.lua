@@ -1,5 +1,23 @@
 local M = {}
 
+-- local library = {}
+--
+-- local path = vim.split(package.path, ";")
+--
+-- -- this is the ONLY correct way to setup your path
+-- table.insert(path, "lua/?.lua")
+-- table.insert(path, "lua/?/init.lua")
+--
+-- local function add(lib)
+--   for _, p in pairs(vim.fn.expand(lib, false, true)) do
+--     p = vim.loop.fs_realpath(p)
+--     library[p] = true
+--   end
+-- end
+--
+-- -- add runtime
+-- add "$VIMRUNTIME"
+
 local servers = {
   gopls = {},
   html = {},
@@ -33,7 +51,7 @@ local servers = {
         },
         diagnostics = {
           -- Get the language server to recognize the `vim` global
-          globals = { "vim" },
+          globals = { "vim", "PLUGINS" },
         },
         workspace = {
           -- Make the server aware of Neovim runtime files
@@ -41,7 +59,11 @@ local servers = {
             [vim.fn.expand "$VIMRUNTIME/lua"] = true,
             [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
           },
+          maxPreload = 2000,
+          preloadFileSize = 50000,
         },
+        completion = { callSnippet = "Both" },
+        telemetry = { enable = false },
       },
     },
   },

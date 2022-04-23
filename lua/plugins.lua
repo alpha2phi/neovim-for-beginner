@@ -102,6 +102,10 @@ function M.setup()
       end,
     }
 
+    -- Doc
+    use { "nanotee/luv-vimdocs", event = "BufReadPre" }
+    use { "milisims/nvim-luaref", event = "BufReadPre" }
+
     -- Better Netrw
     use { "tpope/vim-vinegar" }
 
@@ -330,7 +334,8 @@ function M.setup()
           "telescope-project.nvim",
           "telescope-repo.nvim",
           "telescope-file-browser.nvim",
-          "project.nvim",
+          -- "project.nvim",
+          "vim-rooter",
           "trouble.nvim",
           "telescope-dap.nvim",
         },
@@ -341,12 +346,13 @@ function M.setup()
           "nvim-telescope/telescope-project.nvim",
           "cljoly/telescope-repo.nvim",
           "nvim-telescope/telescope-file-browser.nvim",
-          {
-            "ahmedkhalf/project.nvim",
-            config = function()
-              require("project_nvim").setup {}
-            end,
-          },
+          "airblade/vim-rooter",
+          -- {
+          --   "ahmedkhalf/project.nvim",
+          --   config = function()
+          --     require("project_nvim").setup {}
+          --   end,
+          -- },
           "nvim-telescope/telescope-dap.nvim",
         },
       }
@@ -380,6 +386,7 @@ function M.setup()
       event = "BufReadPre",
       config = function()
         require("dressing").setup {
+          input = { relative = "editor" },
           select = {
             backend = { "telescope", "fzf", "builtin" },
           },
@@ -483,7 +490,8 @@ function M.setup()
           "vim-illuminate",
           "null-ls.nvim",
           "schemastore.nvim",
-          "nvim-lsp-ts-utils",
+          -- "nvim-lsp-ts-utils",
+          "typescript.nvim",
         },
         config = function()
           require("config.lsp").setup()
@@ -500,7 +508,8 @@ function M.setup()
             end,
           },
           "b0o/schemastore.nvim",
-          "jose-elias-alvarez/nvim-lsp-ts-utils",
+          -- "jose-elias-alvarez/nvim-lsp-ts-utils",
+          "jose-elias-alvarez/typescript.nvim",
           -- "ray-x/lsp_signature.nvim",
         },
       }
@@ -520,7 +529,8 @@ function M.setup()
           "vim-illuminate",
           "null-ls.nvim",
           "schemastore.nvim",
-          "nvim-lsp-ts-utils",
+          -- "nvim-lsp-ts-utils",
+          "typescript.nvim",
         }, -- for coq.nvim
         config = function()
           require("config.lsp").setup()
@@ -538,7 +548,8 @@ function M.setup()
             end,
           },
           "b0o/schemastore.nvim",
-          "jose-elias-alvarez/nvim-lsp-ts-utils",
+          -- "jose-elias-alvarez/nvim-lsp-ts-utils",
+          "jose-elias-alvarez/typescript.nvim",
         },
       }
     end
@@ -689,6 +700,17 @@ function M.setup()
         require("config.refactoring").setup()
       end,
     }
+    use { "python-rope/ropevim", run = "pip install ropevim", disable = false }
+    use {
+      "kevinhwang91/nvim-bqf",
+      ft = "qf",
+      disable = true,
+      config = function()
+        require("bqf").setup()
+      end,
+    }
+    use { "kevinhwang91/nvim-hlslens", event = "BufReadPre", disable = true }
+    use { "nvim-pack/nvim-spectre", module = "spectre", keys = { "<leader>s" } }
 
     -- Performance
     use { "dstein64/vim-startuptime", cmd = "StartupTime" }
@@ -707,16 +729,51 @@ function M.setup()
       config = function()
         require("config.package").setup()
       end,
+      disable = false,
+    }
+    use {
+      "meain/vim-package-info",
+      ft = { "json" },
+      run = "npm install",
+      disable = true,
     }
 
+    -- Session
+    -- use {
+    --   "rmagatti/auto-session",
+    --   opt = true,
+    --   cmd = { "SaveSession", "RestoreSession" },
+    --   requires = { "rmagatti/session-lens" },
+    --   wants = { "telescope.nvim", "session-lens" },
+    --   config = function()
+    --     require("config.autosession").setup()
+    --   end,
+    -- }
     use {
-      "rmagatti/auto-session",
-      opt = true,
-      cmd = { "SaveSession", "RestoreSession" },
-      requires = { "rmagatti/session-lens" },
+      "jedrzejboczar/possession.nvim",
       config = function()
-        require("config.autosession").setup()
+        require("config.possession").setup()
       end,
+      cmd = { "PossessionSave", "PosessionLoad", "PosessionShow", "PossessionList" },
+      disable = true,
+    }
+    use {
+      "tpope/vim-obsession",
+      cmd = { "Obsess" },
+      config = function()
+        require("config.obsession").setup()
+      end,
+      disable = true,
+    }
+
+    -- Practice
+    use {
+      "antonk52/bad-practices.nvim",
+      event = "BufReadPre",
+      config = function()
+        require("bad_practices").setup()
+      end,
+      disable = true,
     }
 
     -- Bootstrap Neovim

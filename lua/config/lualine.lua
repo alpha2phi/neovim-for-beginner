@@ -54,6 +54,11 @@ local function lsp_client(msg)
   local supported_hovers = hovers.list_registered(buf_ft)
   vim.list_extend(buf_client_names, supported_hovers)
 
+  -- add code action
+  local code_actions = require "config.lsp.null-ls.code_actions"
+  local supported_code_actions = code_actions.list_registered(buf_ft)
+  vim.list_extend(buf_client_names, supported_code_actions)
+
   return "[" .. table.concat(buf_client_names, ", ") .. "]"
 end
 

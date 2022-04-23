@@ -2,6 +2,8 @@ local M = {}
 
 vim.o.completeopt = "menu,menuone,noselect"
 
+local types = require "cmp.types"
+
 local kind_icons = {
   Text = "",
   Method = "",
@@ -41,7 +43,10 @@ function M.setup()
 
   cmp.setup {
     completion = { completeopt = "menu,menuone,noinsert", keyword_length = 1 },
-    experimental = { native_menu = false, ghost_text = false },
+    -- experimental = { native_menu = false, ghost_text = false },
+    -- view = {
+    --   entries = "native",
+    -- },
     snippet = {
       expand = function(args)
         require("luasnip").lsp_expand(args.body)
@@ -65,8 +70,26 @@ function M.setup()
       end,
     },
     mapping = {
-      ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-      ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+      -- ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+      ["<C-l>"] = cmp.mapping {
+        i = function(fallback)
+          if luasnip.choice_active() then
+            luasnip.change_choice(1)
+          else
+            fallback()
+          end
+        end,
+      },
+      ["<C-u>"] = cmp.mapping {
+        i = function(fallback)
+          if luasnip.choice_active() then
+            require "luasnip.extras.select_choice"()
+          else
+            fallback()
+          end
+        end,
+      },
+      -- ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
       ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
       ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
       ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -81,6 +104,21 @@ function M.setup()
           end
         end,
       },
+      ["<C-j>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        elseif luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
+        elseif has_words_before() then
+          cmp.complete()
+        else
+          fallback()
+        end
+      end, {
+        "i",
+        "s",
+        "c",
+      }),
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -88,6 +126,19 @@ function M.setup()
           luasnip.expand_or_jump()
         elseif has_words_before() then
           cmp.complete()
+        else
+          fallback()
+        end
+      end, {
+        "i",
+        "s",
+        "c",
+      }),
+      ["<C-k>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        elseif luasnip.jumpable(-1) then
+          luasnip.jump(-1)
         else
           fallback()
         end
@@ -109,6 +160,15 @@ function M.setup()
         "s",
         "c",
       }),
+      ["<C-y>"] = {
+        i = cmp.mapping.confirm { select = false },
+      },
+      ["<C-n>"] = {
+        i = cmp.mapping.select_next_item { behavior = types.cmp.SelectBehavior.Insert },
+      },
+      ["<C-p>"] = {
+        i = cmp.mapping.select_prev_item { behavior = types.cmp.SelectBehavior.Insert },
+      },
     },
     sources = {
       { name = "nvim_lsp" },
@@ -122,9 +182,11 @@ function M.setup()
       -- { name = "emoji" },
       -- { name = "calc" },
     },
-    documentation = {
-      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-      winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
+    window = {
+      documentation = {
+        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+        winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
+      },
     },
   }
 
