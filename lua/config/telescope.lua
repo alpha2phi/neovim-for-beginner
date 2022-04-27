@@ -68,7 +68,7 @@ function M.setup()
           ["<C-k>"] = actions.move_selection_previous,
           ["<C-n>"] = actions.cycle_history_next,
           ["<C-p>"] = actions.cycle_history_prev,
-          ["<c-T>"] = trouble.open_with_trouble,
+          ["<c-z>"] = trouble.open_with_trouble,
         },
       },
     },
@@ -102,7 +102,7 @@ function M.setup()
   telescope.load_extension "project" -- telescope-project.nvim
   telescope.load_extension "repo"
   telescope.load_extension "file_browser"
-  -- telescope.load_extension "projects" -- project.nvim
+  telescope.load_extension "projects" -- project.nvim
   telescope.load_extension "dap"
 end
 
