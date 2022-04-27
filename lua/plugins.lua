@@ -739,16 +739,17 @@ function M.setup()
     }
 
     -- Session
-    -- use {
-    --   "rmagatti/auto-session",
-    --   opt = true,
-    --   cmd = { "SaveSession", "RestoreSession" },
-    --   requires = { "rmagatti/session-lens" },
-    --   wants = { "telescope.nvim", "session-lens" },
-    --   config = function()
-    --     require("config.autosession").setup()
-    --   end,
-    -- }
+    use {
+      "rmagatti/auto-session",
+      opt = true,
+      cmd = { "SaveSession", "RestoreSession" },
+      requires = { "rmagatti/session-lens" },
+      wants = { "telescope.nvim", "session-lens" },
+      config = function()
+        require("config.autosession").setup()
+      end,
+      disable = false,
+    }
     use {
       "jedrzejboczar/possession.nvim",
       config = function()
