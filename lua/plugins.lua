@@ -346,7 +346,12 @@ function M.setup()
           "nvim-telescope/telescope-project.nvim",
           "cljoly/telescope-repo.nvim",
           "nvim-telescope/telescope-file-browser.nvim",
-          "airblade/vim-rooter",
+          {
+            "airblade/vim-rooter",
+            config = function()
+              require("config.rooter").setup()
+            end,
+          },
           -- {
           --   "ahmedkhalf/project.nvim",
           --   config = function()

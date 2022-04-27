@@ -68,7 +68,7 @@ function M.setup()
           ["<C-k>"] = actions.move_selection_previous,
           ["<C-n>"] = actions.cycle_history_next,
           ["<C-p>"] = actions.cycle_history_prev,
-          ["<c-t>"] = trouble.open_with_trouble,
+          ["<c-T>"] = trouble.open_with_trouble,
         },
       },
     },
