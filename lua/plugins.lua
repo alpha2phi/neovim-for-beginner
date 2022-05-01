@@ -753,7 +753,7 @@ function M.setup()
       requires = { "rmagatti/session-lens" },
       wants = { "telescope.nvim", "session-lens" },
       config = function()
-        require("config.autosession").setup()
+        require("bad_practices").setup()
       end,
       disable = false,
     }
