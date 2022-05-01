@@ -31,8 +31,8 @@ keymap("v", ">", ">gv", default_opts)
 keymap("v", "p", '"_dP', default_opts)
 
 -- Switch buffer
-keymap("n", "<S-h>", ":bprevious<CR>", default_opts)
-keymap("n", "<S-l>", ":bnext<CR>", default_opts)
+keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", default_opts)
+keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", default_opts)
 
 -- Cancel search highlighting with ESC
 keymap("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", default_opts)
