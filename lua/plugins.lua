@@ -338,6 +338,7 @@ function M.setup()
           -- "vim-rooter",
           "trouble.nvim",
           "telescope-dap.nvim",
+          "telescope-frecency.nvim",
         },
         requires = {
           "nvim-lua/popup.nvim",
@@ -346,6 +347,7 @@ function M.setup()
           "nvim-telescope/telescope-project.nvim",
           "cljoly/telescope-repo.nvim",
           "nvim-telescope/telescope-file-browser.nvim",
+          { "nvim-telescope/telescope-frecency.nvim", requires = "tami5/sqlite.lua" },
           -- {
           --   "airblade/vim-rooter",
           --   config = function()
