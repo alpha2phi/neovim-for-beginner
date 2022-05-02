@@ -19,7 +19,15 @@ end
 
 function M.format()
   if M.autoformat then
-    vim.lsp.buf.formatting_sync(nil, 2000)
+    -- vim.lsp.buf.formatting_sync(nil, 2000) -- deprecated
+    vim.lsp.buf.format {
+      async = true,
+      filter = function(clients)
+        return vim.tbl_filter(function(client)
+          return client.name ~= "tsserver"
+        end, clients)
+      end,
+    }
   end
 end
 
@@ -35,6 +43,8 @@ function M.setup(client, buf)
 
   client.server_capabilities.document_formatting = enable
   client.server_capabilities.document_range_formatting = enable
+  -- client.resolved_capabilities.document_formatting = enable
+  -- client.resolved_capabilities.document_range_formatting = enable
   if client.server_capabilities.document_formatting then
     vim.cmd [[
       augroup LspFormat
