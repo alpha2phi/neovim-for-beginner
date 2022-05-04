@@ -67,7 +67,7 @@ local servers = {
       },
     },
   },
-  tsserver = {},
+  tsserver = { disable_formatting = true },
   vimls = {},
 }
 
