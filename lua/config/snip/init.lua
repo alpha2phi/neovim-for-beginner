@@ -47,7 +47,7 @@ function M.setup()
   ls.config.set_config {
     history = true,
     updateevents = "TextChanged,TextChangedI",
-    enable_autosnippets = true,
+    enable_autosnippets = false,
 
     -- ext_opts = {
     --   [types.choiceNode] = {

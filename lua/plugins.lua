@@ -236,7 +236,7 @@ function M.setup()
     use {
       "danymat/neogen",
       config = function()
-        require("neogen").setup {}
+        require("neogen").setup { snippet_engine = "luasnip" }
       end,
       cmd = { "Neogen" },
     }
