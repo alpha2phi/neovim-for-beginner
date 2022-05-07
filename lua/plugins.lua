@@ -339,6 +339,7 @@ function M.setup()
           "trouble.nvim",
           "telescope-dap.nvim",
           "telescope-frecency.nvim",
+          "nvim-neoclip.lua",
         },
         requires = {
           "nvim-lua/popup.nvim",
@@ -361,6 +362,15 @@ function M.setup()
             end,
           },
           "nvim-telescope/telescope-dap.nvim",
+          {
+            "AckslD/nvim-neoclip.lua",
+            requires = {
+              { "tami5/sqlite.lua", module = "sqlite" },
+              config = function()
+                require("neoclip").setup()
+              end,
+            },
+          },
         },
       }
     end

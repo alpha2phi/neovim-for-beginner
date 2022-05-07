@@ -159,7 +159,8 @@ local function normal_keymap()
 
     z = {
       name = "System",
-      c = { "<cmd>PackerCompile<cr>", "Compile" },
+      -- c = { "<cmd>PackerCompile<cr>", "Compile" },
+      c = { "<cmd>Telescope neoclip<cr>", "Clipboard" },
       i = { "<cmd>PackerInstall<cr>", "Install" },
       p = { "<cmd>PackerProfile<cr>", "Profile" },
       s = { "<cmd>PackerSync<cr>", "Sync" },

@@ -105,6 +105,7 @@ function M.setup()
   -- telescope.load_extension "projects" -- project.nvim
   telescope.load_extension "dap"
   telescope.load_extension "frecency"
+  telescope.load_extension "neoclip"
 end
 
 return M
