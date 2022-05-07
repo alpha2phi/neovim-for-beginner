@@ -52,6 +52,7 @@ local servers = {
         diagnostics = {
           -- Get the language server to recognize the `vim` global
           globals = { "vim", "PLUGINS" },
+          disable = {"lowercase-global"}
         },
         workspace = {
           -- Make the server aware of Neovim runtime files
@@ -67,7 +68,7 @@ local servers = {
       },
     },
   },
-  tsserver = {},
+  tsserver = { disable_formatting = true },
   vimls = {},
 }
 
@@ -98,9 +99,9 @@ local function on_attach(client, bufnr)
   require("config.lsp.null-ls.formatters").setup(client, bufnr)
 
   -- Configure for Typescript
-  if client.name == "tsserver" then
-    require("config.lsp.ts-utils").setup(client)
-  end
+  -- if client.name == "tsserver" then
+  --   require("config.lsp.ts-utils").setup(client)
+  -- end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

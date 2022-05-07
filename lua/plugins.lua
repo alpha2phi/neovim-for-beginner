@@ -236,10 +236,19 @@ function M.setup()
     use {
       "danymat/neogen",
       config = function()
-        require("neogen").setup {}
+        require("neogen").setup { snippet_engine = "luasnip" }
       end,
       cmd = { "Neogen" },
     }
+
+    -- use {
+    --   "kkoomen/vim-doge",
+    --   run = ":call doge#install()",
+    --   config = function()
+    --     require("config.doge").setup()
+    --   end,
+    --   event = "VimEnter",
+    -- }
 
     use {
       "phaazon/hop.nvim",
@@ -334,10 +343,12 @@ function M.setup()
           "telescope-project.nvim",
           "telescope-repo.nvim",
           "telescope-file-browser.nvim",
-          -- "project.nvim",
-          "vim-rooter",
+          "project.nvim",
+          -- "vim-rooter",
           "trouble.nvim",
           "telescope-dap.nvim",
+          "telescope-frecency.nvim",
+          "nvim-neoclip.lua",
         },
         requires = {
           "nvim-lua/popup.nvim",
@@ -346,14 +357,29 @@ function M.setup()
           "nvim-telescope/telescope-project.nvim",
           "cljoly/telescope-repo.nvim",
           "nvim-telescope/telescope-file-browser.nvim",
-          "airblade/vim-rooter",
+          { "nvim-telescope/telescope-frecency.nvim", requires = "tami5/sqlite.lua" },
           -- {
-          --   "ahmedkhalf/project.nvim",
+          --   "airblade/vim-rooter",
           --   config = function()
-          --     require("project_nvim").setup {}
+          --     require("config.rooter").setup()
           --   end,
           -- },
+          {
+            "ahmedkhalf/project.nvim",
+            config = function()
+              require("config.project").setup()
+            end,
+          },
           "nvim-telescope/telescope-dap.nvim",
+          {
+            "AckslD/nvim-neoclip.lua",
+            requires = {
+              { "tami5/sqlite.lua", module = "sqlite" },
+              config = function()
+                require("neoclip").setup()
+              end,
+            },
+          },
         },
       }
     end
@@ -700,7 +726,7 @@ function M.setup()
         require("config.refactoring").setup()
       end,
     }
-    use { "python-rope/ropevim", run = "pip install ropevim", disable = false }
+    use { "python-rope/ropevim", run = "pip install ropevim", disable = true }
     use {
       "kevinhwang91/nvim-bqf",
       ft = "qf",
@@ -739,16 +765,17 @@ function M.setup()
     }
 
     -- Session
-    -- use {
-    --   "rmagatti/auto-session",
-    --   opt = true,
-    --   cmd = { "SaveSession", "RestoreSession" },
-    --   requires = { "rmagatti/session-lens" },
-    --   wants = { "telescope.nvim", "session-lens" },
-    --   config = function()
-    --     require("config.autosession").setup()
-    --   end,
-    -- }
+    use {
+      "rmagatti/auto-session",
+      opt = true,
+      cmd = { "SaveSession", "RestoreSession" },
+      requires = { "rmagatti/session-lens" },
+      wants = { "telescope.nvim", "session-lens" },
+      config = function()
+        require("bad_practices").setup()
+      end,
+      disable = false,
+    }
     use {
       "jedrzejboczar/possession.nvim",
       config = function()

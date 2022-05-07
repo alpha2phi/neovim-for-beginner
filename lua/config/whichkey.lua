@@ -77,6 +77,8 @@ local function normal_keymap()
       c = { "<Cmd>BDelete this<Cr>", "Close Buffer" },
       f = { "<Cmd>BDelete! this<Cr>", "Force Close Buffer" },
       D = { "<Cmd>BWipeout other<Cr>", "Delete All Buffers" },
+      b = { "<Cmd>BufferLinePick<Cr>", "Pick a Buffer" },
+      p = { "<Cmd>BufferLinePickClose<Cr>", "Pick & Close a Buffer" },
     },
 
     c = {
@@ -102,6 +104,7 @@ local function normal_keymap()
       m = { "<Cmd>lua require('harpoon.ui').toggle_quick_menu()<Cr>", "UI Menu" },
       c = { "<Cmd>lua require('harpoon.cmd-ui').toggle_quick_menu()<Cr>", "Command Menu" },
     },
+    ["0"] = { "<Cmd>2ToggleTerm<Cr>", "ToggleTerm 2" },
     ["1"] = { "<Cmd>lua require('harpoon.ui').nav_file(1) <Cr>", "File 1" },
     ["2"] = { "<Cmd>lua require('harpoon.ui').nav_file(2) <Cr>", "File 2" },
     ["3"] = { "<Cmd>lua require('harpoon.term').gotoTerminal(1)<Cr>", "Terminal 1" },
@@ -156,7 +159,8 @@ local function normal_keymap()
 
     z = {
       name = "System",
-      c = { "<cmd>PackerCompile<cr>", "Compile" },
+      -- c = { "<cmd>PackerCompile<cr>", "Compile" },
+      c = { "<cmd>Telescope neoclip<cr>", "Clipboard" },
       i = { "<cmd>PackerInstall<cr>", "Install" },
       p = { "<cmd>PackerProfile<cr>", "Profile" },
       s = { "<cmd>PackerSync<cr>", "Sync" },
