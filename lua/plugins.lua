@@ -236,20 +236,22 @@ function M.setup()
     use {
       "danymat/neogen",
       config = function()
-        require("neogen").setup { snippet_engine = "luasnip" }
+        require("config.neogen").setup()
       end,
       cmd = { "Neogen" },
       module = "neogen",
+      disable = false,
     }
 
-    -- use {
-    --   "kkoomen/vim-doge",
-    --   run = ":call doge#install()",
-    --   config = function()
-    --     require("config.doge").setup()
-    --   end,
-    --   event = "VimEnter",
-    -- }
+    use {
+      "kkoomen/vim-doge",
+      run = ":call doge#install()",
+      config = function()
+        require("config.doge").setup()
+      end,
+      cmd = { "DogeGenerate", "DogeCreateDocStandard" },
+      disable = false,
+    }
 
     use {
       "phaazon/hop.nvim",
