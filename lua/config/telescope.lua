@@ -71,6 +71,10 @@ function M.setup()
           ["<c-z>"] = trouble.open_with_trouble,
         },
       },
+      history = {
+        path = vim.fn.stdpath "data" .. "/telescope_history.sqlite3",
+        limit = 100,
+      },
     },
     pickers = {
       find_files = {
@@ -106,6 +110,7 @@ function M.setup()
   telescope.load_extension "dap"
   telescope.load_extension "frecency"
   telescope.load_extension "neoclip"
+  telescope.load_extension "smart_history"
 end
 
 return M

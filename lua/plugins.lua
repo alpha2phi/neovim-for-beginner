@@ -352,6 +352,7 @@ function M.setup()
           "telescope-dap.nvim",
           "telescope-frecency.nvim",
           "nvim-neoclip.lua",
+          "telescope-smart-history.nvim",
         },
         requires = {
           "nvim-lua/popup.nvim",
@@ -383,6 +384,7 @@ function M.setup()
               end,
             },
           },
+          "nvim-telescope/telescope-smart-history.nvim",
         },
       }
     end
@@ -805,6 +807,19 @@ function M.setup()
       end,
       disable = true,
     }
+
+    -- Plugin
+    use {
+      "tpope/vim-scriptease",
+      cmd = {
+        "Messages", --view messages in quickfix list
+        "Verbose", -- view verbose output in preview window.
+        "Time", -- measure how long it takes to run some stuff.
+      },
+    }
+
+    -- Quickfix
+    use { "romainl/vim-qf" }
 
     -- Bootstrap Neovim
     if packer_bootstrap then
