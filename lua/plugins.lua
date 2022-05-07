@@ -241,6 +241,15 @@ function M.setup()
       cmd = { "Neogen" },
     }
 
+    -- use {
+    --   "kkoomen/vim-doge",
+    --   run = ":call doge#install()",
+    --   config = function()
+    --     require("config.doge").setup()
+    --   end,
+    --   event = "VimEnter",
+    -- }
+
     use {
       "phaazon/hop.nvim",
       cmd = { "HopWord", "HopChar1" },
