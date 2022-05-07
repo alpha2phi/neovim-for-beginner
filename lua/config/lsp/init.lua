@@ -58,6 +58,7 @@ local servers = {
           library = {
             [vim.fn.expand "$VIMRUNTIME/lua"] = true,
             [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+            -- vim.api.nvim_get_runtime_file("", true),
           },
           maxPreload = 2000,
           preloadFileSize = 50000,
