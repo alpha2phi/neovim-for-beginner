@@ -17,7 +17,7 @@ function M.setup()
       end,
     },
   }
-
+  
   -- Check if packer.nvim is installed
   -- Run PackerCompile if there are changes in this file
   local function packer_init()
