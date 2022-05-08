@@ -828,7 +828,7 @@ function M.setup()
     }
 
     -- Quickfix
-    use { "romainl/vim-qf", event = "BufReadPre" }
+    use { "romainl/vim-qf", event = "BufReadPre", disable = true }
 
     -- Bootstrap Neovim
     if packer_bootstrap then
