@@ -28,6 +28,14 @@ opt.scrolloff = 8 -- Lines of context
 opt.joinspaces = false -- No double spaces with join after a dot
 opt.laststatus = 3 -- Global statusline
 opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+opt.smartindent = true --Smart indent
+opt.expandtab = true
+opt.smarttab = true
+opt.textwidth = 0
+opt.autoindent = true
+opt.shiftwidth = 2
+opt.tabstop = 2
+opt.softtabstop = 2
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
