@@ -7,7 +7,7 @@ function M.setup()
     languages = {
       lua = {
         template = {
-          annotation_convention = "emmylua",
+          annotation_convention = "ldoc",
         },
       },
       python = {
