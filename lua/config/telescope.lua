@@ -100,6 +100,18 @@ function M.setup()
         },
       },
     },
+    extensions = {
+      arecibo = {
+        ["selected_engine"] = "google",
+        ["url_open_command"] = "xdg-open",
+        ["show_http_headers"] = false,
+        ["show_domain_icons"] = false,
+      },
+      media_files = {
+        filetypes = { "png", "webp", "jpg", "jpeg", "pdf", "mp4", "webm" },
+        find_cmd = "fd",
+      },
+    },
   }
 
   telescope.load_extension "fzf"
@@ -111,6 +123,8 @@ function M.setup()
   telescope.load_extension "frecency"
   telescope.load_extension "neoclip"
   telescope.load_extension "smart_history"
+  telescope.load_extension "arecibo"
+  telescope.load_extension "media_files"
 end
 
 return M

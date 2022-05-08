@@ -50,3 +50,7 @@ keymap("n", "<Down>", ":resize +1<CR>", default_opts)
 -- Insert blank line
 keymap("n", "]<Space>", "o<Esc>", default_opts)
 keymap("n", "[<Space>", "O<Esc>", default_opts)
+
+-- Browser search
+keymap("n", "gx", "<Plug>(openbrowser-smart-search)", default_opts)
+keymap("x", "gx", "<Plug>(openbrowser-smart-search)", default_opts)
