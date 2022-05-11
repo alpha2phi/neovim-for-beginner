@@ -15,7 +15,7 @@ end
 
 function M.highlight(client)
   if M.highlight then
-    if client.server_capabilities.document_highlight then
+    if client.server_capabilities.documentHighlightProvider then
       local present, illuminate = pcall(require, "illuminate")
       if present then
         illuminate.on_attach(client)

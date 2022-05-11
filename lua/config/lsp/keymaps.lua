@@ -35,8 +35,8 @@ local function keymappings(client, bufnr)
       h = { "<cmd>lua vim.diagnostic.hide()<CR>", "Hide Diagnostics" },
     },
   }
-  if client.server_capabilities.document_formatting then
-    keymap_l.l.F = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Document" }
+  if client.server_capabilities.documentFormattingProvider then
+    keymap_l.l.F = { "<cmd>lua vim.lsp.buf.format({async = true})<CR>", "Format Document" }
   end
 
   local keymap_g = {
@@ -52,7 +52,7 @@ local function keymappings(client, bufnr)
 end
 
 local function signature_help(client, bufnr)
-  local trigger_chars = client.server_capabilities.signature_help_trigger_characters
+  local trigger_chars = client.server_capabilities.signatureHelpProvider.triggerCharacters
   for _, char in ipairs(trigger_chars) do
     vim.keymap.set("i", char, function()
       vim.defer_fn(function()
