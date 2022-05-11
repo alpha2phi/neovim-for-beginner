@@ -40,7 +40,7 @@ local sources = {
 
   -- code actions
   b.code_actions.gitsigns,
-  -- b.code_actions.eslint_d,
+  b.code_actions.eslint_d,
   b.code_actions.gitrebase,
   b.code_actions.refactoring,
 

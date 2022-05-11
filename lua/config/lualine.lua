@@ -59,7 +59,16 @@ local function lsp_client(msg)
   local supported_code_actions = code_actions.list_registered(buf_ft)
   vim.list_extend(buf_client_names, supported_code_actions)
 
-  return "[" .. table.concat(buf_client_names, ", ") .. "]"
+  local hash = {}
+  local client_names = {}
+  for _, v in ipairs(buf_client_names) do
+    if not hash[v] then
+      client_names[#client_names + 1] = v
+      hash[v] = true
+    end
+  end
+  table.sort(client_names)
+  return "[" .. table.concat(client_names, ", ") .. "]"
 end
 
 -------- use fidget.nvim ------
