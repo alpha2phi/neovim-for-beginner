@@ -846,6 +846,7 @@ function M.setup()
       cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles" },
     }
 
+    -- Sidebar
     use {
       "liuchengxu/vista.vim",
       cmd = { "Vista" },
