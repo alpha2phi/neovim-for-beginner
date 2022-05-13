@@ -24,7 +24,7 @@ function M.format()
       async = true,
       filter = function(clients)
         return vim.tbl_filter(function(client)
-          return client.name ~= "tsserver" and client.name ~= "jsonls"
+          return client.name ~= "tsserver" and client.name ~= "jsonls" and client.name ~= "html"
         end, clients)
       end,
     }
