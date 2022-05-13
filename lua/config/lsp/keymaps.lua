@@ -29,7 +29,7 @@ local function keymappings(client, bufnr)
       n = { "<cmd>Lspsaga rename<CR>", "Rename" },
       r = { "<cmd>Telescope lsp_references<CR>", "References" },
       s = { "<cmd>Telescope lsp_document_symbols<CR>", "Document Symbols" },
-      t = { "<cmd>TroubleToggle<CR>", "Trouble" },
+      t = { "<cmd>TroubleToggle document_diagnostics<CR>", "Trouble" },
       L = { "<cmd>lua vim.lsp.codelens.refresh()<CR>", "Refresh CodeLens" },
       l = { "<cmd>lua vim.lsp.codelens.run()<CR>", "Run CodeLens" },
       h = { "<cmd>lua vim.diagnostic.hide()<CR>", "Hide Diagnostics" },
