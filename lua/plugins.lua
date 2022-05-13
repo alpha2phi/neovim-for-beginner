@@ -846,6 +846,14 @@ function M.setup()
       cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles" },
     }
 
+    use {
+      "liuchengxu/vista.vim",
+      cmd = { "Vista" },
+      config = function()
+        vim.g.vista_default_executive = "nvim_lsp"
+      end,
+    }
+
     -- Bootstrap Neovim
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
