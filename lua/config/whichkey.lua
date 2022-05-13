@@ -162,6 +162,8 @@ local function normal_keymap()
       name = "System",
       -- c = { "<cmd>PackerCompile<cr>", "Compile" },
       c = { "<cmd>Telescope neoclip<cr>", "Clipboard" },
+      d = { "<cmd>DiffviewOpen<cr>", "Diff View Open" },
+      D = { "<cmd>DiffviewClose<cr>", "Diff View Close" },
       i = { "<cmd>PackerInstall<cr>", "Install" },
       p = { "<cmd>PackerProfile<cr>", "Profile" },
       s = { "<cmd>PackerSync<cr>", "Sync" },

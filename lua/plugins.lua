@@ -839,6 +839,13 @@ function M.setup()
     -- Quickfix
     use { "romainl/vim-qf", event = "BufReadPre", disable = true }
 
+    -- Diffview
+    use {
+      "sindrets/diffview.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles" },
+    }
+
     -- Bootstrap Neovim
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
