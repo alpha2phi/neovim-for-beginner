@@ -272,12 +272,20 @@ function M.setup()
       disable = true,
     }
     use {
-      "ggandor/lightspeed.nvim",
+      "ggandor/leap.nvim",
       keys = { "s", "S", "f", "F", "t", "T" },
       config = function()
-        require("lightspeed").setup {}
+        local leap = require "leap"
+        leap.set_default_keymaps()
       end,
     }
+    -- use {
+    --   "ggandor/lightspeed.nvim",
+    --   keys = { "s", "S", "f", "F", "t", "T" },
+    --   config = function()
+    --     require("lightspeed").setup {}
+    --   end,
+    -- }
 
     -- Markdown
     use {
@@ -287,6 +295,13 @@ function M.setup()
       end,
       ft = "markdown",
       cmd = { "MarkdownPreview" },
+    }
+    use {
+      "jakewvincent/mkdnflow.nvim",
+      config = function()
+        require("mkdnflow").setup {}
+      end,
+      ft = "markdown",
     }
 
     -- Status line
@@ -306,6 +321,13 @@ function M.setup()
       wants = "nvim-treesitter",
       config = function()
         require("nvim-gps").setup()
+      end,
+    }
+    use {
+      "b0o/incline.nvim",
+      event = "BufReadPre",
+      config = function()
+        require("incline").setup()
       end,
     }
 
