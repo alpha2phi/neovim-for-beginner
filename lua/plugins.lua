@@ -290,6 +290,7 @@ function M.setup()
     -- Markdown
     use {
       "iamcco/markdown-preview.nvim",
+      opt = true,
       run = function()
         vim.fn["mkdp#util#install"]()
       end,
