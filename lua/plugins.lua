@@ -295,6 +295,7 @@ function M.setup()
       end,
       ft = "markdown",
       cmd = { "MarkdownPreview" },
+      requires = { "zhaozg/vim-diagram", "aklt/plantuml-syntax" },
     }
     use {
       "jakewvincent/mkdnflow.nvim",
@@ -302,6 +303,24 @@ function M.setup()
         require("mkdnflow").setup {}
       end,
       ft = "markdown",
+    }
+    use {
+      "nvim-neorg/neorg",
+      config = function()
+        require("neorg").setup {
+          load = {
+            ["core.defaults"] = {},
+            ["core.presenter"] = {
+              config = {
+                zen_mode = "truezen",
+              },
+            },
+          },
+        }
+      end,
+      ft = "norg",
+      after = "nvim-treesitter",
+      requires = { "nvim-lua/plenary.nvim", "Pocco81/TrueZen.nvim" },
     }
 
     -- Status line
@@ -874,6 +893,23 @@ function M.setup()
       cmd = { "Vista" },
       config = function()
         vim.g.vista_default_executive = "nvim_lsp"
+      end,
+    }
+    use {
+      "sidebar-nvim/sidebar.nvim",
+      cmd = { "SidebarNvimToggle" },
+      config = function()
+        require("sidebar-nvim").setup { open = false }
+      end,
+    }
+
+    -- Translation
+    use {
+      "voldikss/vim-translator",
+      cmd = { "Translate", "TranslateV", "TranslateW", "TranslateWV", "TranslateR", "TranslateRV", "TranslateX" },
+      config = function()
+        vim.g.translator_target_lang = "zh"
+        vim.g.translator_history_enable = true
       end,
     }
 
