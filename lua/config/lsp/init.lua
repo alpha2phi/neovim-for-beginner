@@ -52,7 +52,7 @@ local servers = {
         diagnostics = {
           -- Get the language server to recognize the `vim` global
           globals = { "vim", "PLUGINS" },
-          disable = {"lowercase-global"}
+          disable = { "lowercase-global" },
         },
         workspace = {
           -- Make the server aware of Neovim runtime files
@@ -70,6 +70,8 @@ local servers = {
   },
   tsserver = { disable_formatting = true },
   vimls = {},
+  tailwindcss = {},
+  solang = {},
 }
 
 -- local lsp_signature = require "lsp_signature"
