@@ -321,6 +321,7 @@ function M.setup()
       ft = "norg",
       after = "nvim-treesitter",
       requires = { "nvim-lua/plenary.nvim", "Pocco81/TrueZen.nvim" },
+      disable = true,
     }
 
     -- Status line
