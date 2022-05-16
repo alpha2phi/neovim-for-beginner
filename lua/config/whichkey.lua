@@ -280,7 +280,7 @@ local function code_keymap()
     end
 
     if fname == "Cargo.toml" then
-      keymap_c.u = { "<cmd>lua require('crates').upgrade_all_crates()cr>", "Upgrade All Crates" }
+      keymap_c.u = { "<cmd>lua require('crates').upgrade_all_crates()<cr>", "Upgrade All Crates" }
     end
 
     if next(keymap_c) ~= nil then
