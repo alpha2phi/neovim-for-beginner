@@ -248,7 +248,7 @@ local function code_keymap()
     elseif ft == "rust" then
       keymap_c = {
         name = "Code",
-        r = { "<cmd>Cargo run<cr>", "Run" },
+        r = { "<cmd>execute 'Cargo run' | startinsert<cr>", "Run" },
         D = { "<cmd>RustDebuggables<cr>", "Debuggables" },
         h = { "<cmd>RustHoverActions<cr>", "Hover Actions" },
         R = { "<cmd>RustRunnables<cr>", "Runnables" },
