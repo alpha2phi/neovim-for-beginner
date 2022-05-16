@@ -279,6 +279,10 @@ local function code_keymap()
       keymap_c.t = { "<cmd>2TermExec cmd='yarn test'<cr>", "Yarn Test" }
     end
 
+    if fname == "Cargo.toml" then
+      keymap_c.u = { "<cmd>lua require('crates').upgrade_all_crates()cr>", "Upgrade All Crates" }
+    end
+
     if next(keymap_c) ~= nil then
       whichkey.register(
         { c = keymap_c },

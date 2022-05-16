@@ -187,6 +187,7 @@ function M.setup()
       { name = "nvim_lua" },
       { name = "path" },
       { name = "nvim_lsp_signature_help" },
+      { name = "crates" },
       -- { name = "spell" },
       -- { name = "emoji" },
       -- { name = "calc" },

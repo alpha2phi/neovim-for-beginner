@@ -676,6 +676,20 @@ function M.setup()
         require("config.rust").setup()
       end,
     }
+    use {
+      "saecki/crates.nvim",
+      event = { "BufRead Cargo.toml" },
+      requires = { { "nvim-lua/plenary.nvim" } },
+      config = function()
+        -- local null_ls = require "null-ls"
+        require("crates").setup {
+          null_ls = {
+            enabled = true,
+            name = "crates.nvim",
+          },
+        }
+      end,
+    }
 
     -- Go
     use {
