@@ -896,6 +896,16 @@ function M.setup()
     -- Quickfix
     use { "romainl/vim-qf", event = "BufReadPre", disable = true }
 
+    -- Todo
+    use {
+      "folke/todo-comments.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      config = function()
+        require("todo-comments").setup {}
+      end,
+      cmd = { "TodoQuickfix", "TodoTrouble", "TodoTelescope" },
+    }
+
     -- Diffview
     use {
       "sindrets/diffview.nvim",
