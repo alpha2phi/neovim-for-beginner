@@ -25,9 +25,9 @@ function M.format()
       filter = function(clients)
         return vim.tbl_filter(function(client)
           return client.name ~= "tsserver"
-              and client.name ~= "jsonls"
-              and client.name ~= "html"
-              and client.name ~= "sumneko_lua"
+            and client.name ~= "jsonls"
+            and client.name ~= "html"
+            and client.name ~= "sumneko_lua"
         end, clients)
       end,
     }
