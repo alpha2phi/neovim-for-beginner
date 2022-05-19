@@ -167,6 +167,7 @@ local function normal_keymap()
       d = { "<cmd>DiffviewOpen<cr>", "Diff View Open" },
       D = { "<cmd>DiffviewClose<cr>", "Diff View Close" },
       i = { "<cmd>PackerInstall<cr>", "Install" },
+      m = { "<cmd>lua require('telescope').extensions.macroscope.default()<cr>", "Macros" },
       p = { "<cmd>PackerProfile<cr>", "Profile" },
       s = { "<cmd>PackerSync<cr>", "Sync" },
       S = { "<cmd>PackerStatus<cr>", "Status" },
