@@ -114,6 +114,8 @@ function M.setup()
     },
   }
 
+  require("neoclip").setup() -- https://github.com/AckslD/nvim-neoclip.lua/issues/5
+
   telescope.load_extension "fzf"
   telescope.load_extension "project" -- telescope-project.nvim
   telescope.load_extension "repo"

@@ -435,9 +435,9 @@ function M.setup()
             "AckslD/nvim-neoclip.lua",
             requires = {
               { "tami5/sqlite.lua", module = "sqlite" },
-              config = function()
-                require("neoclip").setup()
-              end,
+              -- config = function()
+              --   require("neoclip").setup()
+              -- end,
             },
           },
           "nvim-telescope/telescope-smart-history.nvim",
@@ -950,6 +950,18 @@ function M.setup()
     }
 
     -- Testing
+    use {
+      "m-demare/attempt.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      module = { "attempt" },
+      config = function()
+        require("attempt").setup()
+      end,
+      disable = true,
+    }
+    -- https://github.com/WhoIsSethDaniel/toggle-lsp-diagnostics.nvim
+    -- https://github.com/rbong/vim-buffest
+    -- https://github.com/ziontee113/syntax-tree-surfer
 
     -- Bootstrap Neovim
     if packer_bootstrap then
