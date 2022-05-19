@@ -32,7 +32,7 @@ local function keymappings(client, bufnr)
       t = { "<cmd>TroubleToggle document_diagnostics<CR>", "Trouble" },
       L = { "<cmd>lua vim.lsp.codelens.refresh()<CR>", "Refresh CodeLens" },
       l = { "<cmd>lua vim.lsp.codelens.run()<CR>", "Run CodeLens" },
-      h = { "<cmd>lua vim.diagnostic.hide()<CR>", "Hide Diagnostics" },
+      D = { "<cmd>lua require('config.lsp').toggle_diagnostics()<CR>", "Toggle Inline Diagnostics" },
     },
   }
   if client.server_capabilities.documentFormattingProvider then

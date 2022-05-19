@@ -350,6 +350,7 @@ function M.setup()
       config = function()
         require("incline").setup()
       end,
+      disable = false,
     }
 
     -- Treesitter
@@ -938,6 +939,17 @@ function M.setup()
         vim.g.translator_history_enable = true
       end,
     }
+
+    -- REPL
+    use {
+      "hkupty/iron.nvim",
+      config = function()
+        require("config.iron").setup()
+      end,
+      disable = true,
+    }
+
+    -- Testing
 
     -- Bootstrap Neovim
     if packer_bootstrap then
