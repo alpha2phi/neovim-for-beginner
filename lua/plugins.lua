@@ -962,6 +962,8 @@ function M.setup()
     -- https://github.com/WhoIsSethDaniel/toggle-lsp-diagnostics.nvim
     -- https://github.com/rbong/vim-buffest
     -- https://github.com/ziontee113/syntax-tree-surfer
+    -- https://github.com/filipdutescu/renamer.nvim
+    -- https://www.reddit.com/r/neovim/comments/usap7v/winbar_now_on_nightly/
 
     -- Bootstrap Neovim
     if packer_bootstrap then
