@@ -72,6 +72,7 @@ local servers = {
   vimls = {},
   tailwindcss = {},
   solang = {},
+  yamlls = {}
 }
 
 -- local lsp_signature = require "lsp_signature"
