@@ -719,9 +719,10 @@ function M.setup()
       -- event = "BufReadPre",
       keys = { [[<leader>d]] },
       module = { "dap" },
-      wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
+      wants = { "nvim-dap-virtual-text", "dap-buddy.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
       requires = {
-        "alpha2phi/DAPInstall.nvim",
+        -- "alpha2phi/DAPInstall.nvim",
+        { "Pocco81/dap-buddy.nvim", branch = "dev" },
         "theHamsta/nvim-dap-virtual-text",
         "rcarriga/nvim-dap-ui",
         "mfussenegger/nvim-dap-python",
