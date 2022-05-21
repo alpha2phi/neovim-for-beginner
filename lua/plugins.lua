@@ -52,7 +52,7 @@ function M.setup()
       "rcarriga/nvim-notify",
       event = "VimEnter",
       config = function()
-        vim.notify = require "notify"
+        require("config.notify").setup()
       end,
     }
 
@@ -915,9 +915,8 @@ function M.setup()
     -- Todo
     use {
       "folke/todo-comments.nvim",
-      requires = "nvim-lua/plenary.nvim",
       config = function()
-        require("todo-comments").setup {}
+        require("config.todocomments").setup()
       end,
       cmd = { "TodoQuickfix", "TodoTrouble", "TodoTelescope" },
     }
