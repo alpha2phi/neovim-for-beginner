@@ -202,6 +202,14 @@ function M.setup()
 
     -- Buffer
     use { "kazhala/close-buffers.nvim", cmd = { "BDelete", "BWipeout" } }
+    use {
+      "matbme/JABS.nvim",
+      cmd = "JABSOpen",
+      config = function()
+        require("config.jabs").setup()
+      end,
+      disable = false,
+    }
 
     -- IDE
     use {
@@ -959,6 +967,7 @@ function M.setup()
     -- Testing
     use {
       "m-demare/attempt.nvim",
+      opt = true,
       requires = "nvim-lua/plenary.nvim",
       module = { "attempt" },
       config = function()
@@ -966,11 +975,36 @@ function M.setup()
       end,
       disable = true,
     }
+    use {
+      "ziontee113/syntax-tree-surfer",
+      opt = true,
+      event = "BufReadPre",
+      module = { "syntax-tree-surfer" },
+      config = function()
+        require("config.syntaxtreesurfer").setup()
+      end,
+      disable = false,
+    }
+    use {
+      "ghillb/cybu.nvim",
+      branch = "main",
+      event = "BufReadPre",
+      config = function()
+        local ok, cybu = pcall(require, "cybu")
+        if not ok then
+          return
+        end
+        cybu.setup()
+        vim.keymap.set("n", "K", "<Plug>(CybuPrev)")
+        vim.keymap.set("n", "J", "<Plug>(CybuNext)")
+      end,
+      disable = true,
+    }
     -- https://github.com/WhoIsSethDaniel/toggle-lsp-diagnostics.nvim
     -- https://github.com/rbong/vim-buffest
-    -- https://github.com/ziontee113/syntax-tree-surfer
     -- https://github.com/filipdutescu/renamer.nvim
     -- https://www.reddit.com/r/neovim/comments/usap7v/winbar_now_on_nightly/
+    -- https://github.com/tversteeg/registers.nvim
 
     -- Bootstrap Neovim
     if packer_bootstrap then

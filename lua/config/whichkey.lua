@@ -80,6 +80,7 @@ local function normal_keymap()
       D = { "<Cmd>BWipeout other<Cr>", "Delete All Buffers" },
       b = { "<Cmd>BufferLinePick<Cr>", "Pick a Buffer" },
       p = { "<Cmd>BufferLinePickClose<Cr>", "Pick & Close a Buffer" },
+      m = { "<Cmd>JABSOpen<Cr>", "Menu" },
     },
 
     c = {
