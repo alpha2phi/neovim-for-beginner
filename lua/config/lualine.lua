@@ -94,6 +94,8 @@ end
 --   return table.concat(status, "  ") .. " " .. spinners[frame + 1]
 -- end
 
+local icons = require "config.icons"
+
 function M.setup()
   local gps = require "nvim-gps"
 
@@ -115,7 +117,12 @@ function M.setup()
         {
           "diagnostics",
           sources = { "nvim_diagnostic" },
-          symbols = { error = " ", warn = " ", info = " ", hint = " " },
+          symbols = {
+            error = icons.diagnostics.Error,
+            warn = icons.diagnostics.Warning,
+            info = icons.diagnostics.Information,
+            hint = icons.diagnostics.Hint,
+          },
           colored = false,
         },
       },
