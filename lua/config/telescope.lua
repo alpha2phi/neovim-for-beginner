@@ -61,6 +61,8 @@ function M.setup()
 
   telescope.setup {
     defaults = {
+      selection_caret = " ",
+      path_display = { "smart" },
       buffer_previewer_maker = preview_maker,
       mappings = {
         i = {
