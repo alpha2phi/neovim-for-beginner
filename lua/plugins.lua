@@ -463,6 +463,7 @@ function M.setup()
             rocks = { "openssl", "lua-http-parser" },
           },
           "nvim-telescope/telescope-media-files.nvim",
+          "dhruvmanila/telescope-bookmarks.nvim",
         },
       }
     end
@@ -996,13 +997,7 @@ function M.setup()
       branch = "main",
       event = "BufReadPre",
       config = function()
-        local ok, cybu = pcall(require, "cybu")
-        if not ok then
-          return
-        end
-        cybu.setup()
-        vim.keymap.set("n", "K", "<Plug>(CybuPrev)")
-        vim.keymap.set("n", "J", "<Plug>(CybuNext)")
+        require("config.cybu").setup()
       end,
       disable = true,
     }
