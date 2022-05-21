@@ -20,6 +20,7 @@ local nvb_actions = transform_mod {
 
 -- trouble.nvim
 local trouble = require "trouble.providers.telescope"
+local icons = require "config.icons"
 
 function M.setup()
   local actions = require "telescope.actions"
@@ -61,6 +62,7 @@ function M.setup()
 
   telescope.setup {
     defaults = {
+      prompt_prefix = icons.ui.Telescope .. " ",
       selection_caret = " ",
       path_display = { "smart" },
       buffer_previewer_maker = preview_maker,
