@@ -210,6 +210,13 @@ function M.setup()
       end,
       disable = false,
     }
+    use {
+      "chentoast/marks.nvim",
+      event = "BufReadPre",
+      config = function()
+        require("marks").setup {}
+      end,
+    }
 
     -- IDE
     use {

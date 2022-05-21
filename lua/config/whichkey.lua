@@ -40,6 +40,7 @@ local function normal_keymap()
       d = { "<cmd>lua require('utils.finder').find_dotfiles()<cr>", "Dotfiles" },
       b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers" },
       h = { "<cmd>lua require('telescope.builtin').help_tags()<cr>", "Help" },
+      m = { "<cmd>lua require('telescope.builtin').marks()<cr>", "Marks" },
       o = { "<cmd>lua require('telescope.builtin').oldfiles()<cr>", "Old Files" },
       g = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Live Grep" },
       c = { "<cmd>lua require('telescope.builtin').commands()<cr>", "Commands" },
