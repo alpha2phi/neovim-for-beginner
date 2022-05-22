@@ -365,7 +365,7 @@ function M.setup()
       config = function()
         require("incline").setup()
       end,
-      disable = false,
+      disable = true,
     }
 
     -- Treesitter

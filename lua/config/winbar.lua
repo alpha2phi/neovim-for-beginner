@@ -1,5 +1,7 @@
 local M = {}
 
+local colors = require "config.colors"
+
 local status_gps_ok, gps = pcall(require, "nvim-gps")
 if not status_gps_ok then
   return
@@ -9,9 +11,8 @@ local function isempty(s)
   return s == nil or s == ""
 end
 
-M.filename = function()
-  local filename = vim.fn.expand("%"):match "([^/]+)$"
-
+function M.filename()
+  local filename = vim.fn.expand "%:t"
   local extension = ""
   local file_icon = ""
   local file_icon_color = ""
@@ -19,15 +20,13 @@ M.filename = function()
   local default_file_icon_color = ""
 
   if not isempty(filename) then
-    extension = filename:match "^.+(%..+)$"
+    extension = vim.fn.expand "%:e"
 
     local default = false
 
     if isempty(extension) then
       extension = ""
       default = true
-    else
-      extension = extension:gsub("%.", "") -- remove . (. is a special character so we have to escape it)
     end
 
     file_icon, file_icon_color = require("nvim-web-devicons").get_icon_color(filename, extension, { default = default })
@@ -39,17 +38,18 @@ M.filename = function()
       file_icon = default_file_icon
       file_icon_color = default_file_icon_color
     end
+
     return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. "%#LineNr#" .. filename .. "%*"
   end
 end
 
-M.gps = function()
+function M.gps()
   local status_ok, gps_location = pcall(gps.get_location, {})
   if not status_ok then
     return
   end
 
-  local ChevronRight = ">"
+  local icons = require "config.icons"
 
   if not gps.is_available() then -- Returns boolean value indicating whether a output can be provided
     return
@@ -61,11 +61,48 @@ M.gps = function()
     return ""
   else
     if not isempty(gps_location) then
-      return retval .. " " .. ChevronRight .. " " .. gps_location
+      return retval .. " " .. icons.ui.ChevronRight .. " " .. gps_location
     else
       return retval
     end
   end
+end
+
+vim.api.nvim_set_hl(0, "WinBarSeparator", { fg = colors.grey })
+vim.api.nvim_set_hl(0, "WinBarContent", { fg = colors.green, bg = colors.grey })
+local winbar_filetype_exclude = {
+  "help",
+  "startify",
+  "dashboard",
+  "packer",
+  "neogitstatus",
+  "NvimTree",
+  "Trouble",
+  "alpha",
+  "lir",
+  "Outline",
+  "spectre_panel",
+  "toggleterm",
+}
+
+function M.statusline()
+  -- if vim.api.nvim_eval_statusline("%f", {})["str"] == "[No Name]" then
+  --   return ""
+  -- end
+
+  if vim.tbl_contains(winbar_filetype_exclude, vim.bo.filetype) then
+    return ""
+  end
+
+  return "%#WinBarSeparator#"
+    .. ""
+    .. "%*"
+    .. "%#WinBarContent#"
+    .. "%f"
+    .. "%*"
+    .. "%#WinBarSeparator#"
+    .. ""
+    .. "%*"
 end
 
 return M
