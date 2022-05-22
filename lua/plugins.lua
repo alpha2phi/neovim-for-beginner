@@ -379,7 +379,7 @@ function M.setup()
       end,
       requires = {
         { "nvim-treesitter/nvim-treesitter-textobjects", event = "BufReadPre" },
-        { "windwp/nvim-ts-autotag", event = "BufReadPre" },
+        { "windwp/nvim-ts-autotag", event = "InsertEnter" },
         { "JoosepAlviste/nvim-ts-context-commentstring", event = "BufReadPre" },
         { "nvim-treesitter/nvim-treesitter-context", event = "BufReadPre" },
         { "p00f/nvim-ts-rainbow", event = "BufReadPre" },
