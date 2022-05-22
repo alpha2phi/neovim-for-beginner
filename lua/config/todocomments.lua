@@ -11,18 +11,13 @@ local perf_purple = "#7C3AED"
 function M.setup()
   require("todo-comments").setup {
     signs = true,
-    sign_priority = 8,
     keywords = {
-      FIX = {
-        icon = icons.ui.Bug,
-        color = error_red,
-        alt = { "FIXME", "BUG", "FIXIT", "ISSUE" },
-      },
-      TODO = { icon = icons.ui.Check, color = hint_blue, alt = { "TIP" } },
+      FIX = { icon = icons.ui.Bug, color = error_red },
+      TODO = { icon = icons.ui.Check, color = hint_blue },
       HACK = { icon = icons.ui.Fire, color = warning_orange },
-      WARN = { icon = icons.diagnostics.Warning, color = warning_orange, alt = { "WARNING", "XXX" } },
-      PERF = { icon = icons.ui.Dashboard, color = perf_purple, alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-      NOTE = { icon = icons.ui.Note, color = info_yellow, alt = { "INFO" } },
+      WARN = { icon = icons.diagnostics.Warning, color = warning_orange },
+      PERF = { icon = icons.ui.Dashboard, color = perf_purple },
+      NOTE = { icon = icons.ui.Note, color = info_yellow },
     },
   }
 end

@@ -115,6 +115,13 @@ function M.setup()
         filetypes = { "png", "webp", "jpg", "jpeg", "pdf", "mp4", "webm" },
         find_cmd = "fd",
       },
+      bookmarks = {
+        selected_browser = "brave",
+        url_open_command = nil,
+        url_open_plugin = "open_browser",
+        full_path = true,
+        firefox_profile_name = nil,
+      },
     },
   }
 
@@ -131,6 +138,7 @@ function M.setup()
   telescope.load_extension "smart_history"
   telescope.load_extension "arecibo"
   telescope.load_extension "media_files"
+  telescope.load_extension "bookmarks"
 end
 
 return M

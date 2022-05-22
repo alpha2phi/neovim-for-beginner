@@ -19,7 +19,7 @@ end
 
 function M.format()
   if M.autoformat then
-    -- vim.lsp.buf.formatting_sync(nil, 2000) -- deprecated
+    local view = vim.fn.winsaveview()
     vim.lsp.buf.format {
       async = true,
       filter = function(clients)
@@ -31,6 +31,7 @@ function M.format()
         end, clients)
       end,
     }
+    vim.fn.winrestview(view)
   end
 end
 

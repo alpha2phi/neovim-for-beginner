@@ -26,7 +26,6 @@ opt.scrolloff = 8 -- Lines of context
 -- opt.scrolloff = 999 -- Lines of context
 -- opt.sidescrolloff = 999
 opt.joinspaces = false -- No double spaces with join after a dot
-opt.laststatus = 3 -- Global statusline
 opt.sessionoptions = "buffers,curdir,help,tabpages,winsize,winpos,terminal"
 opt.smartindent = true --Smart indent
 opt.expandtab = true
@@ -38,9 +37,10 @@ opt.tabstop = 2
 opt.softtabstop = 2
 opt.splitbelow = true
 opt.splitright = true
+opt.laststatus = 3 -- Global statusline
+opt.winbar = "%{%v:lua.require'config.winbar'.statusline()%}"
 
--- go to previous/next line with h,l,left arrow and right arrow
--- when cursor reaches end/beginning of line
+-- go to previous/next line with h,l,left arrow and right arrow when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
 
 -- disable nvim intro

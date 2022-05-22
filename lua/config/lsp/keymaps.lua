@@ -26,7 +26,7 @@ local function keymappings(client, bufnr)
       d = { "<cmd>Telescope diagnostics<CR>", "Diagnostics" },
       f = { "<cmd>Lspsaga lsp_finder<CR>", "Finder" },
       i = { "<cmd>LspInfo<CR>", "Lsp Info" },
-      n = { "<cmd>Lspsaga rename<CR>", "Rename" },
+      n = { "<cmd>lua require('renamer').rename()<CR>", "Rename" },
       r = { "<cmd>Telescope lsp_references<CR>", "References" },
       s = { "<cmd>Telescope lsp_document_symbols<CR>", "Document Symbols" },
       t = { "<cmd>TroubleToggle document_diagnostics<CR>", "Trouble" },
