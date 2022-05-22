@@ -144,7 +144,7 @@ local snippets = {
     p(os.date, "%Y-%m-%d"),
   }),
 
-  s({ trig = "pwd" }, { f(bash, {}) }),
+  -- s({ trig = "pwd" }, { f(bash, {}) }),
 
   s("choice", { c(1, { t "choice 1", t "choice 2", t "choice 3" }) }),
 
