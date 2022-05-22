@@ -28,8 +28,14 @@ function M.setup()
     '<cmd>lua require("syntax-tree-surfer").select_current_node()<cr>',
     { noremap = true, silent = true }
   )
+  vim.api.nvim_set_keymap(
+    "n",
+    "vo",
+    '<cmd>lua require("syntax-tree-surfer").go_to_top_node_and_execute_commands(false, { "normal! O", "normal! O", "startinsert" })<cr>',
+    { noremap = true, silent = true }
+  )
 
-  -- NAVIGATION: Only change the keymap to your liking. I would not recommend changing anything about the .surf() parameters!
+  -- NAVIGATION -  Only change the keymap to your liking. I would not recommend changing anything about the .surf() parameters!
   -- vim.api.nvim_set_keymap(
   --   "x",
   --   "J",
@@ -42,32 +48,32 @@ function M.setup()
   --   '<cmd>lua require("syntax-tree-surfer").surf("prev", "visual")<cr>',
   --   { noremap = true, silent = true }
   -- )
-  -- vim.api.nvim_set_keymap(
-  --   "x",
-  --   "H",
-  --   '<cmd>lua require("syntax-tree-surfer").surf("parent", "visual")<cr>',
-  --   { noremap = true, silent = true }
-  -- )
-  -- vim.api.nvim_set_keymap(
-  --   "x",
-  --   "L",
-  --   '<cmd>lua require("syntax-tree-surfer").surf("child", "visual")<cr>',
-  --   { noremap = true, silent = true }
-  -- )
+  vim.api.nvim_set_keymap(
+    "x",
+    "H",
+    '<cmd>lua require("syntax-tree-surfer").surf("parent", "visual")<cr>',
+    { noremap = true, silent = true }
+  )
+  vim.api.nvim_set_keymap(
+    "x",
+    "L",
+    '<cmd>lua require("syntax-tree-surfer").surf("child", "visual")<cr>',
+    { noremap = true, silent = true }
+  )
 
-  -- SWAPPING WITH VISUAL SELECTION: Only change the keymap to your liking. Don't change the .surf() parameters!
-  -- vim.api.nvim_set_keymap(
-  --   "x",
-  --   "<A-j>",
-  --   '<cmd>lua require("syntax-tree-surfer").surf("next", "visual", true)<cr>',
-  --   { noremap = true, silent = true }
-  -- )
-  -- vim.api.nvim_set_keymap(
-  --   "x",
-  --   "<A-k>",
-  --   '<cmd>lua require("syntax-tree-surfer").surf("prev", "visual", true)<cr>',
-  --   { noremap = true, silent = true }
-  -- )
+  -- SWAPPING WITH VISUAL SELECTION - Only change the keymap to your liking. Don't change the .surf() parameters!
+  vim.api.nvim_set_keymap(
+    "x",
+    "<C-j>",
+    '<cmd>lua require("syntax-tree-surfer").surf("next", "visual", true)<cr>',
+    { noremap = true, silent = true }
+  )
+  vim.api.nvim_set_keymap(
+    "x",
+    "<C-k>",
+    '<cmd>lua require("syntax-tree-surfer").surf("prev", "visual", true)<cr>',
+    { noremap = true, silent = true }
+  )
 end
 
 return M

@@ -689,6 +689,15 @@ function M.setup()
       end,
     }
 
+    -- renamer.nvim
+    use {
+      "filipdutescu/renamer.nvim",
+      module = { "renamer" },
+      config = function()
+        require("renamer").setup {}
+      end,
+    }
+
     -- Rust
     use {
       "simrat39/rust-tools.nvim",
@@ -1001,11 +1010,9 @@ function M.setup()
       end,
       disable = true,
     }
+    use { "tversteeg/registers.nvim", disable = true }
     -- https://github.com/WhoIsSethDaniel/toggle-lsp-diagnostics.nvim
     -- https://github.com/rbong/vim-buffest
-    -- https://github.com/filipdutescu/renamer.nvim
-    -- https://www.reddit.com/r/neovim/comments/usap7v/winbar_now_on_nightly/
-    -- https://github.com/tversteeg/registers.nvim
 
     -- Bootstrap Neovim
     if packer_bootstrap then
