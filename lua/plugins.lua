@@ -1013,6 +1013,8 @@ function M.setup()
     use { "tversteeg/registers.nvim", disable = true }
     -- https://github.com/WhoIsSethDaniel/toggle-lsp-diagnostics.nvim
     -- https://github.com/rbong/vim-buffest
+    -- https://github.com/jamestthompson3/nvim-remote-containers
+    -- https://github.com/esensar/nvim-dev-container
 
     -- Bootstrap Neovim
     if packer_bootstrap then

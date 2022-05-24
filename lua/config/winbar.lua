@@ -70,6 +70,7 @@ end
 
 vim.api.nvim_set_hl(0, "WinBarSeparator", { fg = colors.grey })
 vim.api.nvim_set_hl(0, "WinBarContent", { fg = colors.green, bg = colors.grey })
+
 local winbar_filetype_exclude = {
   "help",
   "startify",
@@ -95,14 +96,40 @@ function M.statusline()
   end
 
   return "%#WinBarSeparator#"
+    .. "%="
     .. ""
     .. "%*"
     .. "%#WinBarContent#"
+    .. "%m "
     .. "%t"
     .. "%*"
     .. "%#WinBarSeparator#"
     .. ""
     .. "%*"
 end
+
+-- vim.api.nvim_set_hl(0, "WinBarSeparator", { fg = colors.bright.white })
+-- vim.api.nvim_set_hl(0, "WinBarContent", { fg = colors.bright.black, bg = colors.bright.white })
+-- vim.api.nvim_set_hl(0, "WinBarContentModified ", { fg = colors.bright.red, bg = colors.bright.white })
+--
+-- function M.statusline2()
+--   local file_path = vim.api.nvim_eval_statusline("%f", {}).str
+--   local modified = vim.api.nvim_eval_statusline("%m", {}).str == "[+]" and "  ⟴  " or ""
+--
+--   file_path = file_path:gsub("/", " ➤ ")
+--
+--   return "%#WinBarSeparator#"
+--     .. ""
+--     .. "%*"
+--     .. "%#WinBarContent#"
+--     .. file_path
+--     .. "%*"
+--     .. "%#WinBarContentModified#"
+--     .. modified
+--     .. "%*"
+--     .. "%#WinBarSeparator#"
+--     .. ""
+--     .. "%*"
+-- end
 
 return M
