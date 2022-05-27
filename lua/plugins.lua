@@ -154,6 +154,21 @@ function M.setup()
       end,
       disable = true,
     }
+    use {
+      "akinsho/git-conflict.nvim",
+      cmd = {
+        "GitConflictChooseTheirs",
+        "GitConflictChooseOurs",
+        "GitConflictChooseBoth",
+        "GitConflictChooseNone",
+        "GitConflictNextConflict",
+        "GitConflictPrevConflict",
+        "GitConflictListQf",
+      },
+      config = function()
+        require("git-conflict").setup()
+      end,
+    }
 
     -- WhichKey
     use {
