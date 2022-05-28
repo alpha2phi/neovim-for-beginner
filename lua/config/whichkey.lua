@@ -316,14 +316,14 @@ local function code_keymap()
     if next(keymap_c) ~= nil then
       whichkey.register(
         { c = keymap_c },
-        { mode = "n", silent = true, noremap = true, buffer = bufnr, prefix = "<leader>" }
+        { mode = "n", silent = true, noremap = true, buffer = bufnr, prefix = "<leader>", nowait = true }
       )
     end
 
     if next(keymap_c_v) ~= nil then
       whichkey.register(
         { c = keymap_c_v },
-        { mode = "v", silent = true, noremap = true, buffer = bufnr, prefix = "<leader>" }
+        { mode = "v", silent = true, noremap = true, buffer = bufnr, prefix = "<leader>", nowait = true }
       )
     end
   end

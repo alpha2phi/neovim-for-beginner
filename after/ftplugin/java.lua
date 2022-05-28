@@ -4,9 +4,14 @@ if not jdtls_ok then
   return
 end
 
+-- Installation location of jdtls by nvim-lsp-installer
 local JDTLS_LOCATION = vim.fn.stdpath "data" .. "/lsp_servers/jdtls"
+
+-- Data directory - change it to your liking
 local HOME = os.getenv "HOME"
 local WORKSPACE_PATH = HOME .. "/workspace/java/"
+
+-- Only for Linux and Mac
 local SYSTEM = "linux"
 if vim.fn.has "mac" == 1 then
   SYSTEM = "mac"
