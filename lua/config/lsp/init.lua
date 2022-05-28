@@ -74,6 +74,7 @@ local servers = {
   solang = {},
   yamlls = {},
   jdtls = {},
+  dockerls = {},
 }
 
 -- local lsp_signature = require "lsp_signature"
@@ -145,6 +146,16 @@ function M.toggle_diagnostics()
   else
     vim.diagnostic.hide()
   end
+end
+
+function M.remove_unused_imports()
+  vim.diagnostic.setqflist { severity = vim.diagnostic.severity.WARN }
+  vim.cmd "packadd cfilter"
+  vim.cmd "Cfilter /main/"
+  vim.cmd "Cfilter /The import/"
+  vim.cmd "cdo normal dd"
+  vim.cmd "cclose"
+  vim.cmd "wa"
 end
 
 return M
