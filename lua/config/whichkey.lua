@@ -74,6 +74,16 @@ local function normal_keymap()
     ["q"] = { "<cmd>q!<CR>", "Quit" },
     -- ["t"] = { "<cmd>ToggleTerm<CR>", "Terminal" },
 
+    a = {
+      name = "Attempt",
+      n = { "<Cmd>lua require('attempt').new_select()<Cr>", "New Select" },
+      i = { "<Cmd>lua require('attempt').new_input_ext()<Cr>", "New Input Extension" },
+      r = { "<Cmd>lua require('attempt').run()<Cr>", "Run" },
+      d = { "<Cmd>lua require('attempt').delete_buf()<Cr>", "Delete Buffer" },
+      c = { "<Cmd>lua require('attempt').rename_buf()<Cr>", "Rename Buffer" },
+      s = { "<Cmd>Telescope attempt<Cr>", "Search" },
+    },
+
     b = {
       name = "Buffer",
       c = { "<Cmd>BDelete this<Cr>", "Close Buffer" },
@@ -236,7 +246,8 @@ local function code_keymap()
     local bufnr = vim.api.nvim_get_current_buf()
     local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
     local fname = vim.fn.expand "%:p:t"
-    local keymap_c = {}
+    local keymap_c = {} -- normal key map
+    local keymap_c_v = {} -- visual key map
 
     if ft == "python" then
       keymap_c = {
@@ -265,7 +276,7 @@ local function code_keymap()
     elseif ft == "typescript" or ft == "typescriptreact" or ft == "javascript" or ft == "javascriptreact" then
       keymap_c = {
         name = "Code",
-        o = { "<cmd>TypescriptOrganizeImports<cr>", "Organize" },
+        o = { "<cmd>TypescriptOrganizeImports<cr>", "Organize Imports" },
         r = { "<cmd>TypescriptRenameFile<cr>", "Rename File" },
         i = { "<cmd>TypescriptAddMissingImports<cr>", "Import Missing" },
         F = { "<cmd>TypescriptFixAll<cr>", "Fix All" },
@@ -273,6 +284,21 @@ local function code_keymap()
         R = { "<cmd>lua require('config.test').javascript_runner()<cr>", "Choose Test Runner" },
         s = { "<cmd>2TermExec cmd='yarn start'<cr>", "Yarn Start" },
         t = { "<cmd>2TermExec cmd='yarn test'<cr>", "Yarn Test" },
+      }
+    elseif ft == "java" then
+      keymap_c = {
+        name = "Code",
+        o = { "<cmd>lua require'jdtls'.organize_imports()<cr>", "Organize Imports" },
+        v = { "<cmd>lua require('jdtls').extract_variable()<cr>", "Extract Variable" },
+        c = { "<cmd>lua require('jdtls').extract_constant()<cr>", "Extract Constant" },
+        t = { "<cmd>lua require('jdtls').test_class()<cr>", "Test Class" },
+        n = { "<cmd>lua require('jdtls').test_nearest_method()<cr>", "Test Nearest Method" },
+      }
+      keymap_c_v = {
+        name = "Code",
+        v = { "<cmd>lua require('jdtls').extract_variable(true)<cr>", "Extract Variable" },
+        c = { "<cmd>lua require('jdtls').extract_constant(true)<cr>", "Extract Constant" },
+        m = { "<cmd>lua require('jdtls').extract_method(true)<cr>", "Extract Method" },
       }
     end
 
@@ -290,7 +316,14 @@ local function code_keymap()
     if next(keymap_c) ~= nil then
       whichkey.register(
         { c = keymap_c },
-        { mode = "n", silent = true, noremap = true, buffer = bufnr, prefix = "<leader>" }
+        { mode = "n", silent = true, noremap = true, buffer = bufnr, prefix = "<leader>", nowait = true }
+      )
+    end
+
+    if next(keymap_c_v) ~= nil then
+      whichkey.register(
+        { c = keymap_c_v },
+        { mode = "v", silent = true, noremap = true, buffer = bufnr, prefix = "<leader>", nowait = true }
       )
     end
   end
