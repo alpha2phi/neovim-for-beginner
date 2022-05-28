@@ -748,6 +748,9 @@ function M.setup()
       end,
     }
 
+    -- Java
+    use { "mfussenegger/nvim-jdtls" }
+
     -- Terminal
     use {
       "akinsho/toggleterm.nvim",
