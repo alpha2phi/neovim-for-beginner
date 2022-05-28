@@ -5,13 +5,15 @@ if not jdtls_ok then
 end
 
 local JDTLS_LOCATION = vim.fn.stdpath "data" .. "/lsp_servers/jdtls"
-
+local HOME = os.getenv "HOME"
+local WORKSPACE_PATH = HOME .. "/workspace/java/"
 local SYSTEM = "linux"
 if vim.fn.has "mac" == 1 then
   SYSTEM = "mac"
 end
 
-local workspace_dir = vim.fn.getcwd()
+local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+local workspace_dir = WORKSPACE_PATH .. project_name
 
 local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
@@ -44,7 +46,7 @@ local config = {
     workspace_dir,
   },
 
-  on_attach = require("config.lsp").on_attach,
+  -- on_attach = require("config.lsp").on_attach,
   capabilities = require("config.lsp").capabilities,
   root_dir = root_dir,
 
@@ -72,7 +74,11 @@ local config = {
         includeDecompiledSources = true,
       },
       format = {
-        enabled = false,
+        enabled = true,
+        settings = {
+          url = vim.fn.stdpath "config" .. "/lang-servers/intellij-java-google-style.xml",
+          profile = "GoogleStyle",
+        },
       },
     },
     signatureHelp = { enabled = true },
@@ -127,3 +133,6 @@ vim.cmd "command! -buffer JdtUpdateConfig lua require('jdtls').update_project_co
 vim.cmd "command! -buffer JdtJol lua require('jdtls').jol()"
 vim.cmd "command! -buffer JdtBytecode lua require('jdtls').javap()"
 vim.cmd "command! -buffer JdtJshell lua require('jdtls').jshell()"
+
+vim.cmd [[setlocal shiftwidth=2]]
+vim.cmd [[setlocal tabstop=2]]
