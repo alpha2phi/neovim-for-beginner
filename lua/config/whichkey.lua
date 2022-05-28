@@ -74,6 +74,16 @@ local function normal_keymap()
     ["q"] = { "<cmd>q!<CR>", "Quit" },
     -- ["t"] = { "<cmd>ToggleTerm<CR>", "Terminal" },
 
+    a = {
+      name = "Attempt",
+      n = { "<Cmd>lua require('attempt').new_select()<Cr>", "New Select" },
+      i = { "<Cmd>lua require('attempt').new_input_ext()<Cr>", "New Input Extension" },
+      r = { "<Cmd>lua require('attempt').run()<Cr>", "Run" },
+      d = { "<Cmd>lua require('attempt').delete_buf()<Cr>", "Delete Buffer" },
+      c = { "<Cmd>lua require('attempt').rename_buf()<Cr>", "Rename Buffer" },
+      s = { "<Cmd>Telescope attempt<Cr>", "Search" },
+    },
+
     b = {
       name = "Buffer",
       c = { "<Cmd>BDelete this<Cr>", "Close Buffer" },

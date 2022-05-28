@@ -749,7 +749,8 @@ function M.setup()
     }
 
     -- Java
-    use { "mfussenegger/nvim-jdtls" }
+    use { "mfussenegger/nvim-jdtls", ft = { "java" }
+ }
 
     -- Terminal
     use {
@@ -1005,9 +1006,9 @@ function M.setup()
       requires = "nvim-lua/plenary.nvim",
       module = { "attempt" },
       config = function()
-        require("attempt").setup()
+        require("config.attempt").setup()
       end,
-      disable = true,
+      disable = false,
     }
     use {
       "ziontee113/syntax-tree-surfer",
