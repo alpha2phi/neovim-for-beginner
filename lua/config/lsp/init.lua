@@ -84,7 +84,7 @@ local servers = {
 --   },
 -- }
 
-local function on_attach(client, bufnr)
+function M.on_attach(client, bufnr)
   -- Enable completion triggered by <C-X><C-O>
   -- See `:help omnifunc` and `:help ins-completion` for more information.
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -112,12 +112,14 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 if PLUGINS.nvim_cmp.enabled then
-  capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities) -- for nvim-cmp
+  M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities) -- for nvim-cmp
+else
+  M.capabilities = capabilities
 end
 
 local opts = {
-  on_attach = on_attach,
-  capabilities = capabilities,
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
   flags = {
     debounce_text_changes = 150,
   },
