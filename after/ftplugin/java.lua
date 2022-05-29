@@ -11,6 +11,9 @@ local JDTLS_LOCATION = vim.fn.stdpath "data" .. "/lsp_servers/jdtls"
 local HOME = os.getenv "HOME"
 local WORKSPACE_PATH = HOME .. "/workspace/java/"
 
+-- Debugger installation location
+local DEBUGGER_LOCATION = HOME .. "/.local/share/nvim"
+
 -- Only for Linux and Mac
 local SYSTEM = "linux"
 if vim.fn.has "mac" == 1 then
@@ -28,6 +31,14 @@ end
 
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
+
+-- Debugging
+local bundles = {
+  vim.fn.glob(
+    DEBUGGER_LOCATION .. "/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
+  ),
+}
+vim.list_extend(bundles, vim.split(vim.fn.glob(DEBUGGER_LOCATION .. "/vscode-java-test/server/*.jar"), "\n"))
 
 local config = {
   cmd = {
@@ -51,7 +62,7 @@ local config = {
     workspace_dir,
   },
 
-  -- on_attach = require("config.lsp").on_attach,
+  on_attach = require("config.lsp").on_attach,
   capabilities = require("config.lsp").capabilities,
   root_dir = root_dir,
 
@@ -110,6 +121,9 @@ local config = {
       toString = {
         template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
       },
+      hashCodeEquals = {
+        useJava7Objects = true,
+      },
       useBlocks = true,
     },
   },
@@ -125,7 +139,7 @@ local config = {
   --
   -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
   init_options = {
-    bundles = {},
+    bundles = bundles,
   },
 }
 -- This starts a new client & server,
