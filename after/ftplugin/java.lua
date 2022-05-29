@@ -51,7 +51,7 @@ local config = {
     workspace_dir,
   },
 
-  -- on_attach = require("config.lsp").on_attach,
+  on_attach = require("config.lsp").on_attach,
   capabilities = require("config.lsp").capabilities,
   root_dir = root_dir,
 
@@ -109,6 +109,9 @@ local config = {
     codeGeneration = {
       toString = {
         template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
+      },
+      hashCodeEquals = {
+        useJava7Objects = true,
       },
       useBlocks = true,
     },
