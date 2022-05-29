@@ -751,6 +751,18 @@ function M.setup()
     -- Java
     use { "mfussenegger/nvim-jdtls", ft = { "java" } }
 
+    -- Flutter
+    use {
+      "akinsho/flutter-tools.nvim",
+      opt = true,
+      ft = { "dart" },
+      event = { "BufRead pubspec.yaml" },
+      requires = { "nvim-lua/plenary.nvim" },
+      config = function()
+        require("config.flutter").setup()
+      end,
+    }
+
     -- Terminal
     use {
       "akinsho/toggleterm.nvim",
