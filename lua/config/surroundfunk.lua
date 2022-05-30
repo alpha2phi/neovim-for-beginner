@@ -8,7 +8,12 @@ function M.setup()
   map({ "n", "v" }, "gs", "<Plug>(GripSurroundObject)")
   map({ "o", "x" }, "sF", "<Plug>(SelectWholeFUNCTION)")
 
-  require("which-key").register {
+  local status, whichkey = pcall(require, "which-key")
+  if not status then
+    return
+  end
+
+  whichkey.register {
     y = {
       name = "+ysf: Yank ",
       s = {
