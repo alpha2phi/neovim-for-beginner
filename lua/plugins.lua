@@ -311,7 +311,7 @@ function M.setup()
     }
     use {
       "abecodes/tabout.nvim",
-      event = {"InsertEnter"},
+      event = { "InsertEnter" },
       opt = true,
       wants = { "nvim-treesitter" },
       after = { "nvim-cmp" },
@@ -1068,6 +1068,7 @@ function M.setup()
     -- https://github.com/jamestthompson3/nvim-remote-containers
     -- https://github.com/esensar/nvim-dev-container
     -- https://github.com/linty-org/key-menu.nvim
+    -- https://github.com/Matt-A-Bennett/vim-surround-funk
 
     -- Bootstrap Neovim
     if packer_bootstrap then
