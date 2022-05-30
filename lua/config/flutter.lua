@@ -4,6 +4,7 @@ function M.setup()
   vim.notify "Setting up flutter..."
   require("flutter-tools").setup {
     -- flutter_lookup_cmd = "dirname $(which flutter)",
+    flutter_path = "$HOME/snap/flutter/common/flutter/bin/flutter",
     -- debugger = {
     --   enabled = true,
     --   run_via_dap = true,

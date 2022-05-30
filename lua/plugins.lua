@@ -291,15 +291,7 @@ function M.setup()
       disable = false,
     }
 
-    -- use {
-    --   "kkoomen/vim-doge",
-    --   run = ":call doge#install()",
-    --   config = function()
-    --     require("config.doge").setup()
-    --   end,
-    --   event = "VimEnter",
-    -- }
-
+    -- Jumps
     use {
       "phaazon/hop.nvim",
       cmd = { "HopWord", "HopChar1" },
@@ -1074,7 +1066,6 @@ function M.setup()
     -- https://github.com/jamestthompson3/nvim-remote-containers
     -- https://github.com/esensar/nvim-dev-container
     -- https://github.com/linty-org/key-menu.nvim
-    -- https://github.com/Matt-A-Bennett/vim-surround-funk
 
     -- Bootstrap Neovim
     if packer_bootstrap then
