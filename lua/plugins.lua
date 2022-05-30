@@ -309,6 +309,19 @@ function M.setup()
         leap.set_default_keymaps()
       end,
     }
+    use {
+      "abecodes/tabout.nvim",
+      event = {"InsertEnter"},
+      opt = true,
+      wants = { "nvim-treesitter" },
+      after = { "nvim-cmp" },
+      config = function()
+        require("tabout").setup {
+          completion = false,
+          ignore_beginning = false,
+        }
+      end,
+    }
     -- use {
     --   "ggandor/lightspeed.nvim",
     --   keys = { "s", "S", "f", "F", "t", "T" },
