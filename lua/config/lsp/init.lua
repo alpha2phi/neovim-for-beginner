@@ -76,7 +76,7 @@ local servers = {
   jdtls = {},
   dockerls = {},
   bashls = {},
-  dartls = {},
+  -- dartls = {},
 }
 
 -- local lsp_signature = require "lsp_signature"

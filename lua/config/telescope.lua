@@ -91,6 +91,7 @@ function M.setup()
             ["<C-y>"] = nvb_actions.file_path,
           },
         },
+        hidden = true,
       },
       git_files = {
         theme = "dropdown",
@@ -121,6 +122,10 @@ function M.setup()
         url_open_plugin = "open_browser",
         full_path = true,
         firefox_profile_name = nil,
+      },
+      project = {
+        hidden_files = true,
+        theme = "dropdown",
       },
     },
   }
