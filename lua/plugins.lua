@@ -318,7 +318,6 @@ function M.setup()
     }
     use {
       "abecodes/tabout.nvim",
-      event = { "InsertEnter" },
       opt = true,
       wants = { "nvim-treesitter" },
       after = { "nvim-cmp" },
