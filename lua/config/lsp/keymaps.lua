@@ -43,7 +43,7 @@ local function keymappings(client, bufnr)
     name = "Goto",
     d = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
     D = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
-    s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
+    h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
     I = { "<cmd>Telescope lsp_implementations<CR>", "Goto Implementation" },
     b = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition" },
   }

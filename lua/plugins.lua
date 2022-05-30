@@ -214,6 +214,7 @@ function M.setup()
       config = function()
         require("config.surroundfunk").setup()
       end,
+      disable = true,
     }
 
     -- Motions
