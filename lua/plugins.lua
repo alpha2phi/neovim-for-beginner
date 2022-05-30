@@ -210,7 +210,7 @@ function M.setup()
     use { "tpope/vim-surround", event = "BufReadPre" }
     use {
       "Matt-A-Bennett/vim-surround-funk",
-event = "BufReadPre",
+      event = "BufReadPre",
       config = function()
         require("config.surroundfunk").setup()
       end,
