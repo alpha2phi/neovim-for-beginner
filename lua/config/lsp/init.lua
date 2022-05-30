@@ -88,6 +88,7 @@ local servers = {
 -- }
 
 function M.on_attach(client, bufnr)
+  print(" client -- ", client.name)
   -- Enable completion triggered by <C-X><C-O>
   -- See `:help omnifunc` and `:help ins-completion` for more information.
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
