@@ -51,8 +51,8 @@ local servers = {
         },
         diagnostics = {
           -- Get the language server to recognize the `vim` global
-          globals = { "vim", "PLUGINS" },
-          disable = { "lowercase-global" },
+          globals = { "vim", "PLUGINS", "describe", "it", "before_each", "after_each", "packer_plugins" },
+          disable = { "lowercase-global", "undefined-global", "unused-local", "unused-vararg", "trailing-space" },
         },
         workspace = {
           -- Make the server aware of Neovim runtime files

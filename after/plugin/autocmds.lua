@@ -38,6 +38,9 @@ if vim.fn.has "nvim-0.7" then
   -- don't auto comment new line
   api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
 
+  -- Fix highlight issue
+  api.nvim_create_autocmd("VimEnter", { command = [[syntax enable]] })
+
   -- winbar
   -- api.nvim_create_autocmd({ "CursorMoved", "BufWinEnter", "BufFilePost" }, {
   --   callback = function()
@@ -101,4 +104,7 @@ else
 
   -- don't auto comment new line
   cmd [[autocmd BufEnter * set formatoptions-=cro]]
+
+  -- Fix highlight issue
+  cmd [[autocmd VimEnter * syntax enable]]
 end

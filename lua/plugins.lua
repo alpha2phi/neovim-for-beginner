@@ -50,7 +50,7 @@ function M.setup()
     -- Notification
     use {
       "rcarriga/nvim-notify",
-      event = "VimEnter",
+      event = "BufReadPre",
       config = function()
         require("config.notify").setup()
       end,
@@ -207,7 +207,15 @@ function M.setup()
     }
 
     -- Better surround
-    use { "tpope/vim-surround", event = "InsertEnter" }
+    use { "tpope/vim-surround", event = "BufReadPre" }
+    use {
+      "Matt-A-Bennett/vim-surround-funk",
+      event = "BufReadPre",
+      config = function()
+        require("config.surroundfunk").setup()
+      end,
+      disable = true,
+    }
 
     -- Motions
     use { "andymass/vim-matchup", event = "CursorMoved" }
@@ -284,15 +292,7 @@ function M.setup()
       disable = false,
     }
 
-    -- use {
-    --   "kkoomen/vim-doge",
-    --   run = ":call doge#install()",
-    --   config = function()
-    --     require("config.doge").setup()
-    --   end,
-    --   event = "VimEnter",
-    -- }
-
+    -- Jumps
     use {
       "phaazon/hop.nvim",
       cmd = { "HopWord", "HopChar1" },
@@ -307,6 +307,18 @@ function M.setup()
       config = function()
         local leap = require "leap"
         leap.set_default_keymaps()
+      end,
+    }
+    use {
+      "abecodes/tabout.nvim",
+      opt = true,
+      wants = { "nvim-treesitter" },
+      after = { "nvim-cmp" },
+      config = function()
+        require("tabout").setup {
+          completion = false,
+          ignore_beginning = false,
+        }
       end,
     }
     -- use {
@@ -608,8 +620,8 @@ function M.setup()
       use {
         "neovim/nvim-lspconfig",
         opt = true,
-        event = "VimEnter",
-        -- event = { "BufReadPre" },
+        -- event = "VimEnter",
+        event = { "BufReadPre" },
         -- keys = { "<leader>l", "<leader>f" },
         -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
         wants = {
@@ -750,6 +762,15 @@ function M.setup()
 
     -- Java
     use { "mfussenegger/nvim-jdtls", ft = { "java" } }
+
+    -- Flutter
+    use {
+      "akinsho/flutter-tools.nvim",
+      requires = { "nvim-lua/plenary.nvim" },
+      config = function()
+        require("config.flutter").setup()
+      end,
+    }
 
     -- Terminal
     use {
