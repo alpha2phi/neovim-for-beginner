@@ -144,6 +144,7 @@ function M.setup()
   telescope.load_extension "arecibo"
   telescope.load_extension "media_files"
   telescope.load_extension "bookmarks"
+  require("telescope").load_extension "flutter" -- Flutter
 end
 
 return M

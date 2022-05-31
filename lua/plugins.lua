@@ -50,7 +50,7 @@ function M.setup()
     -- Notification
     use {
       "rcarriga/nvim-notify",
-      event = "VimEnter",
+      event = "BufReadPre",
       config = function()
         require("config.notify").setup()
       end,
@@ -766,9 +766,6 @@ function M.setup()
     -- Flutter
     use {
       "akinsho/flutter-tools.nvim",
-      opt = true,
-      ft = { "dart" },
-      event = { "BufRead pubspec.yaml" },
       requires = { "nvim-lua/plenary.nvim" },
       config = function()
         require("config.flutter").setup()
