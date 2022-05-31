@@ -91,6 +91,7 @@ function M.setup()
             ["<C-y>"] = nvb_actions.file_path,
           },
         },
+        hidden = true,
       },
       git_files = {
         theme = "dropdown",
@@ -122,6 +123,10 @@ function M.setup()
         full_path = true,
         firefox_profile_name = nil,
       },
+      project = {
+        hidden_files = true,
+        theme = "dropdown",
+      },
     },
   }
 
@@ -139,6 +144,7 @@ function M.setup()
   telescope.load_extension "arecibo"
   telescope.load_extension "media_files"
   telescope.load_extension "bookmarks"
+  require("telescope").load_extension "flutter" -- Flutter
 end
 
 return M

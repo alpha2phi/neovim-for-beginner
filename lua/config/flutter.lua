@@ -1,11 +1,10 @@
 local M = {}
 
 function M.setup()
-  vim.notify "Setting up flutter..."
   require("flutter-tools").setup {
     debugger = {
       enabled = true,
-      run_via_dap = true,
+      run_via_dap = false,
     },
     outline = { auto_open = false },
     decorations = {
@@ -27,8 +26,6 @@ function M.setup()
       capabilities = require("config.lsp").capabilities,
     },
   }
-  -- Telescope
-  require("telescope").load_extension "flutter"
 end
 
 return M

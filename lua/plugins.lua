@@ -50,7 +50,7 @@ function M.setup()
     -- Notification
     use {
       "rcarriga/nvim-notify",
-      event = "VimEnter",
+      event = "BufReadPre",
       config = function()
         require("config.notify").setup()
       end,
@@ -207,7 +207,15 @@ function M.setup()
     }
 
     -- Better surround
-    use { "tpope/vim-surround", event = "InsertEnter" }
+    use { "tpope/vim-surround", event = "BufReadPre" }
+    use {
+      "Matt-A-Bennett/vim-surround-funk",
+      event = "BufReadPre",
+      config = function()
+        require("config.surroundfunk").setup()
+      end,
+      disable = true,
+    }
 
     -- Motions
     use { "andymass/vim-matchup", event = "CursorMoved" }
@@ -284,15 +292,7 @@ function M.setup()
       disable = false,
     }
 
-    -- use {
-    --   "kkoomen/vim-doge",
-    --   run = ":call doge#install()",
-    --   config = function()
-    --     require("config.doge").setup()
-    --   end,
-    --   event = "VimEnter",
-    -- }
-
+    -- Jumps
     use {
       "phaazon/hop.nvim",
       cmd = { "HopWord", "HopChar1" },
@@ -311,7 +311,6 @@ function M.setup()
     }
     use {
       "abecodes/tabout.nvim",
-      event = {"InsertEnter"},
       opt = true,
       wants = { "nvim-treesitter" },
       after = { "nvim-cmp" },
@@ -767,9 +766,6 @@ function M.setup()
     -- Flutter
     use {
       "akinsho/flutter-tools.nvim",
-      opt = true,
-      ft = { "dart" },
-      event = { "BufRead pubspec.yaml" },
       requires = { "nvim-lua/plenary.nvim" },
       config = function()
         require("config.flutter").setup()
