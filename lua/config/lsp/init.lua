@@ -78,6 +78,7 @@ local servers = {
   dockerls = {},
   bashls = {},
   omnisharp = {},
+  kotlin_language_server = {},
 }
 
 -- local lsp_signature = require "lsp_signature"

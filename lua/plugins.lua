@@ -770,6 +770,7 @@ function M.setup()
       config = function()
         require("config.flutter").setup()
       end,
+      disable = true,
     }
 
     -- Terminal
@@ -1058,6 +1059,13 @@ function M.setup()
         vim.g.vimade.fadelevel = 0.7
         vim.g.vimade.enablesigns = 1
       end,
+    }
+    use {
+      "AckslD/nvim-gfold.lua",
+      config = function()
+        require("gfold").setup()
+      end,
+      disable = true,
     }
     -- https://github.com/WhoIsSethDaniel/toggle-lsp-diagnostics.nvim
     -- https://github.com/rbong/vim-buffest
