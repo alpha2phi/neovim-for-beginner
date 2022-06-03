@@ -1055,7 +1055,7 @@ function M.setup()
     use {
       "TaDaa/vimade",
       cmd = { "VimadeToggle", "VimadeEnable", "VimadeDisable" },
-      disable = false,
+      disable = true,
       config = function()
         vim.g.vimade.fadelevel = 0.7
         vim.g.vimade.enablesigns = 1

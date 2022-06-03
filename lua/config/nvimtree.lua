@@ -1,7 +1,11 @@
 local M = {}
 
 function M.setup()
-  require("nvim-tree").setup {
+  local nvim_tree = require "nvim-tree"
+  if nvim_tree.setup_called then
+    return
+  end
+  nvim_tree.setup {
     disable_netrw = false,
     hijack_netrw = true,
     respect_buf_cwd = true,
