@@ -1038,6 +1038,36 @@ function M.setup()
       config = function()
         require("config.substitute").setup()
       end,
+      disable = true,
+    }
+    use {
+      "AckslD/nvim-trevJ.lua",
+      config = function()
+        require("trevj").setup()
+      end,
+      module = "trevj",
+      setup = function()
+        vim.keymap.set("n", ",j", function()
+          require("trevj").format_at_cursor()
+        end)
+      end,
+      disable = true,
+    }
+    use {
+      "narutoxy/dim.lua",
+      requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
+      config = function()
+        require("dim").setup {}
+      end,
+      disable = true,
+    }
+    use {
+      "linty-org/key-menu.nvim",
+      config = function()
+        require("config.keymenu").setup()
+      end,
+      event = "VimEnter",
+      disable = false,
     }
 
     -- Disabled
