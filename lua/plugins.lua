@@ -1033,6 +1033,15 @@ function M.setup()
       disable = false,
     }
     use {
+      "gbprod/substitute.nvim",
+      event = "BufReadPre",
+      config = function()
+        require("config.substitute").setup()
+      end,
+    }
+
+    -- Disabled
+    use {
       "ziontee113/syntax-tree-surfer",
       opt = true,
       event = "BufReadPre",
@@ -1040,7 +1049,7 @@ function M.setup()
       config = function()
         require("config.syntaxtreesurfer").setup()
       end,
-      disable = false,
+      disable = true,
     }
     use {
       "ghillb/cybu.nvim",
