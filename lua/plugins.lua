@@ -169,6 +169,19 @@ function M.setup()
         require("git-conflict").setup()
       end,
     }
+    use {
+      "ldelossa/gh.nvim",
+      opt = true,
+      wants = { "litee.nvim" },
+      requires = { { "ldelossa/litee.nvim" } },
+      event = "BufReadPre",
+      cmd = { "GHOpenPR" },
+      config = function()
+        require("litee.lib").setup()
+        require("litee.gh").setup()
+      end,
+      disable = true,
+    }
 
     -- WhichKey
     use {
@@ -311,13 +324,12 @@ function M.setup()
     }
     use {
       "abecodes/tabout.nvim",
-      opt = true,
       wants = { "nvim-treesitter" },
       after = { "nvim-cmp" },
       config = function()
         require("tabout").setup {
           completion = false,
-          ignore_beginning = false,
+          ignore_beginning = true,
         }
       end,
     }
@@ -1057,7 +1069,9 @@ function M.setup()
       "narutoxy/dim.lua",
       requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
       config = function()
-        require("dim").setup {}
+        require("dim").setup {
+          disable_lsp_decorations = true,
+        }
       end,
       disable = true,
     }
@@ -1067,8 +1081,9 @@ function M.setup()
         require("config.keymenu").setup()
       end,
       event = "VimEnter",
-      disable = false,
+      disable = true,
     }
+    use { "mg979/vim-visual-multi", event = "BufReadPre", disable = false }
 
     -- Disabled
     use {

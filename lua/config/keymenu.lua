@@ -1,7 +1,8 @@
 local M = {}
 
 function M.setup()
-  print("keymenu.lua: setup")
+  require("key-menu").set("n", "<Space>")
+  require("key-menu").set("n", "g")
 end
 
 return M
