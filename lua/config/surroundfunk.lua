@@ -32,7 +32,7 @@ function M.setup()
       },
     },
     c = {
-      name = "+dsf: Function Text Object",
+      name = "+csf: Function Text Object",
       s = {
         F = { "<Plug>(ChangeSurroundingFunction)", "Change Surrounding Function" },
         f = { "<Plug>(ChangeSurroundingFUNCTION)", "Change Outer surrounding Function" },

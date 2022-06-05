@@ -124,7 +124,7 @@ function M.setup()
         firefox_profile_name = nil,
       },
       project = {
-        hidden_files = true,
+        hidden_files = false,
         theme = "dropdown",
       },
     },

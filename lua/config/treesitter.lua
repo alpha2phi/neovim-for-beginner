@@ -29,7 +29,7 @@ function M.setup()
       },
     },
 
-    indent = { enable = true },
+    indent = { enable = true, disable = { "python" } },
 
     -- vim-matchup
     matchup = {
@@ -110,6 +110,9 @@ function M.setup()
       enable = true,
       enable_autocmd = false,
     },
+
+    -- indent
+    -- yati = { enable = true },
   }
 end
 
