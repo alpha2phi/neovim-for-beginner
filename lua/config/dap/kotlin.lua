@@ -8,11 +8,23 @@ function M.setup()
   local dap = require "dap"
 
   -- Adapter configuration
-  dap.adapters.kotlin = {}
+  dap.adapters.kotlin = {
+    type = "executable",
+    command = DEBUGGER_LOCATION .. "/adapter/build/install/adapter/bin/kotlin-debug-adapter",
+    args = { "--interpreter=vscode" },
+  }
 
   -- Configuration
   dap.configurations.kotlin = {
-    {},
+    {
+      type = "kotlin",
+      name = "launch - kotlin",
+      request = "launch",
+      projectRoot = vim.fn.getcwd() .. "/app",
+      mainClass = function()
+        return vim.fn.input("Path to main class > ", "myapp.sample.app.AppKt", "file")
+      end,
+    },
   }
 end
 
