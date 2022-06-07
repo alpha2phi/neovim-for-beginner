@@ -25,6 +25,15 @@ function M.setup()
         return vim.fn.input("Path to main class > ", "myapp.sample.app.AppKt", "file")
       end,
     },
+    {
+      type = "kotlin",
+      name = "attach - kotlin",
+      request = "attach",
+      projectRoot = vim.fn.getcwd() .. "/app",
+      hostName = "localhost",
+      port = 5005,
+      timeout = 1000,
+    },
   }
 end
 
