@@ -786,6 +786,9 @@ function M.setup()
       disable = true,
     }
 
+    -- Kotlin
+    use { "udalov/kotlin-vim", ft = { "kotlin" }, disable = true }
+
     -- Terminal
     use {
       "akinsho/toggleterm.nvim",

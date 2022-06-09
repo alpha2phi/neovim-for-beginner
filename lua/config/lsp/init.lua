@@ -18,6 +18,8 @@ local M = {}
 -- -- add runtime
 -- add "$VIMRUNTIME"
 
+-- local util = require "lspconfig.util"
+
 local servers = {
   gopls = {},
   html = {},
@@ -78,7 +80,12 @@ local servers = {
   dockerls = {},
   bashls = {},
   omnisharp = {},
-  kotlin_language_server = {},
+  kotlin_language_server = {
+    -- root_dir = util.root_pattern("settings.gradle", "settings.gradle.kts")
+  },
+  -- grammarly = {
+  --   filetypes = { "markdown", "text" },
+  -- },
 }
 
 -- local lsp_signature = require "lsp_signature"
