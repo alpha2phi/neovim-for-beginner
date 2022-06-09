@@ -787,7 +787,7 @@ function M.setup()
     }
 
     -- Kotlin
-    use { "udalov/kotlin-vim", ft = { "kotlin" } }
+    use { "udalov/kotlin-vim", ft = { "kotlin" }, disable = true }
 
     -- Terminal
     use {
