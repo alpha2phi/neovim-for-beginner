@@ -78,6 +78,7 @@ local servers = {
   yamlls = {},
   jdtls = {},
   dockerls = {},
+  graphql = {},
   bashls = {},
   omnisharp = {},
   kotlin_language_server = {
