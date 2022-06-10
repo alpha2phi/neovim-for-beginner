@@ -1,27 +1,5 @@
 local M = {}
 
--- local library = {}
---
--- local path = vim.split(package.path, ";")
---
--- -- this is the ONLY correct way to setup your path
--- table.insert(path, "lua/?.lua")
--- table.insert(path, "lua/?/init.lua")
---
--- local function add(lib)
---   for _, p in pairs(vim.fn.expand(lib, false, true)) do
---     p = vim.loop.fs_realpath(p)
---     library[p] = true
---   end
--- end
---
--- -- add runtime
--- add "$VIMRUNTIME"
-
--- local util = require "lspconfig.util"
-
--- local graphql_cmd = { os.getenv "HOME" .. "/.yarn/bin/graphql-lsp", "server", "-m", "stream" }
-
 local servers = {
   gopls = {},
   html = {},
