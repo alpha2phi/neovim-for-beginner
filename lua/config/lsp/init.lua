@@ -55,7 +55,7 @@ local servers = {
         },
         diagnostics = {
           -- Get the language server to recognize the `vim` global
-          globals = { "vim", "PLUGINS", "describe", "it", "before_each", "after_each", "packer_plugins" },
+          globals = { "vim", "describe", "it", "before_each", "after_each", "packer_plugins" },
           disable = { "lowercase-global", "undefined-global", "unused-local", "unused-vararg", "trailing-space" },
         },
         workspace = {
@@ -80,17 +80,10 @@ local servers = {
   yamlls = {},
   jdtls = {},
   dockerls = {},
-  graphql = {
-    -- cmd = graphql_cmd,
-    -- on_new_config = function(new_config, new_root_dir)
-    --   new_config.cmd = graphql_cmd
-    -- end,
-  },
+  graphql = {},
   bashls = {},
   omnisharp = {},
-  kotlin_language_server = {
-    -- root_dir = util.root_pattern("settings.gradle", "settings.gradle.kts")
-  },
+  kotlin_language_server = {},
   -- grammarly = {
   --   filetypes = { "markdown", "text" },
   -- },
