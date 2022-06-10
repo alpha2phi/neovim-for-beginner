@@ -10,13 +10,13 @@ local with_diagnostics_code = function(builtin)
   }
 end
 
-local with_root_file = function(builtin, file)
-  return builtin.with {
-    condition = function(utils)
-      return utils.root_has_file(file)
-    end,
-  }
-end
+-- local with_root_file = function(builtin, file)
+--   return builtin.with {
+--     condition = function(utils)
+--       return utils.root_has_file(file)
+--     end,
+--   }
+-- end
 
 local sources = {
   -- formatting
