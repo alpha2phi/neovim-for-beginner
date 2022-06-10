@@ -426,87 +426,71 @@ function M.setup()
       },
     }
 
-    if PLUGINS.fzf_lua.enabled then
-      -- FZF
-      use { "junegunn/fzf", run = "./install --all", event = "VimEnter", disable = true } -- You don't need to install this if you already have fzf installed
-      use { "junegunn/fzf.vim", event = "BufEnter", disable = true }
-
-      -- FZF Lua
-      use {
-        "ibhagwan/fzf-lua",
-        event = "BufEnter",
-        wants = "nvim-web-devicons",
-        requires = { "junegunn/fzf", run = "./install --all" },
-      }
-    end
-
-    if PLUGINS.telescope.enabled then
-      use {
-        "nvim-telescope/telescope.nvim",
-        opt = true,
-        config = function()
-          require("config.telescope").setup()
-        end,
-        cmd = { "Telescope" },
-        module = { "telescope", "telescope.builtin" },
-        keys = { "<leader>f", "<leader>p", "<leader>z" },
-        wants = {
-          "plenary.nvim",
-          "popup.nvim",
-          "telescope-fzf-native.nvim",
-          "telescope-project.nvim",
-          "telescope-repo.nvim",
-          "telescope-file-browser.nvim",
-          "project.nvim",
-          -- "vim-rooter",
-          "trouble.nvim",
-          "telescope-dap.nvim",
-          "telescope-frecency.nvim",
-          "nvim-neoclip.lua",
-          "telescope-smart-history.nvim",
-          "telescope-arecibo.nvim",
-          "telescope-media-files.nvim",
+    use {
+      "nvim-telescope/telescope.nvim",
+      opt = true,
+      config = function()
+        require("config.telescope").setup()
+      end,
+      cmd = { "Telescope" },
+      module = { "telescope", "telescope.builtin" },
+      keys = { "<leader>f", "<leader>p", "<leader>z" },
+      wants = {
+        "plenary.nvim",
+        "popup.nvim",
+        "telescope-fzf-native.nvim",
+        "telescope-project.nvim",
+        "telescope-repo.nvim",
+        "telescope-file-browser.nvim",
+        "project.nvim",
+        -- "vim-rooter",
+        "trouble.nvim",
+        "telescope-dap.nvim",
+        "telescope-frecency.nvim",
+        "nvim-neoclip.lua",
+        "telescope-smart-history.nvim",
+        "telescope-arecibo.nvim",
+        "telescope-media-files.nvim",
+      },
+      requires = {
+        "nvim-lua/popup.nvim",
+        "nvim-lua/plenary.nvim",
+        { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+        "nvim-telescope/telescope-project.nvim",
+        "cljoly/telescope-repo.nvim",
+        "nvim-telescope/telescope-file-browser.nvim",
+        { "nvim-telescope/telescope-frecency.nvim", requires = "tami5/sqlite.lua" },
+        -- {
+        --   "airblade/vim-rooter",
+        --   config = function()
+        --     require("config.rooter").setup()
+        --   end,
+        -- },
+        {
+          "ahmedkhalf/project.nvim",
+          config = function()
+            require("config.project").setup()
+          end,
         },
-        requires = {
-          "nvim-lua/popup.nvim",
-          "nvim-lua/plenary.nvim",
-          { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-          "nvim-telescope/telescope-project.nvim",
-          "cljoly/telescope-repo.nvim",
-          "nvim-telescope/telescope-file-browser.nvim",
-          { "nvim-telescope/telescope-frecency.nvim", requires = "tami5/sqlite.lua" },
-          -- {
-          --   "airblade/vim-rooter",
-          --   config = function()
-          --     require("config.rooter").setup()
-          --   end,
-          -- },
-          {
-            "ahmedkhalf/project.nvim",
-            config = function()
-              require("config.project").setup()
-            end,
+        "nvim-telescope/telescope-dap.nvim",
+        {
+          "AckslD/nvim-neoclip.lua",
+          requires = {
+            { "tami5/sqlite.lua", module = "sqlite" },
+            -- config = function()
+            --   require("neoclip").setup()
+            -- end,
           },
-          "nvim-telescope/telescope-dap.nvim",
-          {
-            "AckslD/nvim-neoclip.lua",
-            requires = {
-              { "tami5/sqlite.lua", module = "sqlite" },
-              -- config = function()
-              --   require("neoclip").setup()
-              -- end,
-            },
-          },
-          "nvim-telescope/telescope-smart-history.nvim",
-          {
-            "nvim-telescope/telescope-arecibo.nvim",
-            rocks = { "openssl", "lua-http-parser" },
-          },
-          "nvim-telescope/telescope-media-files.nvim",
-          "dhruvmanila/telescope-bookmarks.nvim",
         },
-      }
-    end
+        "nvim-telescope/telescope-smart-history.nvim",
+        {
+          "nvim-telescope/telescope-arecibo.nvim",
+          rocks = { "openssl", "lua-http-parser" },
+        },
+        "nvim-telescope/telescope-media-files.nvim",
+        "dhruvmanila/telescope-bookmarks.nvim",
+      },
+    }
 
     -- nvim-tree
     use {
@@ -547,22 +531,6 @@ function M.setup()
 
     -- Completion
     use {
-      "ms-jpq/coq_nvim",
-      branch = "coq",
-      event = "VimEnter",
-      opt = true,
-      run = ":COQdeps",
-      config = function()
-        require("config.coq").setup()
-      end,
-      requires = {
-        { "ms-jpq/coq.artifacts", branch = "artifacts" },
-        { "ms-jpq/coq.thirdparty", branch = "3p", module = "coq_3p" },
-      },
-      disable = not PLUGINS.coq.enabled,
-    }
-
-    use {
       "hrsh7th/nvim-cmp",
       event = "InsertEnter",
       opt = true,
@@ -593,7 +561,6 @@ function M.setup()
         "rafamadriz/friendly-snippets",
         "honza/vim-snippets",
       },
-      disable = not PLUGINS.nvim_cmp.enabled,
     }
 
     -- Auto pairs
@@ -629,84 +596,43 @@ function M.setup()
     }
 
     -- LSP
-    if PLUGINS.nvim_cmp.enabled then
-      use {
-        "neovim/nvim-lspconfig",
-        opt = true,
-        -- event = "VimEnter",
-        event = { "BufReadPre" },
-        -- keys = { "<leader>l", "<leader>f" },
-        -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
-        wants = {
-          "nvim-lsp-installer",
-          "cmp-nvim-lsp",
-          "lua-dev.nvim",
-          "vim-illuminate",
-          "null-ls.nvim",
-          "schemastore.nvim",
-          -- "nvim-lsp-ts-utils",
-          "typescript.nvim",
+    use {
+      "neovim/nvim-lspconfig",
+      opt = true,
+      -- event = "VimEnter",
+      event = { "BufReadPre" },
+      -- keys = { "<leader>l", "<leader>f" },
+      -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
+      wants = {
+        "nvim-lsp-installer",
+        "cmp-nvim-lsp",
+        "lua-dev.nvim",
+        "vim-illuminate",
+        "null-ls.nvim",
+        "schemastore.nvim",
+        -- "nvim-lsp-ts-utils",
+        "typescript.nvim",
+      },
+      config = function()
+        require("config.lsp").setup()
+      end,
+      requires = {
+        "williamboman/nvim-lsp-installer",
+        "folke/lua-dev.nvim",
+        "RRethy/vim-illuminate",
+        "jose-elias-alvarez/null-ls.nvim",
+        {
+          "j-hui/fidget.nvim",
+          config = function()
+            require("fidget").setup {}
+          end,
         },
-        config = function()
-          require("config.lsp").setup()
-        end,
-        requires = {
-          "williamboman/nvim-lsp-installer",
-          "folke/lua-dev.nvim",
-          "RRethy/vim-illuminate",
-          "jose-elias-alvarez/null-ls.nvim",
-          {
-            "j-hui/fidget.nvim",
-            config = function()
-              require("fidget").setup {}
-            end,
-          },
-          "b0o/schemastore.nvim",
-          -- "jose-elias-alvarez/nvim-lsp-ts-utils",
-          "jose-elias-alvarez/typescript.nvim",
-          -- "ray-x/lsp_signature.nvim",
-        },
-      }
-    end
-
-    if PLUGINS.coq.enabled then
-      use {
-        "neovim/nvim-lspconfig",
-        opt = true,
-        -- event = "VimEnter",
-        event = { "BufReadPre" },
-        wants = {
-          "nvim-lsp-installer",
-          "lsp_signature.nvim",
-          "coq_nvim",
-          "lua-dev.nvim",
-          "vim-illuminate",
-          "null-ls.nvim",
-          "schemastore.nvim",
-          -- "nvim-lsp-ts-utils",
-          "typescript.nvim",
-        }, -- for coq.nvim
-        config = function()
-          require("config.lsp").setup()
-        end,
-        requires = {
-          "williamboman/nvim-lsp-installer",
-          "ray-x/lsp_signature.nvim",
-          "folke/lua-dev.nvim",
-          "RRethy/vim-illuminate",
-          "jose-elias-alvarez/null-ls.nvim",
-          {
-            "j-hui/fidget.nvim",
-            config = function()
-              require("fidget").setup {}
-            end,
-          },
-          "b0o/schemastore.nvim",
-          -- "jose-elias-alvarez/nvim-lsp-ts-utils",
-          "jose-elias-alvarez/typescript.nvim",
-        },
-      }
-    end
+        "b0o/schemastore.nvim",
+        -- "jose-elias-alvarez/nvim-lsp-ts-utils",
+        "jose-elias-alvarez/typescript.nvim",
+        -- "ray-x/lsp_signature.nvim",
+      },
+    }
 
     -- trouble.nvim
     use {
@@ -820,7 +746,7 @@ function M.setup()
       config = function()
         require("config.dap").setup()
       end,
-      disable = not PLUGINS.nvim_dap,
+      disable = false,
     }
 
     -- vimspector
@@ -831,6 +757,7 @@ function M.setup()
       config = function()
         require("config.vimspector").setup()
       end,
+      disable = true,
     }
 
     -- Test

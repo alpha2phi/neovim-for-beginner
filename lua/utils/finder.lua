@@ -2,21 +2,12 @@ local M = {}
 
 -- Find a file either using git files or search the filesystem.
 function M.find_files()
-  if PLUGINS.telescope.enabled then
-    local opts = {}
-    local telescope = require "telescope.builtin"
+  local opts = {}
+  local telescope = require "telescope.builtin"
 
-    local ok = pcall(telescope.git_files, opts)
-    if not ok then
-      telescope.find_files(opts)
-    end
-  else
-    local fzf = require "fzf-lua"
-    if vim.fn.trim(vim.fn.system "git rev-parse --is-inside-work-tree") == "true" then
-      fzf.git_files()
-    else
-      fzf.files()
-    end
+  local ok = pcall(telescope.git_files, opts)
+  if not ok then
+    telescope.find_files(opts)
   end
 end
 

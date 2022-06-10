@@ -20,6 +20,8 @@ local M = {}
 
 -- local util = require "lspconfig.util"
 
+-- local graphql_cmd = { os.getenv "HOME" .. "/.yarn/bin/graphql-lsp", "server", "-m", "stream" }
+
 local servers = {
   gopls = {},
   html = {},
@@ -78,7 +80,12 @@ local servers = {
   yamlls = {},
   jdtls = {},
   dockerls = {},
-  graphql = {},
+  graphql = {
+    -- cmd = graphql_cmd,
+    -- on_new_config = function(new_config, new_root_dir)
+    --   new_config.cmd = graphql_cmd
+    -- end,
+  },
   bashls = {},
   omnisharp = {},
   kotlin_language_server = {
@@ -130,12 +137,7 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-if PLUGINS.nvim_cmp.enabled then
-  M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities) -- for nvim-cmp
-else
-  M.capabilities = capabilities
-end
+M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities) -- for nvim-cmp
 
 local opts = {
   on_attach = M.on_attach,
