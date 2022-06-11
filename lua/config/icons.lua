@@ -35,4 +35,9 @@ return {
     Question = " ",
     Hint = " ",
   },
+  lsp = {
+    server_installed = "✓",
+    server_pending = "➜",
+    server_uninstalled = "✗",
+  },
 }

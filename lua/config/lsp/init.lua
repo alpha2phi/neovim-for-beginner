@@ -10,7 +10,11 @@ local servers = {
       },
     },
   },
-  pyright = {},
+  pyright = {
+    analysis = {
+      typeCheckingMode = "off",
+    },
+  },
   rust_analyzer = {
     settings = {
       ["rust-analyzer"] = {
