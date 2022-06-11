@@ -10,7 +10,11 @@ local servers = {
       },
     },
   },
-  pyright = {},
+  pyright = {
+    analysis = {
+      typeCheckingMode = "off",
+    },
+  },
   rust_analyzer = {
     settings = {
       ["rust-analyzer"] = {
@@ -63,6 +67,8 @@ local servers = {
   omnisharp = {},
   kotlin_language_server = {},
   awk_ls = {},
+  gradle_ls = {},
+  emmet_ls = {},
   -- grammarly = {
   --   filetypes = { "markdown", "text" },
   -- },
