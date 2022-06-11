@@ -68,6 +68,7 @@ local servers = {
   kotlin_language_server = {},
   awk_ls = {},
   gradle_ls = {},
+  emmet_ls = {},
   -- grammarly = {
   --   filetypes = { "markdown", "text" },
   -- },
