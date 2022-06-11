@@ -67,6 +67,7 @@ local servers = {
   omnisharp = {},
   kotlin_language_server = {},
   awk_ls = {},
+  gradle_ls = {},
   -- grammarly = {
   --   filetypes = { "markdown", "text" },
   -- },
