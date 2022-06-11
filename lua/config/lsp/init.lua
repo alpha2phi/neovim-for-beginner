@@ -1,25 +1,5 @@
 local M = {}
 
--- local library = {}
---
--- local path = vim.split(package.path, ";")
---
--- -- this is the ONLY correct way to setup your path
--- table.insert(path, "lua/?.lua")
--- table.insert(path, "lua/?/init.lua")
---
--- local function add(lib)
---   for _, p in pairs(vim.fn.expand(lib, false, true)) do
---     p = vim.loop.fs_realpath(p)
---     library[p] = true
---   end
--- end
---
--- -- add runtime
--- add "$VIMRUNTIME"
-
--- local util = require "lspconfig.util"
-
 local servers = {
   gopls = {},
   html = {},
@@ -53,7 +33,7 @@ local servers = {
         },
         diagnostics = {
           -- Get the language server to recognize the `vim` global
-          globals = { "vim", "PLUGINS", "describe", "it", "before_each", "after_each", "packer_plugins" },
+          globals = { "vim", "describe", "it", "before_each", "after_each", "packer_plugins" },
           disable = { "lowercase-global", "undefined-global", "unused-local", "unused-vararg", "trailing-space" },
         },
         workspace = {
@@ -78,11 +58,11 @@ local servers = {
   yamlls = {},
   jdtls = {},
   dockerls = {},
+  graphql = {},
   bashls = {},
   omnisharp = {},
-  kotlin_language_server = {
-    -- root_dir = util.root_pattern("settings.gradle", "settings.gradle.kts")
-  },
+  kotlin_language_server = {},
+  awk_ls = {},
   -- grammarly = {
   --   filetypes = { "markdown", "text" },
   -- },
@@ -129,12 +109,7 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-if PLUGINS.nvim_cmp.enabled then
-  M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities) -- for nvim-cmp
-else
-  M.capabilities = capabilities
-end
+M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities) -- for nvim-cmp
 
 local opts = {
   on_attach = M.on_attach,

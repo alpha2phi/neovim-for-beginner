@@ -33,41 +33,27 @@ local function normal_keymap()
   local keymap_f = nil -- File search
   local keymap_p = nil -- Project search
 
-  if PLUGINS.telescope.enabled then
-    keymap_f = {
-      name = "Find",
-      f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
-      d = { "<cmd>lua require('utils.finder').find_dotfiles()<cr>", "Dotfiles" },
-      b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers" },
-      h = { "<cmd>lua require('telescope.builtin').help_tags()<cr>", "Help" },
-      m = { "<cmd>lua require('telescope.builtin').marks()<cr>", "Marks" },
-      o = { "<cmd>lua require('telescope.builtin').oldfiles()<cr>", "Old Files" },
-      g = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Live Grep" },
-      c = { "<cmd>lua require('telescope.builtin').commands()<cr>", "Commands" },
-      r = { "<cmd>lua require'telescope'.extensions.file_browser.file_browser()<cr>", "File Browser" },
-      w = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Current Buffer" },
-      e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-    }
+  keymap_f = {
+    name = "Find",
+    f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
+    d = { "<cmd>lua require('utils.finder').find_dotfiles()<cr>", "Dotfiles" },
+    b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers" },
+    h = { "<cmd>lua require('telescope.builtin').help_tags()<cr>", "Help" },
+    m = { "<cmd>lua require('telescope.builtin').marks()<cr>", "Marks" },
+    o = { "<cmd>lua require('telescope.builtin').oldfiles()<cr>", "Old Files" },
+    g = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Live Grep" },
+    c = { "<cmd>lua require('telescope.builtin').commands()<cr>", "Commands" },
+    r = { "<cmd>lua require'telescope'.extensions.file_browser.file_browser()<cr>", "File Browser" },
+    w = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Current Buffer" },
+    e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+  }
 
-    keymap_p = {
-      name = "Project",
-      p = { "<cmd>lua require'telescope'.extensions.project.project{display_type = 'full'}<cr>", "List" },
-      s = { "<cmd>lua require'telescope'.extensions.repo.list{}<cr>", "Search" },
-      P = { "<cmd>TermExec cmd='BROWSER=brave yarn dev'<cr>", "Slidev" },
-    }
-  end
-
-  if PLUGINS.fzf_lua.enabled then
-    keymap_f = {
-      name = "Find",
-      f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
-      b = { "<cmd>FzfLua buffers<cr>", "Buffers" },
-      o = { "<cmd>FzfLua oldfiles<cr>", "Old Files" },
-      g = { "<cmd>FzfLua live_grep<cr>", "Live Grep" },
-      c = { "<cmd>FzfLua commands<cr>", "Commands" },
-      e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-    }
-  end
+  keymap_p = {
+    name = "Project",
+    p = { "<cmd>lua require'telescope'.extensions.project.project{display_type = 'full'}<cr>", "List" },
+    s = { "<cmd>lua require'telescope'.extensions.repo.list{}<cr>", "Search" },
+    P = { "<cmd>TermExec cmd='BROWSER=brave yarn dev'<cr>", "Slidev" },
+  }
 
   local keymap = {
     ["w"] = { "<cmd>update!<CR>", "Save" },
