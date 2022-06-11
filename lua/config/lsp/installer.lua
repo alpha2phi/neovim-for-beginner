@@ -23,11 +23,7 @@ function M.setup(servers, options)
         elseif server.name == "tsserver" then
           require("typescript").setup { server = opts }
         elseif server.name == "jdtls" then
-          -- Do nothing, jdtls is handled by nvim-jdtls
-          -- print "jdtls is handled by nvim-jdtls"
-        elseif server.name == "dartls" then
-          -- Do nothing, jdtls is handled by flutter-tools
-          -- print "dartls is handled by flutter-tools"
+          print "jdtls is handled by nvim-jdtls"
         else
           server:setup(opts)
         end
