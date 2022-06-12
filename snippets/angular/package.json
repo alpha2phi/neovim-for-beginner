@@ -1,0 +1,70 @@
+{
+  "name": "Angular2",
+  "publisher": "johnpapa",
+  "displayName": "Angular Snippets (Version 13)",
+  "description": "Angular version 13 snippets by John Papa",
+  "version": "13.0.0",
+  "icon": "images/angular-shield.png",
+  "galleryBanner": {
+    "color": "#0273D4",
+    "theme": "dark"
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/johnpapa/vscode-angular-snippets.git"
+  },
+  "keywords": [
+    "Angular",
+    "Angular 13",
+    "TypeScript",
+    "HTML"
+  ],
+  "engines": {
+    "vscode": "^1.40.0"
+  },
+  "scripts": {
+    "package": "npx vsce package",
+    "publish": "npx vsce publish",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "open-in-browser": "vscode-test-web --extensionDevelopmentPath=. ."
+  },
+  "extensionKind": [
+    "ui",
+    "workspace"
+  ],
+  "categories": [
+    "Snippets",
+    "Other"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "typescript",
+        "path": "./typescript.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./javascript.json"
+      },
+      {
+        "language": "jsonc",
+        "path": "./jsonc.json"
+      },
+      {
+        "language": "html",
+        "path": "./html.json"
+      },
+      {
+        "language": "dockerfile",
+        "path": "./dockerfile.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.11",
+    "@vscode/test-web": "^0.0.22",
+    "typescript": "^4.1.2",
+    "vscode": "*"
+  }
+}
