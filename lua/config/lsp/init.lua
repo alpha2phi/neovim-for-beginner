@@ -1,5 +1,7 @@
 local M = {}
 
+local util = require "lspconfig.util"
+
 local servers = {
   gopls = {},
   html = {},
@@ -67,8 +69,19 @@ local servers = {
   omnisharp = {},
   kotlin_language_server = {},
   awk_ls = {},
-  gradle_ls = {},
   emmet_ls = {},
+  gradle_ls = {
+    cmd = {
+      vim.env.HOME
+        .. "/.local/share/nvim/vscode-gradle/gradle-language-server/build/install/gradle-language-server/bin/gradle-language-server",
+    },
+    root_dir = function(fname)
+      return util.root_pattern(unpack { "settings.gradle", "settings.gradle.kts" })(fname)
+        or util.root_pattern(unpack { "build.gradle" })(fname)
+    end,
+    filetypes = { "groovy", "kotlin" },
+  },
+  marksman = {},
   -- grammarly = {
   --   filetypes = { "markdown", "text" },
   -- },

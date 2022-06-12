@@ -1056,7 +1056,8 @@ function M.setup()
     -- https://github.com/rbong/vim-buffest
     -- https://github.com/jamestthompson3/nvim-remote-containers
     -- https://github.com/esensar/nvim-dev-container
-    -- https://github.com/linty-org/key-menu.nvim
+    -- https://github.com/stevearc/aerial.nvim
+    -- https://github.com/mrjones2014/smart-splits.nvim
 
     -- Bootstrap Neovim
     if packer_bootstrap then
