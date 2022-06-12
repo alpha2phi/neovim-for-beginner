@@ -943,6 +943,14 @@ function M.setup()
         require("sidebar-nvim").setup { open = false }
       end,
     }
+    use {
+      "stevearc/aerial.nvim",
+      config = function()
+        require("aerial").setup()
+      end,
+      module = { "aerial" },
+      cmd = { "AerialToggle" },
+    }
 
     -- Translation
     use {

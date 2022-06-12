@@ -79,7 +79,7 @@ local servers = {
       return util.root_pattern(unpack { "settings.gradle", "settings.gradle.kts" })(fname)
         or util.root_pattern(unpack { "build.gradle" })(fname)
     end,
-    filetypes = { "groovy", "kotlin" },
+    filetypes = { "groovy" },
   },
   marksman = {},
   -- grammarly = {
@@ -124,6 +124,9 @@ function M.on_attach(client, bufnr)
     require("jdtls.dap").setup_dap_main_class_configs()
     vim.lsp.codelens.refresh()
   end
+
+  -- aerial.nvim
+  require("aerial").on_attach(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

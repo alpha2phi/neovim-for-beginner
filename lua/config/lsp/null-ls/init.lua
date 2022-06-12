@@ -37,14 +37,14 @@ local sources = {
   b.diagnostics.flake8,
   b.diagnostics.tsc,
   b.diagnostics.selene,
-  b.diagnostics.codespell,
+  -- b.diagnostics.codespell,
   -- with_root_file(b.diagnostics.selene, "selene.toml"),
   with_diagnostics_code(b.diagnostics.shellcheck),
   b.diagnostics.zsh,
-  b.diagnostics.cspell.with {
-    filetypes = { "python", "rust", "typescript" },
-  },
-  b.diagnostics.stylelint,
+  -- b.diagnostics.cspell.with {
+  --   filetypes = { "python", "rust", "typescript" },
+  -- },
+  -- b.diagnostics.stylelint,
 
   -- code actions
   b.code_actions.gitsigns,
