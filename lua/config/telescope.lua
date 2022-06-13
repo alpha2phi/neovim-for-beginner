@@ -127,6 +127,9 @@ function M.setup()
         hidden_files = false,
         theme = "dropdown",
       },
+      -- aerial = {
+      --   show_nesting = true,
+      -- },
     },
   }
 
@@ -144,6 +147,7 @@ function M.setup()
   telescope.load_extension "arecibo"
   telescope.load_extension "media_files"
   telescope.load_extension "bookmarks"
+  telescope.load_extension "aerial"
   -- require("telescope").load_extension "flutter" -- Flutter
 end
 

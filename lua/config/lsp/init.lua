@@ -1,6 +1,6 @@
 local M = {}
 
-local util = require "lspconfig.util"
+-- local util = require "lspconfig.util"
 
 local servers = {
   gopls = {},
@@ -60,7 +60,7 @@ local servers = {
   tsserver = { disable_formatting = true },
   vimls = {},
   tailwindcss = {},
-  solang = {},
+  -- solang = {},
   yamlls = {},
   jdtls = {},
   dockerls = {},
@@ -68,20 +68,21 @@ local servers = {
   bashls = {},
   omnisharp = {},
   kotlin_language_server = {},
-  awk_ls = {},
+  -- awk_ls = {},
   emmet_ls = {},
-  gradle_ls = {
-    cmd = {
-      vim.env.HOME
-        .. "/.local/share/nvim/vscode-gradle/gradle-language-server/build/install/gradle-language-server/bin/gradle-language-server",
-    },
-    root_dir = function(fname)
-      return util.root_pattern(unpack { "settings.gradle", "settings.gradle.kts" })(fname)
-        or util.root_pattern(unpack { "build.gradle" })(fname)
-    end,
-    filetypes = { "groovy", "kotlin" },
-  },
+  -- gradle_ls = {
+  --   cmd = {
+  --     vim.env.HOME
+  --       .. "/.local/share/nvim/vscode-gradle/gradle-language-server/build/install/gradle-language-server/bin/gradle-language-server",
+  --   },
+  --   root_dir = function(fname)
+  --     return util.root_pattern(unpack { "settings.gradle", "settings.gradle.kts" })(fname)
+  --       or util.root_pattern(unpack { "build.gradle" })(fname)
+  --   end,
+  --   filetypes = { "groovy" },
+  -- },
   marksman = {},
+  angularls = {},
   -- grammarly = {
   --   filetypes = { "markdown", "text" },
   -- },
@@ -124,6 +125,9 @@ function M.on_attach(client, bufnr)
     require("jdtls.dap").setup_dap_main_class_configs()
     vim.lsp.codelens.refresh()
   end
+
+  -- aerial.nvim
+  require("aerial").on_attach(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
