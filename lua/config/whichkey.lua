@@ -128,6 +128,17 @@ local function normal_keymap()
       p = { "<Plug>PlenaryTestFile", "PlenaryTestFile" },
     },
 
+    n = {
+      name = "Neotest",
+      a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
+      d = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Debug Nearest" },
+      f = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "File" },
+      n = { "<cmd>lua require('neotest').run.run()<cr>", "Nearest" },
+      o = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Output" },
+      s = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
+      S = { "<cmd>lua require('neotest').summary.open()<cr>", "Summary" },
+    },
+
     r = {
       name = "Refactor",
       i = { [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], "Inline Variable" },
