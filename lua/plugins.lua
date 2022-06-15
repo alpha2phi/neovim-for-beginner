@@ -784,6 +784,44 @@ function M.setup()
         require("config.test").setup()
       end,
     }
+    use { "diepm/vim-rest-console", ft = { "rest" }, disable = false }
+    use {
+      "NTBBloodbath/rest.nvim",
+      config = function()
+        require("rest-nvim").setup {}
+        vim.keymap.set("n", "<C-j>", "<Plug>RestNvim", { noremap = true, silent = true })
+      end,
+      disable = true,
+    }
+    use {
+      "nvim-neotest/neotest",
+      opt = true,
+      wants = {
+        "plenary.nvim",
+        "nvim-treesitter",
+        "FixCursorHold.nvim",
+        "neotest-python",
+        "neotest-plenary",
+        "neotest-go",
+        "neotest-jest",
+        "neotest-vim-test",
+      },
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "nvim-treesitter/nvim-treesitter",
+        "antoinemadec/FixCursorHold.nvim",
+        "nvim-neotest/neotest-python",
+        "nvim-neotest/neotest-plenary",
+        "nvim-neotest/neotest-go",
+        "haydenmeade/neotest-jest",
+        "nvim-neotest/neotest-vim-test",
+      },
+      module = { "neotest" },
+      config = function()
+        require("config.neotest").setup()
+      end,
+      disable = false,
+    }
 
     -- AI completion
     use { "github/copilot.vim", event = "InsertEnter" }
