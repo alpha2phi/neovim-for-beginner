@@ -796,6 +796,16 @@ function M.setup()
     use {
       "nvim-neotest/neotest",
       opt = true,
+      wants = {
+        "plenary.nvim",
+        "nvim-treesitter",
+        "FixCursorHold.nvim",
+        "neotest-python",
+        "neotest-plenary",
+        "neotest-go",
+        "neotest-jest",
+        "neotest-vim-test",
+      },
       requires = {
         "nvim-lua/plenary.nvim",
         "nvim-treesitter/nvim-treesitter",
@@ -803,7 +813,7 @@ function M.setup()
         "nvim-neotest/neotest-python",
         "nvim-neotest/neotest-plenary",
         "nvim-neotest/neotest-go",
-        "nvim-neotest/neotest-jest",
+        "haydenmeade/neotest-jest",
         "nvim-neotest/neotest-vim-test",
       },
       module = { "neotest" },
