@@ -182,6 +182,7 @@ function M.setup()
       end,
       disable = true,
     }
+    use { "f-person/git-blame.nvim", cmd = { "GitBlameToggle" } }
 
     -- WhichKey
     use {
@@ -720,6 +721,7 @@ function M.setup()
       "akinsho/toggleterm.nvim",
       keys = { [[<C-\>]] },
       cmd = { "ToggleTerm", "TermExec" },
+      module = { "toggleterm", "toggleterm.terminal" },
       config = function()
         require("config.toggleterm").setup()
       end,
