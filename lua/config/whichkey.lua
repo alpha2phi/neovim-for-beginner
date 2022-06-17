@@ -244,7 +244,7 @@ local function normal_keymap()
           t = { "<cmd>GHToggleThread<cr>", "Toggle" },
         },
       },
-      z = { "<cmd>lua require('utils.term').lazygit_toggle()<CR>", "Lazygit" },
+      z = { "<cmd>lua require('utils.term').git_client_toggle()<CR>", "Git TUI" },
     },
   }
   whichkey.register(keymap, opts)

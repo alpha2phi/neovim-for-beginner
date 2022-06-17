@@ -183,6 +183,13 @@ function M.setup()
       disable = true,
     }
     use { "f-person/git-blame.nvim", cmd = { "GitBlameToggle" } }
+    use {
+      "tanvirtin/vgit.nvim",
+      config = function()
+        require("vgit").setup()
+      end,
+      cmd = { "VGit" },
+    }
 
     -- WhichKey
     use {
