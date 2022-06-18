@@ -152,7 +152,7 @@ function M.setup()
       config = function()
         require("octo").setup()
       end,
-      disable = true,
+      disable = false,
     }
     use {
       "akinsho/git-conflict.nvim",
@@ -191,6 +191,8 @@ function M.setup()
       cmd = { "VGit" },
     }
     use { "knsh14/vim-github-link", cmd = { "GetCommitLink", "GetCurrentBranchLink", "GetCurrentCommitLink" } }
+    use { "segeljakt/vim-silicon", cmd = { "Silicon" } }
+    use { "mattn/vim-gist", requires = { "mattn/webapi-vim" }, cmd = { "Gist" } }
 
     -- WhichKey
     use {
@@ -460,6 +462,7 @@ function M.setup()
         "telescope-smart-history.nvim",
         "telescope-arecibo.nvim",
         "telescope-media-files.nvim",
+        "telescope-github.nvim",
       },
       requires = {
         "nvim-lua/popup.nvim",
@@ -498,6 +501,7 @@ function M.setup()
         },
         "nvim-telescope/telescope-media-files.nvim",
         "dhruvmanila/telescope-bookmarks.nvim",
+        "nvim-telescope/telescope-github.nvim",
       },
     }
 
