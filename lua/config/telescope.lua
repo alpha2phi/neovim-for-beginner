@@ -148,6 +148,7 @@ function M.setup()
   telescope.load_extension "media_files"
   telescope.load_extension "bookmarks"
   telescope.load_extension "aerial"
+  telescope.load_extension "gh"
   -- require("telescope").load_extension "flutter" -- Flutter
 end
 

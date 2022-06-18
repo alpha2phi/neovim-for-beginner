@@ -73,6 +73,10 @@ function M.setup()
       disable = false,
     }
     use {
+      "projekt0n/github-nvim-theme",
+      disable = true,
+    }
+    use {
       "sainnhe/gruvbox-material",
       config = function()
         vim.cmd "colorscheme gruvbox-material"
@@ -107,7 +111,7 @@ function M.setup()
     use { "milisims/nvim-luaref", event = "BufReadPre" }
 
     -- Better Netrw
-    use { "tpope/vim-vinegar" }
+    use { "tpope/vim-vinegar", event="BufReadPre" }
 
     -- Git
     use {
@@ -128,8 +132,9 @@ function M.setup()
     }
     use {
       "tpope/vim-fugitive",
+      opt = true,
       cmd = { "Git", "GBrowse", "Gdiffsplit", "Gvdiffsplit" },
-      requires = { "tpope/vim-rhubarb" },
+      requires = { "tpope/vim-rhubarb", "idanarye/vim-merginal" },
       -- wants = { "vim-rhubarb" },
     }
     use {
@@ -152,7 +157,7 @@ function M.setup()
       config = function()
         require("octo").setup()
       end,
-      disable = true,
+      disable = false,
     }
     use {
       "akinsho/git-conflict.nvim",
@@ -182,6 +187,17 @@ function M.setup()
       end,
       disable = true,
     }
+    use { "f-person/git-blame.nvim", cmd = { "GitBlameToggle" } }
+    use {
+      "tanvirtin/vgit.nvim",
+      config = function()
+        require("vgit").setup()
+      end,
+      cmd = { "VGit" },
+    }
+    use { "knsh14/vim-github-link", cmd = { "GetCommitLink", "GetCurrentBranchLink", "GetCurrentCommitLink" } }
+    use { "segeljakt/vim-silicon", cmd = { "Silicon" } }
+    use { "mattn/vim-gist", opt = true, requires = { "mattn/webapi-vim" }, cmd = { "Gist" } }
 
     -- WhichKey
     use {
@@ -451,6 +467,7 @@ function M.setup()
         "telescope-smart-history.nvim",
         "telescope-arecibo.nvim",
         "telescope-media-files.nvim",
+        "telescope-github.nvim",
       },
       requires = {
         "nvim-lua/popup.nvim",
@@ -489,6 +506,7 @@ function M.setup()
         },
         "nvim-telescope/telescope-media-files.nvim",
         "dhruvmanila/telescope-bookmarks.nvim",
+        "nvim-telescope/telescope-github.nvim",
       },
     }
 
@@ -720,6 +738,7 @@ function M.setup()
       "akinsho/toggleterm.nvim",
       keys = { [[<C-\>]] },
       cmd = { "ToggleTerm", "TermExec" },
+      module = { "toggleterm", "toggleterm.terminal" },
       config = function()
         require("config.toggleterm").setup()
       end,
