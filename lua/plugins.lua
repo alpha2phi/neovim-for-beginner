@@ -111,7 +111,7 @@ function M.setup()
     use { "milisims/nvim-luaref", event = "BufReadPre" }
 
     -- Better Netrw
-    use { "tpope/vim-vinegar" }
+    use { "tpope/vim-vinegar", event="BufReadPre" }
 
     -- Git
     use {
@@ -132,8 +132,9 @@ function M.setup()
     }
     use {
       "tpope/vim-fugitive",
+      opt = true,
       cmd = { "Git", "GBrowse", "Gdiffsplit", "Gvdiffsplit" },
-      requires = { "tpope/vim-rhubarb" },
+      requires = { "tpope/vim-rhubarb", "idanarye/vim-merginal" },
       -- wants = { "vim-rhubarb" },
     }
     use {
@@ -196,7 +197,7 @@ function M.setup()
     }
     use { "knsh14/vim-github-link", cmd = { "GetCommitLink", "GetCurrentBranchLink", "GetCurrentCommitLink" } }
     use { "segeljakt/vim-silicon", cmd = { "Silicon" } }
-    use { "mattn/vim-gist", requires = { "mattn/webapi-vim" }, cmd = { "Gist" } }
+    use { "mattn/vim-gist", opt = true, requires = { "mattn/webapi-vim" }, cmd = { "Gist" } }
 
     -- WhichKey
     use {
