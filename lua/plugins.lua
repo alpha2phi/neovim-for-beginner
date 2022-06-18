@@ -190,6 +190,7 @@ function M.setup()
       end,
       cmd = { "VGit" },
     }
+    use { "knsh14/vim-github-link", cmd = { "GetCommitLink", "GetCurrentBranchLink", "GetCurrentCommitLink" } }
 
     -- WhichKey
     use {
