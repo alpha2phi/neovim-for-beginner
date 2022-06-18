@@ -73,6 +73,10 @@ function M.setup()
       disable = false,
     }
     use {
+      "projekt0n/github-nvim-theme",
+      disable = true,
+    }
+    use {
       "sainnhe/gruvbox-material",
       config = function()
         vim.cmd "colorscheme gruvbox-material"
