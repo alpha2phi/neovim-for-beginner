@@ -40,39 +40,6 @@ if vim.fn.has "nvim-0.7" then
 
   -- Fix highlight issue
   api.nvim_create_autocmd("VimEnter", { command = [[syntax enable]] })
-
-  -- winbar
-  -- api.nvim_create_autocmd({ "CursorMoved", "BufWinEnter", "BufFilePost" }, {
-  --   callback = function()
-  --     local winbar_filetype_exclude = {
-  --       "help",
-  --       "startify",
-  --       "dashboard",
-  --       "packer",
-  --       "neogitstatus",
-  --       "NvimTree",
-  --       "Trouble",
-  --       "alpha",
-  --       "lir",
-  --       "Outline",
-  --       "spectre_panel",
-  --       "toggleterm",
-  --     }
-  --
-  --     if vim.tbl_contains(winbar_filetype_exclude, vim.bo.filetype) then
-  --       vim.opt_local.winbar = nil
-  --       return
-  --     end
-  --
-  --     local value = require("config.winbar").gps()
-  --
-  --     if value == nil then
-  --       value = require("config.winbar").filename()
-  --     end
-  --
-  --     vim.opt_local.winbar = value
-  --   end,
-  -- })
 else
   local cmd = vim.cmd
 

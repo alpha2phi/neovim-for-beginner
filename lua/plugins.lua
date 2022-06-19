@@ -111,7 +111,7 @@ function M.setup()
     use { "milisims/nvim-luaref", event = "BufReadPre" }
 
     -- Better Netrw
-    use { "tpope/vim-vinegar", event="BufReadPre" }
+    use { "tpope/vim-vinegar", event = "BufReadPre" }
 
     -- Git
     use {
@@ -413,6 +413,7 @@ function M.setup()
       config = function()
         require("nvim-gps").setup()
       end,
+      disable = true,
     }
     use {
       "b0o/incline.nvim",
