@@ -20,7 +20,7 @@ local winbar_filetype_exclude = {
   "toggleterm",
 }
 
-function M.statusline()
+function M.file_name()
   if vim.tbl_contains(winbar_filetype_exclude, vim.bo.filetype) then
     vim.opt_local.winbar = nil
     return ""
