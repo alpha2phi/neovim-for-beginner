@@ -405,24 +405,6 @@ function M.setup()
       end,
       wants = "nvim-web-devicons",
     }
-    use {
-      "SmiteshP/nvim-gps",
-      requires = "nvim-treesitter/nvim-treesitter",
-      module = "nvim-gps",
-      wants = "nvim-treesitter",
-      config = function()
-        require("nvim-gps").setup()
-      end,
-      disable = true,
-    }
-    use {
-      "b0o/incline.nvim",
-      event = "BufReadPre",
-      config = function()
-        require("incline").setup()
-      end,
-      disable = true,
-    }
 
     -- Treesitter
     use {
@@ -618,10 +600,7 @@ function M.setup()
     use {
       "neovim/nvim-lspconfig",
       opt = true,
-      -- event = "VimEnter",
       event = { "BufReadPre" },
-      -- keys = { "<leader>l", "<leader>f" },
-      -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
       wants = {
         "nvim-lsp-installer",
         "cmp-nvim-lsp",
@@ -629,8 +608,8 @@ function M.setup()
         "vim-illuminate",
         "null-ls.nvim",
         "schemastore.nvim",
-        -- "nvim-lsp-ts-utils",
         "typescript.nvim",
+        "nvim-navic",
       },
       config = function()
         require("config.lsp").setup()
@@ -647,9 +626,8 @@ function M.setup()
           end,
         },
         "b0o/schemastore.nvim",
-        -- "jose-elias-alvarez/nvim-lsp-ts-utils",
         "jose-elias-alvarez/typescript.nvim",
-        -- "ray-x/lsp_signature.nvim",
+        "SmiteshP/nvim-navic",
       },
     }
 
