@@ -35,4 +35,4 @@ api.nvim_create_autocmd("FileType", { pattern = "man", command = [[nnoremap <buf
 api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
 
 -- Fix highlight issue
--- api.nvim_create_autocmd("VimEnter", { command = [[syntax enable]] })
+api.nvim_create_autocmd("BufEnter", { command = [[syntax enable]] })

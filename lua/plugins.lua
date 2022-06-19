@@ -419,8 +419,8 @@ function M.setup()
         { "nvim-treesitter/nvim-treesitter-textobjects", event = "BufReadPre" },
         { "windwp/nvim-ts-autotag", event = "InsertEnter" },
         { "JoosepAlviste/nvim-ts-context-commentstring", event = "BufReadPre" },
-        { "nvim-treesitter/nvim-treesitter-context", event = "BufReadPre" },
         { "p00f/nvim-ts-rainbow", event = "BufReadPre" },
+        -- { "nvim-treesitter/nvim-treesitter-context", event = "BufReadPre" },
         -- { "yioneko/nvim-yati", event = "BufReadPre" },
       },
     }
@@ -627,7 +627,12 @@ function M.setup()
         },
         "b0o/schemastore.nvim",
         "jose-elias-alvarez/typescript.nvim",
-        "SmiteshP/nvim-navic",
+        {
+          "SmiteshP/nvim-navic",
+          config = function()
+            require("nvim-navic").setup {}
+          end,
+        },
       },
     }
 

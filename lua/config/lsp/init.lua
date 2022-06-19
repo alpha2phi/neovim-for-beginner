@@ -130,7 +130,7 @@ function M.on_attach(client, bufnr)
   require("aerial").on_attach(client, bufnr)
 
   -- nvim-navic
-  if client.server_capabilities.documentSymbols then
+  if client.server_capabilities.documentSymbolProvider then
     local navic = require "nvim-navic"
     navic.attach(client, bufnr)
   end
