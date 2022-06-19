@@ -47,7 +47,9 @@ local sources = {
   -- b.diagnostics.stylelint,
 
   -- code actions
-  b.code_actions.gitsigns,
+  b.code_actions.gitsigns.with {
+    disabled_filetypes = { "NeogitCommitMessage" },
+  },
   b.code_actions.eslint_d,
   b.code_actions.gitrebase,
   b.code_actions.refactoring,
