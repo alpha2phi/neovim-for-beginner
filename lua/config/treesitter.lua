@@ -103,7 +103,6 @@ function M.setup()
       --     ["<leader>cF"] = "@class.outer",
       --   },
       -- },
-      --
     },
 
     -- endwise
