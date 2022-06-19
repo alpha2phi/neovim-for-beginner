@@ -2,9 +2,12 @@ local M = {}
 
 local colors = require "config.colors"
 local navic = require "nvim-navic"
+local utils = require "utils"
+local icons = require "config.icons"
 
 vim.api.nvim_set_hl(0, "WinBarSeparator", { fg = colors.grey })
-vim.api.nvim_set_hl(0, "WinBarContent", { fg = colors.green, bg = colors.grey })
+vim.api.nvim_set_hl(0, "WinBarContext", { fg = colors.light_green, bg = colors.grey })
+vim.api.nvim_set_hl(0, "WinBarFilename", { fg = colors.green, bg = colors.grey })
 
 M.winbar_filetype_exclude = {
   "help",
@@ -29,6 +32,14 @@ local excludes = function()
   return false
 end
 
+local function get_modified()
+  if utils.get_buf_option "mod" then
+    local mod = icons.git.Mod
+    return "%#WinBarFilename#" .. mod .. " " .. "%t" .. "%*"
+  end
+  return "%#WinBarFilename#" .. "%t" .. "%*"
+end
+
 function M.get_winbar()
   if excludes() then
     return ""
@@ -38,11 +49,8 @@ function M.get_winbar()
       .. "%="
       .. ""
       .. "%*"
-      .. "%#WinBarContent#"
-      .. "%m "
-      .. "%t"
-      .. "%*"
-      .. "%#WinBarContent#"
+      .. get_modified()
+      .. "%#WinBarContext#"
       .. " "
       .. navic.get_location()
       .. "%*"
@@ -50,17 +58,7 @@ function M.get_winbar()
       .. ""
       .. "%*"
   else
-    return "%#WinBarSeparator#"
-      .. "%="
-      .. ""
-      .. "%*"
-      .. "%#WinBarContent#"
-      .. "%m "
-      .. "%t"
-      .. "%*"
-      .. "%#WinBarSeparator#"
-      .. ""
-      .. "%*"
+    return "%#WinBarSeparator#" .. "%=" .. "" .. "%*" .. get_modified() .. "%#WinBarSeparator#" .. "" .. "%*"
   end
 end
 

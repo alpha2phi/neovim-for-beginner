@@ -40,4 +40,13 @@ return {
     server_pending = "➜",
     server_uninstalled = "✗",
   },
+  git = {
+    Add = " ",
+    Mod = " ",
+    Remove = " ",
+    Ignore = " ",
+    Rename = " ",
+    Diff = " ",
+    Repo = " ",
+  },
 }

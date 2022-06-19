@@ -57,7 +57,7 @@ local function normal_keymap()
 
   local keymap = {
     ["w"] = { "<cmd>update!<CR>", "Save" },
-    ["q"] = { "<cmd>q!<CR>", "Quit" },
+    ["q"] = { "<cmd>lua require('utils').quit()<CR>", "Quit" },
     -- ["t"] = { "<cmd>ToggleTerm<CR>", "Terminal" },
 
     a = {
