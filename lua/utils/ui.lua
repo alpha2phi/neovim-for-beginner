@@ -6,10 +6,15 @@ function M.input()
     default = "default value",
     completion = "file",
     highlight = function(input)
+      print(input)
       return { { 0, 3, "DiffText" } }
     end,
   }, function(input)
-    vim.o.shiftwidth = tonumber(input)
+    if input then
+      print("You entered " .. input)
+    else
+      print "You cancelled"
+    end
   end)
 
   -- Parameters: ~
