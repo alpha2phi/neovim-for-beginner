@@ -39,7 +39,7 @@ opt.softtabstop = 2
 opt.splitbelow = true
 opt.splitright = true
 opt.laststatus = 3 -- Global statusline
-opt.winbar = "%{%v:lua.require'config.winbar'.statusline()%}"
+opt.winbar = "%{%v:lua.require'config.winbar'.get_winbar()%}"
 
 -- go to previous/next line with h,l,left arrow and right arrow when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"

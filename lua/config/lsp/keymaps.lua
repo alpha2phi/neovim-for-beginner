@@ -60,22 +60,22 @@ local function keymappings(client, bufnr)
   whichkey.register(keymap_g, { buffer = bufnr, prefix = "g" })
 end
 
-local function signature_help(client, bufnr)
-  local trigger_chars = client.server_capabilities.signatureHelpProvider.triggerCharacters
-  for _, char in ipairs(trigger_chars) do
-    vim.keymap.set("i", char, function()
-      vim.defer_fn(function()
-        pcall(vim.lsp.buf.signature_help)
-      end, 0)
-      return char
-    end, {
-      buffer = bufnr,
-      noremap = true,
-      silent = true,
-      expr = true,
-    })
-  end
-end
+-- local function signature_help(client, bufnr)
+--   local trigger_chars = client.server_capabilities.signatureHelpProvider.triggerCharacters
+--   for _, char in ipairs(trigger_chars) do
+--     vim.keymap.set("i", char, function()
+--       vim.defer_fn(function()
+--         pcall(vim.lsp.buf.signature_help)
+--       end, 0)
+--       return char
+--     end, {
+--       buffer = bufnr,
+--       noremap = true,
+--       silent = true,
+--       expr = true,
+--     })
+--   end
+-- end
 
 function M.setup(client, bufnr)
   keymappings(client, bufnr)

@@ -97,7 +97,7 @@ end
 local icons = require "config.icons"
 
 function M.setup()
-  local gps = require "nvim-gps"
+  -- local gps = require "nvim-gps"
 
   require("lualine").setup {
     options = {
@@ -130,11 +130,11 @@ function M.setup()
         { separator },
         { lsp_client, icon = " ", color = { fg = colors.violet, gui = "bold" } },
         -- { lsp_progress },
-        {
-          gps.get_location,
-          cond = gps.is_available,
-          color = { fg = colors.green },
-        },
+        -- {
+        --   gps.get_location,
+        --   cond = gps.is_available,
+        --   color = { fg = colors.green },
+        -- },
       },
       lualine_x = { "filename", "encoding", "fileformat", "filetype" },
       lualine_y = { "progress" },
