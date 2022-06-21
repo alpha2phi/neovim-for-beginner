@@ -185,11 +185,13 @@ local function normal_keymap()
       s = { "<cmd>PackerSync<cr>", "Sync" },
       S = { "<cmd>PackerStatus<cr>", "Status" },
       u = { "<cmd>PackerUpdate<cr>", "Update" },
-      x = { "<cmd>cd %:p:h<cr>", "Change Directory" },
+      -- x = { "<cmd>cd %:p:h<cr>", "Change Directory" },
       -- x = { "<cmd>set autochdir<cr>", "Auto ChDir" },
+      x = { "<cmd>Telescope cder<cr>", "Change Directory" },
       e = { "!!$SHELL<CR>", "Execute line" },
       W = { "<cmd>lua require('utils.session').toggle_session()<cr>", "Toggle Workspace Saving" },
       w = { "<cmd>lua require('utils.session').list_session()<cr>", "Restore Workspace" },
+      z = { "<cmd>lua require'telescope'.extensions.zoxide.list{}<cr>", "Zoxide" },
     },
 
     g = {

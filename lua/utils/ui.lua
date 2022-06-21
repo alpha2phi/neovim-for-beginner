@@ -6,8 +6,12 @@ function M.input()
     default = "default value",
     completion = "file",
     highlight = function(input)
-      print(input)
-      return { { 0, 3, "DiffText" } }
+      --print(input)
+      if str:len(input) > 3 then
+	      return { { 0, 3, "DiffText" } }
+      else
+      return {{}}
+      end
     end,
   }, function(input)
     if input then

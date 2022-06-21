@@ -452,6 +452,8 @@ function M.setup()
         "telescope-arecibo.nvim",
         "telescope-media-files.nvim",
         "telescope-github.nvim",
+        "telescope-zoxide",
+        "cder.nvim",
       },
       requires = {
         "nvim-lua/popup.nvim",
@@ -491,6 +493,8 @@ function M.setup()
         "nvim-telescope/telescope-media-files.nvim",
         "dhruvmanila/telescope-bookmarks.nvim",
         "nvim-telescope/telescope-github.nvim",
+        "jvgrootveld/telescope-zoxide",
+        "Zane-/cder.nvim",
       },
     }
 

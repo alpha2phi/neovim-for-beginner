@@ -149,6 +149,8 @@ function M.setup()
   telescope.load_extension "bookmarks"
   telescope.load_extension "aerial"
   telescope.load_extension "gh"
+  telescope.load_extension "zoxide"
+  telescope.load_extension "cder"
   -- require("telescope").load_extension "flutter" -- Flutter
 end
 
