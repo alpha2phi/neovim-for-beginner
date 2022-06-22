@@ -151,7 +151,8 @@ function M.setup()
   telescope.load_extension "gh"
   telescope.load_extension "zoxide"
   telescope.load_extension "cder"
-  -- require("telescope").load_extension "flutter" -- Flutter
+  -- telescope.load_extension "ui-select"
+  -- telescope.load_extension "flutter" -- Flutter
 end
 
 return M
