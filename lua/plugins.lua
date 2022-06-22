@@ -662,10 +662,10 @@ function M.setup()
 
     -- lspsaga.nvim
     use {
-      "tami5/lspsaga.nvim",
+      "glepnir/lspsaga.nvim",
       cmd = { "Lspsaga" },
       config = function()
-        require("lspsaga").setup {}
+        require("lspsaga").init_lsp_saga()
       end,
     }
 
