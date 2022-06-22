@@ -454,6 +454,7 @@ function M.setup()
         "telescope-github.nvim",
         "telescope-zoxide",
         "cder.nvim",
+        -- "telescope-ui-select.nvim",
       },
       requires = {
         "nvim-lua/popup.nvim",
@@ -495,6 +496,7 @@ function M.setup()
         "nvim-telescope/telescope-github.nvim",
         "jvgrootveld/telescope-zoxide",
         "Zane-/cder.nvim",
+        -- "nvim-telescope/telescope-ui-select.nvim",
       },
     }
 
@@ -533,6 +535,11 @@ function M.setup()
         }
       end,
       disable = false,
+    }
+    use {
+      "ray-x/guihua.lua",
+      run = "cd lua/fzy && make",
+      disable = true,
     }
 
     -- Completion
@@ -704,6 +711,7 @@ function M.setup()
       config = function()
         require("go").setup()
       end,
+      disable = true,
     }
 
     -- Java
@@ -832,7 +840,7 @@ function M.setup()
     }
 
     -- AI completion
-    use { "github/copilot.vim", event = "InsertEnter" }
+    use { "github/copilot.vim", event = "InsertEnter", disable = true }
 
     -- Legendary
     use {
