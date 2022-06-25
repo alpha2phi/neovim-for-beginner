@@ -4,14 +4,14 @@ function M.setup()
   local Hydra = require "hydra"
   Hydra {
     hint = [[
- ^^^^^^     Move     ^^^^^^   ^^     Split         ^^^^    Size
- ^^^^^^--------------^^^^^^   ^^---------------    ^^^^-------------
- ^ ^ _k_ ^ ^   ^ ^ _K_ ^ ^    _s_: horizontally    _+_ _-_: height
- _h_ ^ ^ _l_   _H_ ^ ^ _L_    _v_: vertically      _>_ _<_: width
- ^ ^ _j_ ^ ^   ^ ^ _J_ ^ ^    _q_: close           ^ _=_ ^: equalize
- focus^^^^^^   window^^^^^^
- ^ ^ ^ ^ ^ ^   ^ ^ ^ ^ ^ ^    ^ ^ ^    _<Esc>_
-]],
+       ^^^^^^     Move     ^^^^^^   ^^     Split         ^^^^    Size
+       ^^^^^^--------------^^^^^^   ^^---------------    ^^^^-------------
+       ^ ^ _k_ ^ ^   ^ ^ _K_ ^ ^    _s_: horizontally    _+_ _-_: height
+       _h_ ^ ^ _l_   _H_ ^ ^ _L_    _v_: vertically      _>_ _<_: width
+       ^ ^ _j_ ^ ^   ^ ^ _J_ ^ ^    _q_: close           ^ _=_ ^: equalize
+       focus^^^^^^   window^^^^^^
+       ^ ^ ^ ^ ^ ^   ^ ^ ^ ^ ^ ^    ^ ^ ^    _<Esc>_
+    ]],
     config = {
       -- timeout = 4000,
       invoke_on_body = false,
