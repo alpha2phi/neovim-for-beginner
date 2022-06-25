@@ -1112,12 +1112,11 @@ function M.setup()
     }
     use {
       "ghillb/cybu.nvim",
-      branch = "main",
       event = "BufReadPre",
       config = function()
         require("config.cybu").setup()
       end,
-      disable = true,
+      disable = false,
     }
     use { "tversteeg/registers.nvim", disable = true }
     use {
