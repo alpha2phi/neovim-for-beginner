@@ -1147,7 +1147,7 @@ function M.setup()
 
     -- Bootstrap Neovim
     if packer_bootstrap then
-      print "Restart Neovim required after installation!"
+      print "Neovim restart is required after installation!"
       require("packer").sync()
     end
   end
