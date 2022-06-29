@@ -14,8 +14,14 @@ function M.setup(_)
     cwd = vim.fn.getcwd(),
     pathMappings = {
       {
-        localRoot = "/home/alpha2phi/workspace/alpha2phi/python-apps/ml-yolo/backend", -- Local folder the code lives
-        remoteRoot = "/fastapi", -- Wherever your Python code lives in the container.
+        localRoot = function()
+          return vim.fn.input("Local code folder > ", vim.fn.getcwd(), "file")
+          --"/home/alpha2phi/workspace/alpha2phi/python-apps/ml-yolo/backend", -- Local folder the code lives
+        end,
+        remoteRoot = function()
+          return vim.fn.input("Container code folder > ", "/", "file")
+          -- "/fastapi", -- Wherever your Python code lives in the container.
+        end,
       },
     },
   })
