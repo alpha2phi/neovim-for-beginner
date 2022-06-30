@@ -1,17 +1,19 @@
 local M = {}
 
 local whichkey = require "which-key"
-local legendary = require "legendary"
+-- local legendary = require "legendary"
 
-local keymap = vim.api.nvim_set_keymap
-local buf_keymap = vim.api.nvim_buf_set_keymap
+-- local keymap = vim.api.nvim_set_keymap
+-- local buf_keymap = vim.api.nvim_buf_set_keymap
+local keymap = vim.keymap.set
 
 local function keymappings(client, bufnr)
   local opts = { noremap = true, silent = true }
 
   -- Key mappings
-  buf_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  -- buf_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
   -- vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
+  keymap("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
 
   keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
@@ -58,15 +60,15 @@ local function keymappings(client, bufnr)
 
   local o = { buffer = bufnr, prefix = "<leader>" }
   whichkey.register(keymap_l, o)
-  legendary.bind_whichkey(keymap_l, o, false)
+  -- legendary.bind_whichkey(keymap_l, o, false)
 
   o = { mode = "v", buffer = bufnr, prefix = "<leader>" }
   whichkey.register(keymap_v_l, o)
-  legendary.bind_whichkey(keymap_v_l, o, false)
+  -- legendary.bind_whichkey(keymap_v_l, o, false)
 
   o = { buffer = bufnr, prefix = "g" }
   whichkey.register(keymap_g, o)
-  legendary.bind_whichkey(keymap_g, o, false)
+  -- legendary.bind_whichkey(keymap_g, o, false)
 end
 
 -- local function signature_help(client, bufnr)

@@ -853,6 +853,9 @@ function M.setup()
       opt = true,
       keys = { [[<C-p>]] },
       wants = { "dressing.nvim" },
+      after = { "which-key.nvim" },
+      module = { "legendary" },
+      cmd = { "Legendary" },
       config = function()
         require("config.legendary").setup()
       end,
