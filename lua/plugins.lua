@@ -1087,7 +1087,7 @@ function M.setup()
         require("config.keymenu").setup()
       end,
       event = "VimEnter",
-      disable = true,
+      disable = false,
     }
     use { "mg979/vim-visual-multi", event = "BufReadPre", disable = false }
     use {
