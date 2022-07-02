@@ -7,7 +7,7 @@ local cmd = vim.cmd
 -- api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("", "<Space>", "<Nop>", { noremap = true, silent = true })
 g.mapleader = " "
-g.maplocalleader = " "
+g.maplocalleader = ","
 g.vimsyn_embed = "lPr" -- Syntax embedding for Lua, Python and Ruby
 
 opt.termguicolors = true -- Enable colors in terminal

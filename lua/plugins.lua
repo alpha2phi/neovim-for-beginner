@@ -211,6 +211,7 @@ function M.setup()
       config = function()
         require("config.whichkey").setup()
       end,
+      disable = false,
     }
 
     -- IndentLine
@@ -1087,7 +1088,7 @@ function M.setup()
         require("config.keymenu").setup()
       end,
       event = "VimEnter",
-      disable = false,
+      disable = true,
     }
     use { "mg979/vim-visual-multi", event = "BufReadPre", disable = false }
     use {
@@ -1098,7 +1099,7 @@ function M.setup()
       requires = "anuvyklack/keymap-layer.nvim",
       module = { "hydra" },
       event = { "BufReadPre" },
-      disable = true,
+      disable = false,
     }
 
     -- Disabled
