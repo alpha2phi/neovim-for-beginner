@@ -1,12 +1,13 @@
-local api = vim.api
+-- local api = vim.api
 local g = vim.g
 local opt = vim.opt
 local cmd = vim.cmd
 
 -- Remap leader and local leader to <Space>
-api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
+-- api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set("", "<Space>", "<Nop>", { noremap = true, silent = true })
 g.mapleader = " "
-g.maplocalleader = " "
+g.maplocalleader = ","
 g.vimsyn_embed = "lPr" -- Syntax embedding for Lua, Python and Ruby
 
 opt.termguicolors = true -- Enable colors in terminal

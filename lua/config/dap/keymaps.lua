@@ -1,6 +1,7 @@
 local M = {}
 
 local whichkey = require "which-key"
+local legendary = require "legendary"
 
 -- local function keymap(lhs, rhs, desc)
 --   vim.keymap.set("n", lhs, rhs, { silent = true, desc = desc })
@@ -32,15 +33,16 @@ function M.setup()
       u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
     },
   }
-
-  whichkey.register(keymap, {
+  local opts = {
     mode = "n",
     prefix = "<leader>",
     buffer = nil,
     silent = true,
     noremap = true,
     nowait = false,
-  })
+  }
+  whichkey.register(keymap, opts)
+  legendary.bind_whichkey(keymap, opts, false)
 
   local keymap_v = {
     d = {
@@ -48,14 +50,16 @@ function M.setup()
       e = { "<cmd>lua require'dapui'.eval()<cr>", "Evaluate" },
     },
   }
-  whichkey.register(keymap_v, {
+  opts = {
     mode = "v",
     prefix = "<leader>",
     buffer = nil,
     silent = true,
     noremap = true,
     nowait = false,
-  })
+  }
+  whichkey.register(keymap_v, opts)
+  legendary.bind_whichkey(keymap_v, opts, false)
 end
 
 return M

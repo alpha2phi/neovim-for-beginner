@@ -1,6 +1,7 @@
 local M = {}
 
-local keymap = vim.api.nvim_set_keymap
+-- local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 local function keymaps()
   local opts = { noremap = false, silent = true }

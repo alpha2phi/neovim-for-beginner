@@ -3,15 +3,17 @@ local M = {}
 local whichkey = require "which-key"
 local legendary = require "legendary"
 
-local keymap = vim.api.nvim_set_keymap
-local buf_keymap = vim.api.nvim_buf_set_keymap
+-- local keymap = vim.api.nvim_set_keymap
+-- local buf_keymap = vim.api.nvim_buf_set_keymap
+local keymap = vim.keymap.set
 
 local function keymappings(client, bufnr)
   local opts = { noremap = true, silent = true }
 
   -- Key mappings
-  buf_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  -- buf_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
   -- vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
+  keymap("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
 
   keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)

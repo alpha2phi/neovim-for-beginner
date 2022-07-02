@@ -61,7 +61,11 @@ local servers = {
   vimls = {},
   tailwindcss = {},
   -- solang = {},
-  yamlls = {},
+  yamlls = {
+    schemastore = {
+      enable = true,
+    },
+  },
   jdtls = {},
   dockerls = {},
   graphql = {},

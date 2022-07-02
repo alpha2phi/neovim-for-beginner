@@ -211,6 +211,7 @@ function M.setup()
       config = function()
         require("config.whichkey").setup()
       end,
+      disable = false,
     }
 
     -- IndentLine
@@ -853,6 +854,8 @@ function M.setup()
       opt = true,
       keys = { [[<C-p>]] },
       wants = { "dressing.nvim" },
+      module = { "legendary" },
+      cmd = { "Legendary" },
       config = function()
         require("config.legendary").setup()
       end,
@@ -1096,7 +1099,7 @@ function M.setup()
       requires = "anuvyklack/keymap-layer.nvim",
       module = { "hydra" },
       event = { "BufReadPre" },
-      disable = true,
+      disable = false,
     }
 
     -- Disabled
