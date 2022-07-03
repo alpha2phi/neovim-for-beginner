@@ -107,7 +107,7 @@ function M.on_attach(client, bufnr)
 
   -- Use LSP as the handler for formatexpr.
   -- See `:help formatexpr` for more information.
-  vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+  vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 
   -- Configure key mappings
   require("config.lsp.keymaps").setup(client, bufnr)
