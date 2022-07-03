@@ -65,11 +65,14 @@ opt.wildignore:append "**/.git/*"
 -- g.netrw_list_hide = (vim.fn["netrw_gitignore#Hide"]()) .. [[,\(^\|\s\s\)\zs\.\S\+]] -- use .gitignore
 
 -- Treesitter based folding
-cmd [[
-  set foldlevel=20
-  set foldmethod=expr
-  set foldexpr=nvim_treesitter#foldexpr()
-]]
+-- cmd [[
+--   set foldlevel=20
+--   set foldmethod=expr
+--   set foldexpr=nvim_treesitter#foldexpr()
+-- ]]
+opt.foldcolumn = "1"
+opt.foldlevel = 99
+opt.foldenable = true
 
 -- Copilot
 -- cmd [[

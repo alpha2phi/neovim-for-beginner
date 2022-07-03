@@ -908,6 +908,16 @@ function M.setup()
         require("pqf").setup()
       end,
     }
+    use {
+      "kevinhwang91/nvim-ufo",
+      opt = true,
+      event = { "BufReadPre" },
+      wants = { "promise-async" },
+      requires = "kevinhwang91/promise-async",
+      config = function()
+        require("ufo").setup()
+      end,
+    }
 
     -- Performance
     use { "dstein64/vim-startuptime", cmd = "StartupTime" }
