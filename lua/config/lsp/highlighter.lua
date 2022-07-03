@@ -41,8 +41,8 @@ function M.highlight(client, bufnr)
   end
 end
 
-function M.setup(client)
-  M.highlight(client)
+function M.setup(client, bufnr)
+  M.highlight(client, bufnr)
 end
 
 return M
