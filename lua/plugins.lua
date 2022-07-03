@@ -1164,6 +1164,7 @@ function M.setup()
     -- https://github.com/rktjmp/lush.nvim
     -- https://github.com/charludo/projectmgr.nvim
     -- https://github.com/katawful/kreative
+    -- https://github.com/kevinhwang91/nvim-ufo
 
     -- Bootstrap Neovim
     if packer_bootstrap then
