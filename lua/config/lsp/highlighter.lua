@@ -1,6 +1,7 @@
 local M = {}
 
 local utils = require "utils"
+local api = vim.api
 
 M.highlight = true
 
@@ -13,23 +14,28 @@ function M.toggle()
   end
 end
 
-function M.highlight(client)
+function M.highlight(client, bufnr)
   if M.highlight then
     if client.server_capabilities.documentHighlightProvider then
       local present, illuminate = pcall(require, "illuminate")
       if present then
         illuminate.on_attach(client)
       else
-        vim.api.nvim_exec(
-          [[
-            augroup lsp_document_highlight
-              autocmd! * <buffer>
-              autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-              autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-            augroup END
-          ]],
-          false
-        )
+        local lsp_highlight_grp = api.nvim_create_augroup("LspDocumentHighlight", { clear = true })
+        api.nvim_create_autocmd("CursorHold", {
+          callback = function()
+            vim.schedule(vim.lsp.buf.document_highlight)
+          end,
+          group = lsp_highlight_grp,
+          buffer = bufnr,
+        })
+        api.nvim_create_autocmd("CursorMoved", {
+          callback = function()
+            vim.schedule(vim.lsp.buf.clear_references)
+          end,
+          group = lsp_highlight_grp,
+          buffer = bufnr,
+        })
       end
     end
   end

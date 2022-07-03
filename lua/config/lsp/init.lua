@@ -113,7 +113,7 @@ function M.on_attach(client, bufnr)
   require("config.lsp.keymaps").setup(client, bufnr)
 
   -- Configure highlighting
-  require("config.lsp.highlighter").setup(client)
+  require("config.lsp.highlighter").setup(client, bufnr)
 
   -- Configure formatting
   require("config.lsp.null-ls.formatters").setup(client, bufnr)
