@@ -43,6 +43,4 @@ function M.cht_cmd(cmd)
   vim.cmd [[stopinsert]]
 end
 
-
-M.cht()
 return M
