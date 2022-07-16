@@ -79,3 +79,11 @@ opt.foldexpr = "nvim_treesitter#foldexpr()"
 --     imap <silent><script><expr> <C-s> copilot#Accept("\<CR>")
 --     let g:copilot_no_tab_map = v:true
 -- ]]
+
+-- GUI
+opt.guifont = "Fira_Code:h14"
+
+if vim.g.neovide then
+  vim.g.neovide_transparency = 0.9
+  vim.g.neovide_fullscreen = true
+end
