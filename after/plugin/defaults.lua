@@ -81,4 +81,9 @@ opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- ]]
 
 -- GUI
-opt.guifont="Fira_Code:h10"
+opt.guifont = "Fira_Code:h10"
+
+if vim.g.neovide then
+  vim.g.neovide_transparency = 0.9
+  vim.g.neovide_fullscreen = true
+end
