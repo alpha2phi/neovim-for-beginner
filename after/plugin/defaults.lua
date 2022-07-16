@@ -79,3 +79,6 @@ opt.foldexpr = "nvim_treesitter#foldexpr()"
 --     imap <silent><script><expr> <C-s> copilot#Accept("\<CR>")
 --     let g:copilot_no_tab_map = v:true
 -- ]]
+
+-- GUI
+opt.guifont="Fira_Code:h10"
