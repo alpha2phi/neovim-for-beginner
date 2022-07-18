@@ -699,9 +699,9 @@ function M.setup()
       opt = true,
       module = "rust-tools",
       ft = { "rust" },
-      config = function()
-        require("config.rust").setup()
-      end,
+      -- config = function()
+      --   require("config.rust").setup()
+      -- end,
     }
     use {
       "saecki/crates.nvim",
