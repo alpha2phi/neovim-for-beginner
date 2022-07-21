@@ -2,9 +2,14 @@ local M = {}
 
 function M.setup()
   require("Comment").setup {
+    ignore = "^$",
     pre_hook = function(ctx)
       local U = require "Comment.utils"
 
+      -- Determine whether to use linewise or blockwise commentstring
+      local type = ctx.ctype == U.ctype.line and "__default" or "__multiline"
+
+      -- Determine the location where to calculate commentstring from
       local location = nil
       if ctx.ctype == U.ctype.block then
         location = require("ts_context_commentstring.utils").get_cursor_location()
@@ -13,7 +18,7 @@ function M.setup()
       end
 
       return require("ts_context_commentstring.internal").calculate_commentstring {
-        key = ctx.ctype == U.ctype.line and "__default" or "__multiline",
+        key = type,
         location = location,
       }
     end,
