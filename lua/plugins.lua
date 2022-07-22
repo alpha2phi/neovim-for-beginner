@@ -1125,7 +1125,7 @@ function M.setup()
       requires = "anuvyklack/keymap-layer.nvim",
       module = { "hydra" },
       event = { "BufReadPre" },
-      disable = false,
+      disable = true,
     }
 
     -- Disabled
