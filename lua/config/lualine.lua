@@ -105,7 +105,10 @@ function M.setup()
       theme = "auto",
       component_separators = { left = "", right = "" },
       section_separators = { left = " ", right = "" },
-      disabled_filetypes = {},
+      disabled_filetypes = {
+        statusline = {},
+        winbar = {},
+      },
       always_divide_middle = true,
       globalstatus = true,
     },
@@ -149,7 +152,24 @@ function M.setup()
       lualine_z = {},
     },
     tabline = {},
-    extensions = {},
+    winbar = {
+      lualine_a = {},
+      lualine_b = {},
+      lualine_c = {},
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = {},
+    },
+
+    inactive_winbar = {
+      lualine_a = {},
+      lualine_b = {},
+      lualine_c = {},
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = {},
+    },
+    extensions = { "nvim-tree", "toggleterm", "quickfix" },
   }
 end
 
