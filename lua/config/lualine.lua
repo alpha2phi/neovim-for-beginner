@@ -168,7 +168,7 @@ function M.setup()
     },
     tabline = {},
     winbar = {
-      lualine_a = {},
+      lualine_a = { "diagnostics" },
       lualine_b = {},
       lualine_c = {},
       lualine_x = { winbar.get_winbar },
