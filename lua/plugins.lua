@@ -1127,7 +1127,7 @@ function M.setup()
       event = { "BufReadPre" },
       disable = true,
     }
-    use { "Olical/conjure", cmd = { "ConjureSchool" }, disable = false }
+    use { "Olical/conjure", cmd = { "ConjureSchool" }, disable = true }
 
     -- Disabled
     use {

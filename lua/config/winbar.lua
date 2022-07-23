@@ -49,9 +49,11 @@ local function get_location()
 end
 
 function M.get_winbar()
-  if excludes() then
-    return ""
-  end
+  -- Use lualine disable file types
+  -- if excludes() then
+  --   return ""
+  -- end
+
   if navic.is_available() then
     return "%#WinBarSeparator#"
       .. "%="

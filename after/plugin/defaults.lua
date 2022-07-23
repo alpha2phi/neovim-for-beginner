@@ -41,6 +41,8 @@ opt.splitbelow = true
 opt.splitright = true
 opt.laststatus = 3 -- Global statusline
 opt.cmdheight = 0
+
+-- Change to use lualine.nvim
 -- opt.winbar = "%{%v:lua.require'config.winbar'.get_winbar()%}"
 
 -- go to previous/next line with h,l,left arrow and right arrow when cursor reaches end/beginning of line

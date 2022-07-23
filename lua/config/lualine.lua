@@ -96,6 +96,8 @@ end
 
 local icons = require "config.icons"
 
+local winbar = require "config.winbar"
+
 function M.setup()
   -- local gps = require "nvim-gps"
 
@@ -107,7 +109,20 @@ function M.setup()
       section_separators = { left = " ", right = "" },
       disabled_filetypes = {
         statusline = {},
-        winbar = {},
+        winbar = {
+          "help",
+          "startify",
+          "dashboard",
+          "packer",
+          "neogitstatus",
+          "NvimTree",
+          "Trouble",
+          "alpha",
+          "lir",
+          "Outline",
+          "spectre_panel",
+          "toggleterm",
+        },
       },
       always_divide_middle = true,
       globalstatus = true,
@@ -156,11 +171,10 @@ function M.setup()
       lualine_a = {},
       lualine_b = {},
       lualine_c = {},
-      lualine_x = {},
+      lualine_x = { winbar.get_winbar },
       lualine_y = {},
       lualine_z = {},
     },
-
     inactive_winbar = {
       lualine_a = {},
       lualine_b = {},
