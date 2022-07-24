@@ -716,6 +716,7 @@ function M.setup()
           },
         }
       end,
+      disable = false,
     }
 
     -- Go
