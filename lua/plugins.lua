@@ -628,7 +628,10 @@ function M.setup()
       opt = true,
       event = { "BufReadPre" },
       wants = {
-        "nvim-lsp-installer",
+        -- "nvim-lsp-installer",
+        "mason.nvim",
+        "mason-lspconfig.nvim",
+        "mason-tool-installer.nvim",
         "cmp-nvim-lsp",
         "lua-dev.nvim",
         "vim-illuminate",
@@ -641,7 +644,11 @@ function M.setup()
         require("config.lsp").setup()
       end,
       requires = {
-        "williamboman/nvim-lsp-installer",
+        -- "williamboman/nvim-lsp-installer",
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        -- { "lvimuser/lsp-inlayhints.nvim", branch = "readme" },
         "folke/lua-dev.nvim",
         "RRethy/vim-illuminate",
         "jose-elias-alvarez/null-ls.nvim",
@@ -763,9 +770,9 @@ function M.setup()
       -- event = "BufReadPre",
       keys = { [[<leader>d]] },
       module = { "dap" },
-      wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
+      wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
       requires = {
-        "alpha2phi/DAPInstall.nvim",
+        -- "alpha2phi/DAPInstall.nvim",
         -- { "Pocco81/dap-buddy.nvim", branch = "dev" },
         "theHamsta/nvim-dap-virtual-text",
         "rcarriga/nvim-dap-ui",
