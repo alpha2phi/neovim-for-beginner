@@ -469,6 +469,7 @@ function M.setup()
         "telescope-zoxide",
         "cder.nvim",
         "telescope-bookmarks.nvim",
+        -- "aerial.nvim",
         -- "telescope-ui-select.nvim",
       },
       requires = {
@@ -666,6 +667,7 @@ function M.setup()
           config = function()
             require("nvim-navic").setup {}
           end,
+          module = { "nvim-navic" },
         },
       },
     }

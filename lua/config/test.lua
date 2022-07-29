@@ -81,6 +81,7 @@ local function config_ultest()
     ["go#gotest"] = go_debugger,
     ["go#richgo"] = go_debugger,
   }
+  vim.g.ultest.deprecation_notice = 0
   require("ultest").setup { builders = builders }
 end
 
