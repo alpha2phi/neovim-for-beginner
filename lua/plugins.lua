@@ -468,6 +468,7 @@ function M.setup()
         "telescope-github.nvim",
         "telescope-zoxide",
         "cder.nvim",
+        "telescope-bookmarks.nvim",
         -- "telescope-ui-select.nvim",
       },
       requires = {
