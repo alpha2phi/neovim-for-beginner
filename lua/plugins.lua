@@ -854,6 +854,7 @@ function M.setup()
         "neotest-jest",
         "neotest-vim-test",
         "neotest-rust",
+        -- "overseer.nvim",
       },
       requires = {
         "nvim-lua/plenary.nvim",
