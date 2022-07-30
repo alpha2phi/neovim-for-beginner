@@ -61,10 +61,17 @@ local servers = {
   tsserver = { disable_formatting = true },
   vimls = {},
   tailwindcss = {},
-  -- solang = {},
   yamlls = {
     schemastore = {
       enable = true,
+    },
+    settings = {
+      yaml = {
+        hover = true,
+        completion = true,
+        validate = true,
+        schemas = require("schemastore").json.schemas(),
+      },
     },
   },
   jdtls = {},
@@ -73,33 +80,10 @@ local servers = {
   bashls = {},
   omnisharp = {},
   kotlin_language_server = {},
-  -- awk_ls = {},
   emmet_ls = {},
-  -- gradle_ls = {
-  --   cmd = {
-  --     vim.env.HOME
-  --       .. "/.local/share/nvim/vscode-gradle/gradle-language-server/build/install/gradle-language-server/bin/gradle-language-server",
-  --   },
-  --   root_dir = function(fname)
-  --     return util.root_pattern(unpack { "settings.gradle", "settings.gradle.kts" })(fname)
-  --       or util.root_pattern(unpack { "build.gradle" })(fname)
-  --   end,
-  --   filetypes = { "groovy" },
-  -- },
   marksman = {},
   angularls = {},
-  -- grammarly = {
-  --   filetypes = { "markdown", "text" },
-  -- },
 }
-
--- local lsp_signature = require "lsp_signature"
--- lsp_signature.setup {
---   bind = true,
---   handler_opts = {
---     border = "rounded",
---   },
--- }
 
 function M.on_attach(client, bufnr)
   -- Enable completion triggered by <C-X><C-O>
@@ -147,6 +131,13 @@ capabilities.textDocument.foldingRange = {
   dynamicRegistration = false,
   lineFoldingOnly = true,
 }
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    "documentation",
+    "detail",
+    "additionalTextEdits",
+  },
+}
 M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities) -- for nvim-cmp
 
 local opts = {
@@ -166,6 +157,9 @@ function M.setup()
 
   -- Installer
   require("config.lsp.installer").setup(servers, opts)
+
+  -- Inlay hints
+  -- require("config.lsp.inlay-hints").setup()
 end
 
 local diagnostics_active = true
