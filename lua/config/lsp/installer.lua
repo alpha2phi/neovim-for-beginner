@@ -4,7 +4,6 @@ function M.setup(servers, options)
   local lspconfig = require "lspconfig"
   local icons = require "config.icons"
 
-  -- mason.nvim must be set up before nvim-lspconfig
   require("mason").setup {
     ui = {
       icons = {
@@ -15,15 +14,15 @@ function M.setup(servers, options)
     },
   }
 
-  require("mason-lspconfig").setup {
-    ensure_installed = vim.tbl_keys(servers),
-    automatic_installation = false,
-  }
-
   require("mason-tool-installer").setup {
     ensure_installed = { "codelldb", "stylua", "shfmt", "shellcheck", "black", "isort", "prettierd" },
     auto_update = false,
     run_on_start = true,
+  }
+
+  require("mason-lspconfig").setup {
+    ensure_installed = vim.tbl_keys(servers),
+    automatic_installation = false,
   }
 
   -- Package installation folder
