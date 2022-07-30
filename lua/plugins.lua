@@ -853,6 +853,7 @@ function M.setup()
         "neotest-go",
         "neotest-jest",
         "neotest-vim-test",
+        "neotest-rust",
       },
       requires = {
         "nvim-lua/plenary.nvim",
@@ -863,6 +864,7 @@ function M.setup()
         "nvim-neotest/neotest-go",
         "haydenmeade/neotest-jest",
         "nvim-neotest/neotest-vim-test",
+        "rouge8/neotest-rust",
       },
       module = { "neotest" },
       config = function()
@@ -1097,12 +1099,12 @@ function M.setup()
     -- Testing
     use {
       "linty-org/readline.nvim",
-      event = {"BufReadPre"},
+      event = { "BufReadPre" },
       config = function()
         require("config.readline").setup()
       end,
     }
-    
+
     use {
       "dgrbrady/nvim-docker",
       requires = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },

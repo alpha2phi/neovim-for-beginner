@@ -362,9 +362,11 @@ local function code_keymap()
       keymap_c.u = { "<cmd>lua require('crates').upgrade_all_crates()<cr>", "Upgrade All Crates" }
     end
 
-    -- Overseer.nvim
+    -- overseer.nvim
     keymap_c.s = { "<cmd>OverseerRun<cr>", "Overseer Run" }
-    keymap_c.S = { "<cmd>OverseerToggle<cr>", "Overseer Toggle" }
+    keymap_c.S = { "<cmd>OverseerToggle!<cr>", "Overseer Toggle" }
+    keymap_c.a = { "<cmd>OverseerQuickAction<cr>", "Overseer Quick Action" }
+    keymap_c.A = { "<cmd>OverseerTaskAction<cr>", "Overseer Task Action" }
 
     if next(keymap_c) ~= nil then
       local k = { c = keymap_c }
