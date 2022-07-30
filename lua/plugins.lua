@@ -412,7 +412,7 @@ function M.setup()
     -- Status line
     use {
       "nvim-lualine/lualine.nvim",
-      event = "VimEnter",
+      event = "BufReadPre",
       after = "nvim-treesitter",
       config = function()
         require("config.lualine").setup()
@@ -641,6 +641,7 @@ function M.setup()
         "schemastore.nvim",
         "typescript.nvim",
         "nvim-navic",
+        "goto-preview",
       },
       config = function()
         require("config.lsp").setup()
@@ -668,6 +669,12 @@ function M.setup()
             require("nvim-navic").setup {}
           end,
           module = { "nvim-navic" },
+        },
+        {
+          "rmagatti/goto-preview",
+          config = function()
+            require("goto-preview").setup {}
+          end,
         },
       },
     }
@@ -1077,7 +1084,33 @@ function M.setup()
       disable = true,
     }
 
+    -- Task runner
+    use {
+      "stevearc/overseer.nvim",
+      opt = true,
+      cmd = { "OverseerToggle", "OverseerRun", "OverseerBuild" },
+      config = function()
+        require("overseer").setup()
+      end,
+    }
+
     -- Testing
+    use {
+      "linty-org/readline.nvim",
+      event = {"BufReadPre"},
+      config = function()
+        require("config.readline").setup()
+      end,
+    }
+    
+    use {
+      "dgrbrady/nvim-docker",
+      requires = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
+      rocks = "4O4/reactivex",
+      module = { "nvim-docker" },
+      disable = true,
+    }
+
     use {
       "m-demare/attempt.nvim",
       opt = true,

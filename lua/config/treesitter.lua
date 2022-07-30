@@ -29,7 +29,7 @@ function M.setup()
       },
     },
 
-    indent = { enable = true, disable = { "python", "java", "rust" } },
+    indent = { enable = true, disable = { "python", "java", "rust", "lua" } },
 
     -- vim-matchup
     matchup = {

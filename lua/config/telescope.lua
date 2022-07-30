@@ -92,6 +92,7 @@ function M.setup()
           },
         },
         hidden = true,
+        find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
       },
       git_files = {
         theme = "dropdown",

@@ -331,8 +331,8 @@ local function code_keymap()
         F = { "<cmd>TypescriptFixAll<cr>", "Fix All" },
         u = { "<cmd>TypescriptRemoveUnused<cr>", "Remove Unused" },
         R = { "<cmd>lua require('config.test').javascript_runner()<cr>", "Choose Test Runner" },
-        s = { "<cmd>2TermExec cmd='yarn start'<cr>", "Yarn Start" },
-        t = { "<cmd>2TermExec cmd='yarn test'<cr>", "Yarn Test" },
+        -- s = { "<cmd>2TermExec cmd='yarn start'<cr>", "Yarn Start" },
+        -- t = { "<cmd>2TermExec cmd='yarn test'<cr>", "Yarn Test" },
       }
     elseif ft == "java" then
       keymap_c = {
@@ -354,13 +354,17 @@ local function code_keymap()
     if fname == "package.json" then
       keymap_c.v = { "<cmd>lua require('package-info').show()<cr>", "Show Version" }
       keymap_c.c = { "<cmd>lua require('package-info').change_version()<cr>", "Change Version" }
-      keymap_c.s = { "<cmd>2TermExec cmd='yarn start'<cr>", "Yarn Start" }
-      keymap_c.t = { "<cmd>2TermExec cmd='yarn test'<cr>", "Yarn Test" }
+      -- keymap_c.s = { "<cmd>2TermExec cmd='yarn start'<cr>", "Yarn Start" }
+      -- keymap_c.t = { "<cmd>2TermExec cmd='yarn test'<cr>", "Yarn Test" }
     end
 
     if fname == "Cargo.toml" then
       keymap_c.u = { "<cmd>lua require('crates').upgrade_all_crates()<cr>", "Upgrade All Crates" }
     end
+
+    -- Overseer.nvim
+    keymap_c.s = { "<cmd>OverseerRun<cr>", "Overseer Run" }
+    keymap_c.S = { "<cmd>OverseerToggle<cr>", "Overseer Toggle" }
 
     if next(keymap_c) ~= nil then
       local k = { c = keymap_c }
