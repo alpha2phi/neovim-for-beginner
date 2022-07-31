@@ -12,7 +12,6 @@ function M.setup()
     persist_size = true,
     direction = "horizontal",
   }
-
 end
 
 return M

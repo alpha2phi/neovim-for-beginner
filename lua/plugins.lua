@@ -769,7 +769,7 @@ function M.setup()
     -- Terminal
     use {
       "akinsho/toggleterm.nvim",
-      keys = { [[<C-\>]] },
+      keys = { [[<C-\\>]] },
       cmd = { "ToggleTerm", "TermExec" },
       module = { "toggleterm", "toggleterm.terminal" },
       config = function()
