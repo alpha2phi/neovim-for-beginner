@@ -26,7 +26,7 @@ api.nvim_create_autocmd("FocusGained", { command = [[:checktime]] })
 
 -- windows to close with "q"
 api.nvim_create_autocmd("FileType", {
-  pattern = { "help", "startuptime", "qf", "lspinfo", "vim", "OverseerList", "OverseerForm" },
+  pattern = { "help", "startuptime", "qf", "lspinfo", "vim", "OverseerList", "OverseerForm", "fugitive" },
   command = [[nnoremap <buffer><silent> q :close<CR>]],
 })
 api.nvim_create_autocmd("FileType", { pattern = "man", command = [[nnoremap <buffer><silent> q :quit<CR>]] })

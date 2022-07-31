@@ -146,9 +146,13 @@ function M.setup()
       "tpope/vim-fugitive",
       opt = true,
       cmd = { "Git", "GBrowse", "Gdiffsplit", "Gvdiffsplit" },
-      requires = { "tpope/vim-rhubarb", "idanarye/vim-merginal" },
+      requires = {
+        "tpope/vim-rhubarb",
+        "idanarye/vim-merginal",
+      },
       -- wants = { "vim-rhubarb" },
     }
+    use { "rbong/vim-flog", cmd = { "Flog", "Flogsplit", "Floggit" }, wants = { "vim-fugitive" } }
     use {
       "ruifm/gitlinker.nvim",
       requires = "nvim-lua/plenary.nvim",
@@ -362,7 +366,7 @@ function M.setup()
         }
       end,
     }
-    use { "AndrewRadev/splitjoin.vim", keys = { "gS", "gJ" } }
+    use { "AndrewRadev/splitjoin.vim", keys = { "gS", "gJ" }, disable = false }
     -- use {
     --   "ggandor/lightspeed.nvim",
     --   keys = { "s", "S", "f", "F", "t", "T" },
@@ -1106,13 +1110,13 @@ function M.setup()
       end,
     }
 
-    use {
-      "dgrbrady/nvim-docker",
-      requires = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
-      rocks = "4O4/reactivex",
-      module = { "nvim-docker" },
-      disable = true,
-    }
+    -- use {
+    --   "dgrbrady/nvim-docker",
+    --   requires = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
+    --   rocks = "4O4/reactivex",
+    --   module = { "nvim-docker" },
+    --   disable = true,
+    -- }
 
     use {
       "m-demare/attempt.nvim",
@@ -1193,7 +1197,7 @@ function M.setup()
       config = function()
         require("config.cybu").setup()
       end,
-      disable = false,
+      disable = true,
     }
     use { "tversteeg/registers.nvim", disable = true }
     use {
