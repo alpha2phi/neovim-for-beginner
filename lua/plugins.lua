@@ -681,6 +681,12 @@ function M.setup()
             require("goto-preview").setup {}
           end,
         },
+        -- {
+        --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        --   config = function()
+        --     require("lsp_lines").setup()
+        --   end,
+        -- },
       },
     }
 
@@ -859,7 +865,7 @@ function M.setup()
         "neotest-jest",
         "neotest-vim-test",
         "neotest-rust",
-        -- "overseer.nvim",
+        "overseer.nvim",
       },
       requires = {
         "nvim-lua/plenary.nvim",

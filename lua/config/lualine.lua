@@ -171,7 +171,9 @@ function M.setup()
       lualine_a = { "diagnostics" },
       lualine_b = {},
       lualine_c = {},
-      lualine_x = { winbar.get_winbar },
+      -- https://github.com/neovim/neovim/issues/19458
+      -- lualine_x = { winbar.get_winbar },
+      lualine_x = {},
       lualine_y = {},
       lualine_z = {},
     },

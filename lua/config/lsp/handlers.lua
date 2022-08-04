@@ -39,6 +39,7 @@ function M.setup()
         header = "",
         prefix = "",
       },
+      -- virtual_lines = true,
     },
   }
 
