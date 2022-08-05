@@ -646,7 +646,7 @@ function M.setup()
         "schemastore.nvim",
         "typescript.nvim",
         "nvim-navic",
-        "goto-preview",
+        -- "goto-preview",
       },
       config = function()
         require("config.lsp").setup()
@@ -675,12 +675,12 @@ function M.setup()
           end,
           module = { "nvim-navic" },
         },
-        {
-          "rmagatti/goto-preview",
-          config = function()
-            require("goto-preview").setup {}
-          end,
-        },
+        -- {
+        --   "rmagatti/goto-preview",
+        --   config = function()
+        --     require("goto-preview").setup {}
+        --   end,
+        -- },
         -- {
         --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
         --   config = function()
@@ -776,7 +776,7 @@ function M.setup()
     -- Terminal
     use {
       "akinsho/toggleterm.nvim",
-      keys = { [[<C-\\>]] },
+      keys = { [[<C-\>]] },
       cmd = { "ToggleTerm", "TermExec" },
       module = { "toggleterm", "toggleterm.terminal" },
       config = function()
@@ -848,7 +848,6 @@ function M.setup()
         "nvim-neotest/neotest-vim-test",
         "rouge8/neotest-rust",
       },
-      keys = { "<leader>t" },
       module = { "neotest" },
       cmd = {
         "TestNearest",

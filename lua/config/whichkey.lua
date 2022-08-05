@@ -330,7 +330,7 @@ local function code_keymap()
         i = { "<cmd>TypescriptAddMissingImports<cr>", "Import Missing" },
         F = { "<cmd>TypescriptFixAll<cr>", "Fix All" },
         u = { "<cmd>TypescriptRemoveUnused<cr>", "Remove Unused" },
-        R = { "<cmd>lua require('config.test').javascript_runner()<cr>", "Choose Test Runner" },
+        R = { "<cmd>lua require('config.neotest').javascript_runner()<cr>", "Choose Test Runner" },
         -- s = { "<cmd>2TermExec cmd='yarn start'<cr>", "Yarn Start" },
         -- t = { "<cmd>2TermExec cmd='yarn test'<cr>", "Yarn Test" },
       }
