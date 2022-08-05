@@ -821,38 +821,6 @@ function M.setup()
 
     -- Test
     use {
-      "rcarriga/vim-ultest",
-      requires = { "vim-test/vim-test" },
-      opt = true,
-      keys = { "<leader>t" },
-      cmd = {
-        "TestNearest",
-        "TestFile",
-        "TestSuite",
-        "TestLast",
-        "TestVisit",
-        "Ultest",
-        "UltestNearest",
-        "UltestDebug",
-        "UltestLast",
-        "UltestSummary",
-      },
-      module = "ultest",
-      run = ":UpdateRemotePlugins",
-      config = function()
-        require("config.test").setup()
-      end,
-    }
-    use { "diepm/vim-rest-console", ft = { "rest" }, disable = false }
-    use {
-      "NTBBloodbath/rest.nvim",
-      config = function()
-        require("rest-nvim").setup {}
-        vim.keymap.set("n", "<C-j>", "<Plug>RestNvim", { noremap = true, silent = true })
-      end,
-      disable = true,
-    }
-    use {
       "nvim-neotest/neotest",
       opt = true,
       wants = {
@@ -865,9 +833,11 @@ function M.setup()
         "neotest-jest",
         "neotest-vim-test",
         "neotest-rust",
+        "vim-test",
         "overseer.nvim",
       },
       requires = {
+        "vim-test/vim-test",
         "nvim-lua/plenary.nvim",
         "nvim-treesitter/nvim-treesitter",
         "antoinemadec/FixCursorHold.nvim",
@@ -878,11 +848,51 @@ function M.setup()
         "nvim-neotest/neotest-vim-test",
         "rouge8/neotest-rust",
       },
+      keys = { "<leader>t" },
       module = { "neotest" },
+      cmd = {
+        "TestNearest",
+        "TestFile",
+        "TestSuite",
+        "TestLast",
+        "TestVisit",
+      },
       config = function()
         require("config.neotest").setup()
       end,
       disable = false,
+    }
+    -- use {
+    --   "rcarriga/vim-ultest",
+    --   requires = { "vim-test/vim-test" },
+    --   opt = true,
+    --   keys = { "<leader>t" },
+    --   cmd = {
+    --     "TestNearest",
+    --     "TestFile",
+    --     "TestSuite",
+    --     "TestLast",
+    --     "TestVisit",
+    --     "Ultest",
+    --     "UltestNearest",
+    --     "UltestDebug",
+    --     "UltestLast",
+    --     "UltestSummary",
+    --   },
+    --   module = "ultest",
+    --   run = ":UpdateRemotePlugins",
+    --   config = function()
+    --     require("config.test").setup()
+    --   end,
+    -- }
+    use { "diepm/vim-rest-console", ft = { "rest" }, disable = false }
+    use {
+      "NTBBloodbath/rest.nvim",
+      config = function()
+        require("rest-nvim").setup {}
+        vim.keymap.set("n", "<C-j>", "<Plug>RestNvim", { noremap = true, silent = true })
+      end,
+      disable = true,
     }
 
     -- AI completion
