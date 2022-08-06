@@ -834,7 +834,7 @@ function M.setup()
         "neotest-vim-test",
         "neotest-rust",
         "vim-test",
-        "overseer.nvim",
+        -- "overseer.nvim",
       },
       requires = {
         "vim-test/vim-test",
@@ -848,7 +848,7 @@ function M.setup()
         "nvim-neotest/neotest-vim-test",
         "rouge8/neotest-rust",
       },
-      module = { "neotest" },
+      module = { "neotest", "neotest.async" },
       cmd = {
         "TestNearest",
         "TestFile",

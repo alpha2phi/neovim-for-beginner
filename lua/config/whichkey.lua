@@ -114,23 +114,23 @@ local function normal_keymap()
     ["5"] = { "<Cmd>lua require('harpoon.term').sendCommand(1,1)<Cr>", "Command 1" },
     ["6"] = { "<Cmd>lua require('harpoon.term').sendCommand(1,2)<Cr>", "Command 2" },
 
+    -- t = {
+    --   name = "Test",
+    --   S = { "<cmd>UltestSummary<cr>", "Summary" },
+    --   a = { "<cmd>Ultest<cr>", "All" },
+    --   c = { "<cmd>UltestClear<cr>", "Clear" },
+    --   d = { "<cmd>UltestDebug<cr>", "Debug" },
+    --   f = { "<cmd>TestFile<cr>", "File" },
+    --   l = { "<cmd>TestLast<cr>", "Last" },
+    --   n = { "<cmd>TestNearest<cr>", "Nearest" },
+    --   o = { "<cmd>UltestOutput<cr>", "Output" },
+    --   s = { "<cmd>TestSuite<cr>", "Suite" },
+    --   v = { "<cmd>TestVisit<cr>", "Visit" },
+    --   p = { "<Plug>PlenaryTestFile", "PlenaryTestFile" },
+    -- },
+
     t = {
       name = "Test",
-      S = { "<cmd>UltestSummary<cr>", "Summary" },
-      a = { "<cmd>Ultest<cr>", "All" },
-      c = { "<cmd>UltestClear<cr>", "Clear" },
-      d = { "<cmd>UltestDebug<cr>", "Debug" },
-      f = { "<cmd>TestFile<cr>", "File" },
-      l = { "<cmd>TestLast<cr>", "Last" },
-      n = { "<cmd>TestNearest<cr>", "Nearest" },
-      o = { "<cmd>UltestOutput<cr>", "Output" },
-      s = { "<cmd>TestSuite<cr>", "Suite" },
-      v = { "<cmd>TestVisit<cr>", "Visit" },
-      p = { "<Plug>PlenaryTestFile", "PlenaryTestFile" },
-    },
-
-    n = {
-      name = "Neotest",
       a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
       f = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Run File" },
       F = { "<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>", "Debug File" },
@@ -141,6 +141,9 @@ local function normal_keymap()
       o = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Output" },
       S = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
       s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
+      p = { "<Plug>PlenaryTestFile", "PlenaryTestFile" },
+      v = { "<cmd>TestVisit<cr>", "Visit" },
+      x = { "<cmd>TestSuite<cr>", "Suite" },
     },
 
     r = {

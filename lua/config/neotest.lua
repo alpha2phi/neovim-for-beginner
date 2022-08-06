@@ -7,7 +7,6 @@ local function config_test()
         let test#strategy = "neovim"
         let test#neovim#term_position = "belowright"
         let g:test#preserve_screen = 1
-        let g:ultest_use_pty = 1
 
         " Python
         let test#python#runner = 'pyunit'
@@ -17,6 +16,9 @@ local function config_test()
         let test#javascript#reactscripts#options = "--watchAll=false"
         let g:test#javascript#runner = 'jest'
         let g:test#javascript#cypress#executable = 'npx cypress run-ct'
+
+        " csharp
+        let test#csharp#runner = 'dotnettest'
     ]],
     false
   )
