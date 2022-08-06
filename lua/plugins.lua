@@ -834,7 +834,7 @@ function M.setup()
         "neotest-vim-test",
         "neotest-rust",
         "vim-test",
-        -- "overseer.nvim",
+        "overseer.nvim",
       },
       requires = {
         "vim-test/vim-test",
@@ -1111,7 +1111,19 @@ function M.setup()
     use {
       "stevearc/overseer.nvim",
       opt = true,
-      cmd = { "OverseerToggle", "OverseerRun", "OverseerBuild" },
+      cmd = {
+        "OverseerToggle",
+        "OverseerOpen",
+        "OverseerRun",
+        "OverseerBuild",
+        "OverseerClose",
+        "OverseerLoadBundle",
+        "OverseerSaveBundle",
+        "OverseerDeleteBundle",
+        "OverseerRunCmd",
+        "OverseerQuickAction",
+        "OverseerTaskAction",
+      },
       config = function()
         require("overseer").setup()
       end,

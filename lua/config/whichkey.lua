@@ -129,6 +129,26 @@ local function normal_keymap()
     --   p = { "<Plug>PlenaryTestFile", "PlenaryTestFile" },
     -- },
 
+    -- keymap_c.s = { "<cmd>OverseerRun<cr>", "Overseer Run" }
+    -- keymap_c.S = { "<cmd>OverseerToggle!<cr>", "Overseer Toggle" }
+    -- keymap_c.a = { "<cmd>OverseerQuickAction<cr>", "Overseer Quick Action" }
+    -- keymap_c.A = { "<cmd>OverseerTaskAction<cr>", "Overseer Task Action" }
+
+    o = {
+      name = "Overseer",
+      C = { "<cmd>OverseerClose<cr>", "OverseerClose" },
+      a = { "<cmd>OverseerTaskAction<cr>", "OverseerTaskAction" },
+      b = { "<cmd>OverseerBuild<cr>", "OverseerBuild" },
+      c = { "<cmd>OverseerRunCmd<cr>", "OverseerRunCmd" },
+      d = { "<cmd>OverseerDeleteBundle<cr>", "OverseerDeleteBundle" },
+      l = { "<cmd>OverseerLoadBundle<cr>", "OverseerLoadBundle" },
+      o = { "<cmd>OverseerOpen!<cr>", "OverseerOpen" },
+      q = { "<cmd>OverseerQuickAction<cr>", "OverseerQuickAction" },
+      r = { "<cmd>OverseerRun<cr>", "OverseerRun" },
+      s = { "<cmd>OverseerSaveBundle<cr>", "OverseerSaveBundle" },
+      t = { "<cmd>OverseerToggle!<cr>", "OverseerToggle" },
+    },
+
     t = {
       name = "Test",
       a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
@@ -364,12 +384,6 @@ local function code_keymap()
     if fname == "Cargo.toml" then
       keymap_c.u = { "<cmd>lua require('crates').upgrade_all_crates()<cr>", "Upgrade All Crates" }
     end
-
-    -- overseer.nvim
-    keymap_c.s = { "<cmd>OverseerRun<cr>", "Overseer Run" }
-    keymap_c.S = { "<cmd>OverseerToggle!<cr>", "Overseer Toggle" }
-    keymap_c.a = { "<cmd>OverseerQuickAction<cr>", "Overseer Quick Action" }
-    keymap_c.A = { "<cmd>OverseerTaskAction<cr>", "Overseer Task Action" }
 
     if next(keymap_c) ~= nil then
       local k = { c = keymap_c }

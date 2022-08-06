@@ -50,13 +50,13 @@ function M.setup()
       require "neotest-rust",
     },
     -- overseer.nvim
-    -- consumers = {
-    --   overseer = require "neotest.consumers.overseer",
-    -- },
-    -- overseer = {
-    --   enabled = true,
-    --   force_default = false,
-    -- },
+    consumers = {
+      overseer = require "neotest.consumers.overseer",
+    },
+    overseer = {
+      enabled = true,
+      force_default = true,
+    },
   }
 
   -- vim-test
