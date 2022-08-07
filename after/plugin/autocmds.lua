@@ -38,8 +38,9 @@ api.nvim_create_autocmd("FileType", {
     "toggleterm",
     "floggraph",
     "git",
+    "cheat",
   },
-  command = [[nnoremap <buffer><silent> q :close<CR>]],
+  command = [[nnoremap <buffer><silent> q :bdelete!<CR>]],
 })
 api.nvim_create_autocmd("FileType", { pattern = "man", command = [[nnoremap <buffer><silent> q :quit<CR>]] })
 

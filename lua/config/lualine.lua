@@ -21,7 +21,7 @@ end
 
 local function lsp_client(msg)
   msg = msg or ""
-  local buf_clients = vim.lsp.buf_get_clients()
+  local buf_clients = vim.lsp.get_active_clients()
   if next(buf_clients) == nil then
     if type(msg) == "boolean" or #msg == 0 then
       return ""
@@ -96,7 +96,9 @@ end
 
 local icons = require "config.icons"
 
-local winbar = require "config.winbar"
+-- Temporary disable winbar due to this issue
+-- https://github.com/neovim/neovim/issues/19458
+-- local winbar = require "config.winbar"
 
 function M.setup()
   -- local gps = require "nvim-gps"
@@ -167,11 +169,13 @@ function M.setup()
       lualine_z = {},
     },
     tabline = {},
+    -- Temporary disable winbar due to this issue
+    -- https://github.com/neovim/neovim/issues/19458
     winbar = {
-      lualine_a = { "diagnostics" },
+      -- lualine_a = { "diagnostics" },
+      lualine_a = {},
       lualine_b = {},
       lualine_c = {},
-      -- https://github.com/neovim/neovim/issues/19458
       -- lualine_x = { winbar.get_winbar },
       lualine_x = {},
       lualine_y = {},
