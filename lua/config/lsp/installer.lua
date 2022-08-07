@@ -47,6 +47,7 @@ function M.setup(servers, options)
       local extension_path = install_root_dir .. "/packages/codelldb/extension/"
       local codelldb_path = extension_path .. "adapter/codelldb"
       local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
+      local ih = require "inlay-hints"
       require("rust-tools").setup {
         tools = {
           autoSetHints = false,
@@ -59,7 +60,11 @@ function M.setup(servers, options)
                 vim.lsp.codelens.refresh()
               end,
             })
+            ih.set_all()
           end,
+          inlay_hints = {
+            auto = false,
+          },
         },
         server = opts,
         dap = {

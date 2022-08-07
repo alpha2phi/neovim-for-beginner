@@ -646,6 +646,7 @@ function M.setup()
         "schemastore.nvim",
         "typescript.nvim",
         "nvim-navic",
+        "inlay-hints.nvim",
         -- "goto-preview",
       },
       config = function()
@@ -653,10 +654,10 @@ function M.setup()
       end,
       requires = {
         -- "williamboman/nvim-lsp-installer",
+        -- { "lvimuser/lsp-inlayhints.nvim", branch = "readme" },
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "WhoIsSethDaniel/mason-tool-installer.nvim",
-        -- { "lvimuser/lsp-inlayhints.nvim", branch = "readme" },
         "folke/lua-dev.nvim",
         "RRethy/vim-illuminate",
         "jose-elias-alvarez/null-ls.nvim",
@@ -675,6 +676,16 @@ function M.setup()
           end,
           module = { "nvim-navic" },
         },
+        {
+          "simrat39/inlay-hints.nvim",
+          config = function()
+            require("inlay-hints").setup()
+          end,
+        },
+        -- {
+        --   "weilbith/nvim-code-action-menu",
+        --   cmd = "CodeActionMenu",
+        -- },
         -- {
         --   "rmagatti/goto-preview",
         --   config = function()

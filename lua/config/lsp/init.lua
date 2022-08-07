@@ -3,7 +3,21 @@ local M = {}
 -- local util = require "lspconfig.util"
 
 local servers = {
-  gopls = {},
+  gopls = {
+    settings = {
+      gopls = {
+        hints = {
+          assignVariableTypes = true,
+          compositeLiteralFields = true,
+          compositeLiteralTypes = true,
+          constantValues = true,
+          functionTypeParameters = true,
+          parameterNames = true,
+          rangeVariableTypes = true,
+        },
+      },
+    },
+  },
   html = {},
   jsonls = {
     settings = {
@@ -55,10 +69,39 @@ local servers = {
         },
         completion = { callSnippet = "Both" },
         telemetry = { enable = false },
+        hint = {
+          enable = true,
+        },
       },
     },
   },
-  tsserver = { disable_formatting = true },
+  tsserver = {
+    disable_formatting = true,
+    settings = {
+      javascript = {
+        inlayHints = {
+          includeInlayEnumMemberValueHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayVariableTypeHints = true,
+        },
+      },
+      typescript = {
+        inlayHints = {
+          includeInlayEnumMemberValueHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayVariableTypeHints = true,
+        },
+      },
+    },
+  },
   vimls = {},
   tailwindcss = {},
   yamlls = {
@@ -123,6 +166,10 @@ function M.on_attach(client, bufnr)
     local navic = require "nvim-navic"
     navic.attach(client, bufnr)
   end
+
+  -- inlay-hints
+  local ih = require "inlay-hints"
+  ih.on_attach(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
