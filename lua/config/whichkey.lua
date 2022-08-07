@@ -114,23 +114,43 @@ local function normal_keymap()
     ["5"] = { "<Cmd>lua require('harpoon.term').sendCommand(1,1)<Cr>", "Command 1" },
     ["6"] = { "<Cmd>lua require('harpoon.term').sendCommand(1,2)<Cr>", "Command 2" },
 
-    t = {
-      name = "Test",
-      S = { "<cmd>UltestSummary<cr>", "Summary" },
-      a = { "<cmd>Ultest<cr>", "All" },
-      c = { "<cmd>UltestClear<cr>", "Clear" },
-      d = { "<cmd>UltestDebug<cr>", "Debug" },
-      f = { "<cmd>TestFile<cr>", "File" },
-      l = { "<cmd>TestLast<cr>", "Last" },
-      n = { "<cmd>TestNearest<cr>", "Nearest" },
-      o = { "<cmd>UltestOutput<cr>", "Output" },
-      s = { "<cmd>TestSuite<cr>", "Suite" },
-      v = { "<cmd>TestVisit<cr>", "Visit" },
-      p = { "<Plug>PlenaryTestFile", "PlenaryTestFile" },
+    -- t = {
+    --   name = "Test",
+    --   S = { "<cmd>UltestSummary<cr>", "Summary" },
+    --   a = { "<cmd>Ultest<cr>", "All" },
+    --   c = { "<cmd>UltestClear<cr>", "Clear" },
+    --   d = { "<cmd>UltestDebug<cr>", "Debug" },
+    --   f = { "<cmd>TestFile<cr>", "File" },
+    --   l = { "<cmd>TestLast<cr>", "Last" },
+    --   n = { "<cmd>TestNearest<cr>", "Nearest" },
+    --   o = { "<cmd>UltestOutput<cr>", "Output" },
+    --   s = { "<cmd>TestSuite<cr>", "Suite" },
+    --   v = { "<cmd>TestVisit<cr>", "Visit" },
+    --   p = { "<Plug>PlenaryTestFile", "PlenaryTestFile" },
+    -- },
+
+    -- keymap_c.s = { "<cmd>OverseerRun<cr>", "Overseer Run" }
+    -- keymap_c.S = { "<cmd>OverseerToggle!<cr>", "Overseer Toggle" }
+    -- keymap_c.a = { "<cmd>OverseerQuickAction<cr>", "Overseer Quick Action" }
+    -- keymap_c.A = { "<cmd>OverseerTaskAction<cr>", "Overseer Task Action" }
+
+    o = {
+      name = "Overseer",
+      C = { "<cmd>OverseerClose<cr>", "OverseerClose" },
+      a = { "<cmd>OverseerTaskAction<cr>", "OverseerTaskAction" },
+      b = { "<cmd>OverseerBuild<cr>", "OverseerBuild" },
+      c = { "<cmd>OverseerRunCmd<cr>", "OverseerRunCmd" },
+      d = { "<cmd>OverseerDeleteBundle<cr>", "OverseerDeleteBundle" },
+      l = { "<cmd>OverseerLoadBundle<cr>", "OverseerLoadBundle" },
+      o = { "<cmd>OverseerOpen!<cr>", "OverseerOpen" },
+      q = { "<cmd>OverseerQuickAction<cr>", "OverseerQuickAction" },
+      r = { "<cmd>OverseerRun<cr>", "OverseerRun" },
+      s = { "<cmd>OverseerSaveBundle<cr>", "OverseerSaveBundle" },
+      t = { "<cmd>OverseerToggle!<cr>", "OverseerToggle" },
     },
 
-    n = {
-      name = "Neotest",
+    t = {
+      name = "Test",
       a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
       f = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Run File" },
       F = { "<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>", "Debug File" },
@@ -141,6 +161,9 @@ local function normal_keymap()
       o = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Output" },
       S = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
       s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
+      p = { "<Plug>PlenaryTestFile", "PlenaryTestFile" },
+      v = { "<cmd>TestVisit<cr>", "Visit" },
+      x = { "<cmd>TestSuite<cr>", "Suite" },
     },
 
     r = {
@@ -330,7 +353,7 @@ local function code_keymap()
         i = { "<cmd>TypescriptAddMissingImports<cr>", "Import Missing" },
         F = { "<cmd>TypescriptFixAll<cr>", "Fix All" },
         u = { "<cmd>TypescriptRemoveUnused<cr>", "Remove Unused" },
-        R = { "<cmd>lua require('config.test').javascript_runner()<cr>", "Choose Test Runner" },
+        R = { "<cmd>lua require('config.neotest').javascript_runner()<cr>", "Choose Test Runner" },
         -- s = { "<cmd>2TermExec cmd='yarn start'<cr>", "Yarn Start" },
         -- t = { "<cmd>2TermExec cmd='yarn test'<cr>", "Yarn Test" },
       }
@@ -361,12 +384,6 @@ local function code_keymap()
     if fname == "Cargo.toml" then
       keymap_c.u = { "<cmd>lua require('crates').upgrade_all_crates()<cr>", "Upgrade All Crates" }
     end
-
-    -- overseer.nvim
-    keymap_c.s = { "<cmd>OverseerRun<cr>", "Overseer Run" }
-    keymap_c.S = { "<cmd>OverseerToggle!<cr>", "Overseer Toggle" }
-    keymap_c.a = { "<cmd>OverseerQuickAction<cr>", "Overseer Quick Action" }
-    keymap_c.A = { "<cmd>OverseerTaskAction<cr>", "Overseer Task Action" }
 
     if next(keymap_c) ~= nil then
       local k = { c = keymap_c }
