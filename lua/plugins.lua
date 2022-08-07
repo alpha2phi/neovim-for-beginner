@@ -738,6 +738,7 @@ function M.setup()
       opt = true,
       module = "rust-tools",
       ft = { "rust" },
+      -- branch = "modularize_and_inlay_rewrite",
       -- config = function()
       --   require("config.rust").setup()
       -- end,
