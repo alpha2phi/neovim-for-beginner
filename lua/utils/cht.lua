@@ -3,7 +3,7 @@ local M = {}
 function M.cht()
   vim.ui.input({ prompt = "cht.sh input: " }, function(input)
     local cmd = ""
-    if input == "" then
+    if input == "" or not input then
       return
     elseif input == "h" then
       cmd = ""
@@ -40,7 +40,7 @@ function M.cht_cmd(cmd)
 
   local chan_id = vim.b.terminal_job_id
   local cht_cmd = "curl cht.sh/" .. cmd
-  vim.api.nvim_chan_send(chan_id, cht_cmd .. "\n")
+  vim.api.nvim_chan_send(chan_id, cht_cmd .. "\r\n")
   vim.cmd [[stopinsert]]
 end
 
