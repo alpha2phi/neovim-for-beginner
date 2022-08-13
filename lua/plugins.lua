@@ -149,6 +149,7 @@ function M.setup()
       requires = {
         "tpope/vim-rhubarb",
         "idanarye/vim-merginal",
+        --[[ "rhysd/committia.vim", ]]
       },
       -- wants = { "vim-rhubarb" },
     }
