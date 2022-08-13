@@ -37,10 +37,33 @@ function M.select()
   end)
 end
 
+function M.scroll()
+  local sleep = 500
+  local timer = vim.loop.new_timer()
+  local last_line_no = vim.fn.line "$"
+
+  -- Go first line
+  vim.cmd [[normal gg]]
+
+  timer:start(
+    1000,
+    sleep,
+    vim.schedule_wrap(function()
+      local down = vim.api.nvim_replace_termcodes("normal <C-E>", true, true, true)
+      vim.cmd(down)
+      local current_line_no = vim.fn.line "."
+      if current_line_no == last_line_no then
+        timer:close()
+        timer = nil
+      end
+    end)
+  )
+end
+
 -- vim.ui.select = require("guihua.gui").select
 -- vim.ui.input = require("guihua.gui").input
 
-M.select()
+-- M.select()
 -- M.input()
 
 return M
