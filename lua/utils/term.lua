@@ -2,9 +2,11 @@ local M = {}
 
 local Terminal = require("toggleterm.terminal").Terminal
 
+-- Git client
 local git_tui = "lazygit"
 -- local git_tui = "gitui"
 
+-- Committizen
 local git_cz = "git cz"
 
 local git_client = Terminal:new {
