@@ -592,6 +592,7 @@ function M.setup()
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-nvim-lsp-signature-help",
         "lukas-reineke/cmp-rg",
+        "davidsierradz/cmp-conventionalcommits",
         -- "onsails/lspkind-nvim",
         -- "hrsh7th/cmp-calc",
         -- "f3fora/cmp-spell",
