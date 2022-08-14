@@ -141,6 +141,7 @@ function M.setup()
         require("config.neogit").setup()
       end,
     }
+    use { "jreybert/vimagit", cmd = "Magit", disable = true }
     use {
       "lewis6991/gitsigns.nvim",
       event = "BufReadPre",

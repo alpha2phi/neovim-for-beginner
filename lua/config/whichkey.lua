@@ -221,12 +221,15 @@ local function normal_keymap()
     g = {
       name = "Git",
       b = { "<cmd>GitBlameToggle<CR>", "Blame" },
+      c = { "<cmd>lua require('utils.term').git_commit_toggle()<CR>", "Conventional Commits" },
+      p = { "<cmd>Git push<CR>", "Push" },
       s = { "<cmd>Neogit<CR>", "Status" },
       y = {
         "<cmd>lua require'gitlinker'.get_buf_range_url('n', {action_callback = require'gitlinker.actions'.open_in_browser})<cr>",
         "Link",
       },
       g = { "<cmd>lua require('telescope').extensions.gh.gist()<CR>", "Gist" },
+      z = { "<cmd>lua require('utils.term').git_client_toggle()<CR>", "Git TUI" },
       -- g = {
       --   name = "+Github",
       --   c = {
@@ -272,7 +275,6 @@ local function normal_keymap()
       --     t = { "<cmd>GHToggleThread<cr>", "Toggle" },
       --   },
       -- },
-      z = { "<cmd>lua require('utils.term').git_client_toggle()<CR>", "Git TUI" },
     },
   }
   whichkey.register(keymap, opts)
