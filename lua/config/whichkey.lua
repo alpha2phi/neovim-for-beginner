@@ -223,7 +223,8 @@ local function normal_keymap()
       b = { "<cmd>GitBlameToggle<CR>", "Blame" },
       c = { "<cmd>lua require('utils.term').git_commit_toggle()<CR>", "Conventional Commits" },
       p = { "<cmd>Git push<CR>", "Push" },
-      s = { "<cmd>Neogit<CR>", "Status" },
+      s = { "<cmd>Neogit<CR>", "Status - Neogit" },
+      S = { "<cmd>Git<CR>", "Status - Fugitive" },
       y = {
         "<cmd>lua require'gitlinker'.get_buf_range_url('n', {action_callback = require'gitlinker.actions'.open_in_browser})<cr>",
         "Link",
