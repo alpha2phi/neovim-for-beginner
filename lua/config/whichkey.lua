@@ -200,7 +200,9 @@ local function normal_keymap()
     x = {
       name = "External",
       p = { "<cmd>lua require('utils.term').project_info_toggle()<CR>", "Project Info" },
+      s = { "<cmd>lua require('utils.term').system_info_toggle()<CR>", "System Info" },
       c = { "<cmd>lua require('utils.term').cht()<CR>", "Cheatsheet" },
+      i = { "<cmd>lua require('utils.term').interactive_cheatsheet_toggle()<CR>", "Interactive Cheatsheet" },
     },
 
     z = {
