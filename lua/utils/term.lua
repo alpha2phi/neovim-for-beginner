@@ -16,7 +16,7 @@ local tokei = "tokei"
 local bottom = "btm"
 
 -- navi
-local navi = "navi"
+local navi = "navi fn welcome"
 
 local git_client = Terminal:new {
   cmd = git_tui,
