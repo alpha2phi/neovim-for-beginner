@@ -50,7 +50,6 @@ function M.setup(servers, options)
       local ih = require "inlay-hints"
       require("rust-tools").setup {
         tools = {
-          -- autoSetHints = false,
           -- executor = require("rust-tools/executors").toggleterm,
           hover_actions = { border = "solid" },
           on_initialized = function()

@@ -169,6 +169,8 @@ local function normal_keymap()
     r = {
       name = "Refactor",
       i = { [[<cmd>lua require('refactoring').refactor('Inline Variable')<cr>]], "Inline Variable" },
+      b = { [[<cmd>lua require('refactoring').refactor('Exract Block')<cr>]], "Extract Block" },
+      B = { [[<cmd>lua require('refactoring').refactor('Exract Block To File')<cr>]], "Extract Block to File" },
       P = {
         [[<cmd>lua require('refactoring').debug.printf({below = false})<cr>]],
         "Debug Print",
@@ -309,15 +311,15 @@ local function visual_keymap()
 
     r = {
       name = "Refactor",
-      e = { [[<cmd>lua require('refactoring').refactor('Extract Function')<cr>]], "Extract Function" },
-      f = {
+      f = { [[<cmd>lua require('refactoring').refactor('Extract Function')<cr>]], "Extract Function" },
+      F = {
         [[ <cmd>lua require('refactoring').refactor('Extract Function to File')<cr>]],
         "Extract Function to File",
       },
       v = { [[<cmd>lua require('refactoring').refactor('Extract Variable')<cr>]], "Extract Variable" },
       i = { [[<cmd>lua require('refactoring').refactor('Inline Variable')<cr>]], "Inline Variable" },
       r = { [[<cmd>lua require('telescope').extensions.refactoring.refactors()<cr>]], "Refactor" },
-      V = { [[<cmd>lua require('refactoring').debug.print_var({})<cr>]], "Debug Print Var" },
+      d = { [[<cmd>lua require('refactoring').debug.print_var({})<cr>]], "Debug Print Var" },
     },
   }
 
