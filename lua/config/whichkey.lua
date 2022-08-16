@@ -168,9 +168,16 @@ local function normal_keymap()
 
     r = {
       name = "Refactor",
-      i = { [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], "Inline Variable" },
-      p = { [[ <Esc><Cmd>lua require('refactoring').debug.printf({below = false})<CR>]], "Debug Print" },
-      c = { [[ <Esc><Cmd>lua require('refactoring').debug.cleanup({below = false})<CR>]], "Debug Cleanup" },
+      i = { [[<cmd>lua require('refactoring').refactor('Inline Variable')<cr>]], "Inline Variable" },
+      P = {
+        [[<cmd>lua require('refactoring').debug.printf({below = false})<cr>]],
+        "Debug Print",
+      },
+      p = {
+        [[<cmd>lua require('refactoring').debug.print_var({normal = true})<cr>]],
+        "Debug Print Variable",
+      },
+      c = { [[<cmd>lua require('refactoring').debug.cleanup({})<cr>]], "Debug Cleanup" },
     },
 
     s = {
@@ -302,15 +309,15 @@ local function visual_keymap()
 
     r = {
       name = "Refactor",
-      e = { [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], "Extract Function" },
+      e = { [[<cmd>lua require('refactoring').refactor('Extract Function')<cr>]], "Extract Function" },
       f = {
-        [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function to File')<CR>]],
+        [[ <cmd>lua require('refactoring').refactor('Extract Function to File')<cr>]],
         "Extract Function to File",
       },
-      v = { [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], "Extract Variable" },
-      i = { [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], "Inline Variable" },
-      r = { [[ <Esc><Cmd>lua require('telescope').extensions.refactoring.refactors()<CR>]], "Refactor" },
-      V = { [[ <Esc><Cmd>lua require('refactoring').debug.print_var({})<CR>]], "Debug Print Var" },
+      v = { [[<cmd>lua require('refactoring').refactor('Extract Variable')<cr>]], "Extract Variable" },
+      i = { [[<cmd>lua require('refactoring').refactor('Inline Variable')<cr>]], "Inline Variable" },
+      r = { [[<cmd>lua require('telescope').extensions.refactoring.refactors()<cr>]], "Refactor" },
+      V = { [[<cmd>lua require('refactoring').debug.print_var({})<cr>]], "Debug Print Var" },
     },
   }
 
