@@ -1,6 +1,9 @@
 local M = {}
 
+local lang = ""
+
 function M.cht()
+  lang = ""
   vim.ui.input({ prompt = "cht.sh input: " }, function(input)
     local cmd = ""
     if input == "" or not input then
@@ -8,7 +11,6 @@ function M.cht()
     elseif input == "h" then
       cmd = ""
     else
-      local lang = ""
       local search = ""
       local delimiter = " "
       for w in (input .. delimiter):gmatch("(.-)" .. delimiter) do
@@ -37,6 +39,7 @@ function M.cht_cmd(cmd)
   local buf = vim.api.nvim_get_current_buf()
   vim.api.nvim_buf_set_name(buf, "cheatsheet-" .. buf)
   vim.api.nvim_buf_set_option(buf, "filetype", "cheat")
+  vim.api.nvim_buf_set_option(buf, "syntax", lang)
 
   local chan_id = vim.b.terminal_job_id
   local cht_cmd = "curl cht.sh/" .. cmd

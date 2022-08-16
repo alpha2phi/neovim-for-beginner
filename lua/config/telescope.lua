@@ -16,6 +16,20 @@ local nvb_actions = transform_mod {
     require("utils").info "File path is yanked "
     require("telescope.actions").close(prompt_bufnr)
   end,
+
+  -- VisiData
+  visidata = function(prompt_bufnr)
+    -- Get the full path
+    local content = require("telescope.actions.state").get_selected_entry()
+    local full_path = content.cwd .. require("plenary.path").path.sep .. content.value
+
+    -- Close the Telescope window
+    require("telescope.actions").close(prompt_bufnr)
+
+    -- Open the file with VisiData
+    local term = require "utils.term"
+    term.open_term("vd " .. full_path, { direction = "float" })
+  end,
 }
 
 -- trouble.nvim
@@ -31,33 +45,31 @@ function M.setup()
   local Job = require "plenary.job"
   local preview_maker = function(filepath, bufnr, opts)
     filepath = vim.fn.expand(filepath)
-    Job
-      :new({
-        command = "file",
-        args = { "--mime-type", "-b", filepath },
-        on_exit = function(j)
-          local mime_type = vim.split(j:result()[1], "/")[1]
+    Job:new({
+      command = "file",
+      args = { "--mime-type", "-b", filepath },
+      on_exit = function(j)
+        local mime_type = vim.split(j:result()[1], "/")[1]
 
-          if mime_type == "text" then
-            -- Check file size
-            vim.loop.fs_stat(filepath, function(_, stat)
-              if not stat then
-                return
-              end
-              if stat.size > 500000 then
-                return
-              else
-                previewers.buffer_previewer_maker(filepath, bufnr, opts)
-              end
-            end)
-          else
-            vim.schedule(function()
-              vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "BINARY FILE" })
-            end)
-          end
-        end,
-      })
-      :sync()
+        if mime_type == "text" then
+          -- Check file size
+          vim.loop.fs_stat(filepath, function(_, stat)
+            if not stat then
+              return
+            end
+            if stat.size > 500000 then
+              return
+            else
+              previewers.buffer_previewer_maker(filepath, bufnr, opts)
+            end
+          end)
+        else
+          vim.schedule(function()
+            vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "BINARY FILE" })
+          end)
+        end
+      end,
+    }):sync()
   end
 
   telescope.setup {
@@ -86,9 +98,11 @@ function M.setup()
         mappings = {
           n = {
             ["y"] = nvb_actions.file_path,
+            ["s"] = nvb_actions.visidata,
           },
           i = {
             ["<C-y>"] = nvb_actions.file_path,
+            ["<C-s>"] = nvb_actions.visidata,
           },
         },
         hidden = true,
@@ -99,9 +113,11 @@ function M.setup()
         mappings = {
           n = {
             ["y"] = nvb_actions.file_path,
+            ["s"] = nvb_actions.visidata,
           },
           i = {
             ["<C-y>"] = nvb_actions.file_path,
+            ["<C-s>"] = nvb_actions.visidata,
           },
         },
       },
