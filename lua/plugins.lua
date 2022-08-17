@@ -975,6 +975,17 @@ function M.setup()
       end,
     }
     use {
+      "andrewferrier/debugprint.nvim",
+      module = { "debugprint" },
+      keys = { "g?p", "g?P", "g?v", "g?V", "g?o", "g?O" },
+      cmd = { "DeleteDebugPrints" },
+      config = function()
+        require("debugprint").setup()
+      end,
+    }
+
+    -- Code folding
+    use {
       "kevinhwang91/nvim-ufo",
       opt = true,
       -- event = { "BufReadPre" },
