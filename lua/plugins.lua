@@ -527,6 +527,7 @@ function M.setup()
         "nvim-telescope/telescope-github.nvim",
         "jvgrootveld/telescope-zoxide",
         "Zane-/cder.nvim",
+        "nvim-telescope/telescope-symbols.nvim",
         -- "nvim-telescope/telescope-ui-select.nvim",
       },
     }
