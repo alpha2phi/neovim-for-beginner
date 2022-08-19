@@ -164,6 +164,11 @@ local function normal_keymap()
       p = { "<Plug>PlenaryTestFile", "PlenaryTestFile" },
       v = { "<cmd>TestVisit<cr>", "Visit" },
       x = { "<cmd>TestSuite<cr>", "Suite" },
+      t = {
+        name = "Test",
+        l = { "<cmd>TestLast<cr>", "Run Last" },
+        n = { "<cmd>TestNearest<cr>", "Run Nearest" },
+      },
     },
 
     r = {
