@@ -1178,11 +1178,25 @@ function M.setup()
       requires = {
         "kristijanhusak/vim-dadbod-ui",
         "kristijanhusak/vim-dadbod-completion",
+        --[[ "abenz1267/nvim-databasehelper", ]]
       },
+      --[[ wants = { "nvim-databasehelper" }, ]]
       config = function()
         require("config.dadbod").setup()
       end,
-      cmd = { "DBUIToggle", "DBUIAddConnection", "DBUIFindBuffer", "DBUIRenameBuffer", "DBUILastQueryInfo" },
+      cmd = { "DBUIToggle", "DBUI", "DBUIAddConnection", "DBUIFindBuffer", "DBUIRenameBuffer", "DBUILastQueryInfo" },
+    }
+    use {
+      "nanotee/sqls.nvim",
+      cmd = {
+        "SqlsExecuteQuery",
+        "SqlsExecuteQueryVertical",
+        "SqlsShowDatabases",
+        "SqlsShowSchemas",
+        "SqlsShowConnections",
+        "SqlsSwitchDatabase",
+        "SqlsSwitchConnection",
+      },
     }
 
     -- Testing
