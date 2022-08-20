@@ -103,7 +103,7 @@ local servers = {
     },
   },
   vimls = {},
-  tailwindcss = {},
+  -- tailwindcss = {},
   yamlls = {
     schemastore = {
       enable = true,
@@ -119,25 +119,25 @@ local servers = {
   },
   jdtls = {},
   dockerls = {},
-  graphql = {},
+  -- graphql = {},
   bashls = {},
-  omnisharp = {},
-  kotlin_language_server = {},
-  emmet_ls = {},
-  marksman = {},
-  angularls = {},
-  sqls = {
-    -- settings = {
-    --   sqls = {
-    --     connections = {
-    --       {
-    --         driver = "sqlite3",
-    --         dataSourceName = os.getenv "HOME" .. "/workspace/db/chinook.db",
-    --       },
-    --     },
-    --   },
-    -- },
-  },
+  -- omnisharp = {},
+  -- kotlin_language_server = {},
+  -- emmet_ls = {},
+  -- marksman = {},
+  -- angularls = {},
+  -- sqls = {
+  -- settings = {
+  --   sqls = {
+  --     connections = {
+  --       {
+  --         driver = "sqlite3",
+  --         dataSourceName = os.getenv "HOME" .. "/workspace/db/chinook.db",
+  --       },
+  --     },
+  --   },
+  -- },
+  -- },
 }
 
 function M.on_attach(client, bufnr)
