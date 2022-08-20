@@ -261,6 +261,7 @@ function M.setup()
       config = function()
         require("config.comment").setup()
       end,
+      disable = false,
     }
 
     -- Better surround
