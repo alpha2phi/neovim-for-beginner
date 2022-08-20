@@ -261,7 +261,9 @@ function M.setup()
       config = function()
         require("config.comment").setup()
       end,
+      disable = true,
     }
+    use { "tpope/vim-commentary", keys = { "gc", "gcc", "gbc" }, disable = false }
 
     -- Better surround
     use { "tpope/vim-surround", event = "BufReadPre" }
