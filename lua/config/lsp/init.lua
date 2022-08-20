@@ -126,6 +126,18 @@ local servers = {
   emmet_ls = {},
   marksman = {},
   angularls = {},
+  sqls = {
+    -- settings = {
+    --   sqls = {
+    --     connections = {
+    --       {
+    --         driver = "sqlite3",
+    --         dataSourceName = os.getenv "HOME" .. "/workspace/db/chinook.db",
+    --       },
+    --     },
+    --   },
+    -- },
+  },
 }
 
 function M.on_attach(client, bufnr)
@@ -149,6 +161,11 @@ function M.on_attach(client, bufnr)
   -- tagfunc
   if client.server_capabilities.definitionProvider then
     vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
+  end
+
+  -- sqls
+  if client.name == "sqls" then
+    require("sqls").on_attach(client, bufnr)
   end
 
   -- Configure for jdtls

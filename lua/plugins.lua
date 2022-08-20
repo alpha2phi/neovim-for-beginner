@@ -261,7 +261,9 @@ function M.setup()
       config = function()
         require("config.comment").setup()
       end,
+      disable = true,
     }
+    use { "tpope/vim-commentary", keys = { "gc", "gcc", "gbc" }, disable = false }
 
     -- Better surround
     use { "tpope/vim-surround", event = "BufReadPre" }
@@ -1169,6 +1171,40 @@ function M.setup()
       run = "bash ./install.sh",
       cmd = { "SnipRun", "SnipInfo", "SnipReset", "SnipReplMemoryClean", "SnipClose", "SnipLive" },
       module = { "sniprun", "sniprun.api" },
+    }
+
+    -- Database
+    use {
+      "tpope/vim-dadbod",
+      opt = true,
+      requires = {
+        "kristijanhusak/vim-dadbod-ui",
+        "kristijanhusak/vim-dadbod-completion",
+        --[[ "abenz1267/nvim-databasehelper", ]]
+      },
+      --[[ wants = { "nvim-databasehelper" }, ]]
+      config = function()
+        require("config.dadbod").setup()
+      end,
+      cmd = { "DBUIToggle", "DBUI", "DBUIAddConnection", "DBUIFindBuffer", "DBUIRenameBuffer", "DBUILastQueryInfo" },
+    }
+    use {
+      "nanotee/sqls.nvim",
+      module = { "sqls" },
+      cmd = {
+        "SqlsExecuteQuery",
+        "SqlsExecuteQueryVertical",
+        "SqlsShowDatabases",
+        "SqlsShowSchemas",
+        "SqlsShowConnections",
+        "SqlsSwitchDatabase",
+        "SqlsSwitchConnection",
+      },
+    }
+    use {
+      "dinhhuy258/vim-database",
+      run = ":UpdateRemotePlugins",
+      cmd = { "VDToggleDatabase", "VDToggleQuery", "VimDatabaseListTablesFzf" },
     }
 
     -- Testing

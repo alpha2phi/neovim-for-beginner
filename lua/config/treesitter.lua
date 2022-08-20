@@ -118,7 +118,7 @@ function M.setup()
     -- context_commentstring
     context_commentstring = {
       enable = true,
-      enable_autocmd = false,
+      --enable_autocmd = false,
     },
 
     -- indent

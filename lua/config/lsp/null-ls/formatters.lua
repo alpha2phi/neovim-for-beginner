@@ -33,7 +33,6 @@ function M.format()
       end,
     }
     vim.fn.winrestview(view)
-    print "Buffer formatted"
   end
 end
 
