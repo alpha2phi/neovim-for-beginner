@@ -1190,6 +1190,7 @@ function M.setup()
     }
     use {
       "nanotee/sqls.nvim",
+      module = { "sqls" },
       cmd = {
         "SqlsExecuteQuery",
         "SqlsExecuteQueryVertical",
@@ -1199,6 +1200,11 @@ function M.setup()
         "SqlsSwitchDatabase",
         "SqlsSwitchConnection",
       },
+    }
+    use {
+      "dinhhuy258/vim-database",
+      run = ":UpdateRemotePlugins",
+      cmd = { "VDToggleDatabase", "VDToggleQuery", "VimDatabaseListTablesFzf" },
     }
 
     -- Testing
