@@ -697,6 +697,14 @@ function M.setup()
             require("inlay-hints").setup()
           end,
         },
+        {
+          "zbirenbaum/neodim",
+          event = "LspAttach",
+          config = function()
+            require("config.neodim").setup()
+          end,
+          disable = true,
+        },
         -- {
         --   "weilbith/nvim-code-action-menu",
         --   cmd = "CodeActionMenu",
@@ -781,7 +789,7 @@ function M.setup()
       config = function()
         require("go").setup()
       end,
-      disable = true,
+      disable = false,
     }
 
     -- Java
