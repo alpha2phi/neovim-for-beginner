@@ -1215,6 +1215,17 @@ function M.setup()
         require("config.readline").setup()
       end,
     }
+    use { "protex/better-digraphs.nvim", module = { "better-digraphs" }, disable = true }
+    use {
+      "ziontee113/icon-picker.nvim",
+      config = function()
+        require("icon-picker").setup {
+          disable_legacy_commands = true,
+        }
+      end,
+      cmd = { "IconPickerNormal", "IconPickerYank", "IconPickerInsert" },
+      disable = false,
+    }
 
     -- use {
     --   "dgrbrady/nvim-docker",
