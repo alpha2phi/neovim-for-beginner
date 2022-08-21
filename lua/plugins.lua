@@ -697,6 +697,14 @@ function M.setup()
             require("inlay-hints").setup()
           end,
         },
+        {
+          "zbirenbaum/neodim",
+          event = "LspAttach",
+          config = function()
+            require("config.neodim").setup()
+          end,
+          disable = true,
+        },
         -- {
         --   "weilbith/nvim-code-action-menu",
         --   cmd = "CodeActionMenu",
@@ -781,7 +789,7 @@ function M.setup()
       config = function()
         require("go").setup()
       end,
-      disable = true,
+      disable = false,
     }
 
     -- Java
@@ -1214,6 +1222,17 @@ function M.setup()
       config = function()
         require("config.readline").setup()
       end,
+    }
+    use { "protex/better-digraphs.nvim", module = { "better-digraphs" }, disable = true }
+    use {
+      "ziontee113/icon-picker.nvim",
+      config = function()
+        require("icon-picker").setup {
+          disable_legacy_commands = true,
+        }
+      end,
+      cmd = { "IconPickerNormal", "IconPickerYank", "IconPickerInsert" },
+      disable = false,
     }
 
     -- use {
