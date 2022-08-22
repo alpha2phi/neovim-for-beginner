@@ -28,7 +28,7 @@ local servers = {
   },
   pyright = {
     analysis = {
-      typeCheckingMode = "basic",
+      typeCheckingMode = "off",
     },
   },
   -- pylsp = {}, -- Integration with rope for refactoring - https://github.com/python-rope/pylsp-rope

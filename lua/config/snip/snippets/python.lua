@@ -103,6 +103,10 @@ local snippets = {
     t { "#!/usr/bin/env python", "" },
     i(0),
   }),
+  s("ti", {
+    t { "# type: ignore" },
+    i(0),
+  }),
   s(
     "pydef",
     fmt(

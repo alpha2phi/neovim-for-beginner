@@ -329,7 +329,21 @@ function M.setup()
     }
     use { "google/vim-searchindex", event = "BufReadPre" }
     use { "tyru/open-browser.vim", event = "BufReadPre" }
-
+    use {
+      "bennypowers/nvim-regexplainer",
+      opt = true,
+      wants = { "nui.nvim" },
+      config = function()
+        require("regexplainer").setup()
+      end,
+      requires = {
+        "nvim-treesitter/nvim-treesitter",
+        "MunifTanjim/nui.nvim",
+      },
+      module = { "regexplainer" },
+      keys = { "gR" },
+      disable = true,
+    }
     -- Code documentation
     use {
       "danymat/neogen",
