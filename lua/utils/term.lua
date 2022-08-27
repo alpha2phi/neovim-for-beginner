@@ -117,6 +117,7 @@ end
 
 ------------------ Cheatsheet ----------------------------
 local lang = ""
+local file_type = ""
 local function cht_on_open(term)
   vim.cmd "stopinsert"
   vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
@@ -130,8 +131,10 @@ local function cht_on_exit(term)
 end
 
 function M.cht()
+  local buf = vim.api.nvim_get_current_buf()
   lang = ""
-  vim.ui.input({ prompt = "cht.sh input: " }, function(input)
+  file_type = vim.api.nvim_buf_get_option(buf, "filetype")
+  vim.ui.input({ prompt = "cht.sh input: ", default = file_type .. " " }, function(input)
     local cmd = ""
     if input == "" or not input then
       return

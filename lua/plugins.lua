@@ -338,7 +338,7 @@ function M.setup()
         "nvim-treesitter/nvim-treesitter",
         "MunifTanjim/nui.nvim",
       },
-      disable = false,
+      disable = true,
     }
     -- Code documentation
     use {

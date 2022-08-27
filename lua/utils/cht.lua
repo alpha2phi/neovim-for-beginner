@@ -1,10 +1,13 @@
 local M = {}
 
 local lang = ""
+local file_type = ""
 
 function M.cht()
+  local buf = vim.api.nvim_get_current_buf()
   lang = ""
-  vim.ui.input({ prompt = "cht.sh input: " }, function(input)
+  file_type = vim.api.nvim_buf_get_option(buf, "filetype")
+  vim.ui.input({ prompt = "cht.sh input: ", default = file_type .. " " }, function(input)
     local cmd = ""
     if input == "" or not input then
       return
