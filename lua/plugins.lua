@@ -340,6 +340,14 @@ function M.setup()
       },
       disable = true,
     }
+    use {
+      "Djancyp/regex.nvim",
+      config = function()
+        require("regex-nvim").Setup()
+      end,
+      disable = true,
+    }
+
     -- Code documentation
     use {
       "danymat/neogen",
@@ -437,6 +445,7 @@ function M.setup()
     }
     use {
       "phaazon/mind.nvim",
+      requires = { "nvim-lua/plenary.nvim" },
       config = function()
         require("mind").setup()
       end,
@@ -995,7 +1004,7 @@ function M.setup()
     use {
       "kevinhwang91/nvim-bqf",
       ft = "qf",
-      disable = true,
+      disable = false,
       config = function()
         require("bqf").setup()
       end,
