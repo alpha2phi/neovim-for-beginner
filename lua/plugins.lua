@@ -478,6 +478,7 @@ function M.setup()
         { "JoosepAlviste/nvim-ts-context-commentstring", event = "BufReadPre" },
         { "p00f/nvim-ts-rainbow", event = "BufReadPre" },
         { "RRethy/nvim-treesitter-textsubjects", event = "BufReadPre" },
+        { "nvim-treesitter/playground" },
         -- { "nvim-treesitter/nvim-treesitter-context", event = "BufReadPre" },
         -- { "yioneko/nvim-yati", event = "BufReadPre" },
       },
