@@ -24,7 +24,7 @@ api.nvim_create_autocmd(
 -- Check if we need to reload the file when it changed
 api.nvim_create_autocmd("FocusGained", { command = [[:checktime]] })
 
--- windows to close with "q"
+-- windows to close
 api.nvim_create_autocmd("FileType", {
   pattern = {
     "help",
@@ -38,12 +38,12 @@ api.nvim_create_autocmd("FileType", {
     "toggleterm",
     "floggraph",
     "git",
-    "cheat",
     "neotest-summary",
   },
-  command = [[nnoremap <buffer><silent> q :bdelete!<CR>]],
+  command = [[nnoremap <buffer><silent> q :close<CR>]],
 })
 api.nvim_create_autocmd("FileType", { pattern = "man", command = [[nnoremap <buffer><silent> q :quit<CR>]] })
+api.nvim_create_autocmd("FileType", { pattern = "cheat", command = [[nnoremap <buffer><silent> q :bdelete!<CR>]] })
 
 -- don't auto comment new line
 api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
