@@ -479,6 +479,12 @@ function M.setup()
         { "p00f/nvim-ts-rainbow", event = "BufReadPre" },
         { "RRethy/nvim-treesitter-textsubjects", event = "BufReadPre" },
         { "nvim-treesitter/playground", cmd = { "TSPlaygroundToggle" } },
+        {
+          "lewis6991/spellsitter.nvim",
+          config = function()
+            require("spellsitter").setup()
+          end,
+        },
         -- { "nvim-treesitter/nvim-treesitter-context", event = "BufReadPre" },
         -- { "yioneko/nvim-yati", event = "BufReadPre" },
       },
@@ -548,7 +554,7 @@ function M.setup()
         },
         "nvim-telescope/telescope-smart-history.nvim",
         {
-          "nvim-telescope/telescope-arecibo.nvim",
+          "alpha2phi/telescope-arecibo.nvim",
           rocks = { "openssl", "lua-http-parser" },
         },
         "nvim-telescope/telescope-media-files.nvim",

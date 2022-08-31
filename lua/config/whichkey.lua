@@ -200,6 +200,7 @@ local function normal_keymap()
       name = "Search",
       o = { [[ <Esc><Cmd>lua require('spectre').open()<CR>]], "Open" },
       c = { [[ <Esc><Cmd>lua require('utils.cht').cht()<CR>]], "Code" },
+      w = { [[ <Esc><Cmd>lua require("telescope").extensions.arecibo.websearch()<CR>]], "Web" },
     },
 
     v = {
