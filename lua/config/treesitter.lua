@@ -137,6 +137,9 @@ function M.setup()
       lint_events = { "BufWrite", "CursorHold" },
     },
   }
+  -- require("treesitter-context").setup {
+  --   enable = true,
+  -- }
 end
 
 return M
