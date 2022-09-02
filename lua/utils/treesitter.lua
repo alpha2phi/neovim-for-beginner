@@ -27,7 +27,7 @@ local function get_functions(bufnr, lang, query_string)
   for _, captures, metadata in query:iter_matches(root, bufnr) do
     local row, col, _ = captures[1]:start()
     local name = vim.treesitter.query.get_node_text(captures[1], bufnr)
-    table.insert(func_list, { name, row, col, metadata[1].range})
+    table.insert(func_list, { name, row, col, metadata[1].range })
   end
   return func_list
 end
@@ -43,7 +43,6 @@ function M.goto_function(bufnr, lang)
   end
   dump(func_list)
 end
-
 
 M.goto_function(bufnr_test, "python")
 
