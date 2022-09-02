@@ -649,6 +649,7 @@ function M.setup()
         },
         "rafamadriz/friendly-snippets",
         "honza/vim-snippets",
+        { "tzachar/cmp-tabnine", run = "./install.sh", disable = true },
       },
     }
 

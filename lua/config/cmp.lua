@@ -3,6 +3,7 @@ local M = {}
 vim.o.completeopt = "menu,menuone,noselect"
 
 local types = require "cmp.types"
+local compare = require "cmp.config.compare"
 
 local kind_icons = {
   Text = "",
@@ -48,6 +49,20 @@ function M.setup()
     -- view = {
     --   entries = "native",
     -- },
+    sorting = {
+      priority_weight = 2,
+      comparators = {
+        -- require "cmp_tabnine.compare",
+        compare.score,
+        compare.recently_used,
+        compare.offset,
+        compare.exact,
+        compare.kind,
+        compare.sort_text,
+        compare.length,
+        compare.order,
+      },
+    },
     snippet = {
       expand = function(args)
         require("luasnip").lsp_expand(args.body)
@@ -56,7 +71,7 @@ function M.setup()
     formatting = {
       format = function(entry, vim_item)
         -- Kind icons
-        vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+        vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
         -- Source
         vim_item.menu = ({
           nvim_lsp = "[LSP]",
@@ -67,6 +82,7 @@ function M.setup()
           path = "[Path]",
           rg = "[RG]",
           nvim_lsp_signature_help = "[Signature]",
+          -- cmp_tabnine = "[TNine]",
         })[entry.source.name]
         return vim_item
       end,
@@ -184,6 +200,7 @@ function M.setup()
       { name = "nvim_lsp" },
       { name = "nvim_lsp_signature_help" },
       { name = "luasnip" },
+      -- { name = "cmp_tabnine" },
       { name = "treesitter" },
       { name = "rg" },
       { name = "buffer" },
