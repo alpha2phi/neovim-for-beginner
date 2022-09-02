@@ -7,14 +7,14 @@ local compare = require "cmp.config.compare"
 local lspkind = require "lspkind"
 
 local source_mapping = {
-  nvim_lsp = "[LSP]",
+  nvim_lsp = "[Lsp]",
   luasnip = "[Snip]",
   buffer = "[Buffer]",
   nvim_lua = "[Lua]",
-  treesitter = "[Treesitter]",
+  treesitter = "[Tree]",
   path = "[Path]",
-  rg = "[RG]",
-  nvim_lsp_signature_help = "[Signature]",
+  rg = "[Rg]",
+  nvim_lsp_signature_help = "[Sig]",
   -- cmp_tabnine = "[TNine]",
 }
 
