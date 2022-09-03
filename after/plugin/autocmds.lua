@@ -39,6 +39,8 @@ api.nvim_create_autocmd("FileType", {
     "floggraph",
     "git",
     "neotest-summary",
+    "query",
+    "tsplayground",
   },
   command = [[nnoremap <buffer><silent> q :close<CR>]],
 })
