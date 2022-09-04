@@ -60,7 +60,12 @@ function M.setup()
           ["af"] = "@function.outer",
           ["if"] = "@function.inner",
           ["ac"] = "@class.outer",
-          ["ic"] = "@class.inner",
+          ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+        },
+        selection_modes = {
+          ["@parameter.outer"] = "v", -- charwise
+          ["@function.outer"] = "V", -- linewise
+          ["@class.outer"] = "<c-v>", -- blockwise
         },
       },
 
