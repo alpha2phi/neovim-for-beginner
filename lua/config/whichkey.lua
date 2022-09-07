@@ -360,7 +360,12 @@ local function code_keymap()
     if ft == "python" then
       keymap_c = {
         name = "Code",
-        r = { "<cmd>update<CR><cmd>exec '!python3' shellescape(@%, 1)<cr>", "Run" },
+        -- r = { "<cmd>update<CR><cmd>exec '!python3' shellescape(@%, 1)<cr>", "Run" },
+        -- r = { "<cmd>update<CR><cmd>TermExec cmd='python3 %'<cr>", "Run" },
+        r = {
+          "<cmd>update<cr><cmd>lua require('utils.term').open_term([[python3 ]] .. vim.fn.shellescape(vim.fn.getreg('%'), 1), {direction = 'float'})<cr>",
+          "Run",
+        },
         m = { "<cmd>TermExec cmd='nodemon -e py %'<cr>", "Monitor" },
       }
     elseif ft == "lua" then
