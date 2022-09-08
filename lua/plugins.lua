@@ -117,6 +117,17 @@ function M.setup()
       cmd = { "LushRunQuickstart", "LushRunTutorial", "Lushify", "LushImport" },
       disable = false,
     }
+    use {
+      "max397574/colortils.nvim",
+      cmd = "Colortils",
+      config = function()
+        require("colortils").setup()
+      end,
+    }
+    use {
+      "lifepillar/vim-colortemplate",
+      disable = true,
+    }
 
     -- Startup screen
     use {
