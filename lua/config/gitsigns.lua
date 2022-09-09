@@ -29,6 +29,7 @@ function M.setup()
         linehl = "GitSignsChangeLn",
       },
     },
+    -- update_debounce = 100,
     on_attach = function(bufnr)
       local gs = package.loaded.gitsigns
 
