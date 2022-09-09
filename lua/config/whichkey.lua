@@ -263,6 +263,8 @@ local function normal_keymap()
       },
       g = { "<cmd>lua require('telescope').extensions.gh.gist()<CR>", "Gist" },
       z = { "<cmd>lua require('utils.term').git_client_toggle()<CR>", "Git TUI" },
+      h = { name = "Hunk" },
+      t = { name = "Toggle" },
       -- g = {
       --   name = "+Github",
       --   c = {
