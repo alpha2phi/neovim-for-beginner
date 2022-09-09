@@ -185,8 +185,10 @@ function M.on_attach(client, bufnr)
   end
 
   -- inlay-hints
-  local ih = require "inlay-hints"
-  ih.on_attach(client, bufnr)
+  if client.name ~= "null-ls" then
+    local ih = require "inlay-hints"
+    ih.on_attach(client, bufnr)
+  end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
