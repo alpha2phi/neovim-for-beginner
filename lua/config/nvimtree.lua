@@ -13,7 +13,7 @@ function M.setup()
     filters = {
       custom = { ".git" },
     },
-    update_cwd = true,
+    sync_root_with_cwd = false,
     update_focused_file = {
       enable = true,
       update_cwd = true,
