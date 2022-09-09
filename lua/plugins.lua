@@ -540,6 +540,7 @@ function M.setup()
         "cder.nvim",
         "telescope-bookmarks.nvim",
         "aerial.nvim",
+        "nvim-tree.lua",
         -- "telescope-ui-select.nvim",
       },
       requires = {
@@ -593,7 +594,7 @@ function M.setup()
       opt = true,
       wants = "nvim-web-devicons",
       cmd = { "NvimTreeToggle", "NvimTreeClose" },
-      module = { "nvim-tree", "nvim-tree.actions.root.change-dir" },
+      -- module = { "nvim-tree", "nvim-tree.actions.root.change-dir" },
       config = function()
         require("config.nvimtree").setup()
       end,
