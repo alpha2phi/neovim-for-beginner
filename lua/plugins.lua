@@ -70,6 +70,13 @@ function M.setup()
       end,
       disable = true,
     }
+    use {
+      "vigoux/notifier.nvim",
+      config = function()
+        require("notifier").setup {}
+      end,
+      disable = true,
+    }
 
     -- Colorscheme
     use {
@@ -358,6 +365,7 @@ function M.setup()
       end,
       disable = true,
     }
+    use { "mbbill/undotree", cmd = { "UndotreeToggle" } }
 
     -- Code documentation
     use {
@@ -1200,6 +1208,10 @@ function M.setup()
         vim.g.translator_target_lang = "zh"
         vim.g.translator_history_enable = true
       end,
+    }
+    use {
+      "potamides/pantran.nvim",
+      cmd = "Pantran",
     }
 
     -- REPL
