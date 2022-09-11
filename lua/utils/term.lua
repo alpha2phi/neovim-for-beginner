@@ -127,7 +127,7 @@ local function cht_on_open(term)
   vim.api.nvim_buf_set_option(term.bufnr, "syntax", lang)
 end
 
-local function cht_on_exit(term)
+local function cht_on_exit(_)
   vim.cmd [[normal gg]]
 end
 
@@ -162,6 +162,24 @@ function M.cht()
     end
     cmd = "curl cht.sh/" .. cmd
     M.open_term(cmd, { on_open = cht_on_open, on_exit = cht_on_exit })
+  end)
+end
+
+function M.so()
+  local buf = vim.api.nvim_get_current_buf()
+  lang = ""
+  file_type = vim.api.nvim_buf_get_option(buf, "filetype")
+  vim.ui.input({ prompt = "so input: ", default = file_type .. " " }, function(input)
+    local cmd = ""
+    if input == "" or not input then
+      return
+    elseif input == "h" then
+      cmd = "-h"
+    else
+      cmd = input
+    end
+    cmd = "so " .. cmd
+    M.open_term(cmd, { direction = "float" })
   end)
 end
 
