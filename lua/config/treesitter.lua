@@ -1,6 +1,22 @@
 local M = {}
 
 function M.setup()
+  local swap_next, swap_prev = (function()
+    local swap_objects = {
+      p = "@parameter.inner",
+      f = "@function.outer",
+      e = "@element",
+    }
+
+    local n, p = {}, {}
+    for key, obj in pairs(swap_objects) do
+      n[string.format("<Leader>cx%s", key)] = obj
+      p[string.format("<Leader>cX%s", key)] = obj
+    end
+
+    return n, p
+  end)()
+
   require("nvim-treesitter.configs").setup {
     -- One of "all", "maintained" (parsers with maintainers), or a list of languages
     ensure_installed = "all",
@@ -71,12 +87,14 @@ function M.setup()
 
       swap = {
         enable = true,
-        swap_next = {
-          ["<leader>cx"] = "@parameter.inner",
-        },
-        swap_previous = {
-          ["<leader>cX"] = "@parameter.inner",
-        },
+        swap_next = swap_next,
+        swap_previous = swap_prev,
+        -- swap_next = {
+        --   ["<leader>cx"] = "@parameter.inner",
+        -- },
+        -- swap_previous = {
+        --   ["<leader>cX"] = "@parameter.inner",
+        -- },
       },
 
       move = {
