@@ -6,6 +6,8 @@ function M.setup()
       p = "@parameter.inner",
       f = "@function.outer",
       e = "@element",
+      -- c = "@class.outer",
+      -- v = "@variable",
     }
 
     local n, p = {}, {}
