@@ -402,7 +402,7 @@ function M.setup()
       config = function()
         require("config.hop").setup()
       end,
-      disable = true,
+      disable = false,
     }
     use {
       "ggandor/leap.nvim",
@@ -513,6 +513,7 @@ function M.setup()
           end,
         },
         { "nvim-treesitter/nvim-treesitter-context", event = "BufReadPre", disable = true },
+        { "mfussenegger/nvim-treehopper", wants = { "hop.nvim" }, module = { "tsht" } },
         -- { "yioneko/nvim-yati", event = "BufReadPre" },
       },
     }
