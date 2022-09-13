@@ -6,7 +6,7 @@ function M.setup()
       p = "@parameter.inner",
       f = "@function.outer",
       e = "@element",
-      -- c = "@class.outer",
+      -- c = "@class.inner",
       -- v = "@variable",
     }
 
