@@ -4,7 +4,7 @@ local keymap = vim.keymap.set
 function M.setup()
   require("hop").setup()
 
-  keymap("", "s", "<cmd>:HopWord<cr>", {})
+  -- keymap("", "s", "<cmd>:HopWord<cr>", {})
 
   keymap(
     "",
