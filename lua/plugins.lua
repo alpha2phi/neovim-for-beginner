@@ -398,7 +398,9 @@ function M.setup()
     -- Jumps
     use {
       "phaazon/hop.nvim",
-      keys = { "f", "F", "t", "T" },
+      cmd = "HopWord",
+      module = "hop",
+      keys = { "s", "f", "F", "t", "T" },
       config = function()
         require("config.hop").setup()
       end,
@@ -411,7 +413,7 @@ function M.setup()
         local leap = require "leap"
         leap.set_default_keymaps()
       end,
-      disable = false,
+      disable = true,
     }
     use {
       "abecodes/tabout.nvim",

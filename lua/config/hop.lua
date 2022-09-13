@@ -2,7 +2,10 @@ local M = {}
 local keymap = vim.keymap.set
 
 function M.setup()
-  require("hop").setup {}
+  require("hop").setup()
+
+  keymap("", "s", "<cmd>:HopWord<cr>", {})
+
   keymap(
     "",
     "f",
