@@ -1305,7 +1305,14 @@ function M.setup()
         require("config.readline").setup()
       end,
     }
-    use { "protex/better-digraphs.nvim", module = { "better-digraphs" }, disable = true }
+    use {
+      "protex/better-digraphs.nvim",
+      config = function()
+        require("config.digraph").setup()
+      end,
+      keys = { "r<C-k><C-k>" },
+      disable = true,
+    }
     use {
       "ziontee113/icon-picker.nvim",
       config = function()
