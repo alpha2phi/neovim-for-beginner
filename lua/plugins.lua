@@ -757,8 +757,8 @@ function M.setup()
         "b0o/schemastore.nvim",
         "jose-elias-alvarez/typescript.nvim",
         {
-          -- "SmiteshP/nvim-navic",
-          "alpha2phi/nvim-navic",
+          "SmiteshP/nvim-navic",
+          -- "alpha2phi/nvim-navic",
           config = function()
             require("nvim-navic").setup {}
           end,
