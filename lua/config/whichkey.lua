@@ -89,15 +89,15 @@ local function normal_keymap()
       T = { "<cmd>TodoTelescope<Cr>", "TODO" },
       x = {
         name = "Swap Next",
-        e = "Element",
         f = "Function",
         p = "Parameter",
+        c = "Class",
       },
       X = {
         name = "Swap Previous",
-        e = "Element",
         f = "Function",
         p = "Parameter",
+        c = "Class",
       },
       -- f = "Select Outer Function",
       -- F = "Select Outer Class",

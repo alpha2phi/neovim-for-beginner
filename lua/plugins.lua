@@ -113,7 +113,7 @@ function M.setup()
       disable = true,
     }
     use {
-      "norcalli/nvim-colorizer.lua",
+      "nvchad/nvim-colorizer.lua",
       cmd = "ColorizerToggle",
       config = function()
         require("colorizer").setup()

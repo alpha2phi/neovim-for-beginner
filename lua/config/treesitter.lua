@@ -5,9 +5,7 @@ function M.setup()
     local swap_objects = {
       p = "@parameter.inner",
       f = "@function.outer",
-      e = "@element",
-      -- c = "@class.inner",
-      -- v = "@variable",
+      c = "@class.outer",
     }
 
     local n, p = {}, {}
