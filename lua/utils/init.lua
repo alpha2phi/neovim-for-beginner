@@ -10,6 +10,11 @@ _G.prequire = function(...)
   return nil
 end
 
+_G.reload = function(module)
+  module.loaded[module] = nil
+  return prequire(module)
+end
+
 local M = {}
 
 function M.t(str)
