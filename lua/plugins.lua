@@ -516,6 +516,12 @@ function M.setup()
         },
         { "nvim-treesitter/nvim-treesitter-context", event = "BufReadPre", disable = true },
         { "mfussenegger/nvim-treehopper", wants = { "hop.nvim" }, module = { "tsht" } },
+        {
+          "m-demare/hlargs.nvim",
+          config = function()
+            require("hlargs").setup()
+          end,
+        },
         -- { "yioneko/nvim-yati", event = "BufReadPre" },
       },
     }
