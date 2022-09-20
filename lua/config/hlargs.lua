@@ -4,6 +4,7 @@ function M.setup()
   require("hlargs").setup {
     color = "#ef9062",
     use_colorpalette = false,
+    -- highlight = { "TSParameter" },
     colorpalette = {
       { fg = "#ef9062" },
       { fg = "#3AC6BE" },
