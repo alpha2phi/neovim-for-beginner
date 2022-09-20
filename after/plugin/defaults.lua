@@ -40,7 +40,8 @@ opt.softtabstop = 2
 opt.splitbelow = true
 opt.splitright = true
 opt.laststatus = 3 -- Global statusline
-opt.cmdheight = 0
+-- opt.cmdheight = 0
+opt.cmdheight = 1 -- Crash during start-up for 0.8 nightly when set to 0
 opt.scrollback = 100000
 
 -- Change to use lualine.nvim
