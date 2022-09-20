@@ -508,12 +508,12 @@ function M.setup()
         { "p00f/nvim-ts-rainbow", event = "BufReadPre" },
         { "RRethy/nvim-treesitter-textsubjects", event = "BufReadPre" },
         { "nvim-treesitter/playground", cmd = { "TSPlaygroundToggle" } },
-        {
-          "lewis6991/spellsitter.nvim",
-          config = function()
-            require("spellsitter").setup()
-          end,
-        },
+        -- {
+        --   "lewis6991/spellsitter.nvim",
+        --   config = function()
+        --     require("spellsitter").setup()
+        --   end,
+        -- },
         { "nvim-treesitter/nvim-treesitter-context", event = "BufReadPre", disable = true },
         { "mfussenegger/nvim-treehopper", wants = { "hop.nvim" }, module = { "tsht" } },
         {
