@@ -81,16 +81,13 @@ function M.setup()
     -- Colorscheme
     use {
       "folke/tokyonight.nvim",
-      config = function()
-        vim.cmd "colorscheme tokyonight"
-      end,
-      disable = true,
+      disable = false,
     }
     use {
       "sainnhe/everforest",
       config = function()
         vim.g.everforest_better_performance = 1
-        vim.cmd "colorscheme everforest"
+        vim.cmd.colorscheme [[everforest]]
       end,
       disable = false,
     }
@@ -519,8 +516,9 @@ function M.setup()
         {
           "m-demare/hlargs.nvim",
           config = function()
-            require("hlargs").setup()
+            require("config.hlargs").setup()
           end,
+          disable = false,
         },
         -- { "yioneko/nvim-yati", event = "BufReadPre" },
       },
@@ -782,6 +780,17 @@ function M.setup()
           config = function()
             require("config.neodim").setup()
           end,
+          disable = true,
+        },
+        {
+          "theHamsta/nvim-semantic-tokens",
+          config = function()
+            require("config.semantictokens").setup()
+          end,
+          disable = false,
+        },
+        {
+          "David-Kunz/markid",
           disable = true,
         },
         -- {
