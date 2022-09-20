@@ -6,8 +6,8 @@ local utils = require "utils"
 local icons = require "config.icons"
 
 vim.api.nvim_set_hl(0, "WinBarSeparator", { fg = colors.grey })
-vim.api.nvim_set_hl(0, "WinBarFilename", { fg = colors.green, bg = colors.grey })
-vim.api.nvim_set_hl(0, "WinBarContext", { fg = colors.green, bg = colors.grey })
+vim.api.nvim_set_hl(0, "WinBarFilename", { fg = colors.green })
+vim.api.nvim_set_hl(0, "WinBarContext", { fg = colors.green })
 
 M.winbar_filetype_exclude = {
   "help",
