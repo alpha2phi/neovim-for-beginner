@@ -141,6 +141,8 @@ local servers = {
 }
 
 function M.on_attach(client, bufnr)
+  local caps = client.server_capabilities
+
   -- Enable completion triggered by <C-X><C-O>
   -- See `:help omnifunc` and `:help ins-completion` for more information.
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -159,7 +161,7 @@ function M.on_attach(client, bufnr)
   require("config.lsp.null-ls.formatters").setup(client, bufnr)
 
   -- tagfunc
-  if client.server_capabilities.definitionProvider then
+  if caps.definitionProvider then
     vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
   end
 
@@ -176,7 +178,7 @@ function M.on_attach(client, bufnr)
   end
 
   -- nvim-navic
-  if client.server_capabilities.documentSymbolProvider then
+  if caps.documentSymbolProvider then
     local navic = require "nvim-navic"
     navic.attach(client, bufnr)
   end
@@ -188,6 +190,20 @@ function M.on_attach(client, bufnr)
     -- inlay-hints
     local ih = require "inlay-hints"
     ih.on_attach(client, bufnr)
+
+    -- semantic highlighting
+    if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
+      local augroup = vim.api.nvim_create_augroup("SemanticTokens", {})
+      vim.api.nvim_create_autocmd("TextChanged", {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.semantic_tokens_full()
+        end,
+      })
+      -- fire it first time on load as well
+      vim.lsp.buf.semantic_tokens_full()
+    end
   end
 end
 
