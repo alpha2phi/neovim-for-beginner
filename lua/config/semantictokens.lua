@@ -5,10 +5,10 @@ local set_hl = vim.api.nvim_set_hl
 function M.setup()
   -- token
   -- https://github.com/nvim-treesitter/nvim-treesitter/blob/master/lua/nvim-treesitter/highlight.lua
-  set_hl(0, "LspParameter", { fg = "#ef9062" })
-  set_hl(0, "LspType", { fg = "#619e9d" })
-  -- set_hl(0, "LspParameter", { link = "TSParameter" })
-  -- set_hl(0, "LspType", { link = "TSType" })
+  -- set_hl(0, "LspParameter", { fg = "#ef9062" })
+  -- set_hl(0, "LspType", { fg = "#619e9d" })
+  set_hl(0, "LspParameter", { link = "TSParameter" })
+  set_hl(0, "LspType", { link = "TSType" })
   set_hl(0, "LspClass", { link = "TSStorageClass" })
   set_hl(0, "LspComment", { link = "TSComment" })
   set_hl(0, "LspDecorator", { link = "TSAnnotation" })
