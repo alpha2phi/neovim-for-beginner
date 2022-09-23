@@ -19,6 +19,10 @@ local function separator()
   return "%="
 end
 
+local function tab_stop()
+  return "➡ " .. vim.bo.tabstop
+end
+
 local function lsp_client(msg)
   msg = msg or ""
   local buf_clients = vim.lsp.get_active_clients { bufnr = 0 }
@@ -157,7 +161,7 @@ function M.setup()
         --   color = { fg = colors.green },
         -- },
       },
-      lualine_x = { "filename", "encoding", "fileformat", "filetype" },
+      lualine_x = { "filename", { tab_stop }, "encoding", "fileformat", "filetype" },
       lualine_y = { "progress" },
       lualine_z = { "location" },
     },
