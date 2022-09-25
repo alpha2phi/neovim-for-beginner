@@ -81,6 +81,7 @@ function M.setup()
     -- Colorscheme
     use {
       "folke/tokyonight.nvim",
+      vim.cmd.colorscheme [[tokyonight]],
       disable = false,
     }
     use {
@@ -89,7 +90,7 @@ function M.setup()
         vim.g.everforest_better_performance = 1
         vim.cmd.colorscheme [[everforest]]
       end,
-      disable = false,
+      disable = true,
     }
     use {
       "projekt0n/github-nvim-theme",
