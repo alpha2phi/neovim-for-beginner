@@ -54,6 +54,9 @@ function M.setup()
     -- Load only when require
     use { "nvim-lua/plenary.nvim", module = "plenary" }
 
+    -- literate programming
+    use { "~/workspace/alpha2phi/lp.nvim/" }
+
     -- Notification
     use {
       "rcarriga/nvim-notify",
