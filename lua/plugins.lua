@@ -55,7 +55,7 @@ function M.setup()
     use { "nvim-lua/plenary.nvim", module = "plenary" }
 
     -- literate programming
-    use { "~/workspace/alpha2phi/lp.nvim/" }
+    use { "~/workspace/alpha2phi/lp.nvim" }
 
     -- Notification
     use {
@@ -523,6 +523,15 @@ function M.setup()
             require("config.hlargs").setup()
           end,
           disable = false,
+        },
+        {
+          "AckslD/nvim-FeMaco.lua",
+          config = function()
+            require("femaco").setup()
+          end,
+          ft = { "markdown" },
+          cmd = { "Femaco" },
+          module = { "femaco_edit" },
         },
         -- { "yioneko/nvim-yati", event = "BufReadPre" },
       },
