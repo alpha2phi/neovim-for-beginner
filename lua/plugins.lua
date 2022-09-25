@@ -84,7 +84,9 @@ function M.setup()
     -- Colorscheme
     use {
       "folke/tokyonight.nvim",
-      vim.cmd.colorscheme [[tokyonight]],
+      config = function()
+        vim.cmd.colorscheme [[tokyonight]]
+      end,
       disable = false,
     }
     use {
