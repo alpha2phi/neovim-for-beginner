@@ -794,6 +794,14 @@ function M.setup()
           "David-Kunz/markid",
           disable = true,
         },
+        {
+          "simrat39/symbols-outline.nvim",
+          cmd = { "SymbolsOutline" },
+          config = function()
+            require("symbols-outline").setup()
+          end,
+          disable = true,
+        },
         -- {
         --   "weilbith/nvim-code-action-menu",
         --   cmd = "CodeActionMenu",
