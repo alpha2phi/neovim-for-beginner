@@ -532,6 +532,7 @@ function M.setup()
           ft = { "markdown" },
           cmd = { "Femaco" },
           module = { "femaco_edit" },
+          disable = true,
         },
         -- { "yioneko/nvim-yati", event = "BufReadPre" },
       },
