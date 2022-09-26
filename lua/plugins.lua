@@ -251,7 +251,15 @@ function M.setup()
     }
     use { "knsh14/vim-github-link", cmd = { "GetCommitLink", "GetCurrentBranchLink", "GetCurrentCommitLink" } }
     use { "segeljakt/vim-silicon", cmd = { "Silicon" } }
-    use { "mattn/vim-gist", opt = true, requires = { "mattn/webapi-vim" }, cmd = { "Gist" } }
+    use {
+      "mattn/vim-gist",
+      opt = true,
+      requires = { "mattn/webapi-vim" },
+      cmd = { "Gist" },
+      config = function()
+        vim.g.gist_open_browser_after_post = 1
+      end,
+    }
 
     -- WhichKey
     use {
@@ -376,7 +384,30 @@ function M.setup()
       disable = true,
     }
     use { "mbbill/undotree", cmd = { "UndotreeToggle" } }
-
+    use {
+      "anuvyklack/windows.nvim",
+      requires = {
+        "anuvyklack/middleclass",
+        "anuvyklack/animation.nvim",
+      },
+      cmd = { "WindowsToggleAutowidth", "WindowsMaximize" },
+      config = function()
+        vim.o.winwidth = 10
+        vim.o.winminwidth = 10
+        vim.o.equalalways = false
+        require("windows").setup()
+      end,
+      disable = true,
+    }
+    use {
+      "beauwilliams/focus.nvim",
+      cmd = { "FocusToggle", "FocusMaxOrEqual" },
+      module = "focus",
+      config = function()
+        require("focus").setup { hybridnumber = true }
+      end,
+      disable = false,
+    }
     -- Code documentation
     use {
       "danymat/neogen",
