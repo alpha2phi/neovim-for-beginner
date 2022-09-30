@@ -7,7 +7,6 @@ function M.setup()
       enter_on_sendcmd = true,
     },
   }
-  require("telescope").load_extension "harpoon"
 end
 
 return M

@@ -602,6 +602,7 @@ function M.setup()
         "telescope-bookmarks.nvim",
         "aerial.nvim",
         "nvim-tree.lua",
+        "harpoon"
         -- "telescope-ui-select.nvim",
       },
       requires = {
