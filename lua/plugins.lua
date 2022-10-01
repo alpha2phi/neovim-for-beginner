@@ -55,7 +55,7 @@ function M.setup()
     use { "nvim-lua/plenary.nvim", module = "plenary" }
 
     -- literate programming
-    use { "~/workspace/alpha2phi/lp.nvim" }
+    use { "~/workspace/alpha2phi/lp.nvim", disable = true }
 
     -- Notification
     use {
@@ -82,6 +82,17 @@ function M.setup()
     }
 
     -- Colorscheme
+    use {
+      "catppuccin/nvim",
+      as = "catppuccin",
+      config = function()
+        vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+        require("catppuccin").setup()
+        vim.cmd [[colorscheme catppuccin]]
+      end,
+      disable = true,
+    }
+
     use {
       "folke/tokyonight.nvim",
       config = function()
@@ -602,7 +613,7 @@ function M.setup()
         "telescope-bookmarks.nvim",
         "aerial.nvim",
         "nvim-tree.lua",
-        "harpoon"
+        "harpoon",
         -- "telescope-ui-select.nvim",
       },
       requires = {
