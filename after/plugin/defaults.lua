@@ -40,7 +40,7 @@ opt.softtabstop = 2
 opt.splitbelow = true
 opt.splitright = true
 opt.laststatus = 3 -- Global statusline
-opt.cmdheight = 1
+opt.cmdheight = 0
 opt.scrollback = 100000
 
 -- Change to use lualine.nvim
