@@ -177,7 +177,18 @@ function M.setup()
     -- Temporary disable winbar due to this issue
     -- https://github.com/neovim/neovim/issues/19458
     winbar = {
-      lualine_a = { "diagnostics" },
+      lualine_a = {
+        {
+          "diagnostics",
+          diagnostics_color = {
+            error = "DiagnosticError",
+            warn = "DiagnosticWarn",
+            info = "DiagnosticInfo",
+            hint = "DiagnosticHint",
+          },
+          colored = true,
+        },
+      },
       lualine_b = {},
       lualine_c = {},
       lualine_x = { winbar.get_winbar },

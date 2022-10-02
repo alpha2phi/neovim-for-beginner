@@ -54,6 +54,15 @@ function M.setup()
     -- Load only when require
     use { "nvim-lua/plenary.nvim", module = "plenary" }
 
+    -- literate programming
+    use {
+      "~/workspace/alpha2phi/lp.nvim",
+      -- config = function()
+      --   require("lp").setup()
+      -- end,
+      disable = true,
+    }
+
     -- Notification
     use {
       "rcarriga/nvim-notify",
@@ -80,8 +89,21 @@ function M.setup()
 
     -- Colorscheme
     use {
+      "catppuccin/nvim",
+      as = "catppuccin",
+      config = function()
+        vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+        require("catppuccin").setup()
+        vim.cmd [[colorscheme catppuccin]]
+      end,
+      disable = true,
+    }
+
+    use {
       "folke/tokyonight.nvim",
-      vim.cmd.colorscheme [[tokyonight]],
+      config = function()
+        vim.cmd.colorscheme [[tokyonight]]
+      end,
       disable = false,
     }
     use {
@@ -246,7 +268,15 @@ function M.setup()
     }
     use { "knsh14/vim-github-link", cmd = { "GetCommitLink", "GetCurrentBranchLink", "GetCurrentCommitLink" } }
     use { "segeljakt/vim-silicon", cmd = { "Silicon" } }
-    use { "mattn/vim-gist", opt = true, requires = { "mattn/webapi-vim" }, cmd = { "Gist" } }
+    use {
+      "mattn/vim-gist",
+      opt = true,
+      requires = { "mattn/webapi-vim" },
+      cmd = { "Gist" },
+      config = function()
+        vim.g.gist_open_browser_after_post = 1
+      end,
+    }
 
     -- WhichKey
     use {
@@ -371,7 +401,30 @@ function M.setup()
       disable = true,
     }
     use { "mbbill/undotree", cmd = { "UndotreeToggle" } }
-
+    use {
+      "anuvyklack/windows.nvim",
+      requires = {
+        "anuvyklack/middleclass",
+        "anuvyklack/animation.nvim",
+      },
+      cmd = { "WindowsToggleAutowidth", "WindowsMaximize" },
+      config = function()
+        vim.o.winwidth = 10
+        vim.o.winminwidth = 10
+        vim.o.equalalways = false
+        require("windows").setup()
+      end,
+      disable = true,
+    }
+    use {
+      "beauwilliams/focus.nvim",
+      cmd = { "FocusToggle", "FocusMaxOrEqual" },
+      module = "focus",
+      config = function()
+        require("focus").setup { hybridnumber = true }
+      end,
+      disable = false,
+    }
     -- Code documentation
     use {
       "danymat/neogen",
@@ -521,6 +574,16 @@ function M.setup()
           end,
           disable = false,
         },
+        {
+          "AckslD/nvim-FeMaco.lua",
+          config = function()
+            require("femaco").setup()
+          end,
+          ft = { "markdown" },
+          cmd = { "Femaco" },
+          module = { "femaco_edit" },
+          disable = true,
+        },
         -- { "yioneko/nvim-yati", event = "BufReadPre" },
       },
     }
@@ -556,6 +619,7 @@ function M.setup()
         "telescope-bookmarks.nvim",
         "aerial.nvim",
         "nvim-tree.lua",
+        "harpoon",
         -- "telescope-ui-select.nvim",
       },
       requires = {
@@ -1219,6 +1283,7 @@ function M.setup()
       config = function()
         vim.g.vista_default_executive = "nvim_lsp"
       end,
+      disable = true,
     }
     use {
       "sidebar-nvim/sidebar.nvim",

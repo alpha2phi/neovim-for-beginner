@@ -1,62 +1,46 @@
 local M = {}
 
-local colors = require "config.colors"
 local navic = require "nvim-navic"
 local utils = require "utils"
 local icons = require "config.icons"
 
-vim.api.nvim_set_hl(0, "WinBarSeparator", { fg = colors.grey })
-vim.api.nvim_set_hl(0, "WinBarFilename", { fg = colors.green })
-vim.api.nvim_set_hl(0, "WinBarContext", { fg = colors.green })
-
-M.winbar_filetype_exclude = {
-  "help",
-  "startify",
-  "dashboard",
-  "packer",
-  "neogitstatus",
-  "NvimTree",
-  "Trouble",
-  "alpha",
-  "lir",
-  "Outline",
-  "spectre_panel",
-  "toggleterm",
-}
-
--- local excludes = function()
---   if vim.tbl_contains(M.winbar_filetype_exclude, vim.bo.filetype) then
---     vim.opt_local.winbar = nil
---     return true
---   end
---   return false
--- end
-
 local function get_modified()
-  if utils.get_buf_option "mod" then
-    local mod = icons.git.Mod
-    return "%#WinBarFilename#" .. mod .. "%t" .. "%*"
+  local file_name = vim.fn.expand "%:t"
+  local extension = vim.fn.expand "%:e"
+
+  if file_name then
+    local file_icon, file_icon_color = require("nvim-web-devicons").get_icon_color(
+      file_name,
+      extension,
+      { default = true }
+    )
+    local hl_group = "FileIconColor" .. extension
+    vim.api.nvim_set_hl(0, hl_group, { fg = file_icon_color })
+    if not file_icon then
+      file_icon = ""
+    end
+
+    if utils.get_buf_option "mod" then
+      local mod = icons.git.Mod
+      return mod .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. file_name
+    end
+    return "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. file_name
   end
-  return "%#WinBarFilename#" .. "%t" .. "%*"
 end
 
 local function get_location()
   local location = navic.get_location()
   if not utils.is_empty(location) then
-    return "%#WinBarContext#" .. " " .. icons.ui.ChevronRight .. " " .. location .. "%*"
+    return " " .. icons.ui.ChevronRight .. " " .. location
   end
   return ""
 end
 
 function M.get_winbar()
-  -- Use lualine disable file types
-  -- if excludes() then
-  --   return ""
-  -- end
   if navic.is_available() then
-    return "%#WinBarSeparator#" .. "%=" .. "%*" .. get_modified() .. get_location() .. "%#WinBarSeparator#" .. "%*"
+    return get_modified() .. get_location()
   else
-    return "%#WinBarSeparator#" .. "%=" .. "%*" .. get_modified() .. "%#WinBarSeparator#" .. "%*"
+    return get_modified()
   end
 end
 

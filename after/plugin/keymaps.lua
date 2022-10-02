@@ -55,3 +55,9 @@ keymap("n", "[<Space>", "O<Esc>", default_opts)
 -- Browser search
 keymap("n", "gx", "<Plug>(openbrowser-smart-search)", default_opts)
 keymap("x", "gx", "<Plug>(openbrowser-smart-search)", default_opts)
+
+-- windows.nvim
+-- keymap("n", "<C-w>z", "<Cmd>WindowsMaximize<CR>", default_opts)
+
+-- focus.nvim
+keymap("n", "<C-w>z", "<Cmd>FocusMaxOrEqual<CR>", default_opts)
