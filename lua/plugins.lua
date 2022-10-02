@@ -55,7 +55,13 @@ function M.setup()
     use { "nvim-lua/plenary.nvim", module = "plenary" }
 
     -- literate programming
-    use { "~/workspace/alpha2phi/lp.nvim", disable = true }
+    use {
+      "~/workspace/alpha2phi/lp.nvim",
+      -- config = function()
+      --   require("lp").setup()
+      -- end,
+      disable = true,
+    }
 
     -- Notification
     use {
@@ -1277,6 +1283,7 @@ function M.setup()
       config = function()
         vim.g.vista_default_executive = "nvim_lsp"
       end,
+      disable = true,
     }
     use {
       "sidebar-nvim/sidebar.nvim",

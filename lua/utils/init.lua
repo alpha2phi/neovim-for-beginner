@@ -11,8 +11,8 @@ _G.prequire = function(...)
 end
 
 _G.reload = function(module)
-  module.loaded[module] = nil
-  return prequire(module)
+  local r = require "plenary.reload"
+  r.reload_module(module)
 end
 
 local M = {}
