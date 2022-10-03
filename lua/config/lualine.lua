@@ -22,7 +22,7 @@ local function separator()
 end
 
 local function tab_stop()
-  return icons.ui.Tab .. " " .. vim.bo.tabstop
+  return icons.ui.Tab .. " " .. vim.bo.shiftwidth
 end
 
 local function lsp_client(msg)
