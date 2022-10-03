@@ -7,9 +7,9 @@ function M.setup(servers, server_options)
   require("mason").setup {
     ui = {
       icons = {
-        package_installed = icons.server_installed,
-        package_pending = icons.server_pending,
-        package_uninstalled = icons.server_uninstalled,
+        package_installed = icons.lsp.server_installed,
+        package_pending = icons.lsp.server_pending,
+        package_uninstalled = icons.lsp.server_uninstalled,
       },
     },
   }

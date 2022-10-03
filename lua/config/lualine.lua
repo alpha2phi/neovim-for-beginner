@@ -1,5 +1,7 @@
 local M = {}
 
+local icons = require "config.icons"
+
 -- Color table for highlights
 local colors = {
   bg = "#202328",
@@ -20,7 +22,7 @@ local function separator()
 end
 
 local function tab_stop()
-  return "➡ " .. vim.bo.tabstop
+  return icons.ui.Tab .. " " .. vim.bo.tabstop
 end
 
 local function lsp_client(msg)
@@ -99,8 +101,6 @@ end
 --   return table.concat(status, "  ") .. " " .. spinners[frame + 1]
 -- end
 
-local icons = require "config.icons"
-
 -- Temporary disable winbar due to this issue
 -- https://github.com/neovim/neovim/issues/19458
 local winbar = require "config.winbar"
@@ -142,18 +142,18 @@ function M.setup()
         {
           "diagnostics",
           sources = { "nvim_diagnostic" },
-          symbols = {
-            error = icons.diagnostics.Error,
-            warn = icons.diagnostics.Warning,
-            info = icons.diagnostics.Information,
-            hint = icons.diagnostics.Hint,
+          diagnostics_color = {
+            error = "DiagnosticError",
+            warn = "DiagnosticWarn",
+            info = "DiagnosticInfo",
+            hint = "DiagnosticHint",
           },
-          colored = false,
+          colored = true,
         },
       },
       lualine_c = {
         { separator },
-        { lsp_client, icon = " ", color = { fg = colors.violet, gui = "bold" } },
+        { lsp_client, icon = icons.ui.Gear, color = { fg = colors.violet, gui = "bold" } },
         -- { lsp_progress },
         -- {
         --   gps.get_location,
@@ -180,6 +180,7 @@ function M.setup()
       lualine_a = {
         {
           "diagnostics",
+          sources = { "nvim_diagnostic" },
           diagnostics_color = {
             error = "DiagnosticError",
             warn = "DiagnosticWarn",

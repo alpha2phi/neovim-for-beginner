@@ -23,6 +23,7 @@ return {
     Project = "",
     Search = "",
     SignIn = "",
+    Tab = "",
     Table = "",
     Telescope = "",
   },
