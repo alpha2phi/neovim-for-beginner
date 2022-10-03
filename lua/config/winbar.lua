@@ -22,7 +22,7 @@ local function get_modified()
 
     if utils.get_buf_option "mod" then
       local mod = icons.git.Mod
-      return mod .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. file_name
+      return mod .. " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. file_name
     end
     return "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. file_name
   end
