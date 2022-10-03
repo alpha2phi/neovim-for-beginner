@@ -56,7 +56,7 @@ local function keymappings(client, bufnr)
   local keymap_v_l = {
     l = {
       name = "LSP",
-      a = { "<cmd>'<,'>lua vim.lsp.buf.range_code_action()<CR>", "Code Action" },
+      a = { "<cmd>'<,'>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
     },
   }
 
