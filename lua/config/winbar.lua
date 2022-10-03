@@ -17,7 +17,7 @@ local function get_modified()
     local hl_group = "FileIconColor" .. extension
     vim.api.nvim_set_hl(0, hl_group, { fg = file_icon_color })
     if not file_icon then
-      file_icon = ""
+      file_icon = icons.winbar.FileIcon
     end
 
     if utils.get_buf_option "mod" then
