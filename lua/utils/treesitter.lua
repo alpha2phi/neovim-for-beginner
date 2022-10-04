@@ -1,12 +1,14 @@
 local M = {}
 
 local python_function_query_string = [[
+;; query
   (function_definition 
     name: (identifier) @func_name (#offset! @func_name)
   ) 
 ]]
 
 local lua_function_query_string = [[
+;; query
   (function_declaration
   name: 
     [
