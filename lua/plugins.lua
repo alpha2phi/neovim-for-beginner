@@ -431,6 +431,16 @@ function M.setup()
       end,
       disable = false,
     }
+    -- https://github.com/neovim/neovim/pull/19243
+    use {
+      "luukvbaal/stabilize.nvim",
+      event = { "BufReadPre" },
+      config = function()
+        require("stabilize").setup()
+      end,
+      disable = false,
+    }
+
     -- Code documentation
     use {
       "danymat/neogen",
