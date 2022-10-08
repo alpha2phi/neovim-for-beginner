@@ -1,16 +1,17 @@
-local null_ls = require "null-ls"
-local helpers = require "null-ls.helpers"
+local h = require "null-ls.helpers"
+local nls = require "null-ls"
+
+local DIAGNOSTICS = nls.methods.DIAGNOSTICS
 
 local refurb = {
   name = "refurb",
-  method = null_ls.methods.DIAGNOSTICS,
+  method = DIAGNOSTICS,
   filetypes = { "python" },
-  -- null_ls.generator creates an async source
-  -- that spawns the command with the given arguments and options
-  generator = null_ls.generator {
+  generator = nls.generator {
     command = "refurb",
+    to_stdin = false,
+    from_stderr = false,
     args = { "--quiet", "$FILENAME" },
-    from_stderr = true,
     format = "line",
     check_exit_code = function(code, stderr)
       local success = code <= 1
@@ -19,16 +20,11 @@ local refurb = {
       end
       return success
     end,
-    on_output = helpers.diagnostics.from_patterns {
-      {
-        -- pattern = [[([%w-/.]+):(%d+):(%d+) (.*)]],
-        pattern = [[:(%d+):(%d+) (.*)]],
-        groups = { "row", "col", "message" },
-      },
-    },
+    on_output = h.diagnostics.from_pattern([[:(%d+):(%d+) (.*)]], { "row", "col", "message" }),
   },
+  factory = h.generator_factory,
 }
 
-null_ls.register(refurb)
+nls.register(refurb)
 
 return refurb
