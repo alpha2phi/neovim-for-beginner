@@ -2,7 +2,7 @@ local M = {}
 
 local icons = require "config.icons"
 local lualine = require "lualine"
-local api = vim.api
+-- local api = vim.api
 
 -- Color table for highlights
 local colors = {
