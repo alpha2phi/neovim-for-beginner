@@ -377,6 +377,7 @@ local function code_keymap()
         name = "Code",
         -- r = { "<cmd>update<CR><cmd>exec '!python3' shellescape(@%, 1)<cr>", "Run" },
         -- r = { "<cmd>update<CR><cmd>TermExec cmd='python3 %'<cr>", "Run" },
+        i = { "<cmd>cexpr system('refurb --quiet ' . shellescape(expand('%'))) | copen<cr>", "Inspect" },
         r = {
           "<cmd>update<cr><cmd>lua require('utils.term').open_term([[python3 ]] .. vim.fn.shellescape(vim.fn.getreg('%'), 1), {direction = 'float'})<cr>",
           "Run",

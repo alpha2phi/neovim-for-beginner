@@ -431,6 +431,26 @@ function M.setup()
       end,
       disable = false,
     }
+    use {
+      "smjonas/live-command.nvim",
+      event = { "BufReadPre" },
+      config = function()
+        require("live-command").setup {
+          commands = {
+            Norm = { cmd = "norm" },
+            Reg = {
+              cmd = "norm",
+              args = function(opts)
+                return (opts.count == -1 and "" or opts.count) .. "@" .. opts.args
+              end,
+              range = "",
+            },
+          },
+        }
+      end,
+      disable = false,
+    }
+
     -- Code documentation
     use {
       "danymat/neogen",
