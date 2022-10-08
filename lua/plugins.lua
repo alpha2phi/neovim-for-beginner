@@ -431,14 +431,24 @@ function M.setup()
       end,
       disable = false,
     }
-    -- https://github.com/neovim/neovim/pull/19243
     use {
-      "luukvbaal/stabilize.nvim",
+      "smjonas/live-command.nvim",
       event = { "BufReadPre" },
       config = function()
-        require("stabilize").setup()
+        require("live-command").setup {
+          commands = {
+            Norm = { cmd = "norm" },
+            Reg = {
+              cmd = "norm",
+              args = function(opts)
+                return (opts.count == -1 and "" or opts.count) .. "@" .. opts.args
+              end,
+              range = "",
+            },
+          },
+        }
       end,
-      disable = true,
+      disable = false,
     }
 
     -- Code documentation
