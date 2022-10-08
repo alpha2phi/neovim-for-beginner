@@ -28,11 +28,11 @@ local function tab_stop()
 end
 
 local function show_macro_recording()
-  local recording_register = vim.fn.reg_recording()
-  if recording_register == "" then
+  local rec_reg = vim.fn.reg_recording()
+  if rec_reg == "" then
     return ""
   else
-    return "recording @" .. recording_register
+    return "recording @" .. rec_reg
   end
 end
 
@@ -149,9 +149,8 @@ function M.setup()
     },
     sections = {
       lualine_a = { "mode" },
-      lualine_b = {},
+      lualine_b = { "branch" },
       lualine_c = {
-        { "branch" },
         { "diff", colored = false },
         {
           "diagnostics",
@@ -225,27 +224,27 @@ function M.setup()
   }
 end
 
-api.nvim_create_autocmd("RecordingEnter", {
-  callback = function()
-    lualine.refresh {
-      place = { "statusline" },
-    }
-  end,
-})
+-- api.nvim_create_autocmd("RecordingEnter", {
+--   callback = function()
+--     lualine.refresh {
+--       place = { "statusline" },
+--     }
+--   end,
+-- })
 
-api.nvim_create_autocmd("RecordingLeave", {
-  callback = function()
-    local timer = vim.loop.new_timer()
-    timer:start(
-      50,
-      0,
-      vim.schedule_wrap(function()
-        lualine.refresh {
-          place = { "statusline" },
-        }
-      end)
-    )
-  end,
-})
+-- api.nvim_create_autocmd("RecordingLeave", {
+--   callback = function()
+--     local timer = vim.loop.new_timer()
+--     timer:start(
+--       50,
+--       0,
+--       vim.schedule_wrap(function()
+--         lualine.refresh {
+--           place = { "statusline" },
+--         }
+--       end)
+--     )
+--   end,
+-- })
 
 return M
