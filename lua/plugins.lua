@@ -438,7 +438,7 @@ function M.setup()
       config = function()
         require("stabilize").setup()
       end,
-      disable = false,
+      disable = true,
     }
 
     -- Code documentation
