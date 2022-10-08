@@ -13,6 +13,10 @@ local refurb = {
     from_stderr = false,
     args = { "--quiet", "$FILENAME" },
     format = "line",
+    timeout = 30000,
+    -- to_temp_file = true,
+    -- from_temp_file = true,
+    use_cache = true,
     check_exit_code = function(code, stderr)
       local success = code <= 1
       if not success then
