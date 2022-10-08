@@ -5,6 +5,7 @@ local i = ls.insert_node
 local f = ls.function_node
 local d = ls.dynamic_node
 local sn = ls.snippet_node
+local t = ls.text_node
 local rep = require("luasnip.extras").rep
 
 -- Get a list of  the property names given an `interface_declaration`
