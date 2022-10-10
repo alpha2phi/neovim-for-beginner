@@ -40,7 +40,7 @@ opt.softtabstop = 2
 opt.splitbelow = true
 opt.splitright = true
 opt.laststatus = 3 -- Global statusline
-opt.cmdheight = 0
+opt.cmdheight = 1 -- 0
 opt.scrollback = 100000
 opt.splitkeep = "screen"
 
