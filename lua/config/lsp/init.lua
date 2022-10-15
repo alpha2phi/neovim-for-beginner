@@ -37,7 +37,7 @@ local servers = {
       ["rust-analyzer"] = {
         cargo = { allFeatures = true },
         checkOnSave = {
-          command = "clippy",
+          command = "cargo clippy",
           extraArgs = { "--no-deps" },
         },
       },

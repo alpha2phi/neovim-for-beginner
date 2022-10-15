@@ -6,6 +6,9 @@ local Terminal = require("toggleterm.terminal").Terminal
 local git_tui = "lazygit"
 -- local git_tui = "gitui"
 
+-- DOcker
+local docker_tui = "lazydocker"
+
 -- Committizen
 local git_cz = "git cz"
 
@@ -20,6 +23,16 @@ local navi = "navi fn welcome"
 
 local git_client = Terminal:new {
   cmd = git_tui,
+  dir = "git_dir",
+  hidden = true,
+  direction = "float",
+  float_opts = {
+    border = "double",
+  },
+}
+
+local docker_client = Terminal:new {
+  cmd = docker_tui,
   dir = "git_dir",
   hidden = true,
   direction = "float",
@@ -73,6 +86,10 @@ local interactive_cheatsheet = Terminal:new {
 
 function M.git_client_toggle()
   git_client:toggle()
+end
+
+function M.docker_client_toggle()
+  docker_client:toggle()
 end
 
 function M.git_commit_toggle()
