@@ -344,8 +344,8 @@ function M.setup()
 
     -- Motions
     use { "andymass/vim-matchup", event = "CursorMoved" }
-    use { "wellle/targets.vim", event = "CursorMoved" }
-    use { "unblevable/quick-scope", event = "CursorMoved", disable = false }
+    use { "wellle/targets.vim", event = "CursorMoved", disable = true }
+    use { "unblevable/quick-scope", event = "CursorMoved", disable = true }
     use { "chaoren/vim-wordmotion", opt = true, fn = { "<Plug>WordMotion_w" } }
 
     -- Buffer
@@ -481,7 +481,7 @@ function M.setup()
       config = function()
         require("config.hop").setup()
       end,
-      disable = false,
+      disable = true,
     }
     use {
       "ggandor/leap.nvim",
@@ -490,7 +490,7 @@ function M.setup()
         local leap = require "leap"
         leap.set_default_keymaps()
       end,
-      disable = false,
+      disable = true,
     }
     use {
       "abecodes/tabout.nvim",
@@ -592,7 +592,7 @@ function M.setup()
         --   end,
         -- },
         { "nvim-treesitter/nvim-treesitter-context", event = "BufReadPre", disable = true },
-        { "mfussenegger/nvim-treehopper", wants = { "hop.nvim" }, module = { "tsht" } },
+        { "mfussenegger/nvim-treehopper", wants = { "hop.nvim" }, module = { "tsht" }, disable = true },
         {
           "m-demare/hlargs.nvim",
           config = function()
@@ -822,7 +822,7 @@ function M.setup()
         "mason-lspconfig.nvim",
         "mason-tool-installer.nvim",
         "cmp-nvim-lsp",
-        "lua-dev.nvim",
+        "neodev.nvim",
         "vim-illuminate",
         "null-ls.nvim",
         "schemastore.nvim",
@@ -840,7 +840,7 @@ function M.setup()
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "WhoIsSethDaniel/mason-tool-installer.nvim",
-        "folke/lua-dev.nvim",
+        "folke/neodev.nvim",
         "RRethy/vim-illuminate",
         "jose-elias-alvarez/null-ls.nvim",
         {
