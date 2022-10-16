@@ -451,6 +451,13 @@ function M.setup()
       disable = false,
     }
 
+    use {
+      "echasnovski/mini.nvim",
+      event = { "BufReadPre" },
+      config = function()
+        require("config.mini").setup()
+      end,
+    }
     -- Code documentation
     use {
       "danymat/neogen",
@@ -490,7 +497,7 @@ function M.setup()
         local leap = require "leap"
         leap.set_default_keymaps()
       end,
-      disable = true,
+      disable = false,
     }
     use {
       "abecodes/tabout.nvim",
