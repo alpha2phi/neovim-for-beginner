@@ -145,11 +145,15 @@ function M.on_attach(client, bufnr)
 
   -- Enable completion triggered by <C-X><C-O>
   -- See `:help omnifunc` and `:help ins-completion` for more information.
-  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  if caps.completionProvider then
+    vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+  end
 
   -- Use LSP as the handler for formatexpr.
   -- See `:help formatexpr` for more information.
-  vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+  if caps.documentFormattingProvider then
+    vim.bo[bufnr].formatexpr = "v:lua.vim.lsp.formatexpr()"
+  end
 
   -- Configure key mappings
   require("config.lsp.keymaps").setup(client, bufnr)
@@ -162,7 +166,7 @@ function M.on_attach(client, bufnr)
 
   -- tagfunc
   if caps.definitionProvider then
-    vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
+    vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
   end
 
   -- sqls
