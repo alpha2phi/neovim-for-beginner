@@ -344,8 +344,17 @@ function M.setup()
 
     -- Motions
     use { "andymass/vim-matchup", event = "CursorMoved" }
-    use { "wellle/targets.vim", event = "CursorMoved", disable = true }
+    use { "wellle/targets.vim", event = "CursorMoved", disable = false }
     use { "unblevable/quick-scope", event = "CursorMoved", disable = true }
+    use {
+      "jinh0/eyeliner.nvim",
+      config = function()
+        require("eyeliner").setup {
+          highlight_on_key = true,
+        }
+      end,
+      disable = false
+    }
     use { "chaoren/vim-wordmotion", opt = true, fn = { "<Plug>WordMotion_w" } }
 
     -- Buffer
