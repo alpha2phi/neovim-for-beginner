@@ -345,15 +345,23 @@ function M.setup()
     -- Motions
     use { "andymass/vim-matchup", event = "CursorMoved" }
     use { "wellle/targets.vim", event = "CursorMoved", disable = false }
-    use { "unblevable/quick-scope", event = "CursorMoved", disable = true }
+    use {
+      "unblevable/quick-scope",
+      keys = { "F", "f", "T", "t" },
+      config = function()
+        vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
+      end,
+      disable = false,
+    }
     use {
       "jinh0/eyeliner.nvim",
+      keys = { "F", "f", "T", "t" },
       config = function()
         require("eyeliner").setup {
           highlight_on_key = true,
         }
       end,
-      disable = false
+      disable = true,
     }
     use { "chaoren/vim-wordmotion", opt = true, fn = { "<Plug>WordMotion_w" } }
 
