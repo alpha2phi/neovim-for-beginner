@@ -1,7 +1,7 @@
 local M = {}
 
 local whichkey = require "which-key"
-local legendary = require "legendary"
+-- local legendary = require "legendary"
 
 -- local function keymap(lhs, rhs, desc)
 --   vim.keymap.set("n", lhs, rhs, { silent = true, desc = desc })
@@ -42,7 +42,7 @@ function M.setup()
     nowait = false,
   }
   whichkey.register(keymap, opts)
-  legendary.bind_whichkey(keymap, opts, false)
+  -- legendary.bind_whichkey(keymap, opts, false)
 
   local keymap_v = {
     d = {
@@ -59,7 +59,7 @@ function M.setup()
     nowait = false,
   }
   whichkey.register(keymap_v, opts)
-  legendary.bind_whichkey(keymap_v, opts, false)
+  -- legendary.bind_whichkey(keymap_v, opts, false)
 end
 
 return M

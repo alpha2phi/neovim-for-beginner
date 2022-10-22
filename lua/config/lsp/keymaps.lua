@@ -1,7 +1,7 @@
 local M = {}
 
 local whichkey = require "which-key"
-local legendary = require "legendary"
+-- local legendary = require "legendary"
 
 -- local keymap = vim.api.nvim_set_keymap
 -- local buf_keymap = vim.api.nvim_buf_set_keymap
@@ -62,15 +62,15 @@ local function keymappings(client, bufnr)
 
   local o = { buffer = bufnr, prefix = "<leader>" }
   whichkey.register(keymap_l, o)
-  legendary.bind_whichkey(keymap_l, o, false)
+  -- legendary.bind_whichkey(keymap_l, o, false)
 
   o = { mode = "v", buffer = bufnr, prefix = "<leader>" }
   whichkey.register(keymap_v_l, o)
-  legendary.bind_whichkey(keymap_v_l, o, false)
+  -- legendary.bind_whichkey(keymap_v_l, o, false)
 
   o = { buffer = bufnr, prefix = "g" }
   whichkey.register(keymap_g, o)
-  legendary.bind_whichkey(keymap_g, o, false)
+  -- legendary.bind_whichkey(keymap_g, o, false)
 end
 
 -- local function signature_help(client, bufnr)
