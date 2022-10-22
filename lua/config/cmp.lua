@@ -222,10 +222,10 @@ function M.setup()
     sources = {
       { name = "nvim_lsp", max_item_count = 15 },
       { name = "nvim_lsp_signature_help", max_item_count = 5 },
-      { name = "luasnip", max_item_count = 8 },
+      { name = "luasnip", max_item_count = 5 },
       -- { name = "cmp_tabnine" },
       { name = "treesitter", max_item_count = 5 },
-      { name = "rg", max_item_count = 5 },
+      { name = "rg", max_item_count = 2 },
       { name = "buffer", max_item_count = 5 },
       { name = "nvim_lua" },
       { name = "path" },

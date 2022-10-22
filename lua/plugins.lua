@@ -348,9 +348,9 @@ function M.setup()
     use {
       "unblevable/quick-scope",
       keys = { "F", "f", "T", "t" },
-      config = function()
-        vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
-      end,
+      -- config = function()
+      --   vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
+      -- end,
       disable = false,
     }
     use {
