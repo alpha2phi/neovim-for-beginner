@@ -12,7 +12,7 @@ function M.setup()
     args = { DEBUGGER_LOCATION .. "/out/src/chromeDebug.js" },
   }
 
-  dap.configurations.javascript = { 
+  dap.configurations.javascript = {
     {
       type = "chrome",
       request = "attach",

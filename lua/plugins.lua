@@ -1037,7 +1037,7 @@ function M.setup()
       -- event = "BufReadPre",
       keys = { [[<leader>d]] },
       module = { "dap" },
-      wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
+      wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim", "nvim-dap-vscode-js" },
       requires = {
         -- "alpha2phi/DAPInstall.nvim",
         -- { "Pocco81/dap-buddy.nvim", branch = "dev" },
@@ -1047,6 +1047,12 @@ function M.setup()
         "nvim-telescope/telescope-dap.nvim",
         { "leoluz/nvim-dap-go", module = "dap-go" },
         { "jbyuki/one-small-step-for-vimkind", module = "osv" },
+        { "mxsdev/nvim-dap-vscode-js" },
+        {
+          "microsoft/vscode-js-debug",
+          opt = true,
+          run = "npm install --legacy-peer-deps && npm run compile",
+        },
       },
       config = function()
         require("config.dap").setup()
