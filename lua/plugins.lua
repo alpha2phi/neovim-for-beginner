@@ -218,9 +218,12 @@ function M.setup()
         "idanarye/vim-merginal",
         --[[ "rhysd/committia.vim", ]]
       },
-      -- wants = { "vim-rhubarb" },
     }
-    use { "rbong/vim-flog", cmd = { "Flog", "Flogsplit", "Floggit" }, wants = { "vim-fugitive" } }
+    use {
+      "rbong/vim-flog",
+      cmd = { "Flog", "Flogsplit", "Floggit" },
+      wants = { "vim-fugitive" },
+    }
     use {
       "ruifm/gitlinker.nvim",
       requires = "nvim-lua/plenary.nvim",
@@ -512,7 +515,7 @@ function M.setup()
       keys = { "s", "S" },
       config = function()
         local leap = require "leap"
-        leap.set_default_keymaps()
+        leap.add_default_mappings()
       end,
       disable = false,
     }
@@ -597,7 +600,6 @@ function M.setup()
     use {
       "nvim-treesitter/nvim-treesitter",
       opt = true,
-      event = "BufReadPre",
       run = ":TSUpdate",
       config = function()
         require("config.treesitter").setup()
@@ -697,9 +699,6 @@ function M.setup()
           "AckslD/nvim-neoclip.lua",
           requires = {
             { "tami5/sqlite.lua", module = "sqlite" },
-            -- config = function()
-            --   require("neoclip").setup()
-            -- end,
           },
         },
         "nvim-telescope/telescope-smart-history.nvim",
@@ -839,9 +838,7 @@ function M.setup()
     use {
       "neovim/nvim-lspconfig",
       opt = true,
-      event = { "BufReadPre" },
       wants = {
-        -- "nvim-lsp-installer",
         "mason.nvim",
         "mason-lspconfig.nvim",
         "mason-tool-installer.nvim",
@@ -859,7 +856,6 @@ function M.setup()
         require("config.lsp").setup()
       end,
       requires = {
-        -- "williamboman/nvim-lsp-installer",
         -- { "lvimuser/lsp-inlayhints.nvim", branch = "readme" },
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
@@ -972,17 +968,12 @@ function M.setup()
       opt = true,
       module = "rust-tools",
       ft = { "rust" },
-      -- branch = "modularize_and_inlay_rewrite",
-      -- config = function()
-      --   require("config.rust").setup()
-      -- end,
     }
     use {
       "saecki/crates.nvim",
       event = { "BufRead Cargo.toml" },
       requires = { { "nvim-lua/plenary.nvim" } },
       config = function()
-        -- local null_ls = require "null-ls"
         require("crates").setup {
           null_ls = {
             enabled = true,
@@ -1034,13 +1025,10 @@ function M.setup()
     use {
       "mfussenegger/nvim-dap",
       opt = true,
-      -- event = "BufReadPre",
       keys = { [[<leader>d]] },
       module = { "dap" },
       wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim", "nvim-dap-vscode-js" },
       requires = {
-        -- "alpha2phi/DAPInstall.nvim",
-        -- { "Pocco81/dap-buddy.nvim", branch = "dev" },
         "theHamsta/nvim-dap-virtual-text",
         "rcarriga/nvim-dap-ui",
         "mfussenegger/nvim-dap-python",
@@ -1152,13 +1140,11 @@ function M.setup()
       "mrjones2014/legendary.nvim",
       opt = true,
       keys = { [[<C-p>]] },
-      -- wants = { "dressing.nvim" },
       module = { "legendary" },
       cmd = { "Legendary" },
       config = function()
         require("config.legendary").setup()
       end,
-      -- requires = { "stevearc/dressing.nvim" },
     }
 
     -- Harpoon
@@ -1214,7 +1200,6 @@ function M.setup()
     use {
       "kevinhwang91/nvim-ufo",
       opt = true,
-      -- event = { "BufReadPre" },
       keys = { "zc", "zo", "zR", "zm" },
       wants = { "promise-async" },
       requires = "kevinhwang91/promise-async",
@@ -1415,7 +1400,6 @@ function M.setup()
         "kristijanhusak/vim-dadbod-completion",
         --[[ "abenz1267/nvim-databasehelper", ]]
       },
-      --[[ wants = { "nvim-databasehelper" }, ]]
       config = function()
         require("config.dadbod").setup()
       end,
