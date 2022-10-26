@@ -203,7 +203,6 @@ function M.setup()
     use {
       "lewis6991/gitsigns.nvim",
       event = "BufReadPre",
-      wants = "plenary.nvim",
       requires = { "nvim-lua/plenary.nvim" },
       config = function()
         require("config.gitsigns").setup()
@@ -235,7 +234,6 @@ function M.setup()
     use {
       "pwntester/octo.nvim",
       cmd = "Octo",
-      wants = { "telescope.nvim", "plenary.nvim", "nvim-web-devicons" },
       requires = {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope.nvim",
@@ -264,7 +262,6 @@ function M.setup()
     use {
       "ldelossa/gh.nvim",
       opt = true,
-      wants = { "litee.nvim" },
       requires = { { "ldelossa/litee.nvim" } },
       event = "BufReadPre",
       cmd = { "GHOpenPR" },
@@ -521,7 +518,6 @@ function M.setup()
     }
     use {
       "abecodes/tabout.nvim",
-      wants = { "nvim-treesitter" },
       after = { "nvim-cmp" },
       config = function()
         require("tabout").setup {
@@ -572,7 +568,6 @@ function M.setup()
         }
       end,
       ft = "norg",
-      after = "nvim-treesitter",
       requires = { "nvim-lua/plenary.nvim", "Pocco81/TrueZen.nvim" },
       disable = true,
     }
@@ -589,17 +584,15 @@ function M.setup()
     use {
       "nvim-lualine/lualine.nvim",
       event = "BufReadPre",
-      after = "nvim-treesitter",
       config = function()
         require("config.lualine").setup()
       end,
-      wants = "nvim-web-devicons",
     }
 
     -- Treesitter
     use {
       "nvim-treesitter/nvim-treesitter",
-      opt = true,
+      -- opt = true,
       run = ":TSUpdate",
       config = function()
         require("config.treesitter").setup()
@@ -618,7 +611,7 @@ function M.setup()
         --   end,
         -- },
         { "nvim-treesitter/nvim-treesitter-context", event = "BufReadPre", disable = true },
-        { "mfussenegger/nvim-treehopper", wants = { "hop.nvim" }, module = { "tsht" }, disable = true },
+        { "mfussenegger/nvim-treehopper", module = { "tsht" }, disable = true },
         {
           "m-demare/hlargs.nvim",
           config = function()
@@ -649,31 +642,6 @@ function M.setup()
       cmd = { "Telescope" },
       module = { "telescope", "telescope.builtin" },
       keys = { "<leader>f", "<leader>p", "<leader>z" },
-      wants = {
-        "plenary.nvim",
-        "popup.nvim",
-        "telescope-fzf-native.nvim",
-        "telescope-project.nvim",
-        "telescope-repo.nvim",
-        "telescope-file-browser.nvim",
-        "project.nvim",
-        -- "vim-rooter",
-        "trouble.nvim",
-        "telescope-dap.nvim",
-        "telescope-frecency.nvim",
-        "nvim-neoclip.lua",
-        "telescope-smart-history.nvim",
-        "telescope-arecibo.nvim",
-        "telescope-media-files.nvim",
-        "telescope-github.nvim",
-        "telescope-zoxide",
-        "cder.nvim",
-        "telescope-bookmarks.nvim",
-        "aerial.nvim",
-        "nvim-tree.lua",
-        "harpoon",
-        -- "telescope-ui-select.nvim",
-      },
       requires = {
         "nvim-lua/popup.nvim",
         "nvim-lua/plenary.nvim",
@@ -720,7 +688,6 @@ function M.setup()
     use {
       "kyazdani42/nvim-tree.lua",
       opt = true,
-      wants = "nvim-web-devicons",
       cmd = { "NvimTreeToggle", "NvimTreeClose" },
       -- module = { "nvim-tree", "nvim-tree.actions.root.change-dir" },
       config = function()
@@ -732,7 +699,6 @@ function M.setup()
     use {
       "akinsho/nvim-bufferline.lua",
       event = "BufReadPre",
-      wants = "nvim-web-devicons",
       config = function()
         require("config.bufferline").setup()
       end,
@@ -773,7 +739,6 @@ function M.setup()
       config = function()
         require("config.cmp").setup()
       end,
-      wants = { "LuaSnip", "lspkind-nvim" },
       requires = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
@@ -791,7 +756,6 @@ function M.setup()
         -- "hrsh7th/cmp-emoji",
         {
           "L3MON4D3/LuaSnip",
-          wants = { "friendly-snippets", "vim-snippets" },
           config = function()
             require("config.snip").setup()
           end,
@@ -807,7 +771,6 @@ function M.setup()
       "windwp/nvim-autopairs",
       opt = true,
       event = "InsertEnter",
-      wants = "nvim-treesitter",
       module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" },
       config = function()
         require("config.autopairs").setup()
@@ -818,7 +781,6 @@ function M.setup()
     use {
       "windwp/nvim-ts-autotag",
       opt = true,
-      wants = "nvim-treesitter",
       event = "InsertEnter",
       config = function()
         require("nvim-ts-autotag").setup { enable = true }
@@ -829,7 +791,6 @@ function M.setup()
     use {
       "RRethy/nvim-treesitter-endwise",
       opt = true,
-      wants = "nvim-treesitter",
       event = "InsertEnter",
       disable = false,
     }
@@ -837,21 +798,6 @@ function M.setup()
     -- LSP
     use {
       "neovim/nvim-lspconfig",
-      opt = true,
-      wants = {
-        "mason.nvim",
-        "mason-lspconfig.nvim",
-        "mason-tool-installer.nvim",
-        "cmp-nvim-lsp",
-        "neodev.nvim",
-        "vim-illuminate",
-        "null-ls.nvim",
-        "schemastore.nvim",
-        "typescript.nvim",
-        "nvim-navic",
-        "inlay-hints.nvim",
-        -- "goto-preview",
-      },
       config = function()
         require("config.lsp").setup()
       end,
@@ -934,7 +880,6 @@ function M.setup()
     -- trouble.nvim
     use {
       "folke/trouble.nvim",
-      wants = "nvim-web-devicons",
       cmd = { "TroubleToggle", "Trouble" },
       config = function()
         require("trouble").setup {
@@ -1063,18 +1008,18 @@ function M.setup()
     use {
       "nvim-neotest/neotest",
       opt = true,
-      wants = {
-        "plenary.nvim",
-        "nvim-treesitter",
-        "neotest-python",
-        "neotest-plenary",
-        "neotest-go",
-        "neotest-jest",
-        "neotest-vim-test",
-        "neotest-rust",
-        "vim-test",
-        "overseer.nvim",
-      },
+      -- wants = {
+      --   "plenary.nvim",
+      --   "nvim-treesitter",
+      --   "neotest-python",
+      --   "neotest-plenary",
+      --   "neotest-go",
+      --   "neotest-jest",
+      --   "neotest-vim-test",
+      --   "neotest-rust",
+      --   "vim-test",
+      --   "overseer.nvim",
+      -- },
       requires = {
         "vim-test/vim-test",
         "nvim-lua/plenary.nvim",
@@ -1152,7 +1097,6 @@ function M.setup()
       "ThePrimeagen/harpoon",
       keys = { [[<leader>j]] },
       module = { "harpoon", "harpoon.cmd-ui", "harpoon.mark", "harpoon.ui", "harpoon.term" },
-      wants = { "telescope.nvim" },
       config = function()
         require("config.harpoon").setup()
       end,
@@ -1163,7 +1107,6 @@ function M.setup()
       "ThePrimeagen/refactoring.nvim",
       module = { "refactoring", "telescope" },
       keys = { [[<leader>r]] },
-      wants = { "telescope.nvim" },
       config = function()
         require("config.refactoring").setup()
       end,
@@ -1205,7 +1148,7 @@ function M.setup()
       requires = "kevinhwang91/promise-async",
       config = function()
         require("ufo").setup {
-          provider_selector = function(bufnr, filetype)
+          provider_selector = function(_, _)
             return { "lsp", "treesitter", "indent" }
           end,
         }
@@ -1231,7 +1174,6 @@ function M.setup()
       requires = {
         "MunifTanjim/nui.nvim",
       },
-      wants = { "nui.nvim" },
       module = { "package-info" },
       ft = { "json" },
       config = function()
@@ -1252,7 +1194,6 @@ function M.setup()
       opt = true,
       cmd = { "SaveSession", "RestoreSession" },
       requires = { "rmagatti/session-lens" },
-      wants = { "telescope.nvim", "session-lens" },
       config = function()
         require("bad_practices").setup()
       end,
