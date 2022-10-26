@@ -972,7 +972,6 @@ function M.setup()
       opt = true,
       keys = { [[<leader>d]] },
       module = { "dap" },
-      wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim", "nvim-dap-vscode-js" },
       requires = {
         "theHamsta/nvim-dap-virtual-text",
         "rcarriga/nvim-dap-ui",
@@ -1008,18 +1007,6 @@ function M.setup()
     use {
       "nvim-neotest/neotest",
       opt = true,
-      -- wants = {
-      --   "plenary.nvim",
-      --   "nvim-treesitter",
-      --   "neotest-python",
-      --   "neotest-plenary",
-      --   "neotest-go",
-      --   "neotest-jest",
-      --   "neotest-vim-test",
-      --   "neotest-rust",
-      --   "vim-test",
-      --   "overseer.nvim",
-      -- },
       requires = {
         "vim-test/vim-test",
         "nvim-lua/plenary.nvim",
@@ -1308,6 +1295,7 @@ function M.setup()
     use {
       "stevearc/overseer.nvim",
       opt = true,
+      module = { "neotest.consumers.overseer" },
       cmd = {
         "OverseerToggle",
         "OverseerOpen",
