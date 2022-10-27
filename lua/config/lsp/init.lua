@@ -195,9 +195,6 @@ function M.on_attach(client, bufnr)
   end
 
   if client.name ~= "null-ls" then
-    -- aerial.nvim
-    require("aerial").on_attach(client, bufnr)
-
     -- inlay-hints
     local ih = require "inlay-hints"
     ih.on_attach(client, bufnr)

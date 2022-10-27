@@ -650,12 +650,6 @@ function M.setup()
         "cljoly/telescope-repo.nvim",
         "nvim-telescope/telescope-file-browser.nvim",
         { "nvim-telescope/telescope-frecency.nvim", requires = "tami5/sqlite.lua" },
-        -- {
-        --   "airblade/vim-rooter",
-        --   config = function()
-        --     require("config.rooter").setup()
-        --   end,
-        -- },
         {
           "ahmedkhalf/project.nvim",
           config = function()
@@ -689,7 +683,6 @@ function M.setup()
       "kyazdani42/nvim-tree.lua",
       opt = true,
       cmd = { "NvimTreeToggle", "NvimTreeClose" },
-      -- module = { "nvim-tree", "nvim-tree.actions.root.change-dir" },
       config = function()
         require("config.nvimtree").setup()
       end,
@@ -1262,7 +1255,13 @@ function M.setup()
     use {
       "stevearc/aerial.nvim",
       config = function()
-        require("aerial").setup()
+        require("aerial").setup {
+          backends = { "treesitter", "lsp" },
+          on_attach = function(bufnr)
+            vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+            vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+          end,
+        }
       end,
       module = { "aerial" },
       cmd = { "AerialToggle" },
