@@ -637,59 +637,47 @@ function M.setup()
 
     use {
       "nvim-telescope/telescope.nvim",
-      opt = true,
+      event = { "VimEnter" },
       config = function()
-        require("config.telescope_").setup()
+        require("config.telescope").setup()
       end,
-      module = {
-        "telescope.actions",
-        "telescope.actions.mt",
-        "telescope.builtin",
-        "telescope._extensions",
-      },
       requires = {
         "nvim-lua/popup.nvim",
         "nvim-lua/plenary.nvim",
         {
           "nvim-telescope/telescope-fzf-native.nvim",
           run = "make",
-
-          module = { "telescope._extensions.fzf" },
         },
-        { "nvim-telescope/telescope-project.nvim", module = { "telescope._extensions.project" } },
-        { "cljoly/telescope-repo.nvim", module = { "telescope._extensions.repo" } },
-        { "nvim-telescope/telescope-file-browser.nvim", module = { "telescope._extensions.file_browser" } },
+        { "nvim-telescope/telescope-project.nvim" },
+        { "cljoly/telescope-repo.nvim" },
+        { "nvim-telescope/telescope-file-browser.nvim" },
         {
           "nvim-telescope/telescope-frecency.nvim",
           requires = "tami5/sqlite.lua",
-          module = { "telescope._extensions.frecency" },
         },
         {
           "ahmedkhalf/project.nvim",
           config = function()
             require("config.project").setup()
           end,
-          module = { "telescope._extensions.projects" },
         },
-        { "nvim-telescope/telescope-dap.nvim", module = { "telescope._extensions.dap" } },
+        { "nvim-telescope/telescope-dap.nvim" },
         {
           "AckslD/nvim-neoclip.lua",
-          module = { "neoclip" },
           requires = {
             { "tami5/sqlite.lua", module = "sqlite" },
           },
         },
-        { "nvim-telescope/telescope-smart-history.nvim", module = { "telescope._extensions.smart_history" } },
+        { "nvim-telescope/telescope-smart-history.nvim" },
         {
           "alpha2phi/telescope-arecibo.nvim",
-          module = { "telescope._extensions.arecibo" },
           rocks = { "openssl", "lua-http-parser" },
         },
-        { "nvim-telescope/telescope-media-files.nvim", module = { "telescope._extensions.media_files" } },
-        { "dhruvmanila/telescope-bookmarks.nvim", module = { "telescope._extensions.bookmarks" } },
-        { "nvim-telescope/telescope-github.nvim", module = { "telescope._extensions.gh" } },
-        { "jvgrootveld/telescope-zoxide", module = { "telescope._extensions.zoxide" } },
-        { "Zane-/cder.nvim", module = { "telescope._extensions.cder" } },
+        { "nvim-telescope/telescope-media-files.nvim" },
+        { "dhruvmanila/telescope-bookmarks.nvim" },
+        { "nvim-telescope/telescope-github.nvim" },
+        { "jvgrootveld/telescope-zoxide" },
+        { "Zane-/cder.nvim" },
         "nvim-telescope/telescope-symbols.nvim",
         -- "nvim-telescope/telescope-ui-select.nvim",
       },
@@ -826,8 +814,8 @@ function M.setup()
             require("fidget").setup {}
           end,
         },
-        "b0o/schemastore.nvim",
-        "jose-elias-alvarez/typescript.nvim",
+        { "b0o/schemastore.nvim", module = { "schemastore" } },
+        { "jose-elias-alvarez/typescript.nvim", module = { "typescript" } },
         {
           "SmiteshP/nvim-navic",
           -- "alpha2phi/nvim-navic",
@@ -1021,21 +1009,14 @@ function M.setup()
       requires = {
         {
           "vim-test/vim-test",
-          cmd = {
-            "TestNearest",
-            "TestFile",
-            "TestSuite",
-            "TestLast",
-            "TestVisit",
-          },
-          module = { "neotest", "neotest.async" },
+          event = { "BufReadPre" },
         },
         "nvim-lua/plenary.nvim",
         "nvim-treesitter/nvim-treesitter",
         { "nvim-neotest/neotest-vim-test", module = { "neotest-vim-test" } },
         { "nvim-neotest/neotest-python", module = { "neotest-python" } },
         { "nvim-neotest/neotest-plenary", module = { "neotest-plenary" } },
-        { "nvim-neotest/neotest-go", modlule = { "neotest-go" } },
+        { "nvim-neotest/neotest-go", module = { "neotest-go" } },
         { "haydenmeade/neotest-jest", module = { "neotest-jest" } },
         { "rouge8/neotest-rust", module = { "neotest-rust" } },
       },
