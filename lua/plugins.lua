@@ -641,7 +641,7 @@ function M.setup()
         require("config.telescope").setup()
       end,
       module = {
-        "telescope",
+        -- "telescope",
         "telescope.actions",
         "telescope.actions.mt",
         "telescope.builtin",
@@ -685,7 +685,7 @@ function M.setup()
           module = { "telescope._extensions.arecibo" },
           rocks = { "openssl", "lua-http-parser" },
         },
-        "nvim-telescope/telescope-media-files.nvim",
+        { "nvim-telescope/telescope-media-files.nvim", module = { "telescope._extensions.media_files" } },
         { "dhruvmanila/telescope-bookmarks.nvim", module = { "telescope._extensions.bookmarks" } },
         { "nvim-telescope/telescope-github.nvim", module = { "telescope._extensions.gh" } },
         { "jvgrootveld/telescope-zoxide", module = { "telescope._extensions.zoxide" } },
@@ -1019,52 +1019,31 @@ function M.setup()
       "nvim-neotest/neotest",
       opt = true,
       requires = {
-        "vim-test/vim-test",
+        {
+          "vim-test/vim-test",
+          cmd = {
+            "TestNearest",
+            "TestFile",
+            "TestSuite",
+            "TestLast",
+            "TestVisit",
+          },
+        },
         "nvim-lua/plenary.nvim",
         "nvim-treesitter/nvim-treesitter",
-        "nvim-neotest/neotest-python",
-        "nvim-neotest/neotest-plenary",
-        "nvim-neotest/neotest-go",
-        "haydenmeade/neotest-jest",
-        "nvim-neotest/neotest-vim-test",
-        "rouge8/neotest-rust",
+        { "nvim-neotest/neotest-vim-test", module = { "neotest-vim-test" } },
+        { "nvim-neotest/neotest-python", module = { "neotest-python" } },
+        { "nvim-neotest/neotest-plenary", module = { "neotest-plenary" } },
+        { "nvim-neotest/neotest-go", modlule = { "neotest-go" } },
+        { "haydenmeade/neotest-jest", module = { "neotest-jest" } },
+        { "rouge8/neotest-rust", module = { "neotest-rust" } },
       },
-      module = { "neotest", "neotest.async" },
-      cmd = {
-        "TestNearest",
-        "TestFile",
-        "TestSuite",
-        "TestLast",
-        "TestVisit",
-      },
+      -- module = { "neotest", "neotest.async" },
       config = function()
         require("config.neotest").setup()
       end,
       disable = false,
     }
-    -- use {
-    --   "rcarriga/vim-ultest",
-    --   requires = { "vim-test/vim-test" },
-    --   opt = true,
-    --   keys = { "<leader>t" },
-    --   cmd = {
-    --     "TestNearest",
-    --     "TestFile",
-    --     "TestSuite",
-    --     "TestLast",
-    --     "TestVisit",
-    --     "Ultest",
-    --     "UltestNearest",
-    --     "UltestDebug",
-    --     "UltestLast",
-    --     "UltestSummary",
-    --   },
-    --   module = "ultest",
-    --   run = ":UpdateRemotePlugins",
-    --   config = function()
-    --     require("config.test").setup()
-    --   end,
-    -- }
     use { "diepm/vim-rest-console", ft = { "rest" }, disable = false }
     use {
       "NTBBloodbath/rest.nvim",
