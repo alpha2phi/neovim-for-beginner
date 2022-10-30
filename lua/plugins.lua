@@ -639,7 +639,7 @@ function M.setup()
       "nvim-telescope/telescope.nvim",
       opt = true,
       config = function()
-        require("config.telescope").setup()
+        require("config.telescope_").setup()
       end,
       module = {
         "telescope.actions",
