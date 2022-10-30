@@ -590,7 +590,6 @@ function M.setup()
     -- Treesitter
     use {
       "nvim-treesitter/nvim-treesitter",
-      -- opt = true,
       run = ":TSUpdate",
       config = function()
         require("config.treesitter").setup()
