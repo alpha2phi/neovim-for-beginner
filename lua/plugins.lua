@@ -1005,7 +1005,6 @@ function M.setup()
     -- Test
     use {
       "nvim-neotest/neotest",
-      opt = true,
       requires = {
         {
           "vim-test/vim-test",
