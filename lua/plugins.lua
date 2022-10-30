@@ -682,10 +682,11 @@ function M.setup()
         "nvim-telescope/telescope-smart-history.nvim",
         {
           "alpha2phi/telescope-arecibo.nvim",
+          module = { "telescope._extensions.arecibo" },
           rocks = { "openssl", "lua-http-parser" },
         },
         "nvim-telescope/telescope-media-files.nvim",
-        "dhruvmanila/telescope-bookmarks.nvim",
+        { "dhruvmanila/telescope-bookmarks.nvim", module = { "telescope._extensions.bookmarks" } },
         { "nvim-telescope/telescope-github.nvim", module = { "telescope._extensions.gh" } },
         { "jvgrootveld/telescope-zoxide", module = { "telescope._extensions.zoxide" } },
         "Zane-/cder.nvim",
