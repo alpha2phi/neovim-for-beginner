@@ -637,11 +637,11 @@ function M.setup()
 
     use {
       "nvim-telescope/telescope.nvim",
+      opt = true,
       config = function()
         require("config.telescope").setup()
       end,
       module = {
-        -- "telescope",
         "telescope.actions",
         "telescope.actions.mt",
         "telescope.builtin",
@@ -679,7 +679,7 @@ function M.setup()
             { "tami5/sqlite.lua", module = "sqlite" },
           },
         },
-        "nvim-telescope/telescope-smart-history.nvim",
+        { "nvim-telescope/telescope-smart-history.nvim", module = { "telescope._extensions.smart_history" } },
         {
           "alpha2phi/telescope-arecibo.nvim",
           module = { "telescope._extensions.arecibo" },
@@ -689,7 +689,7 @@ function M.setup()
         { "dhruvmanila/telescope-bookmarks.nvim", module = { "telescope._extensions.bookmarks" } },
         { "nvim-telescope/telescope-github.nvim", module = { "telescope._extensions.gh" } },
         { "jvgrootveld/telescope-zoxide", module = { "telescope._extensions.zoxide" } },
-        "Zane-/cder.nvim",
+        { "Zane-/cder.nvim", module = { "telescope._extensions.cder" } },
         "nvim-telescope/telescope-symbols.nvim",
         -- "nvim-telescope/telescope-ui-select.nvim",
       },
@@ -1028,6 +1028,7 @@ function M.setup()
             "TestLast",
             "TestVisit",
           },
+          module = { "neotest", "neotest.async" },
         },
         "nvim-lua/plenary.nvim",
         "nvim-treesitter/nvim-treesitter",
@@ -1038,7 +1039,7 @@ function M.setup()
         { "haydenmeade/neotest-jest", module = { "neotest-jest" } },
         { "rouge8/neotest-rust", module = { "neotest-rust" } },
       },
-      -- module = { "neotest", "neotest.async" },
+      module = { "neotest", "neotest.async" },
       config = function()
         require("config.neotest").setup()
       end,
