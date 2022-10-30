@@ -135,10 +135,12 @@ function M.setup()
       ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
       ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
       ["<C-e>"] = cmp.mapping {
-        i = function(_)
+        i = function(fallback)
           cmp.mapping.close()
           if luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
+          else
+            fallback()
           end
         end,
         c = cmp.mapping.close(),

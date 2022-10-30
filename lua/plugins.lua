@@ -463,16 +463,14 @@ function M.setup()
         require("config.mini").setup()
       end,
     }
+    use { "MunifTanjim/nui.nvim" }
     use {
       "folke/noice.nvim",
+      event = { "VimEnter" },
       config = function()
         require("noice").setup()
       end,
-      requires = {
-        { "MunifTanjim/nui.nvim", module = { "nui.object" } },
-        "rcarriga/nvim-notify",
-      },
-      disable = true,
+      disable = false,
     }
 
     -- Code documentation
