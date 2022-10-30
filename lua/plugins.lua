@@ -195,6 +195,7 @@ function M.setup()
     use {
       "TimUntersberger/neogit",
       cmd = "Neogit",
+      module = { "neogit" },
       config = function()
         require("config.neogit").setup()
       end,
@@ -295,6 +296,7 @@ function M.setup()
     use {
       "folke/which-key.nvim",
       event = "VimEnter",
+      module = { "which-key" },
       -- keys = { [[<leader>]] },
       config = function()
         require("config.whichkey").setup()
@@ -635,30 +637,44 @@ function M.setup()
 
     use {
       "nvim-telescope/telescope.nvim",
-      opt = true,
       config = function()
         require("config.telescope").setup()
       end,
-      cmd = { "Telescope" },
-      module = { "telescope", "telescope.builtin" },
-      keys = { "<leader>f", "<leader>p", "<leader>z" },
+      module = {
+        "telescope",
+        "telescope.actions",
+        "telescope.actions.mt",
+        "telescope.builtin",
+        "telescope._extensions",
+      },
       requires = {
         "nvim-lua/popup.nvim",
         "nvim-lua/plenary.nvim",
-        { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-        "nvim-telescope/telescope-project.nvim",
-        "cljoly/telescope-repo.nvim",
-        "nvim-telescope/telescope-file-browser.nvim",
-        { "nvim-telescope/telescope-frecency.nvim", requires = "tami5/sqlite.lua" },
+        {
+          "nvim-telescope/telescope-fzf-native.nvim",
+          run = "make",
+
+          module = { "telescope._extensions.fzf" },
+        },
+        { "nvim-telescope/telescope-project.nvim", module = { "telescope._extensions.project" } },
+        { "cljoly/telescope-repo.nvim", module = { "telescope._extensions.repo" } },
+        { "nvim-telescope/telescope-file-browser.nvim", module = { "telescope._extensions.file_browser" } },
+        {
+          "nvim-telescope/telescope-frecency.nvim",
+          requires = "tami5/sqlite.lua",
+          module = { "telescope._extensions.frecency" },
+        },
         {
           "ahmedkhalf/project.nvim",
           config = function()
             require("config.project").setup()
           end,
+          module = { "telescope._extensions.projects" },
         },
-        "nvim-telescope/telescope-dap.nvim",
+        { "nvim-telescope/telescope-dap.nvim", module = { "telescope._extensions.dap" } },
         {
           "AckslD/nvim-neoclip.lua",
+          module = { "neoclip" },
           requires = {
             { "tami5/sqlite.lua", module = "sqlite" },
           },
@@ -670,8 +686,8 @@ function M.setup()
         },
         "nvim-telescope/telescope-media-files.nvim",
         "dhruvmanila/telescope-bookmarks.nvim",
-        "nvim-telescope/telescope-github.nvim",
-        "jvgrootveld/telescope-zoxide",
+        { "nvim-telescope/telescope-github.nvim", module = { "telescope._extensions.gh" } },
+        { "jvgrootveld/telescope-zoxide", module = { "telescope._extensions.zoxide" } },
         "Zane-/cder.nvim",
         "nvim-telescope/telescope-symbols.nvim",
         -- "nvim-telescope/telescope-ui-select.nvim",
@@ -739,11 +755,11 @@ function M.setup()
         "ray-x/cmp-treesitter",
         "hrsh7th/cmp-cmdline",
         "saadparwaiz1/cmp_luasnip",
-        "hrsh7th/cmp-nvim-lsp",
+        { "hrsh7th/cmp-nvim-lsp", module = { "cmp_nvim_lsp" } },
         "hrsh7th/cmp-nvim-lsp-signature-help",
         "lukas-reineke/cmp-rg",
         "davidsierradz/cmp-conventionalcommits",
-        "onsails/lspkind-nvim",
+        { "onsails/lspkind-nvim", module = { "lspkind" } },
         -- "hrsh7th/cmp-calc",
         -- "f3fora/cmp-spell",
         -- "hrsh7th/cmp-emoji",
@@ -752,6 +768,7 @@ function M.setup()
           config = function()
             require("config.snip").setup()
           end,
+          module = { "luasnip" },
         },
         "rafamadriz/friendly-snippets",
         "honza/vim-snippets",
@@ -874,6 +891,7 @@ function M.setup()
     use {
       "folke/trouble.nvim",
       cmd = { "TroubleToggle", "Trouble" },
+      module = { "trouble.providers.telescope" },
       config = function()
         require("trouble").setup {
           use_diagnostic_signs = true,
@@ -963,16 +981,15 @@ function M.setup()
     use {
       "mfussenegger/nvim-dap",
       opt = true,
-      keys = { [[<leader>d]] },
       module = { "dap" },
       requires = {
-        "theHamsta/nvim-dap-virtual-text",
-        "rcarriga/nvim-dap-ui",
-        "mfussenegger/nvim-dap-python",
+        { "theHamsta/nvim-dap-virtual-text", module = { "nvim-dap-virtual-text" } },
+        { "rcarriga/nvim-dap-ui", module = { "dapui" } },
+        { "mfussenegger/nvim-dap-python", module = { "dap-python" } },
         "nvim-telescope/telescope-dap.nvim",
         { "leoluz/nvim-dap-go", module = "dap-go" },
         { "jbyuki/one-small-step-for-vimkind", module = "osv" },
-        { "mxsdev/nvim-dap-vscode-js" },
+        { "mxsdev/nvim-dap-vscode-js", module = { "dap-vscode-js" } },
         {
           "microsoft/vscode-js-debug",
           opt = true,
@@ -1075,8 +1092,14 @@ function M.setup()
     -- Harpoon
     use {
       "ThePrimeagen/harpoon",
-      keys = { [[<leader>j]] },
-      module = { "harpoon", "harpoon.cmd-ui", "harpoon.mark", "harpoon.ui", "harpoon.term" },
+      module = {
+        "harpoon",
+        "harpoon.cmd-ui",
+        "harpoon.mark",
+        "harpoon.ui",
+        "harpoon.term",
+        "telescope._extensions.harpoon",
+      },
       config = function()
         require("config.harpoon").setup()
       end,
@@ -1263,7 +1286,7 @@ function M.setup()
           end,
         }
       end,
-      module = { "aerial" },
+      module = { "aerial", "telescope._extensions.aerial" },
       cmd = { "AerialToggle" },
     }
 
