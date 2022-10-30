@@ -86,19 +86,6 @@ function M.setup()
       end,
       disable = true,
     }
-    use {
-      "folke/noice.nvim",
-      event = "VimEnter",
-      config = function()
-        require("noice").setup()
-      end,
-      requires = {
-        "MunifTanjim/nui.nvim",
-        "rcarriga/nvim-notify",
-        "hrsh7th/nvim-cmp",
-      },
-      disable = true,
-    }
 
     -- Colorscheme
     use {
@@ -469,7 +456,6 @@ function M.setup()
       end,
       disable = false,
     }
-
     use {
       "echasnovski/mini.nvim",
       event = { "BufReadPre" },
@@ -477,6 +463,18 @@ function M.setup()
         require("config.mini").setup()
       end,
     }
+    use {
+      "folke/noice.nvim",
+      config = function()
+        require("noice").setup()
+      end,
+      requires = {
+        { "MunifTanjim/nui.nvim", module = { "nui.object" } },
+        "rcarriga/nvim-notify",
+      },
+      disable = true,
+    }
+
     -- Code documentation
     use {
       "danymat/neogen",
