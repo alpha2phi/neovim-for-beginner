@@ -463,14 +463,14 @@ function M.setup()
         require("config.mini").setup()
       end,
     }
-    use { "MunifTanjim/nui.nvim" }
+    use { "MunifTanjim/nui.nvim", disable = true }
     use {
       "folke/noice.nvim",
       event = { "VimEnter" },
       config = function()
         require("noice").setup()
       end,
-      disable = false,
+      disable = true,
     }
 
     -- Code documentation
