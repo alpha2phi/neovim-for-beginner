@@ -435,7 +435,7 @@ function M.setup()
       config = function()
         require("focus").setup { hybridnumber = true }
       end,
-      disable = false,
+      disable = true,
     }
     use {
       "smjonas/live-command.nvim",
@@ -454,7 +454,7 @@ function M.setup()
           },
         }
       end,
-      disable = false,
+      disable = true,
     }
     use {
       "echasnovski/mini.nvim",
