@@ -468,7 +468,7 @@ function M.setup()
       "folke/noice.nvim",
       event = { "VimEnter" },
       config = function()
-        require("noice").setup()
+        require("config.noice").setup()
       end,
       disable = true,
     }

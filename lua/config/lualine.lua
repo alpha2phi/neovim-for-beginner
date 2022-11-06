@@ -178,7 +178,13 @@ function M.setup()
         -- },
       },
       lualine_x = { "filename", { tab_stop }, "encoding", "fileformat", "filetype", "progress" },
-      lualine_y = {},
+      lualine_y = {
+        -- {
+        --   require("noice").api.status.command.get,
+        --   cond = require("noice").api.status.command.has,
+        --   color = { fg = "#ff9e64" },
+        -- },
+      },
       lualine_z = { "location" },
     },
     inactive_sections = {
