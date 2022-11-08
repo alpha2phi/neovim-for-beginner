@@ -9,11 +9,8 @@ local function get_modified()
   local extension = vim.fn.expand "%:e"
 
   if file_name then
-    local file_icon, file_icon_color = require("nvim-web-devicons").get_icon_color(
-      file_name,
-      extension,
-      { default = true }
-    )
+    local file_icon, file_icon_color =
+      require("nvim-web-devicons").get_icon_color(file_name, extension, { default = true })
     local hl_group = "FileIconColor" .. extension
     vim.api.nvim_set_hl(0, hl_group, { fg = file_icon_color })
     if not file_icon then
@@ -36,6 +33,24 @@ local function get_location()
   return ""
 end
 
+local function get_context(ctx)
+  -- return ctx.icon .. " " .. ctx.name
+  return "hello"
+end
+
+function M.get_clickable_location(components)
+  local data = navic.get_data() or {}
+  vim.pretty_print(data)
+  for _, d in ipairs(data) do
+    table.insert(components, {
+      function()
+        return get_context(d)
+      end,
+    })
+  end
+  return components
+end
+
 function M.get_winbar()
   if navic.is_available() then
     return get_modified() .. get_location()
@@ -43,5 +58,7 @@ function M.get_winbar()
     return get_modified()
   end
 end
+
+-- vim.pretty_print(M.get_clickable_location())
 
 return M
