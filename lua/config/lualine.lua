@@ -145,7 +145,6 @@ local config = {
       },
       { separator },
       { lsp_client, icon = icons.ui.Gear, color = { fg = colors.violet, gui = "bold" } },
-      -- { lsp_progress },
     },
     lualine_x = { "filename", { tab_stop }, "encoding", "fileformat", "filetype", "progress" },
     lualine_y = {},
@@ -176,8 +175,15 @@ local config = {
     },
     lualine_b = {},
     lualine_c = {},
-    lualine_x = { winbar.get_winbar },
-    -- lualine_x = {},
+    lualine_x = {
+      {
+        winbar.get_winbar,
+        color = { fg = colors.violet, gui = "bold" },
+        -- on_click = function(minwid, clicks, button, mods)
+        --   print(minwid, clicks, button, mods)
+        -- end,
+      },
+    },
     lualine_y = {},
     lualine_z = {},
   },
@@ -191,8 +197,6 @@ local config = {
   },
   extensions = { "nvim-tree", "toggleterm", "quickfix" },
 }
-
--- winbar.get_clickable_location(config.winbar.lualine_x)
 
 function M.setup()
   lualine.setup(config)
