@@ -26,6 +26,11 @@ local function tab_stop()
   return icons.ui.Tab .. " " .. vim.bo.shiftwidth
 end
 
+-- local function loclist_open()
+--   local wininfo = vim.fn.getwininfo(vim.api.nvim_get_current_win())
+--   return wininfo[1].loclist == 1
+-- end
+
 local function show_macro_recording()
   local rec_reg = vim.fn.reg_recording()
   if rec_reg == "" then
@@ -171,6 +176,9 @@ local config = {
           hint = "DiagnosticHint",
         },
         colored = true,
+        on_click = function()
+          vim.diagnostic.setloclist()
+        end,
       },
     },
     lualine_b = {},
@@ -179,9 +187,6 @@ local config = {
       {
         winbar.get_winbar,
         color = { fg = colors.violet, gui = "bold" },
-        -- on_click = function(minwid, clicks, button, mods)
-        --   print(minwid, clicks, button, mods)
-        -- end,
       },
     },
     lualine_y = {},
