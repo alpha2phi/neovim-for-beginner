@@ -38,6 +38,7 @@ local icons = require "config.icons"
 
 function M.setup()
   local actions = require "telescope.actions"
+  local actions_layout = require "telescope.actions.layout"
   local telescope = require "telescope"
 
   -- Custom previewer
@@ -85,6 +86,7 @@ function M.setup()
           ["<C-n>"] = actions.cycle_history_next,
           ["<C-p>"] = actions.cycle_history_prev,
           ["<c-z>"] = trouble.open_with_trouble,
+          ["?"] = actions_layout.toggle_preview,
         },
       },
       history = {
@@ -98,6 +100,7 @@ function M.setup()
     pickers = {
       find_files = {
         theme = "ivy",
+        previewer = false,
         mappings = {
           n = {
             ["y"] = nvb_actions.file_path,
@@ -113,6 +116,7 @@ function M.setup()
       },
       git_files = {
         theme = "dropdown",
+        previewer = false,
         mappings = {
           n = {
             ["y"] = nvb_actions.file_path,
@@ -126,6 +130,7 @@ function M.setup()
       },
       buffers = {
         theme = "dropdown",
+        previewer = false,
         mappings = {
           n = {
             ["y"] = nvb_actions.file_path,
