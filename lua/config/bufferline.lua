@@ -11,6 +11,7 @@ function M.setup()
       show_buffer_close_icons = false,
       show_close_icon = false,
       color_icons = true,
+      enforce_regular_tabs = false,
       custom_filter = function(buf_number, buf_numbers)
         local tab_num = 0
         for _ in pairs(vim.api.nvim_list_tabpages()) do
