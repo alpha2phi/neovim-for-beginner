@@ -149,7 +149,14 @@ local config = {
         fmt = show_macro_recording,
       },
       { separator },
-      { lsp_client, icon = icons.ui.Gear, color = { fg = colors.violet, gui = "bold" } },
+      {
+        lsp_client,
+        icon = icons.ui.Gear,
+        color = { fg = colors.violet, gui = "bold" },
+        on_click = function()
+          vim.cmd [[LspInfo]]
+        end,
+      },
     },
     lualine_x = { "filename", { tab_stop }, "encoding", "fileformat", "filetype", "progress" },
     lualine_y = {},
