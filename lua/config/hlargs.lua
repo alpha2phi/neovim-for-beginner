@@ -21,7 +21,7 @@ function M.setup()
       { fg = "#EEF06D" },
       { fg = "#8FB272" },
     },
-    excluded_filetypes = { "lua", "rust", "typescript", "typescriptreact", "javascript", "javascriptreact" },
+    excluded_filetypes = { "rust", "typescript", "typescriptreact", "javascript", "javascriptreact" },
   }
 end
 
