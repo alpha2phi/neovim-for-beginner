@@ -10,20 +10,18 @@ function M.setup()
         local en = node.range["end"]
         if button == "l" then
           if clicks == 2 then
-            -- double left click to do nothing
-          else -- jump to node's starting line+char
+            -- middle click to visual select node
+            vim.fn.cursor(st.line + 1, st.character + 1)
+            vim.cmd "normal V"
+            vim.fn.cursor(en.line + 1, en.character + 1)
+          else
+            -- jump to node's starting line+char
             vim.fn.cursor(st.line + 1, st.character + 1)
           end
         elseif button == "r" then
-          if modifiers == "s" then
-            print "lspsaga" -- shift right click to print "lspsaga"
-          end -- jump to node's ending line+char
-          vim.fn.cursor(en.line + 1, en.character + 1)
+          print "do nothing"
         elseif button == "m" then
-          -- middle click to visual select node
-          vim.fn.cursor(st.line + 1, st.character + 1)
-          vim.cmd "normal v"
-          vim.fn.cursor(en.line + 1, en.character + 1)
+          print "do nothing"
         end
       end,
     },
@@ -69,8 +67,9 @@ function M.setup()
         win_val = win_val .. sym
       end
       vim.wo.winbar = win_val
+
       -- if work in statusline
-      vim.wo.stl = win_val
+      -- vim.wo.stl = win_val
     end
   end
 
