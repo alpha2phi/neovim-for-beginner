@@ -128,6 +128,7 @@ local servers = {
   dockerls = {},
   -- graphql = {},
   bashls = {},
+  taplo = {},
   -- omnisharp = {},
   -- kotlin_language_server = {},
   -- emmet_ls = {},
