@@ -886,9 +886,9 @@ function M.setup()
     -- lspsaga.nvim
     use {
       "glepnir/lspsaga.nvim",
-      cmd = { "Lspsaga" },
+      event = { "BufReadPre" },
       config = function()
-        require("lspsaga").init_lsp_saga()
+        require("config.lspsaga").setup()
       end,
     }
 

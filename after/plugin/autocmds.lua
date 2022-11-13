@@ -41,6 +41,7 @@ api.nvim_create_autocmd("FileType", {
     "neotest-summary",
     "query",
     "tsplayground",
+    "neotest-output",
   },
   command = [[nnoremap <buffer><silent> q :close<CR>]],
 })
