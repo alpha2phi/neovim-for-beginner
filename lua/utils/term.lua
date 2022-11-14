@@ -81,7 +81,7 @@ local interactive_cheatsheet = Terminal:new {
   float_opts = {
     border = "double",
   },
-  close_on_exit = true,
+  close_on_exit = false,
 }
 
 function M.git_client_toggle()
