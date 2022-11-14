@@ -6,7 +6,7 @@ local Terminal = require("toggleterm.terminal").Terminal
 local git_tui = "lazygit"
 -- local git_tui = "gitui"
 
--- DOcker
+-- Docker
 local docker_tui = "lazydocker"
 
 -- Committizen

@@ -258,6 +258,7 @@ local function normal_keymap()
       -- x = { "<cmd>set autochdir<cr>", "Auto ChDir" },
       x = { "<cmd>Telescope cder<cr>", "Change Directory" },
       e = { "!!$SHELL<CR>", "Execute line" },
+      o = { "<cmd>lua require('utils.term').docker_client_toggle()<CR>", "Docker" },
       W = { "<cmd>lua require('utils.session').toggle_session()<cr>", "Toggle Workspace Saving" },
       w = { "<cmd>lua require('utils.session').list_session()<cr>", "Restore Workspace" },
       z = { "<cmd>lua require'telescope'.extensions.zoxide.list{}<cr>", "Zoxide" },

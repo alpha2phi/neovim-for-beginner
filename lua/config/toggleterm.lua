@@ -11,6 +11,12 @@ function M.setup()
     start_in_insert = true,
     persist_size = true,
     direction = "horizontal",
+    winbar = {
+      enabled = false,
+      name_formatter = function(term)
+        return term.name
+      end,
+    },
   }
 end
 
