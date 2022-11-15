@@ -7,7 +7,13 @@ local git_tui = "lazygit"
 -- local git_tui = "gitui"
 
 -- Docker
-local docker_tui = "lazydocker"
+local docker_lazydocker = "lazydocker"
+
+-- Docker ctop
+local docker_ctop = "ctop"
+
+-- Docker dockly
+local docker_dockly = "dockly"
 
 -- Committizen
 local git_cz = "git cz"
@@ -32,7 +38,27 @@ local git_client = Terminal:new {
 }
 
 local docker_client = Terminal:new {
-  cmd = docker_tui,
+  cmd = docker_lazydocker,
+  dir = "git_dir",
+  hidden = true,
+  direction = "float",
+  float_opts = {
+    border = "double",
+  },
+}
+
+local docker_ctop = Terminal:new {
+  cmd = docker_ctop,
+  dir = "git_dir",
+  hidden = true,
+  direction = "float",
+  float_opts = {
+    border = "double",
+  },
+}
+
+local docker_dockly = Terminal:new {
+  cmd = docker_dockly,
   dir = "git_dir",
   hidden = true,
   direction = "float",
@@ -90,6 +116,14 @@ end
 
 function M.docker_client_toggle()
   docker_client:toggle()
+end
+
+function M.docker_ctop_toggle()
+  docker_ctop:toggle()
+end
+
+function M.docker_dockly_toggle()
+  docker_dockly:toggle()
 end
 
 function M.git_commit_toggle()
