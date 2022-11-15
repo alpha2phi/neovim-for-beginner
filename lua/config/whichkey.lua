@@ -236,6 +236,8 @@ local function normal_keymap()
     x = {
       name = "External",
       d = { "<cmd>lua require('utils.term').docker_client_toggle()<CR>", "Docker" },
+      t = { "<cmd>lua require('utils.term').docker_ctop_toggle()<CR>", "Docker - ctop" },
+      y = { "<cmd>lua require('utils.term').docker_dockly_toggle()<CR>", "Docker - dockly" },
       p = { "<cmd>lua require('utils.term').project_info_toggle()<CR>", "Project Info" },
       s = { "<cmd>lua require('utils.term').system_info_toggle()<CR>", "System Info" },
       c = { "<cmd>lua require('utils.term').cht()<CR>", "Cheatsheet" },
@@ -258,7 +260,6 @@ local function normal_keymap()
       -- x = { "<cmd>set autochdir<cr>", "Auto ChDir" },
       x = { "<cmd>Telescope cder<cr>", "Change Directory" },
       e = { "!!$SHELL<CR>", "Execute line" },
-      o = { "<cmd>lua require('utils.term').docker_client_toggle()<CR>", "Docker" },
       W = { "<cmd>lua require('utils.session').toggle_session()<cr>", "Toggle Workspace Saving" },
       w = { "<cmd>lua require('utils.session').list_session()<cr>", "Restore Workspace" },
       z = { "<cmd>lua require'telescope'.extensions.zoxide.list{}<cr>", "Zoxide" },
