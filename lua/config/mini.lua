@@ -10,7 +10,8 @@ function M.setup()
   --   },
   --   search_method = "cover_or_next",
   -- }
-  require("mini.align").setup {}
+  require("mini.align").setup()
+  require("mini.test").setup()
   -- require("mini.jump").setup {}
 end
 
