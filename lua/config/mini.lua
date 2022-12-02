@@ -12,6 +12,7 @@ function M.setup()
   -- }
   require("mini.align").setup()
   require("mini.test").setup()
+  require("mini.doc").setup()
   -- require("mini.jump").setup {}
 end
 
