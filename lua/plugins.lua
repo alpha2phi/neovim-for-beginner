@@ -684,6 +684,7 @@ function M.setup()
         require("config.nvimtree").setup()
       end,
     }
+    use { "elihunter173/dirbuf.nvim", cmd = { "Dirbuf" } }
 
     -- Buffer line
     use {
