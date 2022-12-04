@@ -12,8 +12,14 @@ keymap("t", "<C-k>", "<C-\\><C-n><C-w>k", default_opts)
 keymap("t", "<C-l>", "<C-\\><C-n><C-w>l", default_opts)
 
 -- Center search results
-keymap("n", "n", "nzz", default_opts)
-keymap("n", "N", "Nzz", default_opts)
+keymap("n", "n", "nzzzv", default_opts)
+keymap("n", "N", "Nzzzv", default_opts)
+keymap("n", "g,", "g,zvzz", default_opts)
+keymap("n", "g;", "g;zvzz", default_opts)
+
+-- Scrolling
+keymap("n", "<C-d>", "<C-d>zz", default_opts)
+keymap("n", "<C-u>", "<C-u>zz", default_opts)
 
 -- Visual line wraps
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", expr_opts)
