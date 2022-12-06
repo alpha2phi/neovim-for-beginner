@@ -798,6 +798,7 @@ function M.setup()
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "WhoIsSethDaniel/mason-tool-installer.nvim",
+        { "jayp0521/mason-null-ls.nvim" },
         "folke/neodev.nvim",
         "RRethy/vim-illuminate",
         "jose-elias-alvarez/null-ls.nvim",
