@@ -167,6 +167,13 @@ function M.setup()
         require("config.alpha").setup()
       end,
     }
+    use {
+      "folke/drop.nvim",
+      event = "VimEnter",
+      config = function()
+        require("drop").setup()
+      end,
+    }
 
     -- Doc
     use { "nanotee/luv-vimdocs", event = "BufReadPre" }
