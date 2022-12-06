@@ -16,6 +16,7 @@ function M.setup(servers, server_options)
   require("mason-null-ls").setup {
     automatic_setup = true,
   }
+  require("mason-null-ls").setup_handlers()
 
   require("mason-tool-installer").setup {
     ensure_installed = { "codelldb", "stylua", "shfmt", "shellcheck", "prettierd" },
