@@ -149,7 +149,7 @@ local snippets = {
   s("choice", { c(1, { t "choice 1", t "choice 2", t "choice 3" }) }),
 
   s(
-    "dt",
+    "$date",
     f(function()
       return os.date "%D - %H:%M"
     end)

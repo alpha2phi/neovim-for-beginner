@@ -175,6 +175,7 @@ function M.setup()
         local theme = ({ "stars", "snow", "xmas" })[math.random(1, 3)]
         require("drop").setup { theme = theme }
       end,
+      disable = true,
     }
 
     -- Doc
@@ -939,7 +940,7 @@ function M.setup()
       config = function()
         require("go").setup()
       end,
-      disable = false,
+      disable = true,
     }
 
     -- Java
