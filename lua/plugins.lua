@@ -57,7 +57,7 @@ function M.setup()
     -- literate programming
     use {
       "~/workspace/alpha2phi/lp.nvim",
-      disable = false,
+      disable = true,
     }
 
     -- Notification
