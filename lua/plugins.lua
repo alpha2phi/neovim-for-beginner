@@ -1167,9 +1167,9 @@ function M.setup()
       cmd = { "SaveSession", "RestoreSession" },
       requires = { "rmagatti/session-lens" },
       config = function()
-        require("bad_practices").setup()
+        require("auto-session").setup()
       end,
-      disable = false,
+      disable = true,
     }
     use {
       "jedrzejboczar/possession.nvim",
