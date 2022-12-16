@@ -32,9 +32,10 @@ local sources = {
 
   -- diagnostics
   b.diagnostics.write_good,
-  -- b.diagnostics.markdownlint,
   b.diagnostics.eslint_d,
-  b.diagnostics.flake8.with { extra_args = { "--max-line-length=180" } },
+  -- b.diagnostics.markdownlint,
+  -- b.diagnostics.flake8.with { extra_args = { "--max-line-length=180" } },
+  b.diagnostics.ruff.with { extra_args = { "--max-line-length=180" } },
   b.diagnostics.tsc,
   -- b.diagnostics.selene,
   -- b.diagnostics.codespell,
