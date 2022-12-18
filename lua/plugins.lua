@@ -2,7 +2,7 @@ local M = {}
 
 function M.setup()
   -- Indicate first time installation
-  local packer_bootstrap = false
+  local is_boostrap = false
 
   -- packer.nvim configuration
   local conf = {
@@ -24,7 +24,7 @@ function M.setup()
     local fn = vim.fn
     local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
     if fn.empty(fn.glob(install_path)) > 0 then
-      packer_bootstrap = fn.system {
+      fn.system {
         "git",
         "clone",
         "--depth",
@@ -32,6 +32,7 @@ function M.setup()
         "https://github.com/wbthomason/packer.nvim",
         install_path,
       }
+      is_boostrap = true
       vim.cmd [[packadd packer.nvim]]
     end
 
@@ -40,7 +41,7 @@ function M.setup()
     local packer_grp = vim.api.nvim_create_augroup("packer_user_config", { clear = true })
     vim.api.nvim_create_autocmd(
       { "BufWritePost" },
-      { pattern = "init.lua", command = "source <afile> | PackerCompile", group = packer_grp }
+      { pattern = vim.fn.expand "$MYVIMRC", command = "source <afile> | PackerCompile", group = packer_grp }
     )
   end
 
@@ -1509,7 +1510,7 @@ function M.setup()
     -- https://github.com/kevinhwang91/nvim-ufo
 
     -- Bootstrap Neovim
-    if packer_bootstrap then
+    if is_boostrap then
       print "Neovim restart is required after installation!"
       require("packer").sync()
     end
