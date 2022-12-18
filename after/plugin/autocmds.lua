@@ -42,6 +42,7 @@ api.nvim_create_autocmd("FileType", {
     "query",
     "tsplayground",
     "neotest-output",
+    "spectre_panel",
   },
   command = [[nnoremap <buffer><silent> q :close<CR>]],
 })
