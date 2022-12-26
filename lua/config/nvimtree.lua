@@ -7,8 +7,8 @@ function M.setup()
     hijack_netrw = true,
     respect_buf_cwd = true,
     view = {
-      number = true,
-      relativenumber = true,
+      number = false,
+      relativenumber = false,
     },
     filters = {
       custom = { ".git" },
