@@ -15,6 +15,7 @@ local servers = {
           parameterNames = true,
           rangeVariableTypes = true,
         },
+        semanticTokens = true,
       },
     },
   },

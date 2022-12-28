@@ -21,7 +21,20 @@ function M.setup()
       { fg = "#EEF06D" },
       { fg = "#8FB272" },
     },
-    excluded_filetypes = { "rust", "typescript", "typescriptreact", "javascript", "javascriptreact" },
+    disable = function(_, bufnr)
+      if vim.b.semantic_tokens then
+        return true
+      end
+      local clients = vim.lsp.get_active_clients { bufnr = bufnr }
+      for _, c in pairs(clients) do
+        local caps = c.server_capabilities
+        if c.name ~= "null-ls" and caps.semanticTokensProvider and caps.semanticTokensProvider.full then
+          vim.b.semantic_tokens = true
+          return vim.b.semantic_tokens
+        end
+      end
+    end,
+    -- excluded_filetypes = { "rust", "lua", "typescript", "typescriptreact", "javascript", "javascriptreact" },
   }
 end
 

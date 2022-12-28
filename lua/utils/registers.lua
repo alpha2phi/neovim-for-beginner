@@ -71,6 +71,4 @@ function M.create_or_edit(opts)
   end)
 end
 
-M.create_or_edit()
-
 return M
