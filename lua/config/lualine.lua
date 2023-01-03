@@ -94,7 +94,7 @@ local function lsp_client(msg)
 end
 
 local winbar = require "config.winbar"
-local session = require "utils.session"
+local utils = require "utils"
 
 local config = {
   options = {
@@ -173,7 +173,7 @@ local config = {
   },
   tabline = {},
   winbar = {
-    lualine_a = { { session.get_session_name } },
+    lualine_a = { { utils.get_repo_name } },
     lualine_b = {
       {
         "diagnostics",

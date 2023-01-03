@@ -37,16 +37,15 @@ local function delete_session(prompt_bufnr, _)
   return true
 end
 
-function M.get_session_name()
+local function get_session_name()
   if vim.fn.trim(vim.fn.system "git rev-parse --is-inside-work-tree") == "true" then
     return vim.fn.trim(vim.fn.system "basename `git rev-parse --show-toplevel`")
-  else
-    return "Session.vim"
   end
+  return "Session.vim"
 end
 
 local track_session = false
-local default_session_name = M.get_session_name()
+local default_session_name = get_session_name()
 
 local function make_session(session_name)
   local cmd = "mks! " .. session_name

@@ -76,6 +76,15 @@ function M.quit()
   end
 end
 
+function M.get_repo_name()
+  if
+    #vim.api.nvim_list_tabpages() > 1 and vim.fn.trim(vim.fn.system "git rev-parse --is-inside-work-tree") == "true"
+  then
+    return vim.fn.trim(vim.fn.system "basename `git rev-parse --show-toplevel`")
+  end
+  return ""
+end
+
 -- function M.nvim_version(val)
 --   local version = (vim.version().major .. "." .. vim.version().minor) + 0.0
 --   val = val or 0.7
