@@ -514,6 +514,15 @@ function M.setup()
       disable = true,
     }
     use {
+      "ggandor/flit.nvim",
+      keys = { "f", "F", "t", "T" },
+      config = function()
+        require("flit").setup()
+      end,
+      requires = { "ggandor/leap.nvim" },
+      disable = true,
+    }
+    use {
       "ggandor/leap.nvim",
       keys = { "s", "S" },
       config = function()

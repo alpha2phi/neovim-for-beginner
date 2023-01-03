@@ -94,6 +94,7 @@ local function lsp_client(msg)
 end
 
 local winbar = require "config.winbar"
+local session = require "utils.session"
 
 local config = {
   options = {
@@ -172,7 +173,8 @@ local config = {
   },
   tabline = {},
   winbar = {
-    lualine_a = {
+    lualine_a = { { session.get_session_name } },
+    lualine_b = {
       {
         "diagnostics",
         sources = { "nvim_diagnostic" },
@@ -188,7 +190,6 @@ local config = {
         end,
       },
     },
-    lualine_b = {},
     lualine_c = {},
     lualine_x = {
       {

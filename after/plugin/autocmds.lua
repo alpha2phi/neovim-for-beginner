@@ -44,7 +44,10 @@ api.nvim_create_autocmd("FileType", {
     "neotest-output",
     "spectre_panel",
   },
-  command = [[nnoremap <buffer><silent> q :close<CR>]],
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+  end,
 })
 api.nvim_create_autocmd("FileType", { pattern = "man", command = [[nnoremap <buffer><silent> q :quit<CR>]] })
 api.nvim_create_autocmd("FileType", { pattern = "cheat", command = [[nnoremap <buffer><silent> q :bdelete!<CR>]] })
