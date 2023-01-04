@@ -20,17 +20,18 @@ end
 
 function M.format()
   if M.autoformat then
+    local buf = vim.api.nvim_get_current_buf()
+    local ft = vim.bo[buf].filetype
+    local have_nls = #require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING") > 0
+
     local view = vim.fn.winsaveview()
     vim.lsp.buf.format {
       async = true,
       filter = function(client)
-        return client.name ~= "tsserver"
-          and client.name ~= "jsonls"
-          and client.name ~= "html"
-          and client.name ~= "sumneko_lua"
-          and client.name ~= "jdt.ls"
-          and client.name ~= ""
-        -- and client.name ~= "kotlin_language_server"
+        if have_nls then
+          return client.name == "null-ls"
+        end
+        return client.name ~= "null-ls"
       end,
     }
     vim.fn.winrestview(view)
