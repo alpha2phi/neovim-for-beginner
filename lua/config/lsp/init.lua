@@ -66,14 +66,7 @@ local servers = {
           -- disable = { "lowercase-global", "undefined-global", "unused-local", "unused-vararg", "trailing-space" },
         },
         workspace = {
-          -- Make the server aware of Neovim runtime files
-          library = {
-            [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-            [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-          },
-          -- library = vim.api.nvim_get_runtime_file("", true),
-          maxPreload = 2000,
-          preloadFileSize = 50000,
+          checkThirdParty = false,
         },
         completion = { callSnippet = "Replace" },
         telemetry = { enable = false },
