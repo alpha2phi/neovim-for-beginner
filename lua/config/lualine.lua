@@ -90,7 +90,7 @@ local function lsp_client(msg)
     end
   end
   table.sort(client_names)
-  return "[" .. table.concat(client_names, ", ") .. "]"
+  return "" .. table.concat(client_names, ", ") .. ""
 end
 
 local winbar = require "config.winbar"
@@ -152,8 +152,8 @@ local config = {
       { separator },
       {
         lsp_client,
-        icon = icons.ui.Gear,
-        color = { fg = colors.violet, gui = "bold" },
+        icon = icons.ui.Code,
+        -- color = { fg = colors.violet, gui = "bold" },
         on_click = function()
           vim.cmd [[LspInfo]]
         end,
