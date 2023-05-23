@@ -12,7 +12,7 @@ describe("Testing", function()
   end)
 
   it("Scenario 2", function()
-    print("Scenario 2")
+    print "Scenario 2"
     assert.equals([[hello world]], "hello world")
   end)
 end)
